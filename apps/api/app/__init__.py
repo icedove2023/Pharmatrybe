@@ -1,0 +1,1 @@
+"""PharmaTrybe API application package."""
