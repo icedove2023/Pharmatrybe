@@ -1,11 +1,15 @@
-"""Structured logging placeholders for the PharmaTrybe API."""
+"""Structured logging helpers for the PharmaTrybe API."""
 
 import logging
 
 
 def configure_logging() -> None:
     """Configure the default logging behaviour for the application."""
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s %(message)s",
+        force=True,
+    )
 
 
 def get_logger(name: str) -> logging.Logger:
