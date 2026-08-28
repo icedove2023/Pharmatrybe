@@ -3,7 +3,7 @@
 import { supabase } from '@/lib/supabase';
 
 const viteEnv = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env;
-const API_BASE_URL = (viteEnv?.VITE_API_BASE_URL || 'http://localhost:8000/api/v1').replace(/\/$/, '');
+const API_BASE_URL = (viteEnv?.VITE_API_BASE_URL || 'https://pharmatrybe-api.vercel.app/api/v1').replace(/\/$/, '');
 
 export class ApiClientError extends Error {
   status: number;
