@@ -56,10 +56,6 @@ export function LoginForm({ onSuccess, onBackToLanding, onSwitchToRegister }: Lo
 
       <div className="space-y-5 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-5 shadow-xl sm:p-8">
         <div className="space-y-2 text-center">
-          <div className="mx-auto inline-flex items-center space-x-1.5 rounded-full border border-[var(--color-clinical-700)] bg-[var(--color-clinical-950)] px-3 py-1 text-xs font-semibold text-[var(--color-clinical-300)]">
-            <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Secure clinical gateway</span>
-          </div>
           <h2 className="text-xl font-semibold tracking-tight text-slate-text-primary">Sign in to PharmaTrybe</h2>
           <p className="text-xs text-slate-text-muted">
             For administrators and hospital staff with a provisioned account.
@@ -124,12 +120,7 @@ export function LoginForm({ onSuccess, onBackToLanding, onSwitchToRegister }: Lo
             Register your institution
           </button>
         </p>
-
       </div>
-
-      <p className="flex items-center justify-center space-x-1 text-[11px] text-slate-text-muted">
-        <span>Authentication is verified through Supabase and PharmaTrybe.</span>
-      </p>
     </motion.div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Stethoscope, CheckCircle2, ChevronRight, Layers, Sparkles, Database,
+  Stethoscope, CheckCircle2, ChevronRight, Layers, Plus, Database,
 } from 'lucide-react';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { getExternalRegisteredPlugins } from '@/plugins/registry/pluginRegistry';
@@ -25,7 +25,7 @@ export function DashboardView({ onNavigateTab }: DashboardViewProps) {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <ClinicalButton variant="primary" size="md" icon={Sparkles} onClick={() => onNavigateTab('assessment')}>
+          <ClinicalButton variant="primary" size="md" icon={Plus} onClick={() => onNavigateTab('assessment')}>
             New Assessment
           </ClinicalButton>
         </div>

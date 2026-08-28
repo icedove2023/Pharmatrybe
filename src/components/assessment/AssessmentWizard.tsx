@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import {
   User, Activity, TestTube, ShieldAlert, CheckCircle2, ChevronRight, ChevronLeft,
-  Sparkles, RefreshCw, Cpu, BookOpen, Layers, AlertCircle, AlertTriangle, Shield, Check, Info, FileText,
+  Plus, Sparkles, RefreshCw, Cpu, BookOpen, Layers, AlertCircle, AlertTriangle, Shield, Check, Info, FileText,
   ChevronDown, ChevronUp, AlertOctagon
 } from 'lucide-react';
 import { useClinicalCaseStore } from '@/stores/clinicalCaseStore';
@@ -166,7 +166,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
       <div className="flex flex-col justify-between gap-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-6 md:flex-row md:items-center">
         <div>
           <div className="mb-1 inline-flex items-center space-x-1.5 rounded-full bg-[var(--color-clinical-950)] px-2.5 py-0.5 text-xs font-semibold text-[var(--color-clinical-300)]">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Clinical intelligence pipeline orchestration</span>
           </div>
           <h2 className="text-lg font-semibold text-slate-text-primary">Patient case & prescribing assessment</h2>
@@ -802,7 +802,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
         {currentStep === 3 && (
           <div className="space-y-6 animate-in fade-in">
             <div>
-              <h3 className="text-sm font-semibold text-slate-text-primary">Step 5: Review Clinical Case Profile & Pipeline Orchestration</h3>
+              <h3 className="text-sm font-semibold text-slate-text-primary">Step 3: Review Clinical Case Profile & Pipeline Orchestration</h3>
               <p className="text-xs text-slate-text-muted">Confirm clinical parameters before dispatching to the Clinical Intelligence Pipeline.</p>
             </div>
 
