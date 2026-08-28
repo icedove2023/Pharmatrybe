@@ -1,0 +1,17 @@
+{
+  "certificate_id": "CERT-c76ddb86",
+  "deployment_uuid": "c76ddb86-ce86-43a2-8950-bca9d19bed49",
+  "deployment_hash": "6c5d96d2e0c23505b9215925df2697e8c47d228e6794cbbb51d5a3ffea2130e0",
+  "created": "2026-08-10T00:12:11.225693",
+  "validator_version": "1.0.0",
+  "grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "recoverability_score": 77.77777777777779,
+  "completeness_score": 77.77777777777779,
+  "compatibility_score": 100.0,
+  "errors": [],
+  "warnings": [],
+  "certified": false,
+  "certificate_sha256": "b7fcd7c9074940f3829a62b2c875cf23567e67c49f96c926f23307a15209f02d"
+}

@@ -1,0 +1,20 @@
+{
+  "deployment_name": "Cefotaxime_Haemophilus_influenzae",
+  "deployment_uuid": "44f923aa-813e-4da1-bcf1-56871d1ccdaa",
+  "antibiotic": "Cefotaxime",
+  "species": "Haemophilus influenzae",
+  "algorithm": "CalibratedClassifierCV",
+  "feature_count": 6,
+  "class_labels": [
+    "R",
+    "S"
+  ],
+  "package_grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "fingerprint": "057849712d68bbf073d206be1201cb01aa83205ab87c0539a9006eee412418ad",
+  "created_at": "2026-08-10T00:12:16.070892",
+  "reconstructed_by": "Phase13D v4",
+  "recovered_from": "artifact_recovery_v2\\Cefotaxime_Haemophilus_influenzae",
+  "duration_seconds": 0.0
+}

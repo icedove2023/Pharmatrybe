@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ceftazidime",
+  "best_model": "LogisticRegression",
+  "threshold": 0.1936692904733263
+}

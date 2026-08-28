@@ -1,0 +1,9 @@
+{
+  "deployment": "Tetracycline_Haemophilus_influenzae",
+  "model_sha256": "f87ad5ba63593e0a4f78871d8444e10fc3363920bec88b1b70e6f2f6de28543c",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "53e57528a44fc054670019a7ba65414d067c501eb26875190127cd52e2f405f8",
+  "created": "2026-08-09T23:43:04.857038",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:04.036421"
+}

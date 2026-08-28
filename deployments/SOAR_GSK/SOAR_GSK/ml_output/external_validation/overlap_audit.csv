@@ -1,0 +1,33 @@
+Drug,Species,GSK_Samples,SOAR_Samples,Total_Samples,External_Validation_Feasible
+Levofloxacin,Haemophilus influenzae,1065,1528,2593,✅ Yes
+Moxifloxacin,Haemophilus influenzae,1065,1528,2593,✅ Yes
+Azithromycin,Haemophilus influenzae,1065,1528,2593,✅ Yes
+Clarithromycin,Haemophilus influenzae,1061,1528,2589,✅ Yes
+Ampicillin,Haemophilus influenzae,1052,1528,2580,✅ Yes
+Trimethoprim Sulfa,Haemophilus influenzae,994,1528,2522,✅ Yes
+Levofloxacin,Streptococcus pneumoniae,1345,993,2338,✅ Yes
+Moxifloxacin,Streptococcus pneumoniae,1345,993,2338,✅ Yes
+Erythromycin,Streptococcus pneumoniae,1344,993,2337,✅ Yes
+Trimethoprim Sulfa,Streptococcus pneumoniae,1339,993,2332,✅ Yes
+Ceftriaxone,Streptococcus pneumoniae,1336,993,2329,✅ Yes
+Azithromycin,Streptococcus pneumoniae,1336,993,2329,✅ Yes
+Amoxicillin,Streptococcus pneumoniae,940,993,1933,✅ Yes
+Amoxicillin,Haemophilus influenzae,163,1528,1691,✅ Yes
+Clarithromycin,Streptococcus pneumoniae,683,993,1676,✅ Yes
+Ceftriaxone,Haemophilus influenzae,28,1528,1556,❌ No
+Ceftibuten,Haemophilus influenzae,0,1528,1528,❌ No
+Cefotaxime,Haemophilus influenzae,0,1528,1528,❌ No
+Cefixime,Haemophilus influenzae,0,1528,1528,❌ No
+Cefpodoxime,Haemophilus influenzae,0,1528,1528,❌ No
+Tetracycline,Haemophilus influenzae,0,1528,1528,❌ No
+Penicillin,Streptococcus pneumoniae,534,993,1527,✅ Yes
+Cefpodoxime,Streptococcus pneumoniae,0,993,993,❌ No
+Cefotaxime,Streptococcus pneumoniae,0,993,993,❌ No
+Tetracycline,Streptococcus pneumoniae,0,993,993,❌ No
+Doxycycline,Streptococcus pneumoniae,0,993,993,❌ No
+Ampicillin,Streptococcus pneumoniae,525,0,525,❌ No
+Cefixime,Streptococcus pneumoniae,0,0,0,❌ No
+Ceftibuten,Streptococcus pneumoniae,0,0,0,❌ No
+Doxycycline,Haemophilus influenzae,0,0,0,❌ No
+Erythromycin,Haemophilus influenzae,0,0,0,❌ No
+Penicillin,Haemophilus influenzae,0,0,0,❌ No

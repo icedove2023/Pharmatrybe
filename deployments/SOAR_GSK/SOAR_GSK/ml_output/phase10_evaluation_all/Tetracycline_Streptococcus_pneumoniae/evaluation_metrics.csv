@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Tetracycline,Streptococcus pneumoniae,Binary (R vs Non-R),0.6908212560386473,0.6546402502606882,0.6762408507251414,0.7186113602754005,0.7546327745631832,0.22036996455666183,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Tetracycline_Streptococcus_pneumoniae

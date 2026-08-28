@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Ampicillin,Haemophilus influenzae,Multiclass (S/I/R),RandomForest,0.9025341130604289,0.6133659476395724,0.8746624282219263,0.9031161409776884,N/A

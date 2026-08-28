@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Clarithromycin,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6763285024154589,0.4951770829541732,0.5930572854050292,0.7030891553701772,0.3750000000000001

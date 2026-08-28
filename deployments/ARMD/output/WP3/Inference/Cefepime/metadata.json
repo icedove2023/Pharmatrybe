@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Cefepime",
+  "best_model": "RandomForest",
+  "threshold": 0.28463074006840594
+}

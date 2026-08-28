@@ -1,0 +1,9 @@
+{
+  "deployment": "Ceftibuten_Haemophilus_influenzae",
+  "model_sha256": "172ac67790840f39c37647f0e0d1e2d18de754f4a2e4a897cdc45096a6c5e0f9",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "c1fda85b53f34a9c06ea2a8cc254b6813a0edd957c5262b015dc659f24d5f269",
+  "created": "2026-08-09T23:43:03.331344",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:01.550297"
+}

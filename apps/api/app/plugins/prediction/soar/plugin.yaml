@@ -1,0 +1,23 @@
+plugin_id: soar
+plugin_name: SOAR Prediction Plugin
+plugin_version: 0.1.0
+plugin_type: prediction
+deployment_type: artifact
+description: SOAR artifact-based prediction plugin for respiratory antimicrobial forecasting.
+author: PharmaTrybe
+entrypoint_module: soar_prediction_plugin
+entrypoint_class: SOARPredictionPlugin
+capabilities:
+  - respiratory_prediction
+dependencies: []
+supported_domains:
+  - respiratory
+configuration_schema:
+  deployments_root:
+    type: str
+    default: null
+  artifact_categories:
+    type: dict
+    default: {}
+minimum_platform_version: 0.1.0
+sdk_version: 0.1.0

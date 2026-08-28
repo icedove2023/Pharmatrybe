@@ -1,0 +1,21 @@
+{
+  "auc": 0.474512012012012,
+  "ap": 0.28428519624064075,
+  "brier": 0.20726840736127633,
+  "accuracy": 0.5354330708661418,
+  "f1": 0.3854166666666667,
+  "mcc": 0.045552441484780236,
+  "precision": 0.3135593220338983,
+  "recall": 0.5,
+  "specificity": 0.55,
+  "balanced_accuracy": 0.525,
+  "ppv": 0.3135593220338983,
+  "npv": 0.7279411764705882,
+  "antibiotic": "Gentamicin",
+  "best_model": "XGBoost",
+  "train_size": 812,
+  "val_size": 204,
+  "test_size": 254,
+  "positive_rate": 0.29064039408866993,
+  "threshold": 0.2997349245810621
+}

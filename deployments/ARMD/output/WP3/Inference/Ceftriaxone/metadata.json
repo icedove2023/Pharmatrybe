@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ceftriaxone",
+  "best_model": "LogisticRegression",
+  "threshold": 0.20181123850316368
+}

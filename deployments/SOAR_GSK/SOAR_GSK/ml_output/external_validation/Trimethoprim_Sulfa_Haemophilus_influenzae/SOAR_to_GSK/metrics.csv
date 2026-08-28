@@ -1,0 +1,2 @@
+Drug,Species,Train_Source,Test_Source,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,N_Train,N_Test,SHAP_Success
+Trimethoprim Sulfa,Haemophilus influenzae,SOAR,GSK,LogisticRegression,0.35412474849094566,0.26151560178306094,0.1852182934157695,0.5351684190031153,0.37861354550559567,0.2715110034855472,1528,994,True

@@ -1,0 +1,10 @@
+{
+  "certificate_id": "CERT-b71e653b",
+  "deployment": "Trimethoprim_Sulfa_Haemophilus_influenzae",
+  "uuid": "b71e653b-7c71-459a-ab60-4c2441d2d305",
+  "grade": "B",
+  "score": 84.62,
+  "certified": true,
+  "timestamp": "2026-08-10T00:14:13.510467",
+  "verification_version": "2.1"
+}

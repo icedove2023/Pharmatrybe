@@ -1,0 +1,86 @@
+{
+  "extraction_timestamp": "2026-08-08T13:28:47.247342",
+  "deployment_path": "deployment\\Doxycycline_Streptococcus_pneumoniae",
+  "antibiotic": "Doxycycline",
+  "organism": "Streptococcus_pneumoniae",
+  "artifacts": {
+    "found": 4,
+    "total": 10,
+    "missing": [
+      "preprocessing_pipeline.pkl",
+      "calibration_model.pkl",
+      "shap_explainer.pkl",
+      "feature_schema.json",
+      "metadata.json",
+      "manifest.json"
+    ],
+    "corrupted": [],
+    "unrecoverable": []
+  },
+  "required_artifacts": {
+    "found": 2,
+    "total": 2
+  },
+  "integrity_score": 1.0,
+  "recoverable_percent": 40.0,
+  "validation_grade": "A",
+  "model_metadata": {
+    "model_type": "CalibratedClassifierCV",
+    "is_pipeline": true,
+    "is_calibrated": true,
+    "pipeline_steps": [
+      "preprocessor",
+      "classifier"
+    ],
+    "calibration_method": "sigmoid",
+    "feature_count": 10,
+    "model_class": "LogisticRegression",
+    "sklearn_version": "1.9.0",
+    "xgboost_version": "3.3.0",
+    "shap_version": "0.52.0"
+  },
+  "validation_details": {
+    "valid": true,
+    "required_checks_passed": 2,
+    "required_checks_total": 2,
+    "optional_checks_passed": 2,
+    "optional_checks_total": 8,
+    "severity": "warning",
+    "details": {
+      "model_valid": true,
+      "label_encoder_valid": true,
+      "threshold_valid": true,
+      "metrics_valid": true,
+      "preprocessor_valid": false,
+      "calibration_valid": false,
+      "shap_valid": false,
+      "schema_valid": false,
+      "metadata_valid": false,
+      "manifest_valid": false
+    },
+    "errors": [],
+    "warnings": [
+      "Preprocessing pipeline missing (optional)",
+      "Calibration model missing (optional)",
+      "SHAP explainer missing (optional)",
+      "Feature schema missing (optional)",
+      "Metadata file missing (optional)",
+      "Manifest file missing (optional)"
+    ]
+  },
+  "warnings": [
+    "Preprocessing pipeline missing (optional)",
+    "Calibration model missing (optional)",
+    "SHAP explainer missing (optional)",
+    "Feature schema missing (optional)",
+    "Metadata file missing (optional)",
+    "Manifest file missing (optional)",
+    "Optional artifact missing: preprocessing_pipeline.pkl",
+    "Optional artifact missing: calibration_model.pkl",
+    "Optional artifact missing: shap_explainer.pkl",
+    "Optional artifact missing: feature_schema.json",
+    "Optional artifact missing: metadata.json",
+    "Optional artifact missing: manifest.json"
+  ],
+  "errors": []
+}

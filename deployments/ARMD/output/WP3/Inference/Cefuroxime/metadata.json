@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Cefuroxime",
+  "best_model": "XGBoost",
+  "threshold": 0.44749692445376904
+}

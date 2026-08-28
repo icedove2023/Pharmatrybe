@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Ceftibuten,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8869395711500975,0.848262004814165,0.8812648702977213,0.858599902952484,0.3500000000000001

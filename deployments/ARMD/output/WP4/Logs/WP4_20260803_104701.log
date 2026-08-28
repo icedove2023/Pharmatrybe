@@ -1,0 +1,41 @@
+[2026-08-03 10:47:01,249] [INFO] Logging initialised.
+[2026-08-03 10:47:01,255] [INFO] ================================================================================
+[2026-08-03 10:47:01,256] [INFO] Starting WP5 Clinical Intelligence API
+[2026-08-03 10:47:01,257] [INFO] ================================================================================
+[2026-08-03 10:47:30,601] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 10:47:31,248] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-03 10:47:48,760] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 10:47:48,847] [INFO] Sampled 200 background patients.
+[2026-08-03 10:47:56,167] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-03 10:47:56,170] [INFO] Background scaled shape: (200, 56)
+[2026-08-03 10:47:56,187] [INFO] Building SHAP explainer for XGBClassifier
+[2026-08-03 10:47:56,187] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-03 10:47:56,269] [WARNING] model_output='probability' with tree_path_dependent failed, trying 'raw'
+[2026-08-03 10:47:56,269] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-03 10:47:56,318] [WARNING] XGBoost model with categorical splits – falling back to KernelExplainer (may be slower)
+[2026-08-03 10:47:56,452] [WARNING] Using 200 background data samples could cause slower run times. Consider using shap.sample(data, K) or shap.kmeans(data, K) to summarize the background as K samples.
+[2026-08-03 10:47:56,576] [INFO] num_full_subsets = 1
+[2026-08-03 10:47:56,578] [INFO] remaining_weight_vector = array([0.18403604, 0.12759832, 0.09968619, 0.0832163 , 0.07249905,
+       0.06510118, 0.05981171, 0.05596418, 0.05316597, 0.0511758 ,
+       0.04984309, 0.04907628, 0.04882589])
+[2026-08-03 10:47:56,579] [INFO] num_paired_subset_sizes = 13
+[2026-08-03 10:47:56,742] [INFO] weight_left = np.float64(0.7335092992693836)
+[2026-08-03 10:47:59,386] [INFO] np.sum(w_aug) = np.float64(28.000000000000004)
+[2026-08-03 10:47:59,386] [INFO] np.sum(self.kernelWeights) = np.float64(1.0000000000000002)
+[2026-08-03 10:47:59,446] [INFO] phi = array([ 0.06464193, -0.00943969,  0.        ,  0.0016924 ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.00154024,  0.        ,  0.        ,  0.        ,  0.0194591 ,
+        0.00366708, -0.01028706,  0.        ,  0.0854812 ,  0.01003288,
+        0.        ,  0.00962579,  0.        ])
+[2026-08-03 10:47:59,448] [INFO] np.sum(w_aug) = np.float64(28.000000000000004)
+[2026-08-03 10:47:59,448] [INFO] np.sum(self.kernelWeights) = np.float64(1.0000000000000002)
+[2026-08-03 10:47:59,458] [INFO] phi = array([-0.06464193,  0.00943969,  0.        , -0.0016924 ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+       -0.00154024,  0.        ,  0.        ,  0.        , -0.0194591 ,
+       -0.00366708,  0.01028706,  0.        , -0.0854812 , -0.01003288,
+        0.        , -0.00962579,  0.        ])
+[2026-08-03 11:05:44,764] [INFO] ================================================================================
+[2026-08-03 11:05:44,792] [INFO] Stopping WP5 Clinical Intelligence API
+[2026-08-03 11:05:44,793] [INFO] ================================================================================

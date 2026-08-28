@@ -1,0 +1,145 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-08-08T13:28:51.299317",
+  "deployment_path": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae",
+  "antibiotic": "Trimethoprim",
+  "organism": "Sulfa_Haemophilus_influenzae",
+  "required_artifacts": [
+    "final_model.pkl",
+    "label_encoder.pkl"
+  ],
+  "optional_artifacts": [
+    "optimal_threshold.json",
+    "evaluation_metrics.csv",
+    "preprocessing_pipeline.pkl",
+    "calibration_model.pkl",
+    "shap_explainer.pkl",
+    "feature_schema.json",
+    "metadata.json",
+    "manifest.json"
+  ],
+  "artifacts": {
+    "final_model.pkl": {
+      "status": "found",
+      "path": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae\\final_model.pkl",
+      "size_bytes": 24666,
+      "sha256": "8932eb54826e2675c48712a21be0ad33cacae2b84bc06bc172efeeda03f5caf3",
+      "error": null
+    },
+    "label_encoder.pkl": {
+      "status": "found",
+      "path": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae\\label_encoder.pkl",
+      "size_bytes": 481,
+      "sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+      "error": null
+    },
+    "optimal_threshold.json": {
+      "status": "found",
+      "path": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae\\optimal_threshold.json",
+      "size_bytes": 33,
+      "sha256": "c8004d4ef7da215a4f063f9eeaf85dc7f1ef1709829c296518a757902dd897a1",
+      "error": null
+    },
+    "evaluation_metrics.csv": {
+      "status": "found",
+      "path": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae\\evaluation_metrics.csv",
+      "size_bytes": 325,
+      "sha256": "0565bc9e144d2b700f06f98bf4414987448997ff7c23e65c56f448afa3cf3cd3",
+      "error": null
+    },
+    "preprocessing_pipeline.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "calibration_model.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "shap_explainer.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "feature_schema.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "metadata.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "manifest.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    }
+  },
+  "summary": {
+    "found": 4,
+    "total": 10,
+    "required_found": 2,
+    "required_total": 2,
+    "integrity_score": 1.0,
+    "grade": "A"
+  },
+  "model_metadata": {
+    "model_type": "CalibratedClassifierCV",
+    "is_pipeline": true,
+    "is_calibrated": true,
+    "pipeline_steps": [
+      "preprocessor",
+      "classifier"
+    ],
+    "calibration_method": "sigmoid",
+    "feature_count": 11,
+    "model_class": "LogisticRegression",
+    "sklearn_version": "1.9.0",
+    "xgboost_version": "3.3.0",
+    "shap_version": "0.52.0"
+  },
+  "validation_details": {
+    "valid": true,
+    "required_checks_passed": 2,
+    "required_checks_total": 2,
+    "optional_checks_passed": 2,
+    "optional_checks_total": 8,
+    "severity": "warning",
+    "details": {
+      "model_valid": true,
+      "label_encoder_valid": true,
+      "threshold_valid": true,
+      "metrics_valid": true,
+      "preprocessor_valid": false,
+      "calibration_valid": false,
+      "shap_valid": false,
+      "schema_valid": false,
+      "metadata_valid": false,
+      "manifest_valid": false
+    },
+    "errors": [],
+    "warnings": [
+      "Preprocessing pipeline missing (optional)",
+      "Calibration model missing (optional)",
+      "SHAP explainer missing (optional)",
+      "Feature schema missing (optional)",
+      "Metadata file missing (optional)",
+      "Manifest file missing (optional)"
+    ]
+  }
+}

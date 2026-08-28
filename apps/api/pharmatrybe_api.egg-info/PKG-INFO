@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: pharmatrybe-api
+Version: 0.1.0
+Summary: PharmaTrybe FastAPI backend bootstrap
+Requires-Python: >=3.11
+Requires-Dist: fastapi>=0.111.0
+Requires-Dist: uvicorn>=0.30.0
+Requires-Dist: pydantic>=2.7.0
+Requires-Dist: pydantic-settings>=2.3.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: SQLAlchemy>=2.0.0
+Requires-Dist: psycopg2-binary>=2.9.0

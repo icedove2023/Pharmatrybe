@@ -1,0 +1,346 @@
+{
+  "deployment": "Cefixime_Haemophilus_influenzae",
+  "timestamp": "2026-08-10T00:13:21.623965",
+  "overall_score": 84.62,
+  "grade": "B",
+  "certified": true,
+  "critical_failures": [],
+  "total_errors": 1,
+  "total_warnings": 28,
+  "levels": {
+    "Level1_FileIntegrity": {
+      "level": "Level1_FileIntegrity",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "total_files_checked": 21,
+        "passed": 21,
+        "failed": 0
+      }
+    },
+    "Level2_PickleVerification": {
+      "level": "Level2_PickleVerification",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "model_loaded": true,
+        "model_summary": {
+          "type": "<class 'sklearn.calibration.CalibratedClassifierCV'>",
+          "class": "CalibratedClassifierCV",
+          "has_predict": true,
+          "has_predict_proba": true
+        },
+        "encoder_loaded": true,
+        "encoder_summary": {
+          "type": "<class 'sklearn.preprocessing._label.LabelEncoder'>",
+          "class": "LabelEncoder",
+          "has_predict": false,
+          "has_predict_proba": false
+        }
+      }
+    },
+    "Level3_PipelineValidation": {
+      "level": "Level3_PipelineValidation",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "pipeline_steps": [
+          "ColumnTransformer",
+          "RandomForestClassifier"
+        ],
+        "prep_order": [
+          "num",
+          "ohe",
+          "target_enc",
+          "bin",
+          "classifier"
+        ]
+      }
+    },
+    "Level4_SchemaValidation": {
+      "level": "Level4_SchemaValidation",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [
+        "Missing feature count in schema or metadata"
+      ],
+      "details": {
+        "feature_names": [
+          "Age",
+          "YearCollected",
+          "Region",
+          "BodyLocation_Group",
+          "Country",
+          "Beta_Lactamase_enc"
+        ]
+      }
+    },
+    "Level5_MetadataValidation": {
+      "level": "Level5_MetadataValidation",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "version_data": {
+          "deployment_version": "1.0.0",
+          "artifact_schema": "2.0",
+          "recovery_phase": "13D",
+          "recovery_version": "1.0.0",
+          "created_at": "2026-08-10T00:12:20.167112",
+          "reconstructed_from": "Phase13C"
+        }
+      }
+    },
+    "Level6_InferenceValidation": {
+      "level": "Level6_InferenceValidation",
+      "status": "FAIL",
+      "score": 0.0,
+      "errors": [
+        "Inference failed: could not convert string to float: 'value'"
+      ],
+      "warnings": [],
+      "details": {
+        "error": "could not convert string to float: 'value'"
+      }
+    },
+    "Level7_FingerprintValidation": {
+      "level": "Level7_FingerprintValidation",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "computed": "2adeb3d95461e50b8c7730f09c86e2725eb1382dbe60e917913674f5b6bc4a5d",
+        "expected": "2adeb3d95461e50b8c7730f09c86e2725eb1382dbe60e917913674f5b6bc4a5d"
+      }
+    },
+    "Level8_PackageCompleteness": {
+      "level": "Level8_PackageCompleteness",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "present_count": 16,
+        "total_required": 16,
+        "missing": [],
+        "present": [
+          "final_model.pkl",
+          "label_encoder.pkl",
+          "metadata.json",
+          "feature_schema.json",
+          "label_encoder.json",
+          "model_card.json",
+          "preprocessing_summary.json",
+          "deployment_manifest.json",
+          "deployment_fingerprint.json",
+          "README.md",
+          "VERSION.json",
+          "deployment_info.json",
+          "deployment_certificate.json",
+          "reconstruction_metadata.json",
+          "validation_report.json",
+          "package_manifest.json"
+        ]
+      }
+    },
+    "Level9_ReproducibilityAudit": {
+      "level": "Level9_ReproducibilityAudit",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "python_version": "3.14.6",
+        "reconstruction_python_version": "3.14.6",
+        "library_versions": {
+          "scikit-learn": "1.9.0",
+          "joblib": "1.5.3",
+          "xgboost": "3.3.0",
+          "lightgbm": "not installed",
+          "pandas": "3.0.3",
+          "numpy": "2.4.6"
+        }
+      }
+    },
+    "Level10_SecurityAudit": {
+      "level": "Level10_SecurityAudit",
+      "status": "WARN",
+      "score": 50.0,
+      "errors": [],
+      "warnings": [
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 61",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 111",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 203",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 282",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 348",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 436",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 613",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 722",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 824",
+        "final_model.pkl: Dangerous opcode NEWOBJ found at pos 1067",
+        "final_model.pkl: Dangerous opcode REDUCE found at pos 1144",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 1170",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 1218",
+        "final_model.pkl: Dangerous opcode REDUCE found at pos 1302",
+        "final_model.pkl: Dangerous opcode REDUCE found at pos 1332",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 1358",
+        "final_model.pkl: Dangerous opcode BUILD found at pos 1449",
+        "label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 60",
+        "label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 121",
+        "label_encoder.pkl: Dangerous opcode REDUCE found at pos 210",
+        "label_encoder.pkl: Dangerous opcode BUILD found at pos 236",
+        "label_encoder.pkl: Dangerous opcode BUILD found at pos 284",
+        "label_encoder.pkl: Dangerous opcode REDUCE found at pos 368",
+        "label_encoder.pkl: Dangerous opcode REDUCE found at pos 398",
+        "label_encoder.pkl: Dangerous opcode BUILD found at pos 424",
+        "label_encoder.pkl: Dangerous opcode BUILD found at pos 440"
+      ],
+      "details": {
+        "files_audited": [
+          "final_model.pkl",
+          "label_encoder.pkl"
+        ],
+        "warnings_count": 26,
+        "errors_count": 0
+      }
+    },
+    "Level11_EnvironmentCompatibility": {
+      "level": "Level11_EnvironmentCompatibility",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "expected_sklearn": "1.9.0",
+        "current_sklearn": "1.9.0"
+      }
+    },
+    "Level12_RollbackReadiness": {
+      "level": "Level12_RollbackReadiness",
+      "status": "WARN",
+      "score": 50.0,
+      "errors": [],
+      "warnings": [
+        "Could not parse classifier class name: CalibratedClassifierCV"
+      ],
+      "details": {}
+    },
+    "Level13_SBOM_Vulnerability": {
+      "level": "Level13_SBOM_Vulnerability",
+      "status": "PASS",
+      "score": 100.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "sbom": {
+          "annotated-doc": "0.0.5",
+          "annotated-types": "0.8.0",
+          "anyio": "4.14.2",
+          "chardet": "7.4.3",
+          "click": "8.4.2",
+          "cloudpickle": "3.1.2",
+          "colorama": "0.4.6",
+          "contourpy": "1.3.3",
+          "cramjam": "2.11.0",
+          "cycler": "0.12.1",
+          "duckdb": "1.5.5",
+          "et_xmlfile": "2.0.0",
+          "fastapi": "0.141.1",
+          "fastparquet": "2026.5.0",
+          "fonttools": "4.63.0",
+          "fsspec": "2026.7.0",
+          "h11": "0.16.0",
+          "idna": "3.18",
+          "imbalanced-learn": "0.14.2",
+          "joblib": "1.5.3",
+          "kiwisolver": "1.5.0",
+          "llvmlite": "0.48.0",
+          "matplotlib": "3.11.0",
+          "missingno": "0.5.2",
+          "narwhals": "2.24.0",
+          "numba": "0.66.0",
+          "numpy": "2.4.6",
+          "openpyxl": "3.1.5",
+          "packaging": "26.2",
+          "pandas": "3.0.3",
+          "pillow": "12.3.0",
+          "pip": "26.2",
+          "psycopg": "3.3.4",
+          "psycopg2-binary": "2.9.12",
+          "psycopg-binary": "3.3.4",
+          "pyarrow": "25.0.0",
+          "pydantic": "2.13.4",
+          "pydantic_core": "2.46.4",
+          "pymupdf": "1.28.0",
+          "pyparsing": "3.3.2",
+          "python-dateutil": "2.9.0.post0",
+          "python-dotenv": "1.2.2",
+          "pytz": "2026.3.post1",
+          "PyYAML": "6.0.3",
+          "scikit-learn": "1.9.0",
+          "scipy": "1.18.0",
+          "seaborn": "0.13.2",
+          "setuptools": "83.0.0",
+          "shap": "0.52.0",
+          "six": "1.17.0",
+          "sklearn-compat": "0.1.6",
+          "slicer": "0.0.8",
+          "starlette": "1.3.1",
+          "tabulate": "0.10.0",
+          "threadpoolctl": "3.6.0",
+          "tqdm": "4.68.4",
+          "typing_extensions": "4.16.0",
+          "typing-inspection": "0.4.2",
+          "tzdata": "2026.3",
+          "uvicorn": "0.52.1",
+          "wheel": "0.47.0",
+          "xgboost": "3.3.0"
+        },
+        "vulnerability_scan_available": false
+      }
+    }
+  },
+  "errors": [
+    "Inference failed: could not convert string to float: 'value'"
+  ],
+  "warnings": [
+    "Missing feature count in schema or metadata",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 61",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 111",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 203",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 282",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 348",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 436",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 613",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 722",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 824",
+    "final_model.pkl: Dangerous opcode NEWOBJ found at pos 1067",
+    "final_model.pkl: Dangerous opcode REDUCE found at pos 1144",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 1170",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 1218",
+    "final_model.pkl: Dangerous opcode REDUCE found at pos 1302",
+    "final_model.pkl: Dangerous opcode REDUCE found at pos 1332",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 1358",
+    "final_model.pkl: Dangerous opcode BUILD found at pos 1449",
+    "label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 60",
+    "label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 121",
+    "label_encoder.pkl: Dangerous opcode REDUCE found at pos 210",
+    "label_encoder.pkl: Dangerous opcode BUILD found at pos 236",
+    "label_encoder.pkl: Dangerous opcode BUILD found at pos 284",
+    "label_encoder.pkl: Dangerous opcode REDUCE found at pos 368",
+    "label_encoder.pkl: Dangerous opcode REDUCE found at pos 398",
+    "label_encoder.pkl: Dangerous opcode BUILD found at pos 424",
+    "label_encoder.pkl: Dangerous opcode BUILD found at pos 440",
+    "Could not parse classifier class name: CalibratedClassifierCV"
+  ],
+  "uuid": "000bc8b5-b4d0-4fe3-8dc0-8a49163e2007"
+}

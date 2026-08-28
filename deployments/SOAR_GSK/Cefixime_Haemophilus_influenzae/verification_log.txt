@@ -1,0 +1,50 @@
+Verification Report for Cefixime_Haemophilus_influenzae
+Timestamp: 2026-08-10T00:13:21.623965
+Grade: B  Score: 84.62
+Certified: True
+Critical Failures: []
+Errors: 1, Warnings: 28
+
+Level: Level1_FileIntegrity
+  Status: PASS  Score: 100.0
+
+Level: Level2_PickleVerification
+  Status: PASS  Score: 100.0
+
+Level: Level3_PipelineValidation
+  Status: PASS  Score: 100.0
+
+Level: Level4_SchemaValidation
+  Status: PASS  Score: 100.0
+  Warnings: Missing feature count in schema or metadata
+
+Level: Level5_MetadataValidation
+  Status: PASS  Score: 100.0
+
+Level: Level6_InferenceValidation
+  Status: FAIL  Score: 0.0
+  Errors: Inference failed: could not convert string to float: 'value'
+
+Level: Level7_FingerprintValidation
+  Status: PASS  Score: 100.0
+
+Level: Level8_PackageCompleteness
+  Status: PASS  Score: 100.0
+
+Level: Level9_ReproducibilityAudit
+  Status: PASS  Score: 100.0
+
+Level: Level10_SecurityAudit
+  Status: WARN  Score: 50.0
+  Warnings: final_model.pkl: Dangerous opcode NEWOBJ found at pos 61, final_model.pkl: Dangerous opcode NEWOBJ found at pos 111, final_model.pkl: Dangerous opcode NEWOBJ found at pos 203, final_model.pkl: Dangerous opcode NEWOBJ found at pos 282, final_model.pkl: Dangerous opcode BUILD found at pos 348, final_model.pkl: Dangerous opcode NEWOBJ found at pos 436, final_model.pkl: Dangerous opcode BUILD found at pos 613, final_model.pkl: Dangerous opcode NEWOBJ found at pos 722, final_model.pkl: Dangerous opcode BUILD found at pos 824, final_model.pkl: Dangerous opcode NEWOBJ found at pos 1067, final_model.pkl: Dangerous opcode REDUCE found at pos 1144, final_model.pkl: Dangerous opcode BUILD found at pos 1170, final_model.pkl: Dangerous opcode BUILD found at pos 1218, final_model.pkl: Dangerous opcode REDUCE found at pos 1302, final_model.pkl: Dangerous opcode REDUCE found at pos 1332, final_model.pkl: Dangerous opcode BUILD found at pos 1358, final_model.pkl: Dangerous opcode BUILD found at pos 1449, label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 60, label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 121, label_encoder.pkl: Dangerous opcode REDUCE found at pos 210, label_encoder.pkl: Dangerous opcode BUILD found at pos 236, label_encoder.pkl: Dangerous opcode BUILD found at pos 284, label_encoder.pkl: Dangerous opcode REDUCE found at pos 368, label_encoder.pkl: Dangerous opcode REDUCE found at pos 398, label_encoder.pkl: Dangerous opcode BUILD found at pos 424, label_encoder.pkl: Dangerous opcode BUILD found at pos 440
+
+Level: Level11_EnvironmentCompatibility
+  Status: PASS  Score: 100.0
+
+Level: Level12_RollbackReadiness
+  Status: WARN  Score: 50.0
+  Warnings: Could not parse classifier class name: CalibratedClassifierCV
+
+Level: Level13_SBOM_Vulnerability
+  Status: PASS  Score: 100.0
+

@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Ampicillin,Haemophilus influenzae,Multiclass (S/I/R),0.9025341130604289,0.6133659476395724,0.8746624282219263,0.9031161409776884,,0.06924182085655649,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Ampicillin_Haemophilus_influenzae

@@ -1,0 +1,12 @@
+from __future__ import annotations
+
+
+class ARMDModelRegistry:
+    def __init__(self):
+        self.models: dict[str, object] = {}
+
+    def register(self, name: str, model: object) -> None:
+        self.models[name] = model
+
+    def get(self, name: str) -> object | None:
+        return self.models.get(name)

@@ -1,0 +1,11 @@
+WP4 ASSURANCE TEST SUMMARY
+============================================================
+Tested: 5 patients
+Passed: 5
+Failed: 0
+Pass rate: 100.0%
+  Patient 300712252: PASS
+  Patient 300722884: PASS
+  Patient 300924693: PASS
+  Patient 301633327: PASS
+  Patient 302249417: PASS

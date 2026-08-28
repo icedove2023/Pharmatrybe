@@ -1,17 +1,14 @@
 """Structured logging helpers for the PharmaTrybe API."""
 
-import logging
+from app.logging.logger import configure_logging as configure_app_logging
+from app.logging.logger import get_logger as get_app_logger
 
 
 def configure_logging() -> None:
-    """Configure the default logging behaviour for the application."""
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)s %(name)s %(message)s",
-        force=True,
-    )
+    """Configure application logging from the core bootstrap."""
+    configure_app_logging()
 
 
-def get_logger(name: str) -> logging.Logger:
-    """Return a logger instance for the requested module."""
-    return logging.getLogger(name)
+def get_logger(name: str):
+    """Return a structured logger instance for the requested module."""
+    return get_app_logger(name)

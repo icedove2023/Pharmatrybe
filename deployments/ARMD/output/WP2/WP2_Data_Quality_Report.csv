@@ -1,0 +1,69 @@
+column,dtype,rows,missing_count,missing_percent,unique_values,constant_column,all_missing,numeric
+age_group,category,118767,6428,5.41,5,False,False,False
+order_proc_id_coded,int64,118767,0,0.0,118767,False,False,True
+pat_enc_csn_id_coded,int64,118767,0,0.0,117018,False,False,True
+anon_id,str,118767,0,0.0,67011,False,False,False
+order_time_jittered_utc,"datetime64[us, UTC]",118767,0,0.0,115981,False,False,False
+ordering_mode,str,118767,0,0.0,2,False,False,False
+was_positive,int64,118767,0,0.0,1,True,False,True
+culture_description,str,118767,0,0.0,3,False,False,False
+n_antibiotics,int64,118767,0,0.0,33,False,False,True
+organisms,str,118767,0,0.0,1639,False,False,False
+antibiotics,str,118767,0,0.0,3769,False,False,False
+n_organisms,int64,118767,0,0.0,7,False,False,True
+culture_year,int64,118767,0,0.0,18,False,False,True
+culture_month,int64,118767,0,0.0,12,False,False,True
+culture_quarter,int64,118767,0,0.0,4,False,False,True
+culture_date,"datetime64[us, UTC]",118767,0,0.0,5853,False,False,False
+polymicrobial,int32,118767,0,0.0,2,False,False,True
+n_prior_meds,float64,118767,0,0.0,388,False,False,True
+n_prior_classes,float64,118767,0,0.0,37,False,False,True
+susceptibilities,str,118767,0,0.0,24,False,False,False
+n_abx_exposures,float64,118767,0,0.0,236,False,False,True
+class_Aminoglycoside,int64,118767,0,0.0,82,False,False,True
+class_Ansamycin,int64,118767,0,0.0,42,False,False,True
+class_Antitubercular,int64,118767,0,0.0,24,False,False,True
+class_Beta Lactam,int64,118767,0,0.0,108,False,False,True
+class_Combination Antibiotic,int64,118767,0,0.0,57,False,False,True
+class_Fluoroquinolone,int64,118767,0,0.0,85,False,False,True
+class_Folate Synthesis Inhibitor,int64,118767,0,0.0,13,False,False,True
+class_Fosfomycin,int64,118767,0,0.0,20,False,False,True
+class_Glycopeptide,int64,118767,0,0.0,47,False,False,True
+class_Macrolide Lincosamide,int64,118767,0,0.0,58,False,False,True
+class_Monobactam,int64,118767,0,0.0,12,False,False,True
+class_Nitrofuran,int64,118767,0,0.0,53,False,False,True
+class_Nitroimidazole,int64,118767,0,0.0,33,False,False,True
+class_Oxazolidinone,int64,118767,0,0.0,34,False,False,True
+days_since_last_antibiotic,float64,118767,0,0.0,2514,False,False,True
+"class_Polymyxin, Lipopeptide",int64,118767,0,0.0,22,False,False,True
+class_Sulfonamide,int64,118767,0,0.0,22,False,False,True
+class_Urinary Antiseptic,int64,118767,0,0.0,26,False,False,True
+class_Tetracycline,int64,118767,0,0.0,39,False,False,True
+bun,str,118767,0,0.0,113,False,False,False
+wbc,str,118767,0,0.0,414,False,False,False
+neutrophils,str,118767,0,0.0,284,False,False,False
+creatinine,str,118767,0,0.0,395,False,False,False
+lactate,str,118767,0,0.0,365,False,False,False
+procalcitonin,str,118767,0,0.0,155,False,False,False
+heartrate,str,118767,0,0.0,158,False,False,False
+resp_rate,str,118767,0,0.0,50,False,False,False
+temperature,str,118767,0,0.0,126,False,False,False
+sys_bp,str,118767,0,0.0,180,False,False,False
+dias_bp,str,118767,0,0.0,131,False,False,False
+lymphocytes,str,118767,0,0.0,284,False,False,False
+age,float64,118767,0,0.0,8,False,False,True
+gender_male,float64,118767,0,0.0,1,True,False,True
+outpatient,int64,118767,0,0.0,2,False,False,True
+inpatient,int64,118767,0,0.0,2,False,False,True
+icu,int64,118767,0,0.0,2,False,False,True
+has_any_procedure,float64,118767,0,0.0,1,True,False,True
+has_urinary_catheter,float64,118767,0,0.0,2,False,False,True
+emergency,int64,118767,0,0.0,2,False,False,True
+has_cvc,float64,118767,0,0.0,2,False,False,True
+days_since_last_prior_organism,float64,118767,0,0.0,3211,False,False,True
+nursing_home_visit,float64,118767,0,0.0,38,False,False,True
+n_prior_organisms,float64,118767,0,0.0,143,False,False,True
+adi_score,str,118767,0,0.0,100,False,False,False
+adi_state_rank,str,118767,0,0.0,11,False,False,False
+n_abx_classes_exposed,int64,118767,0,0.0,16,False,False,True
+log_days_since_abx,float64,118767,0,0.0,2514,False,False,True

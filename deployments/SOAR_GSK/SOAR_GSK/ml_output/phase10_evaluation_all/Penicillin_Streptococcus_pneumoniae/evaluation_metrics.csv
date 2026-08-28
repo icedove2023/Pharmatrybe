@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Penicillin,Streptococcus pneumoniae,Multiclass (S/I/R),0.46859903381642515,0.329877752769319,0.42603460505503454,0.6241745603447477,,0.1932134944308793,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Penicillin_Streptococcus_pneumoniae

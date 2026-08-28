@@ -1,0 +1,70 @@
+================================================================================
+PHARMATYBE CLINICAL DECISION SUPPORT REPORT
+================================================================================
+Generated: 2026-08-02T05:51:52.110804
+Patient ID: 300712252
+
+--- Resistance Predictions ---
+Antibiotic           Prob     AUC      Category               Confidence
+--------------------------------------------------------------------------------
+Ciprofloxacin        0.148    0.765    ✅ Strongly Recommended 0.011
+Clarithromycin       0.191    0.599    ⚠ Low Confidence Model 0.040
+Doxycycline          0.215    0.465    ⚠ Low Confidence Model 0.024
+Daptomycin           0.233    0.628    ✓ Consider             0.083
+Levofloxacin         0.286    0.720    ✓ Consider             0.174
+Cefuroxime           0.298    0.728    ✓ Consider             0.149
+Gentamicin           0.304    0.475    ⚠ Low Confidence Model 0.005
+Clindamycin          0.463    0.638    ⚠ Borderline           0.018
+Aztreonam            0.575    0.918    ⚠ Borderline           0.343
+Amikacin             0.613    0.788    ⚠ Borderline           0.330
+Cefoxitin            0.689    0.747    ✗ Avoid                0.349
+Erythromycin         0.727    0.948    ✗ Avoid                0.545
+Ceftaroline          0.734    0.598    ⚠ Low Confidence Model 0.020
+Ceftazidime          0.765    0.733    ✗ Avoid                0.571
+Ampicillin           0.835    0.765    ✗ Avoid                0.547
+Cefepime             0.914    0.878    ✗ Avoid                0.630
+Amoxicillin/Clavula  0.926    0.888    ✗ Avoid                0.161
+Ceftriaxone          0.942    0.605    ✗ Avoid                0.740
+Ampicillin/Sulbacta  0.977    0.963    ✗ Avoid                0.606
+Cefazolin            0.998    0.755    ✗ Avoid                0.814
+
+--- Ranking (Least Resistant First) ---
+ 1. Ciprofloxacin (prob=0.148)
+ 2. Clarithromycin (prob=0.191)
+ 3. Doxycycline (prob=0.215)
+ 4. Daptomycin (prob=0.233)
+ 5. Levofloxacin (prob=0.286)
+ 6. Cefuroxime (prob=0.298)
+ 7. Gentamicin (prob=0.304)
+ 8. Clindamycin (prob=0.463)
+ 9. Aztreonam (prob=0.575)
+10. Amikacin (prob=0.613)
+11. Cefoxitin (prob=0.689)
+12. Erythromycin (prob=0.727)
+13. Ceftaroline (prob=0.734)
+14. Ceftazidime (prob=0.765)
+15. Ampicillin (prob=0.835)
+16. Cefepime (prob=0.914)
+17. Amoxicillin/Clavulanic Acid (prob=0.926)
+18. Ceftriaxone (prob=0.942)
+19. Ampicillin/Sulbactam (prob=0.977)
+20. Cefazolin (prob=0.998)
+
+--- Clinical Explanation ---
+Predicted resistance probability for Ciprofloxacin: 0.148
+Factors increasing resistance:
+  ⚠ Days since last antibiotic: +0.010
+Factors decreasing resistance:
+  ✓ Antibiotic classes exposed: -0.086
+  ✓ Patient age: -0.065
+  ✓ Number of prior medications: -0.019
+  ✓ Prior organism count: -0.010
+
+--- SHAP Figures ---
+  waterfall: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Ciprofloxacin_waterfall.png
+  bar: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Ciprofloxacin_bar.png
+  force: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Ciprofloxacin_force.html
+  beeswarm: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Ciprofloxacin_beeswarm.png
+================================================================================
+Disclaimer: This is a decision support tool. Final decisions should be made by a clinician.
+================================================================================

@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Azithromycin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.9415204678362573,0.48493975903614456,0.9131614176002254,0.5218426501035196,0.5

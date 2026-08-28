@@ -1,0 +1,40 @@
+[2026-08-27 19:36:32,032] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-27 19:36:32,049] [INFO] Loaded registry with 20 antibiotics
+[2026-08-27 19:36:32,049] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-27 19:36:32,049] [WARNING] Failed to load WP2 table (optional): WP2 feature table not found: C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\deployments\ARMD\output/WP2/WP2_Model_Ready_Feature_Table.parquet
+[2026-08-27 19:36:32,049] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-27 19:36:32,049] [INFO] ARMD Prediction Plugin initialization complete
+[2026-08-27 19:36:32,216] [INFO] Processing prediction request for patient
+[2026-08-27 19:36:37,700] [INFO] Loaded model package for Amikacin
+[2026-08-27 19:36:39,767] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:41,735] [ERROR] Prediction for Amoxicillin/Clavulanic Acid failed: Failed to load model package for Amoxicillin/Clavulanic Acid: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Amoxicillin_Clavulanic_Acid
+[2026-08-27 19:36:42,019] [ERROR] Prediction for Ampicillin failed: Failed to load model package for Ampicillin: No module named 'xgboost'
+[2026-08-27 19:36:42,818] [INFO] Loaded model package for Ampicillin/Sulbactam
+[2026-08-27 19:36:42,961] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:43,318] [ERROR] Prediction for Aztreonam failed: Failed to load model package for Aztreonam: No module named 'xgboost'
+[2026-08-27 19:36:43,751] [INFO] Loaded model package for Cefazolin
+[2026-08-27 19:36:43,785] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:45,052] [INFO] Loaded model package for Cefepime
+[2026-08-27 19:36:45,068] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:45,756] [ERROR] Prediction for Cefoxitin failed: Failed to load model package for Cefoxitin: No module named 'xgboost'
+[2026-08-27 19:36:46,544] [INFO] Loaded model package for Ceftaroline
+[2026-08-27 19:36:46,573] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:47,286] [INFO] Loaded model package for Ceftazidime
+[2026-08-27 19:36:47,341] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:47,899] [INFO] Loaded model package for Ceftriaxone
+[2026-08-27 19:36:47,915] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:48,173] [ERROR] Prediction for Cefuroxime failed: Failed to load model package for Cefuroxime: No module named 'xgboost'
+[2026-08-27 19:36:48,751] [ERROR] Prediction for Ciprofloxacin failed: Failed to load model package for Ciprofloxacin: No module named 'xgboost'
+[2026-08-27 19:36:49,836] [INFO] Loaded model package for Clarithromycin
+[2026-08-27 19:36:49,902] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:51,869] [INFO] Loaded model package for Clindamycin
+[2026-08-27 19:36:51,904] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:52,130] [ERROR] Prediction for Daptomycin failed: Failed to load model package for Daptomycin: No module named 'xgboost'
+[2026-08-27 19:36:52,483] [INFO] Loaded model package for Doxycycline
+[2026-08-27 19:36:52,548] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:53,104] [INFO] Loaded model package for Erythromycin
+[2026-08-27 19:36:53,153] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:53,415] [ERROR] Prediction for Gentamicin failed: Failed to load model package for Gentamicin: No module named 'xgboost'
+[2026-08-27 19:36:53,803] [INFO] Loaded model package for Levofloxacin
+[2026-08-27 19:36:53,836] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:36:53,900] [INFO] Prediction completed successfully

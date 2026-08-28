@@ -1,0 +1,150 @@
+[
+  {
+    "name": "age",
+    "dtype": "float64"
+  },
+  {
+    "name": "gender_male",
+    "dtype": "float64"
+  },
+  {
+    "name": "inpatient",
+    "dtype": "int64"
+  },
+  {
+    "name": "outpatient",
+    "dtype": "int64"
+  },
+  {
+    "name": "emergency",
+    "dtype": "int64"
+  },
+  {
+    "name": "icu",
+    "dtype": "int64"
+  },
+  {
+    "name": "has_any_procedure",
+    "dtype": "float64"
+  },
+  {
+    "name": "has_urinary_catheter",
+    "dtype": "float64"
+  },
+  {
+    "name": "has_cvc",
+    "dtype": "float64"
+  },
+  {
+    "name": "nursing_home_visit",
+    "dtype": "float64"
+  },
+  {
+    "name": "creatinine",
+    "dtype": "str"
+  },
+  {
+    "name": "bun",
+    "dtype": "str"
+  },
+  {
+    "name": "wbc",
+    "dtype": "str"
+  },
+  {
+    "name": "neutrophils",
+    "dtype": "str"
+  },
+  {
+    "name": "lymphocytes",
+    "dtype": "str"
+  },
+  {
+    "name": "lactate",
+    "dtype": "str"
+  },
+  {
+    "name": "procalcitonin",
+    "dtype": "str"
+  },
+  {
+    "name": "heartrate",
+    "dtype": "str"
+  },
+  {
+    "name": "resp_rate",
+    "dtype": "str"
+  },
+  {
+    "name": "temperature",
+    "dtype": "str"
+  },
+  {
+    "name": "sys_bp",
+    "dtype": "str"
+  },
+  {
+    "name": "dias_bp",
+    "dtype": "str"
+  },
+  {
+    "name": "n_prior_meds",
+    "dtype": "float64"
+  },
+  {
+    "name": "n_prior_classes",
+    "dtype": "float64"
+  },
+  {
+    "name": "days_since_last_antibiotic",
+    "dtype": "float64"
+  },
+  {
+    "name": "log_days_since_abx",
+    "dtype": "float64"
+  },
+  {
+    "name": "n_abx_classes_exposed",
+    "dtype": "int64"
+  },
+  {
+    "name": "n_prior_organisms",
+    "dtype": "float64"
+  },
+  {
+    "name": "days_since_last_prior_organism",
+    "dtype": "float64"
+  },
+  {
+    "name": "adi_score",
+    "dtype": "str"
+  },
+  {
+    "name": "adi_state_rank",
+    "dtype": "str"
+  },
+  {
+    "name": "age_group_19-30",
+    "dtype": "bool"
+  },
+  {
+    "name": "age_group_31-50",
+    "dtype": "bool"
+  },
+  {
+    "name": "age_group_51-65",
+    "dtype": "bool"
+  },
+  {
+    "name": "age_group_66-80",
+    "dtype": "bool"
+  },
+  {
+    "name": "age_group_80+",
+    "dtype": "bool"
+  },
+  {
+    "name": "age_group_nan",
+    "dtype": "bool"
+  }
+]

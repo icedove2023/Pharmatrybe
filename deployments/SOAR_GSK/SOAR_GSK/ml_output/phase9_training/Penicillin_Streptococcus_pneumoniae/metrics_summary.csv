@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Penicillin,Streptococcus pneumoniae,Multiclass (S/I/R),RandomForest,0.46859903381642515,0.329877752769319,0.42603460505503454,0.6241745603447477,N/A

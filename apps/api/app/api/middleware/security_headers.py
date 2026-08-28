@@ -10,6 +10,10 @@ from starlette.responses import Response
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     """Attach basic security headers to all responses."""
 
+    def __init__(self, app=None):
+        if app is not None:
+            super().__init__(app)
+
     async def dispatch(
         self,
         request: Request,

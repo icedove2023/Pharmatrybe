@@ -1,0 +1,117 @@
+{
+  "manifest_version": "1.0",
+  "files": {
+    "deployment_certificate.json": {
+      "size_bytes": 629,
+      "sha256": "41656b1b83fd3c2ed40bdd4f8386a9d6ce9e317dc61edbebbe704b8af095f374",
+      "mtime": "2026-08-10T00:12:13.598467",
+      "relative_path": "deployment_certificate.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "deployment_fingerprint.json": {
+      "size_bytes": 407,
+      "sha256": "2fdc7ee40e8b0765cb17ef690e3384677474e780b5a90e419006434fe02cd67c",
+      "mtime": "2026-08-09T23:43:04.980674",
+      "relative_path": "deployment_fingerprint.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13C"
+    },
+    "deployment_info.json": {
+      "size_bytes": 701,
+      "sha256": "85c711ff5e3266e5e1a9e48c0cb64063059c392ba37eba700e9239362303f9ff",
+      "mtime": "2026-08-10T00:12:13.598467",
+      "relative_path": "deployment_info.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "deployment_manifest.json": {
+      "size_bytes": 1395,
+      "sha256": "8b0b4c06e9f681485cac79587d84353865351bb83ae703906b98905dd87fff3f",
+      "mtime": "2026-08-09T23:43:04.979674",
+      "relative_path": "deployment_manifest.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13C"
+    },
+    "feature_schema.json": {
+      "size_bytes": 1673,
+      "sha256": "3c53c07f1f8f2fbbeed30676a98d26aef0cba317312dc620d86b257d5e44008e",
+      "mtime": "2026-08-09T23:43:04.951879",
+      "relative_path": "feature_schema.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "final_model.pkl": {
+      "size_bytes": 24666,
+      "sha256": "8932eb54826e2675c48712a21be0ad33cacae2b84bc06bc172efeeda03f5caf3",
+      "mtime": "2026-07-16T00:53:01.527481",
+      "relative_path": "final_model.pkl",
+      "file_type": "model",
+      "generated_by": "original"
+    },
+    "label_encoder.json": {
+      "size_bytes": 110,
+      "sha256": "56e75d36201f99442c9ffec8f3f59f81fecb1c06baae349f1c419b208d48d760",
+      "mtime": "2026-08-09T23:43:04.954710",
+      "relative_path": "label_encoder.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "label_encoder.pkl": {
+      "size_bytes": 481,
+      "sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+      "mtime": "2026-07-16T00:53:01.537488",
+      "relative_path": "label_encoder.pkl",
+      "file_type": "encoder",
+      "generated_by": "original"
+    },
+    "metadata.json": {
+      "size_bytes": 6308,
+      "sha256": "3248f1bf10893d947af8afb8f491322a4cc8ca38ae9aab22aeb7fe09d4c2b6bf",
+      "mtime": "2026-08-09T23:43:04.948879",
+      "relative_path": "metadata.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "model_card.json": {
+      "size_bytes": 2582,
+      "sha256": "d6334e7b8c3d611678563eb0c1564eaec5d245a808a3db73ba6cb1fb1b795c8e",
+      "mtime": "2026-08-09T23:43:04.960197",
+      "relative_path": "model_card.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "preprocessing_summary.json": {
+      "size_bytes": 960,
+      "sha256": "839826ef44a6d04a7e5e15badf1f3d818f423b0c20d426dfda79bc4f84256718",
+      "mtime": "2026-08-09T23:43:04.958560",
+      "relative_path": "preprocessing_summary.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "README.md": {
+      "size_bytes": 1838,
+      "sha256": "fd0674e0f4cd7f32eed9ae4159823ee92b18e914327c91f1d463bd8b1009ff11",
+      "mtime": "2026-08-10T00:12:13.565871",
+      "relative_path": "README.md",
+      "file_type": "documentation",
+      "generated_by": "Phase13D"
+    },
+    "reconstruction_metadata.json": {
+      "size_bytes": 414,
+      "sha256": "f54187d8ec542ecc06c02e51433fe9cbf7fdc00e6ed74e7391193805806e4bbf",
+      "mtime": "2026-08-10T00:12:13.614922",
+      "relative_path": "reconstruction_metadata.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    },
+    "VERSION.json": {
+      "size_bytes": 210,
+      "sha256": "79b1b0d6d4fe8930f155c5298e92ca8843bc004c362ab858170c3cb7e65924e7",
+      "mtime": "2026-08-10T00:12:13.598467",
+      "relative_path": "VERSION.json",
+      "file_type": "metadata",
+      "generated_by": "Phase13D"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "deployment": "Tetracycline_Streptococcus_pneumoniae",
+  "model_sha256": "cbf4c68613f8679c91cb0a66c80ddf92f31603ae7e29780e2bd1907e41ff621f",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "378808770036f2d74b392302e5301e33a7e9c0ab0e508abad0af1dd706c28b42",
+  "created": "2026-08-09T23:43:04.924640",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:04.346649"
+}

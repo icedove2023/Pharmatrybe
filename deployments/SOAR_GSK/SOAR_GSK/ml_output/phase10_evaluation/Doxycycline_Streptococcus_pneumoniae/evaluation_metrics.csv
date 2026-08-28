@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test
+Doxycycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6714975845410628,0.637962962962963,0.653399534800501,0.6955698914492476,0.7041202557644078,0.21420358146434518,True,414

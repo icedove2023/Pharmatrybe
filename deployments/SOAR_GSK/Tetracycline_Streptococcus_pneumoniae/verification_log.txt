@@ -1,0 +1,49 @@
+Verification Report for Tetracycline_Streptococcus_pneumoniae
+Timestamp: 2026-08-10T00:14:07.636270
+Grade: A  Score: 92.31
+Certified: True
+Critical Failures: []
+Errors: 0, Warnings: 28
+
+Level: Level1_FileIntegrity
+  Status: PASS  Score: 100.0
+
+Level: Level2_PickleVerification
+  Status: PASS  Score: 100.0
+
+Level: Level3_PipelineValidation
+  Status: PASS  Score: 100.0
+
+Level: Level4_SchemaValidation
+  Status: PASS  Score: 100.0
+  Warnings: Missing feature count in schema or metadata
+
+Level: Level5_MetadataValidation
+  Status: PASS  Score: 100.0
+
+Level: Level6_InferenceValidation
+  Status: PASS  Score: 100.0
+
+Level: Level7_FingerprintValidation
+  Status: PASS  Score: 100.0
+
+Level: Level8_PackageCompleteness
+  Status: PASS  Score: 100.0
+
+Level: Level9_ReproducibilityAudit
+  Status: PASS  Score: 100.0
+
+Level: Level10_SecurityAudit
+  Status: WARN  Score: 50.0
+  Warnings: final_model.pkl: Dangerous opcode NEWOBJ found at pos 61, final_model.pkl: Dangerous opcode NEWOBJ found at pos 111, final_model.pkl: Dangerous opcode NEWOBJ found at pos 203, final_model.pkl: Dangerous opcode NEWOBJ found at pos 282, final_model.pkl: Dangerous opcode BUILD found at pos 348, final_model.pkl: Dangerous opcode NEWOBJ found at pos 436, final_model.pkl: Dangerous opcode BUILD found at pos 613, final_model.pkl: Dangerous opcode NEWOBJ found at pos 722, final_model.pkl: Dangerous opcode BUILD found at pos 824, final_model.pkl: Dangerous opcode NEWOBJ found at pos 1045, final_model.pkl: Dangerous opcode REDUCE found at pos 1122, final_model.pkl: Dangerous opcode BUILD found at pos 1148, final_model.pkl: Dangerous opcode BUILD found at pos 1196, final_model.pkl: Dangerous opcode REDUCE found at pos 1280, final_model.pkl: Dangerous opcode REDUCE found at pos 1310, final_model.pkl: Dangerous opcode BUILD found at pos 1336, final_model.pkl: Dangerous opcode BUILD found at pos 1406, label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 60, label_encoder.pkl: Dangerous opcode NEWOBJ found at pos 121, label_encoder.pkl: Dangerous opcode REDUCE found at pos 210, label_encoder.pkl: Dangerous opcode BUILD found at pos 236, label_encoder.pkl: Dangerous opcode BUILD found at pos 284, label_encoder.pkl: Dangerous opcode REDUCE found at pos 368, label_encoder.pkl: Dangerous opcode REDUCE found at pos 398, label_encoder.pkl: Dangerous opcode BUILD found at pos 424, label_encoder.pkl: Dangerous opcode BUILD found at pos 440
+
+Level: Level11_EnvironmentCompatibility
+  Status: PASS  Score: 100.0
+
+Level: Level12_RollbackReadiness
+  Status: WARN  Score: 50.0
+  Warnings: Could not parse classifier class name: CalibratedClassifierCV
+
+Level: Level13_SBOM_Vulnerability
+  Status: PASS  Score: 100.0
+

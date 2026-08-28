@@ -1,0 +1,57 @@
+================================================================================
+PHARMATYBE CLINICAL DECISION SUPPORT REPORT
+================================================================================
+Generated: 2026-08-01T17:41:02.310840
+Patient ID: 300712252
+
+--- Resistance Predictions ---
+Antibiotic           Prob     AUC      Category               Confidence
+--------------------------------------------------------------------------------
+Erythromycin         0.156    0.950    ✓ Consider             0.041
+Ciprofloxacin        0.181    0.764    ✓ Consider             0.046
+Levofloxacin         0.262    0.688    ✓ Consider             0.197
+Amikacin             0.290    0.788    ✓ Consider             0.007
+Clarithromycin       0.297    0.580    ⚠ Low Confidence Model 0.128
+Gentamicin           0.302    0.462    ⚠ Low Confidence Model 0.010
+Ceftazidime          0.320    0.734    ✓ Consider             0.124
+Aztreonam            0.335    0.916    ✓ Consider             0.047
+Daptomycin           0.390    0.612    ⚠ Borderline           0.246
+Cefazolin            0.394    0.755    ⚠ Borderline           0.211
+Cefuroxime           0.456    0.728    ⚠ Borderline           0.008
+Clindamycin          0.525    0.638    ⚠ Borderline           0.038
+Doxycycline          0.599    0.586    ⚠ Low Confidence Model 0.397
+Ceftaroline          0.715    0.660    ✗ Avoid                0.008
+Cefoxitin            0.738    0.745    ✗ Avoid                0.397
+Amoxicillin/Clavula  0.809    N/A      ✗ Avoid                0.011
+Ampicillin           0.811    0.767    ✗ Avoid                0.461
+Cefepime             0.849    0.867    ✗ Avoid                0.435
+Ampicillin/Sulbacta  0.902    N/A      ✗ Avoid                0.524
+Ceftriaxone          1.000    0.611    ✗ Avoid                0.799
+
+--- Ranking (Least Resistant First) ---
+ 1. Erythromycin (prob=0.156)
+ 2. Ciprofloxacin (prob=0.181)
+ 3. Levofloxacin (prob=0.262)
+ 4. Amikacin (prob=0.290)
+ 5. Clarithromycin (prob=0.297)
+ 6. Gentamicin (prob=0.302)
+ 7. Ceftazidime (prob=0.320)
+ 8. Aztreonam (prob=0.335)
+ 9. Daptomycin (prob=0.390)
+10. Cefazolin (prob=0.394)
+11. Cefuroxime (prob=0.456)
+12. Clindamycin (prob=0.525)
+13. Doxycycline (prob=0.599)
+14. Ceftaroline (prob=0.715)
+15. Cefoxitin (prob=0.738)
+16. Amoxicillin/Clavulanic Acid (prob=0.809)
+17. Ampicillin (prob=0.811)
+18. Cefepime (prob=0.849)
+19. Ampicillin/Sulbactam (prob=0.902)
+20. Ceftriaxone (prob=1.000)
+
+--- Explanation not available ---
+Error: (slice(None, None, None), 15)
+================================================================================
+Disclaimer: This is a decision support tool. Final decisions should be made by a clinician.
+================================================================================

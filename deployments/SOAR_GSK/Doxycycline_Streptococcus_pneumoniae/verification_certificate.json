@@ -1,0 +1,10 @@
+{
+  "certificate_id": "CERT-7da0244b",
+  "deployment": "Doxycycline_Streptococcus_pneumoniae",
+  "uuid": "7da0244b-e201-4a56-87c9-b1b1e5e77dd3",
+  "grade": "A",
+  "score": 92.31,
+  "certified": true,
+  "timestamp": "2026-08-10T00:13:51.518144",
+  "verification_version": "2.1"
+}

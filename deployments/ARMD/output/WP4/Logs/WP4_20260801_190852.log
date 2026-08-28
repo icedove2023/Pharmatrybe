@@ -1,0 +1,37 @@
+[2026-08-01 19:08:52,131] [INFO] ================================================================================
+[2026-08-01 19:08:52,131] [INFO] WP4 – CLINICAL DECISION ENGINE (PRODUCTION)
+[2026-08-01 19:08:52,132] [INFO] ================================================================================
+[2026-08-01 19:08:52,132] [WARNING] medians.json not found; will use per-column medians (may differ from WP3)
+[2026-08-01 19:08:52,150] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-01 19:08:52,151] [INFO] No patient ID provided; using first patient from WP2 table.
+[2026-08-01 19:08:52,614] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-01 19:08:52,615] [INFO] No patient ID provided; using first row.
+[2026-08-01 19:08:52,617] [INFO] Processing patient: 300712252
+[2026-08-01 19:08:52,694] [INFO] Preprocessed patient features: 32
+[2026-08-01 19:08:52,694] [INFO] Running predictions...
+[2026-08-01 19:08:56,162] [INFO] Predictions complete.
+[2026-08-01 19:08:56,164] [INFO] Generating SHAP explanation for Erythromycin...
+[2026-08-01 19:08:56,470] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-01 19:08:56,487] [INFO] Sampled 200 background patients.
+[2026-08-01 19:09:03,616] [INFO] Background preprocessed shape: (200, 32)
+[2026-08-01 19:09:03,620] [INFO] Background scaled shape: (200, 56)
+[2026-08-01 19:09:03,663] [INFO] Building SHAP explainer for RandomForestClassifier
+[2026-08-01 19:09:03,665] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-01 19:09:08,265] [INFO] SHAP explanation generated.
+[2026-08-01 19:09:08,273] [INFO] Report saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\report.txt
+[2026-08-01 19:09:08,291] [INFO] JSON saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\prediction.json
+[2026-08-01 19:09:09,520] [INFO] Audit saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\audit.json
+[2026-08-01 19:09:09,522] [INFO] Validation passed.
+[2026-08-01 19:09:09,522] [INFO] ================================================================================
+[2026-08-01 19:09:09,522] [INFO] WP4 COMPLETE
+[2026-08-01 19:09:09,523] [INFO] ================================================================================
+[2026-08-01 19:09:09,523] [INFO] Report: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\report.txt
+[2026-08-01 19:09:09,523] [INFO] JSON: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\prediction.json
+[2026-08-01 19:09:09,524] [INFO] Audit: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\audit.json
+[2026-08-01 19:09:09,524] [INFO] SHAP figures:
+[2026-08-01 19:09:09,524] [INFO]   waterfall: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Erythromycin_waterfall.png
+[2026-08-01 19:09:09,524] [INFO]   bar: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Erythromycin_bar.png
+[2026-08-01 19:09:09,525] [INFO]   force: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Erythromycin_force.html
+[2026-08-01 19:09:09,525] [INFO]   beeswarm: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\shap\Erythromycin_beeswarm.png
+[2026-08-01 19:09:09,525] [INFO] Log: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Logs\WP4_20260801_190852.log
+[2026-08-01 19:09:09,525] [INFO] ================================================================================

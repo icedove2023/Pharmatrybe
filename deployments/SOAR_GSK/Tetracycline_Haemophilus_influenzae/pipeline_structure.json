@@ -1,0 +1,15 @@
+{
+  "pipeline_steps": [
+    "ColumnTransformer",
+    "SMOTE",
+    "XGBClassifier"
+  ],
+  "prep_order": [
+    "num",
+    "ohe",
+    "target_enc",
+    "bin",
+    "smote",
+    "classifier"
+  ]
+}

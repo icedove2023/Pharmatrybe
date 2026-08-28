@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test
+Tetracycline,Haemophilus influenzae,Binary (R vs Non-R),XGBoost,0.9181286549707602,0.7389755766621438,0.9223440215191981,0.8700097370983447,0.506834753752551,0.056494822067694565,True,513

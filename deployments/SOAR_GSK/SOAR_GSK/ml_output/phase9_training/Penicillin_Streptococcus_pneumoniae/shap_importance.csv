@@ -1,0 +1,13 @@
+Feature,Mean |SHAP|
+ohe__Region_Middle East,0.10347712249449743
+ohe__Region_Europe,0.05324475608560125
+ohe__Region_Asia,0.05280488509911075
+num__Age,0.05272605089018879
+num__YearCollected,0.048763499212443856
+ohe__Region_Africa,0.04246407546571353
+target_enc__Country_2,0.01939960018792338
+target_enc__Country_1,0.014459163173444088
+target_enc__Country_0,0.009774371761450486
+ohe__BodyLocation_Group_Respiratory,0.004291427698144704
+ohe__BodyLocation_Group_Other,0.0034729669124521296
+ohe__BodyLocation_Group_Blood,0.00216694304058562

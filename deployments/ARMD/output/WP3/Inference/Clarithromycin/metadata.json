@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Clarithromycin",
+  "best_model": "RandomForest",
+  "threshold": 0.15123893494648785
+}

@@ -1,0 +1,623 @@
+{
+  "patient_id": 300712252,
+  "timestamp": "2026-08-02T05:51:52.121580",
+  "predictions": [
+    {
+      "antibiotic": "Amikacin",
+      "probability": 0.6130790901498808,
+      "class": "Resistant",
+      "threshold": 0.28277369023041315,
+      "confidence": 0.33030539991946767,
+      "auc": 0.7883352122802942,
+      "ap": 0.6073649488691885
+    },
+    {
+      "antibiotic": "Amoxicillin/Clavulanic Acid",
+      "probability": 0.9263143200842727,
+      "class": "Resistant",
+      "threshold": 0.7651218959817193,
+      "confidence": 0.1611924241025534,
+      "auc": 0.8878751980552715,
+      "ap": 0.8829639423756512
+    },
+    {
+      "antibiotic": "Ampicillin",
+      "probability": 0.8346793382331811,
+      "class": "Resistant",
+      "threshold": 0.28766487797689977,
+      "confidence": 0.5470144602562813,
+      "auc": 0.7647990497872484,
+      "ap": 0.6519129094376017
+    },
+    {
+      "antibiotic": "Ampicillin/Sulbactam",
+      "probability": 0.9768515076228617,
+      "class": "Resistant",
+      "threshold": 0.37104821369139307,
+      "confidence": 0.6058032939314686,
+      "auc": 0.9633296262332613,
+      "ap": 0.9477242996801141
+    },
+    {
+      "antibiotic": "Aztreonam",
+      "probability": 0.5746541258467494,
+      "class": "Resistant",
+      "threshold": 0.231477422623034,
+      "confidence": 0.34317670322371535,
+      "auc": 0.9175301738553885,
+      "ap": 0.852311277198933
+    },
+    {
+      "antibiotic": "Cefazolin",
+      "probability": 0.9975885318375759,
+      "class": "Resistant",
+      "threshold": 0.18383340198245515,
+      "confidence": 0.8137551298551208,
+      "auc": 0.7551171673841202,
+      "ap": 0.3992615581784278
+    },
+    {
+      "antibiotic": "Cefepime",
+      "probability": 0.9144409430456353,
+      "class": "Resistant",
+      "threshold": 0.28463074006840594,
+      "confidence": 0.6298102029772293,
+      "auc": 0.8784901615917335,
+      "ap": 0.7950885777063341
+    },
+    {
+      "antibiotic": "Cefoxitin",
+      "probability": 0.6886026054268083,
+      "class": "Resistant",
+      "threshold": 0.3393186545302337,
+      "confidence": 0.3492839508965746,
+      "auc": 0.7465659340659341,
+      "ap": 0.6683726873991195
+    },
+    {
+      "antibiotic": "Ceftaroline",
+      "probability": 0.7336915364081477,
+      "class": "Resistant",
+      "threshold": 0.7137117643404579,
+      "confidence": 0.01997977206768975,
+      "auc": 0.5983355978260869,
+      "ap": 0.7871355754976053
+    },
+    {
+      "antibiotic": "Ceftazidime",
+      "probability": 0.7645223110254105,
+      "class": "Resistant",
+      "threshold": 0.1936692904733263,
+      "confidence": 0.5708530205520842,
+      "auc": 0.733423025177782,
+      "ap": 0.3184725565254071
+    },
+    {
+      "antibiotic": "Ceftriaxone",
+      "probability": 0.9419767235633371,
+      "class": "Resistant",
+      "threshold": 0.20181123850316368,
+      "confidence": 0.7401654850601733,
+      "auc": 0.6046883444424429,
+      "ap": 0.34531361903098046
+    },
+    {
+      "antibiotic": "Cefuroxime",
+      "probability": 0.29831592425433306,
+      "class": "Susceptible",
+      "threshold": 0.44749692445376904,
+      "confidence": 0.14918100019943598,
+      "auc": 0.7281385281385282,
+      "ap": 0.7690275677316497
+    },
+    {
+      "antibiotic": "Ciprofloxacin",
+      "probability": 0.14816519978814874,
+      "class": "Resistant",
+      "threshold": 0.13722643225202158,
+      "confidence": 0.010938767536127159,
+      "auc": 0.7651942529560232,
+      "ap": 0.4205643472000281
+    },
+    {
+      "antibiotic": "Clarithromycin",
+      "probability": 0.19106326880937466,
+      "class": "Resistant",
+      "threshold": 0.15123893494648785,
+      "confidence": 0.03982433386288681,
+      "auc": 0.5994041170097508,
+      "ap": 0.27449208972707295
+    },
+    {
+      "antibiotic": "Clindamycin",
+      "probability": 0.4632593669115869,
+      "class": "Susceptible",
+      "threshold": 0.48172209846406516,
+      "confidence": 0.01846273155247824,
+      "auc": 0.6377282511895905,
+      "ap": 0.6492086111783563
+    },
+    {
+      "antibiotic": "Daptomycin",
+      "probability": 0.23288384626050346,
+      "class": "Resistant",
+      "threshold": 0.15023241210565816,
+      "confidence": 0.0826514341548453,
+      "auc": 0.6281818181818182,
+      "ap": 0.31537620503333297
+    },
+    {
+      "antibiotic": "Doxycycline",
+      "probability": 0.21466699646758897,
+      "class": "Susceptible",
+      "threshold": 0.2385249874013801,
+      "confidence": 0.023857990933791123,
+      "auc": 0.46502057613168724,
+      "ap": 0.2539934044503711
+    },
+    {
+      "antibiotic": "Erythromycin",
+      "probability": 0.7267400387435219,
+      "class": "Resistant",
+      "threshold": 0.18151522875427853,
+      "confidence": 0.5452248099892434,
+      "auc": 0.9484200283669229,
+      "ap": 0.6907860993797771
+    },
+    {
+      "antibiotic": "Gentamicin",
+      "probability": 0.3044157901549502,
+      "class": "Resistant",
+      "threshold": 0.2997349245810621,
+      "confidence": 0.004680865573888082,
+      "auc": 0.474512012012012,
+      "ap": 0.28428519624064075
+    },
+    {
+      "antibiotic": "Levofloxacin",
+      "probability": 0.28637963014257395,
+      "class": "Resistant",
+      "threshold": 0.11222569895562291,
+      "confidence": 0.17415393118695105,
+      "auc": 0.719951923076923,
+      "ap": 0.19493526837226843
+    }
+  ],
+  "ranking": [
+    {
+      "antibiotic": "Ciprofloxacin",
+      "probability": 0.14816519978814874,
+      "class": "Resistant",
+      "threshold": 0.13722643225202158,
+      "confidence": 0.010938767536127159,
+      "auc": 0.7651942529560232,
+      "ap": 0.4205643472000281
+    },
+    {
+      "antibiotic": "Clarithromycin",
+      "probability": 0.19106326880937466,
+      "class": "Resistant",
+      "threshold": 0.15123893494648785,
+      "confidence": 0.03982433386288681,
+      "auc": 0.5994041170097508,
+      "ap": 0.27449208972707295
+    },
+    {
+      "antibiotic": "Doxycycline",
+      "probability": 0.21466699646758897,
+      "class": "Susceptible",
+      "threshold": 0.2385249874013801,
+      "confidence": 0.023857990933791123,
+      "auc": 0.46502057613168724,
+      "ap": 0.2539934044503711
+    },
+    {
+      "antibiotic": "Daptomycin",
+      "probability": 0.23288384626050346,
+      "class": "Resistant",
+      "threshold": 0.15023241210565816,
+      "confidence": 0.0826514341548453,
+      "auc": 0.6281818181818182,
+      "ap": 0.31537620503333297
+    },
+    {
+      "antibiotic": "Levofloxacin",
+      "probability": 0.28637963014257395,
+      "class": "Resistant",
+      "threshold": 0.11222569895562291,
+      "confidence": 0.17415393118695105,
+      "auc": 0.719951923076923,
+      "ap": 0.19493526837226843
+    },
+    {
+      "antibiotic": "Cefuroxime",
+      "probability": 0.29831592425433306,
+      "class": "Susceptible",
+      "threshold": 0.44749692445376904,
+      "confidence": 0.14918100019943598,
+      "auc": 0.7281385281385282,
+      "ap": 0.7690275677316497
+    },
+    {
+      "antibiotic": "Gentamicin",
+      "probability": 0.3044157901549502,
+      "class": "Resistant",
+      "threshold": 0.2997349245810621,
+      "confidence": 0.004680865573888082,
+      "auc": 0.474512012012012,
+      "ap": 0.28428519624064075
+    },
+    {
+      "antibiotic": "Clindamycin",
+      "probability": 0.4632593669115869,
+      "class": "Susceptible",
+      "threshold": 0.48172209846406516,
+      "confidence": 0.01846273155247824,
+      "auc": 0.6377282511895905,
+      "ap": 0.6492086111783563
+    },
+    {
+      "antibiotic": "Aztreonam",
+      "probability": 0.5746541258467494,
+      "class": "Resistant",
+      "threshold": 0.231477422623034,
+      "confidence": 0.34317670322371535,
+      "auc": 0.9175301738553885,
+      "ap": 0.852311277198933
+    },
+    {
+      "antibiotic": "Amikacin",
+      "probability": 0.6130790901498808,
+      "class": "Resistant",
+      "threshold": 0.28277369023041315,
+      "confidence": 0.33030539991946767,
+      "auc": 0.7883352122802942,
+      "ap": 0.6073649488691885
+    },
+    {
+      "antibiotic": "Cefoxitin",
+      "probability": 0.6886026054268083,
+      "class": "Resistant",
+      "threshold": 0.3393186545302337,
+      "confidence": 0.3492839508965746,
+      "auc": 0.7465659340659341,
+      "ap": 0.6683726873991195
+    },
+    {
+      "antibiotic": "Erythromycin",
+      "probability": 0.7267400387435219,
+      "class": "Resistant",
+      "threshold": 0.18151522875427853,
+      "confidence": 0.5452248099892434,
+      "auc": 0.9484200283669229,
+      "ap": 0.6907860993797771
+    },
+    {
+      "antibiotic": "Ceftaroline",
+      "probability": 0.7336915364081477,
+      "class": "Resistant",
+      "threshold": 0.7137117643404579,
+      "confidence": 0.01997977206768975,
+      "auc": 0.5983355978260869,
+      "ap": 0.7871355754976053
+    },
+    {
+      "antibiotic": "Ceftazidime",
+      "probability": 0.7645223110254105,
+      "class": "Resistant",
+      "threshold": 0.1936692904733263,
+      "confidence": 0.5708530205520842,
+      "auc": 0.733423025177782,
+      "ap": 0.3184725565254071
+    },
+    {
+      "antibiotic": "Ampicillin",
+      "probability": 0.8346793382331811,
+      "class": "Resistant",
+      "threshold": 0.28766487797689977,
+      "confidence": 0.5470144602562813,
+      "auc": 0.7647990497872484,
+      "ap": 0.6519129094376017
+    },
+    {
+      "antibiotic": "Cefepime",
+      "probability": 0.9144409430456353,
+      "class": "Resistant",
+      "threshold": 0.28463074006840594,
+      "confidence": 0.6298102029772293,
+      "auc": 0.8784901615917335,
+      "ap": 0.7950885777063341
+    },
+    {
+      "antibiotic": "Amoxicillin/Clavulanic Acid",
+      "probability": 0.9263143200842727,
+      "class": "Resistant",
+      "threshold": 0.7651218959817193,
+      "confidence": 0.1611924241025534,
+      "auc": 0.8878751980552715,
+      "ap": 0.8829639423756512
+    },
+    {
+      "antibiotic": "Ceftriaxone",
+      "probability": 0.9419767235633371,
+      "class": "Resistant",
+      "threshold": 0.20181123850316368,
+      "confidence": 0.7401654850601733,
+      "auc": 0.6046883444424429,
+      "ap": 0.34531361903098046
+    },
+    {
+      "antibiotic": "Ampicillin/Sulbactam",
+      "probability": 0.9768515076228617,
+      "class": "Resistant",
+      "threshold": 0.37104821369139307,
+      "confidence": 0.6058032939314686,
+      "auc": 0.9633296262332613,
+      "ap": 0.9477242996801141
+    },
+    {
+      "antibiotic": "Cefazolin",
+      "probability": 0.9975885318375759,
+      "class": "Resistant",
+      "threshold": 0.18383340198245515,
+      "confidence": 0.8137551298551208,
+      "auc": 0.7551171673841202,
+      "ap": 0.3992615581784278
+    }
+  ],
+  "shap_explanation": {
+    "shap_values": {
+      "age": -0.0647495411794749,
+      "gender_male": 0.0,
+      "inpatient": 0.009579564108957056,
+      "outpatient": 0.0,
+      "emergency": 0.0,
+      "icu": 0.0,
+      "has_any_procedure": 0.0,
+      "has_urinary_catheter": 0.0,
+      "has_cvc": 0.0,
+      "nursing_home_visit": 0.0,
+      "creatinine": 0.0,
+      "bun": 0.0,
+      "wbc": -0.0014205220546806008,
+      "neutrophils": 0.0,
+      "lymphocytes": 0.0,
+      "lactate": 0.0,
+      "procalcitonin": 0.0,
+      "heartrate": 0.0,
+      "resp_rate": -0.0015764833346510372,
+      "temperature": 0.0,
+      "sys_bp": 0.0,
+      "dias_bp": 0.0,
+      "n_prior_meds": -0.019316350035183966,
+      "n_prior_classes": -0.003798241131964094,
+      "days_since_last_antibiotic": 0.010418775313333002,
+      "log_days_since_abx": 0.0,
+      "n_abx_classes_exposed": -0.0857050762305461,
+      "n_prior_organisms": -0.010320282775507074,
+      "days_since_last_prior_organism": 0.0,
+      "adi_score": -0.009525725742123015,
+      "adi_state_rank": 0.0,
+      "Amikacin": 0.0,
+      "Amoxicillin/Clavulanic Acid": 0.0,
+      "Ampicillin": 0.0,
+      "Ampicillin/Sulbactam": 0.0,
+      "Aztreonam": 0.0,
+      "Cefazolin": 0.0,
+      "Cefepime": 0.0,
+      "Cefoxitin": 0.0,
+      "Ceftaroline": 0.0,
+      "Ceftazidime": 0.0,
+      "Ceftriaxone": 0.0,
+      "Cefuroxime": 0.0,
+      "Clarithromycin": 0.0,
+      "Clindamycin": 0.0,
+      "Daptomycin": 0.0,
+      "Doxycycline": 0.0,
+      "Erythromycin": 0.0,
+      "Gentamicin": 0.0,
+      "Levofloxacin": 0.0,
+      "age_group_19-30": 0.0,
+      "age_group_31-50": 0.0,
+      "age_group_51-65": 0.0,
+      "age_group_66-80": 0.0,
+      "age_group_80+": 0.0,
+      "age_group_nan": 0.0
+    },
+    "positive_drivers": [
+      [
+        "days_since_last_antibiotic",
+        0.010418775313333002
+      ]
+    ],
+    "negative_drivers": [
+      [
+        "n_abx_classes_exposed",
+        -0.0857050762305461
+      ],
+      [
+        "age",
+        -0.0647495411794749
+      ],
+      [
+        "n_prior_meds",
+        -0.019316350035183966
+      ],
+      [
+        "n_prior_organisms",
+        -0.010320282775507074
+      ]
+    ],
+    "narrative": "Predicted resistance probability for Ciprofloxacin: 0.148\nFactors increasing resistance:\n  \u26a0 Days since last antibiotic: +0.010\nFactors decreasing resistance:\n  \u2713 Antibiotic classes exposed: -0.086\n  \u2713 Patient age: -0.065\n  \u2713 Number of prior medications: -0.019\n  \u2713 Prior organism count: -0.010",
+    "figure_paths": {
+      "waterfall": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP4\\Patients\\300712252\\shap\\Ciprofloxacin_waterfall.png",
+      "bar": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP4\\Patients\\300712252\\shap\\Ciprofloxacin_bar.png",
+      "force": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP4\\Patients\\300712252\\shap\\Ciprofloxacin_force.html",
+      "beeswarm": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP4\\Patients\\300712252\\shap\\Ciprofloxacin_beeswarm.png"
+    },
+    "base_value": 0.3245790828499895,
+    "probability": 0.14816519978814874
+  },
+  "performance": {
+    "Amikacin": {
+      "auc": 0.7883352122802942,
+      "ap": 0.6073649488691885,
+      "auc_ci_lower": 0.7805901062494538,
+      "auc_ci_upper": 0.7959951533758006,
+      "ap_ci_lower": 0.5908449117166392,
+      "ap_ci_upper": 0.62281706824927
+    },
+    "Amoxicillin/Clavulanic Acid": {
+      "auc": 0.8878751980552715,
+      "ap": 0.8829639423756512,
+      "auc_ci_lower": 0.8804959168086604,
+      "auc_ci_upper": 0.8950160525628779,
+      "ap_ci_lower": 0.8728197858416564,
+      "ap_ci_upper": 0.8922696215042156
+    },
+    "Ampicillin": {
+      "auc": 0.7647990497872484,
+      "ap": 0.6519129094376017,
+      "auc_ci_lower": 0.7549809378547004,
+      "auc_ci_upper": 0.7737033052123341,
+      "ap_ci_lower": 0.634477563840983,
+      "ap_ci_upper": 0.6669060588329173
+    },
+    "Ampicillin/Sulbactam": {
+      "auc": 0.9633296262332613,
+      "ap": 0.9477242996801141,
+      "auc_ci_lower": 0.9504082022973332,
+      "auc_ci_upper": 0.9748770943333471,
+      "ap_ci_lower": 0.9308522739056082,
+      "ap_ci_upper": 0.9632079719923002
+    },
+    "Aztreonam": {
+      "auc": 0.9175301738553885,
+      "ap": 0.852311277198933,
+      "auc_ci_lower": 0.9008946102566857,
+      "auc_ci_upper": 0.9325423078059009,
+      "ap_ci_lower": 0.8143768968223787,
+      "ap_ci_upper": 0.8896907706522049
+    },
+    "Cefazolin": {
+      "auc": 0.7551171673841202,
+      "ap": 0.3992615581784278,
+      "auc_ci_lower": 0.7321371160331663,
+      "auc_ci_upper": 0.7806744271687976,
+      "ap_ci_lower": 0.35619778045433714,
+      "ap_ci_upper": 0.4502291790390092
+    },
+    "Cefepime": {
+      "auc": 0.8784901615917335,
+      "ap": 0.7950885777063341,
+      "auc_ci_lower": 0.8491728042211718,
+      "auc_ci_upper": 0.9084477518079864,
+      "ap_ci_lower": 0.747606309345364,
+      "ap_ci_upper": 0.8409945976485715
+    },
+    "Cefoxitin": {
+      "auc": 0.7465659340659341,
+      "ap": 0.6683726873991195,
+      "auc_ci_lower": 0.6101097178683386,
+      "auc_ci_upper": 0.8676514923123304,
+      "ap_ci_lower": 0.5063660699489299,
+      "ap_ci_upper": 0.8193600249494559
+    },
+    "Ceftaroline": {
+      "auc": 0.5983355978260869,
+      "ap": 0.7871355754976053,
+      "auc_ci_lower": 0.501207729468599,
+      "auc_ci_upper": 0.6863636363636364,
+      "ap_ci_lower": 0.7132876785492429,
+      "ap_ci_upper": 0.8695771024811346
+    },
+    "Ceftazidime": {
+      "auc": 0.733423025177782,
+      "ap": 0.3184725565254071,
+      "auc_ci_lower": 0.6526081214922415,
+      "auc_ci_upper": 0.8098963070765872,
+      "ap_ci_lower": 0.21504213036506117,
+      "ap_ci_upper": 0.4569935826091679
+    },
+    "Ceftriaxone": {
+      "auc": 0.6046883444424429,
+      "ap": 0.34531361903098046,
+      "auc_ci_lower": 0.5440767519466073,
+      "auc_ci_upper": 0.6682993197278911,
+      "ap_ci_lower": 0.2769907332548289,
+      "ap_ci_upper": 0.4428252938897826
+    },
+    "Cefuroxime": {
+      "auc": 0.7281385281385282,
+      "ap": 0.7690275677316497,
+      "auc_ci_lower": 0.6043859649122807,
+      "auc_ci_upper": 0.8474280732345247,
+      "ap_ci_lower": 0.6476576372821716,
+      "ap_ci_upper": 0.8859074842656331
+    },
+    "Ciprofloxacin": {
+      "auc": 0.7651942529560232,
+      "ap": 0.4205643472000281,
+      "auc_ci_lower": 0.7345126355323526,
+      "auc_ci_upper": 0.7939806964219058,
+      "ap_ci_lower": 0.3712605091893982,
+      "ap_ci_upper": 0.48104657349282715
+    },
+    "Clarithromycin": {
+      "auc": 0.5994041170097508,
+      "ap": 0.27449208972707295,
+      "auc_ci_lower": 0.48316326530612247,
+      "auc_ci_upper": 0.7058050958760178,
+      "ap_ci_lower": 0.14176199777988716,
+      "ap_ci_upper": 0.42867912480690185
+    },
+    "Clindamycin": {
+      "auc": 0.6377282511895905,
+      "ap": 0.6492086111783563,
+      "auc_ci_lower": 0.6170465615670664,
+      "auc_ci_upper": 0.6569160481816803,
+      "ap_ci_lower": 0.6236738400790519,
+      "ap_ci_upper": 0.6759040995623757
+    },
+    "Daptomycin": {
+      "auc": 0.6281818181818182,
+      "ap": 0.31537620503333297,
+      "auc_ci_lower": 0.4957575757575757,
+      "auc_ci_upper": 0.7566782810685249,
+      "ap_ci_lower": 0.14358161992855506,
+      "ap_ci_upper": 0.4923773037410675
+    },
+    "Doxycycline": {
+      "auc": 0.46502057613168724,
+      "ap": 0.2539934044503711,
+      "auc_ci_lower": 0.2358490566037736,
+      "auc_ci_upper": 0.7009803921568627,
+      "ap_ci_lower": 0.08065410199556541,
+      "ap_ci_upper": 0.5180646929824562
+    },
+    "Erythromycin": {
+      "auc": 0.9484200283669229,
+      "ap": 0.6907860993797771,
+      "auc_ci_lower": 0.920959595959596,
+      "auc_ci_upper": 0.9716680290232408,
+      "ap_ci_lower": 0.600650104107709,
+      "ap_ci_upper": 0.7850451492770845
+    },
+    "Gentamicin": {
+      "auc": 0.474512012012012,
+      "ap": 0.28428519624064075,
+      "auc_ci_lower": 0.3952288845905867,
+      "auc_ci_upper": 0.5533408408408409,
+      "ap_ci_lower": 0.22239530759601533,
+      "ap_ci_upper": 0.3782628048579866
+    },
+    "Levofloxacin": {
+      "auc": 0.719951923076923,
+      "ap": 0.19493526837226843,
+      "auc_ci_lower": 0.6096774193548387,
+      "auc_ci_upper": 0.8256702319766634,
+      "ap_ci_lower": 0.10840296031992336,
+      "ap_ci_upper": 0.3618392997525759
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "class": "CalibratedClassifierCV",
+  "module": "sklearn.calibration",
+  "depth": 0,
+  "children": [
+    {
+      "class": "Pipeline",
+      "module": "sklearn.pipeline",
+      "depth": 1,
+      "children": [
+        {
+          "class": "ColumnTransformer",
+          "module": "sklearn.compose._column_transformer",
+          "depth": 2,
+          "children": [
+            {
+              "class": "StandardScaler",
+              "module": "sklearn.preprocessing._data",
+              "depth": 3,
+              "children": [],
+              "is_classifier": false,
+              "parameters": {
+                "copy": true,
+                "with_mean": true,
+                "with_std": true
+              },
+              "type": "BaseEstimator",
+              "name": "num",
+              "columns": [
+                "Age",
+                "YearCollected"
+              ]
+            },
+            {
+              "class": "OneHotEncoder",
+              "module": "sklearn.preprocessing._encoders",
+              "depth": 3,
+              "children": [],
+              "is_classifier": false,
+              "parameters": {
+                "categories": "auto",
+                "drop": null,
+                "dtype": "<type instance>",
+                "feature_name_combiner": "concat",
+                "handle_unknown": "ignore",
+                "max_categories": null,
+                "min_frequency": null,
+                "sparse_output": false
+              },
+              "type": "BaseEstimator",
+              "name": "ohe",
+              "columns": [
+                "Region",
+                "BodyLocation_Group"
+              ]
+            },
+            {
+              "class": "TargetEncoder",
+              "module": "sklearn.preprocessing._target_encoder",
+              "depth": 3,
+              "children": [],
+              "is_classifier": false,
+              "parameters": {
+                "categories": "auto",
+                "cv": 5,
+                "random_state": "deprecated",
+                "shuffle": "deprecated",
+                "smooth": 1.0,
+                "target_type": "binary"
+              },
+              "type": "BaseEstimator",
+              "name": "target_enc",
+              "columns": [
+                "Country"
+              ]
+            },
+            {
+              "class": "Passthrough",
+              "type": "PassthroughTransformer",
+              "module": "sklearn",
+              "depth": 3,
+              "name": "bin",
+              "children": [],
+              "parameters": {},
+              "passthrough": true,
+              "is_classifier": false,
+              "columns": []
+            }
+          ],
+          "is_classifier": false,
+          "parameters": {
+            "n_jobs": null,
+            "remainder": "drop",
+            "sparse_threshold": 0.3,
+            "transformer_weights": null,
+            "transformers": [
+              [
+                "num",
+                "<StandardScaler instance>",
+                [
+                  "Age",
+                  "YearCollected"
+                ]
+              ],
+              [
+                "ohe",
+                "<OneHotEncoder instance>",
+                [
+                  "Region",
+                  "BodyLocation_Group"
+                ]
+              ],
+              [
+                "target_enc",
+                "<TargetEncoder instance>",
+                [
+                  "Country"
+                ]
+              ],
+              [
+                "bin",
+                "passthrough",
+                []
+              ]
+            ],
+            "verbose": false,
+            "verbose_feature_names_out": true,
+            "num": "<StandardScaler estimator>",
+            "ohe": "<OneHotEncoder estimator>",
+            "target_enc": "<TargetEncoder estimator>",
+            "bin": "passthrough"
+          },
+          "type": "ColumnTransformer",
+          "name": "preprocessor"
+        },
+        {
+          "class": "LogisticRegression",
+          "module": "sklearn.linear_model._logistic",
+          "depth": 2,
+          "children": [],
+          "is_classifier": true,
+          "parameters": {
+            "C": 1.0,
+            "class_weight": "balanced",
+            "dual": false,
+            "fit_intercept": true,
+            "intercept_scaling": 1,
+            "l1_ratio": 0.0,
+            "max_iter": 1000,
+            "n_jobs": null,
+            "penalty": "deprecated",
+            "random_state": 42,
+            "solver": "lbfgs",
+            "tol": 0.0001,
+            "verbose": 0,
+            "warm_start": false
+          },
+          "type": "BaseEstimator",
+          "classes": [
+            0,
+            1
+          ],
+          "n_features_in": 10,
+          "name": "classifier"
+        }
+      ],
+      "is_classifier": false,
+      "parameters": {
+        "memory": null,
+        "steps": [
+          [
+            "preprocessor",
+            "<ColumnTransformer instance>"
+          ],
+          [
+            "classifier",
+            "<LogisticRegression instance>"
+          ]
+        ],
+        "transform_input": null,
+        "verbose": false,
+        "preprocessor": "<ColumnTransformer estimator>",
+        "classifier": "<LogisticRegression estimator>"
+      },
+      "type": "Pipeline",
+      "name": "base_estimator"
+    }
+  ],
+  "is_classifier": true,
+  "parameters": {
+    "cv": 5,
+    "ensemble": "auto",
+    "estimator": "<Pipeline estimator>",
+    "method": "sigmoid",
+    "n_jobs": null
+  },
+  "type": "CalibratedClassifierCV",
+  "calibration_method": "sigmoid",
+  "sklearn_version": "1.9.0",
+  "n_features_in": 5,
+  "feature_names_in_": [
+    "Age",
+    "BodyLocation_Group",
+    "Region",
+    "Country",
+    "YearCollected"
+  ],
+  "raw_input_features": 5,
+  "transformed_features": 5,
+  "label_encoder": {
+    "classes": [
+      "R",
+      "S"
+    ],
+    "mapping": {
+      "R": 0,
+      "S": 1
+    },
+    "n_classes": 2
+  }
+}

@@ -1,0 +1,297 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+/* ============================================================
+   PharmaTrybe CDSS — Clinical Design System
+   Light: sky-blue clinical palette on clean white / very light blue.
+   Dark : Samsung-style near-black OLED surfaces with sky accents.
+   Dark mode is toggled via the `.dark` class on <html>
+   (see src/stores/settingsStore.ts) — unchanged behaviour.
+   ============================================================ */
+
+@theme {
+  /* ---- Primary: sophisticated sky / clinical blue ---- */
+  --color-clinical-50: #f1f8fe;
+  --color-clinical-100: #e0f1fc;
+  --color-clinical-200: #bde3f9;
+  --color-clinical-300: #8ccdf3;
+  --color-clinical-400: #54b1e9;
+  --color-clinical-500: #2b93d6;
+  --color-clinical-600: #1a76b8;
+  --color-clinical-700: #175f95;
+  --color-clinical-800: #17507b;
+  --color-clinical-900: #164365;
+  --color-clinical-950: #0e2a43;
+
+  /* ---- Semantic surfaces / text / borders (runtime vars so .dark overrides) ---- */
+  --color-slate-canvas: var(--pt-canvas);
+  --color-slate-surface: var(--pt-surface);
+  --color-slate-surface-raised: var(--pt-surface-raised);
+  --color-slate-inset: var(--pt-inset);
+  --color-slate-inset-hover: var(--pt-inset-hover);
+  --color-slate-border: var(--pt-border);
+  --color-slate-border-subtle: var(--pt-border-subtle);
+  --color-slate-text-primary: var(--pt-text-primary);
+  --color-slate-text-secondary: var(--pt-text-secondary);
+  --color-slate-text-muted: var(--pt-text-muted);
+
+  /* ---- Safety semantics ---- */
+  --color-safety-critical: var(--pt-critical);
+  --color-safety-critical-bg: var(--pt-critical-bg);
+  --color-safety-critical-border: var(--pt-critical-border);
+  --color-safety-warning: var(--pt-warning);
+  --color-safety-warning-bg: var(--pt-warning-bg);
+  --color-safety-warning-border: var(--pt-warning-border);
+  --color-safety-info: var(--pt-info);
+  --color-safety-info-bg: var(--pt-info-bg);
+  --color-safety-info-border: var(--pt-info-border);
+  --color-safety-success: var(--pt-success);
+  --color-safety-success-bg: var(--pt-success-bg);
+  --color-safety-success-border: var(--pt-success-border);
+
+  /* ---- Radii: restrained, professional ---- */
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* ---- Motion ---- */
+  --ease-clinical: cubic-bezier(0.22, 0.8, 0.28, 1);
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+}
+
+/* ============ LIGHT MODE (default) ============ */
+:root {
+  color-scheme: light;
+
+  --pt-canvas: #f3f7fc;
+  --pt-surface: #ffffff;
+  --pt-surface-raised: #ffffff;
+  --pt-inset: #eef4fb;
+  --pt-inset-hover: #e2ecf7;
+  --pt-border: #d8e3ef;
+  --pt-border-subtle: #e8eef6;
+  --pt-text-primary: #0f1c2c;
+  --pt-text-secondary: #445468;
+  --pt-text-muted: #6c7c90;
+
+  --pt-critical: #b3273f;
+  --pt-critical-bg: #fdeef1;
+  --pt-critical-border: #f2c3cd;
+
+  --pt-warning: #91600f;
+  --pt-warning-bg: #fdf4e2;
+  --pt-warning-border: #eed7a3;
+
+  --pt-info: #1a76b8;
+  --pt-info-bg: #eaf4fc;
+  --pt-info-border: #bcdcf3;
+
+  --pt-success: #16714a;
+  --pt-success-bg: #e9f7f0;
+  --pt-success-border: #b6e3cc;
+
+  --pt-shadow-xs: 0 1px 2px rgba(15, 28, 44, 0.05);
+  --pt-shadow-sm: 0 1px 3px rgba(15, 28, 44, 0.07), 0 1px 2px rgba(15, 28, 44, 0.04);
+  --pt-shadow-md: 0 6px 18px -6px rgba(15, 28, 44, 0.14);
+  --pt-shadow-lg: 0 20px 44px -18px rgba(15, 28, 44, 0.28);
+}
+
+/* ============ DARK MODE — Samsung / OLED philosophy ============ */
+.dark {
+  color-scheme: dark;
+
+  --pt-canvas: #0a0b0d;
+  --pt-surface: #131518;
+  --pt-surface-raised: #1a1d21;
+  --pt-inset: #1e2126;
+  --pt-inset-hover: #262a30;
+  --pt-border: #2c3036;
+  --pt-border-subtle: #202428;
+  --pt-text-primary: #e9ecef;
+  --pt-text-secondary: #b2b9c1;
+  --pt-text-muted: #848c96;
+
+  --pt-critical: #ef7f92;
+  --pt-critical-bg: #2a1319;
+  --pt-critical-border: #58242f;
+
+  --pt-warning: #e2b26c;
+  --pt-warning-bg: #271d0f;
+  --pt-warning-border: #4f3a1b;
+
+  --pt-info: #54b1e9;
+  --pt-info-bg: #10202c;
+  --pt-info-border: #1e3d54;
+
+  --pt-success: #52c193;
+  --pt-success-bg: #0e2019;
+  --pt-success-border: #1d4335;
+
+  --pt-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --pt-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.7);
+  --pt-shadow-md: 0 8px 20px -8px rgba(0, 0, 0, 0.8);
+  --pt-shadow-lg: 0 24px 48px -20px rgba(0, 0, 0, 0.9);
+}
+
+@layer base {
+  html {
+    scrollbar-color: var(--pt-border) transparent;
+  }
+
+  body {
+    background-color: var(--color-slate-canvas);
+    color: var(--color-slate-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color var(--duration-base) var(--ease-clinical),
+      color var(--duration-base) var(--ease-clinical);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.011em;
+  }
+
+  /* Numeric clinical values (eGFR, MIC, dosage, confidence, etc.) stay tabular. */
+  .num-clinical {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: 0.01em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--pt-border);
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--pt-text-muted);
+  }
+
+  /* Form primitives inherit the clinical language everywhere */
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+  ::placeholder {
+    color: var(--pt-text-muted);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pt-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  /* Visible, WCAG-friendly focus ring used by all interactive primitives */
+  .focus-clinical {
+    outline: none;
+  }
+  .focus-clinical:focus-visible {
+    outline: 2px solid var(--color-clinical-500);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@utility shadow-clinical-xs {
+  box-shadow: var(--pt-shadow-xs);
+}
+@utility shadow-clinical-sm {
+  box-shadow: var(--pt-shadow-sm);
+}
+@utility shadow-clinical-md {
+  box-shadow: var(--pt-shadow-md);
+}
+@utility shadow-clinical-lg {
+  box-shadow: var(--pt-shadow-lg);
+}
+
+/* Shared card language: subtle border, controlled elevation */
+@utility card-clinical {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--pt-border);
+  background-color: var(--pt-surface);
+  box-shadow: var(--pt-shadow-sm);
+}
+
+@utility animate-fade-in {
+  animation: pt-fade-in var(--duration-base) var(--ease-clinical) both;
+}
+
+/* Global form-control polish, applied without touching component logic */
+@layer components {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="date"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    transition:
+      border-color var(--duration-fast) var(--ease-clinical),
+      box-shadow var(--duration-fast) var(--ease-clinical),
+      background-color var(--duration-fast) var(--ease-clinical);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none;
+    border-color: var(--color-clinical-500);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-clinical-500) 22%, transparent);
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--color-clinical-600);
+  }
+}

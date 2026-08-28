@@ -1,0 +1,10 @@
+{
+  "certificate_id": "CERT-acbf3086",
+  "deployment": "Tetracycline_Streptococcus_pneumoniae",
+  "uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+  "grade": "A",
+  "score": 92.31,
+  "certified": true,
+  "timestamp": "2026-08-10T00:14:07.636270",
+  "verification_version": "2.1"
+}

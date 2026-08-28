@@ -1,0 +1,1752 @@
+...FFFFF.........F.F....                                                 [100%]
+================================== FAILURES ===================================
+_________ test_create_clinical_case_endpoint_returns_created_resource _________
+
+test_app = <starlette.testclient.TestClient object at 0x0000022571FCEDE0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022571FCC980>
+sample_clinical_case_payload = {'request_id': '6a207c13-c67a-40ab-a925-2c90a60748a9', 'case_id': '209c1d9f-a964-4467-b070-11f69c3e57d5', 'timestamp': '2026-08-01T20:19:45.074693+00:00', 'schema_version': '1.0.0', ...}
+
+            timestamp=datetime.now(timezone.utc),
+            api_version="v1",
+            processing_time_ms=0.0,
+        )
+    
+    
+    def _client_with_mock_service(mock_service: MagicMock) -> TestClient:
+        app = FastAPI()
+        app.include_router(clinical_cases_module.router, prefix="/api/v1")
+        app.dependency_overrides[clinical_cases_module.get_service] = lambda: mock_service
+        return TestClient(app)
+    
+    
+    def test_create_clinical_case_endpoint_returns_created_resource(sample_clinical_case_payload):
+>       mock_service = MagicMock()
+
+tests\test_clinical_case.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <MagicMock name='mock.create_case' id='2359849011728'>
+
+    def assert_called_once(self):
+        """assert that the mock was called only once.
+        """
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to have been called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'create_case' to have been called once. Called 0 times.
+
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py:928: AssertionError
+______________ test_get_clinical_case_endpoint_returns_resource _______________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_utils.py", line 85, in create_collapsing_task_group
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 815, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    |     result: TResult | None = func()
+    |                              ^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    |     lambda: runtest_hook(item=item, **kwds),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\logging.py", line 865, in pytest_runtest_call
+    |     yield
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\capture.py", line 900, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\skipping.py", line 268, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    |     item.runtest()
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    |     self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    |     result = testfunction(**testargs)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\tests\test_clinical_case.py", line 45, in test_get_clinical_case_endpoint_returns_resource
+    |     assert response.json()["data"]["status"] == "created"
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 482, in get
+    |     return super().get(
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1118, in get
+    |     return self.request(
+    |            ^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 454, in request
+    |     return super().request(
+    |            ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 803, in request
+    |     return self.send(request, auth=auth, follow_redirects=follow_redirects)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 985, in send
+    |     response = self._send_handling_auth(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1013, in _send_handling_auth
+    |     response = self._send_handling_redirects(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1048, in _send_handling_redirects
+    |     response = self._send_single_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1081, in _send_single_request
+    |     response = transport.handle_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 356, in handle_request
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 353, in handle_request
+    |     portal.call(self.app, scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 338, in call
+    |     return cast(T_Retval, self.start_task_soon(func, *args).result())
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 456, in result
+    |     return self.__get_result()
+    |            ^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    |     raise self._exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 263, in _call_func
+    |     retval = await retval_or_awaitable
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    |     await original_route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    |     await app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    |     content = await serialize_response(
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    |     raise ResponseValidationError(
+    | fastapi.exceptions.ResponseValidationError: 17 validation errors:
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.request_id' id='2359826639680'>}
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.case_id' id='2359829917056'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.schema_version' id='2359829993936'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.get_case().clinical_case.demographics.sex' id='2359828923888'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.demographics.ethnicity' id='2359830064464'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.presentation.syndrome' id='2359830104736'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.severity' id='2359830108576'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.acquisition' id='2359830116208'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.specimen_type' id='2359830323536'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.organism' id='2359830327136'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359828590960'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.clinician_id' id='2359831121024'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.facility_id' id='2359831124864'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.department' id='2359831128656'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.country' id='2359831132352'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.get_case().clinical_case.resistance_status' id='2359831211920'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().status' id='2359829994032'>}
+    | 
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 38, in get_clinical_case
+    |     GET /api/v1/clinical-cases/{case_id}
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\tests\test_clinical_case.py", line 45, in test_get_clinical_case_endpoint_returns_resource
+    assert response.json()["data"]["status"] == "created"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 482, in get
+    return super().get(
+           ^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1118, in get
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 454, in request
+    return super().request(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 803, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 985, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1013, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1048, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1081, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 356, in handle_request
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 353, in handle_request
+    portal.call(self.app, scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 338, in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 263, in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 17 validation errors:
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.request_id' id='2359826639680'>}
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.case_id' id='2359829917056'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.schema_version' id='2359829993936'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.get_case().clinical_case.demographics.sex' id='2359828923888'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.demographics.ethnicity' id='2359830064464'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.presentation.syndrome' id='2359830104736'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.severity' id='2359830108576'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.acquisition' id='2359830116208'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.specimen_type' id='2359830323536'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.organism' id='2359830327136'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359828590960'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.clinician_id' id='2359831121024'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.facility_id' id='2359831124864'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.department' id='2359831128656'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.country' id='2359831132352'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.get_case().clinical_case.resistance_status' id='2359831211920'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().status' id='2359829994032'>}
+
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 38, in get_clinical_case
+    GET /api/v1/clinical-cases/{case_id}
+
+The above exception was the direct cause of the following exception:
+
+test_app = <starlette.testclient.TestClient object at 0x0000022571FCEDE0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022571FCDE50>
+sample_clinical_case_payload = {'request_id': '03cbab7e-8923-4a3a-abf6-106b228327e0', 'case_id': '90d1cf83-ed7e-4bbb-abeb-c8a1d698bec8', 'timestamp': '2026-08-01T20:19:45.152628+00:00', 'schema_version': '1.0.0', ...}
+
+        metadata=_build_metadata(str(payload_model.request_id)),
+        data=ClinicalCaseResource(clinical_case=payload_model, status="created"),
+    )
+    mock_service.create_case.return_value = mock_response
+    client = _client_with_mock_service(mock_service)
+    
+    response = client.post("/api/v1/clinical-cases", json=sample_clinical_case_payload)
+    
+    assert response.status_code == 201
+>   assert response.json()["data"]["status"] == "created"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_clinical_case.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:482: in get
+    return super().get(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1118: in get
+    return self.request(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:454: in request
+    return super().request(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:803: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:985: in send
+    response = self._send_handling_auth(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1013: in _send_handling_auth
+    response = self._send_handling_redirects(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1048: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1081: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:356: in handle_request
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:353: in handle_request
+    portal.call(self.app, scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py:1163: in __call__
+    await super().__call__(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py:90: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py:36: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py:88: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\security_headers.py:18: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\logging_middleware.py:25: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\timing.py:20: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\request_context.py:28: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py:660: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2734: in app
+    await route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1780: in handle
+    await self.original_router.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2789: in handle
+    await included_router._handle_selected(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1791: in _handle_selected
+    await route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1780: in handle
+    await self.original_router.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2789: in handle
+    await included_router._handle_selected(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1800: in _handle_selected
+    await original_route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1279: in handle
+    await app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:158: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:144: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:727: in app
+    content = await serialize_response(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+field = ModelField(field_info=FieldInfo(annotation=ApiSuccess[Union[ClinicalCaseResource, NoneType]], required=True), name='Response_get_clinical_case_api_v1_clinical_cases__case_id__get', mode='serialization', config=None)
+response_content = ApiSuccess(success=True, metadata=ApiMetadata(request_id='1', timestamp=datetime.datetime(2026, 8, 1, 20, 19, 45, 1526...e.timezone.utc), api_version='v1', processing_time_ms=0.0), data=<MagicMock name='mock.get_case()' id='2359829905632'>)
+include = None, exclude = None, by_alias = True, exclude_unset = False
+exclude_defaults = False, exclude_none = False, is_coroutine = True
+endpoint_ctx = {'file': 'C:\\Users\\HP\\Desktop\\Pharmatrybe_project\\Pharmatrybe\\apps\\api\\app\\api\\v1\\clinical_cases.py', 'line': 38, 'function': 'get_clinical_case', 'path': 'GET /api/v1/clinical-cases/{case_id}'}
+dump_json = True
+
+    async def serialize_response(
+        *,
+        field: ModelField | None = None,
+        response_content: Any,
+        include: IncEx | None = None,
+        exclude: IncEx | None = None,
+        by_alias: bool = True,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = False,
+        is_coroutine: bool = True,
+        endpoint_ctx: EndpointContext | None = None,
+        dump_json: bool = False,
+    ) -> Any:
+        if field:
+            if is_coroutine:
+                value, errors = field.validate(response_content, {}, loc=("response",))
+            else:
+                value, errors = await run_in_threadpool(
+                    field.validate, response_content, {}, loc=("response",)
+                )
+            if errors:
+                ctx = endpoint_ctx or EndpointContext()
+>               raise ResponseValidationError(
+                    errors=errors,
+                    body=response_content,
+                    endpoint_ctx=ctx,
+                )
+E               fastapi.exceptions.ResponseValidationError: 17 validation errors:
+E                 {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.request_id' id='2359826639680'>}
+E                 {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.case_id' id='2359829917056'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.schema_version' id='2359829993936'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.get_case().clinical_case.demographics.sex' id='2359828923888'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.demographics.ethnicity' id='2359830064464'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.presentation.syndrome' id='2359830104736'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.severity' id='2359830108576'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.acquisition' id='2359830116208'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.specimen_type' id='2359830323536'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.organism' id='2359830327136'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359828590960'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.clinician_id' id='2359831121024'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.facility_id' id='2359831124864'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.department' id='2359831128656'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.country' id='2359831132352'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.get_case().clinical_case.resistance_status' id='2359831211920'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().status' id='2359829994032'>}
+E               
+E                 File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 38, in get_clinical_case
+E                   GET /api/v1/clinical-cases/{case_id}
+
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:324: ResponseValidationError
+------------------------------ Captured log call ------------------------------
+ERROR    pharmatrybe.api.main:main.py:105 Unhandled exception occurred
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_utils.py", line 85, in create_collapsing_task_group
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 815, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    |     await original_route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    |     await app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    |     content = await serialize_response(
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    |     raise ResponseValidationError(
+    | fastapi.exceptions.ResponseValidationError: 17 validation errors:
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.request_id' id='2359826639680'>}
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.case_id' id='2359829917056'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.schema_version' id='2359829993936'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.get_case().clinical_case.demographics.sex' id='2359828923888'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.demographics.ethnicity' id='2359830064464'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.presentation.syndrome' id='2359830104736'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.severity' id='2359830108576'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.acquisition' id='2359830116208'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.specimen_type' id='2359830323536'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.organism' id='2359830327136'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359828590960'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.clinician_id' id='2359831121024'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.facility_id' id='2359831124864'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.department' id='2359831128656'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.country' id='2359831132352'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.get_case().clinical_case.resistance_status' id='2359831211920'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().status' id='2359829994032'>}
+    | 
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 38, in get_clinical_case
+    |     GET /api/v1/clinical-cases/{case_id}
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 17 validation errors:
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.request_id' id='2359826639680'>}
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.get_case().clinical_case.case_id' id='2359829917056'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.schema_version' id='2359829993936'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.get_case().clinical_case.demographics.sex' id='2359828923888'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.demographics.ethnicity' id='2359830064464'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.presentation.syndrome' id='2359830104736'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.severity' id='2359830108576'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.get_case().clinical_case.presentation.acquisition' id='2359830116208'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.specimen_type' id='2359830323536'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.laboratory.organism' id='2359830327136'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359828590960'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.clinician_id' id='2359831121024'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.facility_id' id='2359831124864'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.department' id='2359831128656'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().clinical_case.user_metadata.country' id='2359831132352'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.get_case().clinical_case.resistance_status' id='2359831211920'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.get_case().status' id='2359829994032'>}
+
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 38, in get_clinical_case
+    GET /api/v1/clinical-cases/{case_id}
+_______________ test_list_clinical_cases_endpoint_returns_list ________________
+
+test_app = <starlette.testclient.TestClient object at 0x0000022571FCEDE0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022571F672F0>
+sample_clinical_case_payload = {'request_id': '889762b7-0b36-4b76-be14-902a14ef849d', 'case_id': '2c5fcf68-596c-48f2-9ea0-c114fd13e6c6', 'timestamp': '2026-08-01T20:19:46.320315+00:00', 'schema_version': '1.0.0', ...}
+
+            clinical_case=ClinicalCaseRequest.model_validate(sample_clinical_case_payload),
+            status="retrieved",
+        )
+        mock_service.get_case.return_value = expected_resource
+        client = _client_with_mock_service(mock_service)
+    
+        response = client.get("/api/v1/clinical-cases/1")
+    
+        assert response.status_code == 200
+        assert response.json()["data"]["status"] == "retrieved"
+        mock_service.get_case.assert_called_once_with(1)
+    
+    
+>   def test_list_clinical_cases_endpoint_returns_list(sample_clinical_case_payload):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: list index out of range
+
+tests\test_clinical_case.py:65: IndexError
+_________ test_update_clinical_case_endpoint_returns_updated_resource _________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_utils.py", line 85, in create_collapsing_task_group
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 815, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    |     result: TResult | None = func()
+    |                              ^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    |     lambda: runtest_hook(item=item, **kwds),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\logging.py", line 865, in pytest_runtest_call
+    |     yield
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\capture.py", line 900, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\skipping.py", line 268, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    |     item.runtest()
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    |     self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    |     result = testfunction(**testargs)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\tests\test_clinical_case.py", line 78, in test_update_clinical_case_endpoint_returns_updated_resource
+    |     assert response.json()["data"][0]["status"] == "retrieved"
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 586, in put
+    |     return super().put(
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1246, in put
+    |     return self.request(
+    |            ^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 454, in request
+    |     return super().request(
+    |            ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 803, in request
+    |     return self.send(request, auth=auth, follow_redirects=follow_redirects)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 985, in send
+    |     response = self._send_handling_auth(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1013, in _send_handling_auth
+    |     response = self._send_handling_redirects(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1048, in _send_handling_redirects
+    |     response = self._send_single_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1081, in _send_single_request
+    |     response = transport.handle_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 356, in handle_request
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 353, in handle_request
+    |     portal.call(self.app, scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 338, in call
+    |     return cast(T_Retval, self.start_task_soon(func, *args).result())
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 456, in result
+    |     return self.__get_result()
+    |            ^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    |     raise self._exception
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 263, in _call_func
+    |     retval = await retval_or_awaitable
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    |     await original_route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    |     await app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    |     content = await serialize_response(
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    |     raise ResponseValidationError(
+    | fastapi.exceptions.ResponseValidationError: 17 validation errors:
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.request_id' id='2359833027568'>}
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.case_id' id='2359832512752'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.schema_version' id='2359832740592'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.update_case().clinical_case.demographics.sex' id='2359827812992'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.demographics.ethnicity' id='2359832880064'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.presentation.syndrome' id='2359832805648'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.severity' id='2359832809440'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.acquisition' id='2359832817024'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.specimen_type' id='2359838293888'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.organism' id='2359837511216'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359837493632'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.clinician_id' id='2359848922352'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.facility_id' id='2359848926192'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.department' id='2359848848128'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.country' id='2359848851824'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.update_case().clinical_case.resistance_status' id='2359849095328'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().status' id='2359832982736'>}
+    | 
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 83, in update_clinical_case
+    |     PUT /api/v1/clinical-cases/{case_id}
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\tests\test_clinical_case.py", line 78, in test_update_clinical_case_endpoint_returns_updated_resource
+    assert response.json()["data"][0]["status"] == "retrieved"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 586, in put
+    return super().put(
+           ^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1246, in put
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 454, in request
+    return super().request(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 803, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 985, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1013, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1048, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1081, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 356, in handle_request
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py", line 353, in handle_request
+    portal.call(self.app, scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 338, in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py", line 263, in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 17 validation errors:
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.request_id' id='2359833027568'>}
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.case_id' id='2359832512752'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.schema_version' id='2359832740592'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.update_case().clinical_case.demographics.sex' id='2359827812992'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.demographics.ethnicity' id='2359832880064'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.presentation.syndrome' id='2359832805648'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.severity' id='2359832809440'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.acquisition' id='2359832817024'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.specimen_type' id='2359838293888'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.organism' id='2359837511216'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359837493632'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.clinician_id' id='2359848922352'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.facility_id' id='2359848926192'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.department' id='2359848848128'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.country' id='2359848851824'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.update_case().clinical_case.resistance_status' id='2359849095328'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().status' id='2359832982736'>}
+
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 83, in update_clinical_case
+    PUT /api/v1/clinical-cases/{case_id}
+
+The above exception was the direct cause of the following exception:
+
+test_app = <starlette.testclient.TestClient object at 0x0000022571FCEDE0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022571F73DA0>
+sample_clinical_case_payload = {'request_id': '6c33abff-8be0-4f62-9a8d-a106282966cf', 'case_id': '7e7d71f9-91c2-4264-8e61-55497b8d1e39', 'timestamp': '2026-08-01T20:19:46.353455+00:00', 'schema_version': '1.0.0', ...}
+
+        status="retrieved",
+    )
+    mock_service.list_cases.return_value = [expected_resource]
+    client = _client_with_mock_service(mock_service)
+    
+    response = client.get("/api/v1/clinical-cases?skip=0&limit=10")
+    
+    assert response.status_code == 200
+    assert isinstance(response.json()["data"], list)
+>   assert response.json()["data"][0]["status"] == "retrieved"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_clinical_case.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:586: in put
+    return super().put(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1246: in put
+    return self.request(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:454: in request
+    return super().request(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:803: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:985: in send
+    response = self._send_handling_auth(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1013: in _send_handling_auth
+    response = self._send_handling_redirects(
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1048: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py:1081: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:356: in handle_request
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:353: in handle_request
+    portal.call(self.app, scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py:1163: in __call__
+    await super().__call__(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py:90: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py:36: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py:88: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\security_headers.py:18: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\logging_middleware.py:25: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\timing.py:20: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\middleware\request_context.py:28: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py:660: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2734: in app
+    await route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1780: in handle
+    await self.original_router.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2789: in handle
+    await included_router._handle_selected(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1791: in _handle_selected
+    await route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1780: in handle
+    await self.original_router.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:2789: in handle
+    await included_router._handle_selected(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1800: in _handle_selected
+    await original_route.handle(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:1279: in handle
+    await app(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:158: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:144: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:727: in app
+    content = await serialize_response(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+field = ModelField(field_info=FieldInfo(annotation=ApiSuccess[Union[ClinicalCaseResource, NoneType]], required=True), name='Response_update_clinical_case_api_v1_clinical_cases__case_id__put', mode='serialization', config=None)
+response_content = ApiSuccess(success=True, metadata=ApiMetadata(request_id='1', timestamp=datetime.datetime(2026, 8, 1, 20, 19, 46, 3534...imezone.utc), api_version='v1', processing_time_ms=0.0), data=<MagicMock name='mock.update_case()' id='2359833034000'>)
+include = None, exclude = None, by_alias = True, exclude_unset = False
+exclude_defaults = False, exclude_none = False, is_coroutine = True
+endpoint_ctx = {'file': 'C:\\Users\\HP\\Desktop\\Pharmatrybe_project\\Pharmatrybe\\apps\\api\\app\\api\\v1\\clinical_cases.py', 'line': 83, 'function': 'update_clinical_case', 'path': 'PUT /api/v1/clinical-cases/{case_id}'}
+dump_json = True
+
+    async def serialize_response(
+        *,
+        field: ModelField | None = None,
+        response_content: Any,
+        include: IncEx | None = None,
+        exclude: IncEx | None = None,
+        by_alias: bool = True,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = False,
+        is_coroutine: bool = True,
+        endpoint_ctx: EndpointContext | None = None,
+        dump_json: bool = False,
+    ) -> Any:
+        if field:
+            if is_coroutine:
+                value, errors = field.validate(response_content, {}, loc=("response",))
+            else:
+                value, errors = await run_in_threadpool(
+                    field.validate, response_content, {}, loc=("response",)
+                )
+            if errors:
+                ctx = endpoint_ctx or EndpointContext()
+>               raise ResponseValidationError(
+                    errors=errors,
+                    body=response_content,
+                    endpoint_ctx=ctx,
+                )
+E               fastapi.exceptions.ResponseValidationError: 17 validation errors:
+E                 {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.request_id' id='2359833027568'>}
+E                 {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.case_id' id='2359832512752'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.schema_version' id='2359832740592'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.update_case().clinical_case.demographics.sex' id='2359827812992'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.demographics.ethnicity' id='2359832880064'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.presentation.syndrome' id='2359832805648'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.severity' id='2359832809440'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.acquisition' id='2359832817024'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.specimen_type' id='2359838293888'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.organism' id='2359837511216'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359837493632'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.clinician_id' id='2359848922352'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.facility_id' id='2359848926192'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.department' id='2359848848128'>}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.country' id='2359848851824'>}
+E                 {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.update_case().clinical_case.resistance_status' id='2359849095328'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+E                 {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().status' id='2359832982736'>}
+E               
+E                 File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 83, in update_clinical_case
+E                   PUT /api/v1/clinical-cases/{case_id}
+
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py:324: ResponseValidationError
+------------------------------ Captured log call ------------------------------
+ERROR    pharmatrybe.api.main:main.py:105 Unhandled exception occurred
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_utils.py", line 85, in create_collapsing_task_group
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py", line 815, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    |     await self.original_router.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    |     await included_router._handle_selected(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    |     await original_route.handle(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    |     await app(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    |     content = await serialize_response(
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    |     raise ResponseValidationError(
+    | fastapi.exceptions.ResponseValidationError: 17 validation errors:
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.request_id' id='2359833027568'>}
+    |   {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.case_id' id='2359832512752'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.schema_version' id='2359832740592'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.update_case().clinical_case.demographics.sex' id='2359827812992'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.demographics.ethnicity' id='2359832880064'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.presentation.syndrome' id='2359832805648'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.severity' id='2359832809440'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.acquisition' id='2359832817024'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.specimen_type' id='2359838293888'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.organism' id='2359837511216'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359837493632'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.clinician_id' id='2359848922352'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.facility_id' id='2359848926192'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.department' id='2359848848128'>}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.country' id='2359848851824'>}
+    |   {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.update_case().clinical_case.resistance_status' id='2359849095328'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+    |   {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().status' id='2359832982736'>}
+    | 
+    |   File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 83, in update_clinical_case
+    |     PUT /api/v1/clinical-cases/{case_id}
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\security_headers.py", line 18, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\logging_middleware.py", line 25, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\timing.py", line 20, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\middleware\request_context.py", line 28, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 727, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 17 validation errors:
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'request_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.request_id' id='2359833027568'>}
+  {'type': 'uuid_type', 'loc': ('response', 'data', 'clinical_case', 'case_id'), 'msg': 'UUID input should be a string, bytes or UUID object', 'input': <MagicMock name='mock.update_case().clinical_case.case_id' id='2359832512752'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'schema_version'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.schema_version' id='2359832740592'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'sex'), 'msg': "Input should be 'male', 'female' or 'other'", 'input': <MagicMock name='mock.update_case().clinical_case.demographics.sex' id='2359827812992'>, 'ctx': {'expected': "'male', 'female' or 'other'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'demographics', 'ethnicity'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.demographics.ethnicity' id='2359832880064'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'syndrome'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.presentation.syndrome' id='2359832805648'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'severity'), 'msg': "Input should be 'mild', 'moderate' or 'severe'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.severity' id='2359832809440'>, 'ctx': {'expected': "'mild', 'moderate' or 'severe'"}}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'presentation', 'acquisition'), 'msg': "Input should be 'community', 'hospital' or 'icu'", 'input': <MagicMock name='mock.update_case().clinical_case.presentation.acquisition' id='2359832817024'>, 'ctx': {'expected': "'community', 'hospital' or 'icu'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'specimen_type'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.specimen_type' id='2359838293888'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'laboratory', 'organism'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.laboratory.organism' id='2359837511216'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'soar_inputs', 'respiratory_diagnosis'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.soar_inputs.respiratory_diagnosis' id='2359837493632'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'clinician_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.clinician_id' id='2359848922352'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'facility_id'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.facility_id' id='2359848926192'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'department'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.department' id='2359848848128'>}
+  {'type': 'string_type', 'loc': ('response', 'data', 'clinical_case', 'user_metadata', 'country'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().clinical_case.user_metadata.country' id='2359848851824'>}
+  {'type': 'enum', 'loc': ('response', 'data', 'clinical_case', 'resistance_status'), 'msg': "Input should be 'none', 'predicted' or 'confirmed'", 'input': <MagicMock name='mock.update_case().clinical_case.resistance_status' id='2359849095328'>, 'ctx': {'expected': "'none', 'predicted' or 'confirmed'"}}
+  {'type': 'string_type', 'loc': ('response', 'data', 'status'), 'msg': 'Input should be a valid string', 'input': <MagicMock name='mock.update_case().status' id='2359832982736'>}
+
+  File "C:\Users\HP\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\api\v1\clinical_cases.py", line 83, in update_clinical_case
+    PUT /api/v1/clinical-cases/{case_id}
+___________ test_delete_clinical_case_endpoint_returns_deleted_flag ___________
+
+test_app = <starlette.testclient.TestClient object at 0x0000022571FCEDE0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022571FCE420>
+
+        clinical_case=ClinicalCaseRequest.model_validate(sample_clinical_case_payload),
+        status="updated",
+    )
+    mock_service.update_case.return_value = expected_resource
+    client = _client_with_mock_service(mock_service)
+    
+    response = client.put("/api/v1/clinical-cases/1", json={"resistance_status": "predicted"})
+    
+    assert response.status_code == 200
+>   assert response.json()["data"]["status"] == "updated"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_clinical_case.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <MagicMock name='mock.delete_case' id='2359849013744'>, args = (1,)
+kwargs = {}
+
+    def assert_called_once_with(self, /, *args, **kwargs):
+        """assert that the mock was called exactly once and that that call was
+        with the specified arguments."""
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to be called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'delete_case' to be called once. Called 0 times.
+
+C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py:960: AssertionError
+______________________ test_api_v1_routes_are_registered ______________________
+
+    def test_api_v1_routes_are_registered():
+>       paths = {route.path for route in app.routes}
+                 ^^^^^^^^^^
+E       AttributeError: '_IncludedRouter' object has no attribute 'path'
+
+tests\test_router.py:5: AttributeError
+_______________________ test_get_case_returns_resource ________________________
+
+sample_clinical_case_payload = {'request_id': 'b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5', 'case_id': 'de8c2436-60e4-4e29-bd9b-f778af07769b', 'timestamp': '2026-08-01T20:19:47.784932+00:00', 'schema_version': '1.0.0', ...}
+
+    def test_get_case_returns_resource(sample_clinical_case_payload):
+        repository = MagicMock()
+        repository.get_by_id.return_value = sample_clinical_case_payload
+        service = ClinicalCaseService(repository)
+    
+        result = service.get_case(1)
+    
+        repository.get_by_id.assert_called_once_with(1)
+        assert result is not None
+        assert result.status == "retrieved"
+>       assert result.clinical_case.request_id == sample_clinical_case_payload["request_id"]
+E       AssertionError: assert UUID('b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5') == 'b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5'
+E        +  where UUID('b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5') = ClinicalCaseRequest(request_id=UUID('b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5'), case_id=UUID('de8c2436-60e4-4e29-bd9b-f77...ls=None, biomarkers=None, user_metadata=None, routing_metadata=None, resistance_status=<ResistanceStatus.NONE: 'none'>).request_id
+E        +    where ClinicalCaseRequest(request_id=UUID('b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5'), case_id=UUID('de8c2436-60e4-4e29-bd9b-f77...ls=None, biomarkers=None, user_metadata=None, routing_metadata=None, resistance_status=<ResistanceStatus.NONE: 'none'>) = ClinicalCaseResource(clinical_case=ClinicalCaseRequest(request_id=UUID('b749b73c-a6c4-44d9-9efd-d9cf0bdb88f5'), case_i...one, user_metadata=None, routing_metadata=None, resistance_status=<ResistanceStatus.NONE: 'none'>), status='retrieved').clinical_case
+
+tests\test_services.py:28: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_clinical_case.py::test_create_clinical_case_endpoint_returns_created_resource
+FAILED tests/test_clinical_case.py::test_get_clinical_case_endpoint_returns_resource
+FAILED tests/test_clinical_case.py::test_list_clinical_cases_endpoint_returns_list
+FAILED tests/test_clinical_case.py::test_update_clinical_case_endpoint_returns_updated_resource
+FAILED tests/test_clinical_case.py::test_delete_clinical_case_endpoint_returns_deleted_flag
+FAILED tests/test_router.py::test_api_v1_routes_are_registered - AttributeErr...
+FAILED tests/test_services.py::test_get_case_returns_resource - AssertionErro...

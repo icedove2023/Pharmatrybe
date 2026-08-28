@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Amoxicillin,Haemophilus influenzae,Multiclass (S/I/R),LogisticRegression,0.7270955165692008,0.49940865601854584,0.6653603354108669,0.8304075687586069,N/A

@@ -1,0 +1,39 @@
+================================================================================
+ARMD DATA DISCOVERY REPORT
+================================================================================
+Generated: 2026-07-31T09:38:01.798345
+Data Directory: C:\Users\Adetokunbo\Desktop\villi\ARMD\Data
+CSV Files Found: 14
+
+--- FILE SUMMARY ---
+⚠️ microbiology_cultures_adi_scores.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_antibiotic_class_exposure.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_antibiotic_subtype_exposure.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_cohort.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_demographics.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_implied_susceptibility.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_labs.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_microbial_resistance.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_nursing_home_visits.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_priorprocedures.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_prior_med.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_vitals.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_cultures_ward_info.csv: ERROR - string indices must be integers, not 'str'
+⚠️ microbiology_culture_prior_infecting_organism.csv: ERROR - string indices must be integers, not 'str'
+
+--- HEADER ISSUES ---
+
+--- DATE COLUMNS ---
+
+--- JOIN KEY SUMMARY ---
+  order_proc_id_coded: not found in any file
+  pat_enc_csn_id_coded: not found in any file
+  anon_id: not found in any file
+  encounter_id: not found in any file
+  patient_id: not found in any file
+  admission_id: not found in any file
+
+--- NEXT STEPS ---
+1. Review ARMD_Master_Data_Inventory.xlsx and Feature_Candidate_Matrix.csv
+2. Confirm join keys and decide which features to extract
+3. Proceed to WP2 feature extraction

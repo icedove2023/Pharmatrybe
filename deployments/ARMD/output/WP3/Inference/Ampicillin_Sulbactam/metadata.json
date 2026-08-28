@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ampicillin/Sulbactam",
+  "best_model": "RandomForest",
+  "threshold": 0.37104821369139307
+}

@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Moxifloxacin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.5360623781676414,0.5327797336598806,0.5189620904993063,0.5501197875073782,0.17500000000000004

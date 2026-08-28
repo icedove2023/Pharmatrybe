@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Trimethoprim Sulfa,Streptococcus pneumoniae,Binary (R vs Non-R),0.6884057971014492,0.6206178829446406,0.6547055197777788,0.7411214039547332,0.784869105659912,0.20149082335967747,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Trimethoprim_Sulfa_Streptococcus_pneumoniae

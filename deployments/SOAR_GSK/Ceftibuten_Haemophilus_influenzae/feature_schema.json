@@ -1,0 +1,79 @@
+{
+  "features": [
+    {
+      "name": "Age",
+      "position": 0,
+      "transformer": "num",
+      "type": "numeric",
+      "generated_columns": null
+    },
+    {
+      "name": "YearCollected",
+      "position": 1,
+      "transformer": "num",
+      "type": "numeric",
+      "generated_columns": null
+    },
+    {
+      "name": "Region",
+      "position": 2,
+      "transformer": "ohe",
+      "type": "categorical_onehot",
+      "generated_columns": null
+    },
+    {
+      "name": "BodyLocation_Group",
+      "position": 3,
+      "transformer": "ohe",
+      "type": "categorical_onehot",
+      "generated_columns": null
+    },
+    {
+      "name": "Country",
+      "position": 4,
+      "transformer": "target_enc",
+      "type": "categorical_target_encoded",
+      "generated_columns": null
+    },
+    {
+      "name": "Beta_Lactamase_enc",
+      "position": 5,
+      "transformer": "bin",
+      "type": "passthrough",
+      "generated_columns": null
+    }
+  ],
+  "transformers": {
+    "num": {
+      "class": "StandardScaler",
+      "columns": [
+        "Age",
+        "YearCollected"
+      ],
+      "generated_columns": null
+    },
+    "ohe": {
+      "class": "OneHotEncoder",
+      "columns": [
+        "Region",
+        "BodyLocation_Group"
+      ],
+      "generated_columns": null
+    },
+    "target_enc": {
+      "class": "TargetEncoder",
+      "columns": [
+        "Country"
+      ],
+      "generated_columns": null
+    },
+    "bin": {
+      "class": "Passthrough",
+      "columns": [
+        "Beta_Lactamase_enc"
+      ],
+      "generated_columns": null
+    }
+  },
+  "total_features": 6
+}

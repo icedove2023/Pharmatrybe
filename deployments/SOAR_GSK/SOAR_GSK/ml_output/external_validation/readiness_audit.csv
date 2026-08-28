@@ -1,0 +1,17 @@
+Drug,Species,GSK_Total,SOAR_Total,GSK_R,SOAR_R,GSK_Resistance_Prevalence,SOAR_Resistance_Prevalence,Prevalence_Difference,Region_Diff_Significant,Top3_Country_Overlap,Age_Median_Diff,GSK_R_Flag,SOAR_R_Flag,Ready_for_External_Validation
+Levofloxacin,Haemophilus influenzae,1065,1528,7,315,0.007,0.206,0.2,True,0,-21.0,⚠️ Low R (<30),✅ Adequate,❌ No
+Moxifloxacin,Haemophilus influenzae,1065,1528,6,284,0.006,0.186,0.18,True,0,-21.0,⚠️ Low R (<30),✅ Adequate,❌ No
+Azithromycin,Haemophilus influenzae,1065,1528,12,56,0.011,0.037,0.025,True,0,-20.0,⚠️ Low R (<30),✅ Adequate,❌ No
+Clarithromycin,Haemophilus influenzae,1061,1528,0,0,0.0,0.0,0.0,True,0,-21.0,⚠️ Low R (<30),⚠️ Low R (<30),❌ No
+Ampicillin,Haemophilus influenzae,1052,1528,127,335,0.121,0.219,0.099,True,0,-21.0,✅ Adequate,✅ Adequate,❌ No
+Trimethoprim Sulfa,Haemophilus influenzae,994,1528,352,712,0.354,0.466,0.112,True,0,-18.5,✅ Adequate,✅ Adequate,❌ No
+Levofloxacin,Streptococcus pneumoniae,1345,993,1,25,0.001,0.025,0.024,True,0,-37.0,⚠️ Low R (<30),⚠️ Low R (<30),❌ No
+Moxifloxacin,Streptococcus pneumoniae,1345,993,1,19,0.001,0.019,0.018,True,0,-37.0,⚠️ Low R (<30),⚠️ Low R (<30),❌ No
+Erythromycin,Streptococcus pneumoniae,1344,993,532,546,0.396,0.55,0.154,True,0,-37.0,✅ Adequate,✅ Adequate,❌ No
+Trimethoprim Sulfa,Streptococcus pneumoniae,1339,993,438,501,0.327,0.505,0.177,True,0,-37.0,✅ Adequate,✅ Adequate,❌ No
+Ceftriaxone,Streptococcus pneumoniae,1336,993,26,19,0.019,0.019,0.0,True,0,-37.0,⚠️ Low R (<30),⚠️ Low R (<30),❌ No
+Azithromycin,Streptococcus pneumoniae,1336,993,535,547,0.4,0.551,0.15,True,0,-37.0,✅ Adequate,✅ Adequate,❌ No
+Amoxicillin,Streptococcus pneumoniae,940,993,187,163,0.199,0.164,0.035,True,0,-38.0,✅ Adequate,✅ Adequate,❌ No
+Amoxicillin,Haemophilus influenzae,163,1528,163,370,1.0,0.242,0.758,True,0,-28.5,✅ Adequate,✅ Adequate,❌ No
+Clarithromycin,Streptococcus pneumoniae,683,993,531,536,0.777,0.54,0.238,True,0,-40.0,✅ Adequate,✅ Adequate,❌ No
+Penicillin,Streptococcus pneumoniae,534,993,188,110,0.352,0.111,0.241,True,0,-40.0,✅ Adequate,✅ Adequate,❌ No

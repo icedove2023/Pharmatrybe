@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Erythromycin,Streptococcus pneumoniae,Binary (R vs Non-R),0.6763285024154589,0.4034582132564842,0.5457405783179496,0.6201492537313433,0.7910568912179493,0.24048170397228152,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Erythromycin_Streptococcus_pneumoniae

@@ -1,0 +1,7 @@
+{
+  "missing_value_strategy": "median (computed on training set)",
+  "categorical_encoding": "pandas.get_dummies(drop_first=True, dummy_na=True)",
+  "scaling": "StandardScaler",
+  "feature_count": 37,
+  "created": "2026-08-01T19:43:17.773558"
+}

@@ -1,0 +1,10 @@
+{
+  "certificate_id": "CERT-ea78d611",
+  "deployment": "Ceftriaxone_Haemophilus_influenzae",
+  "uuid": "ea78d611-af61-4056-a352-1fbff476628e",
+  "grade": "B",
+  "score": 84.62,
+  "certified": true,
+  "timestamp": "2026-08-10T00:13:45.538354",
+  "verification_version": "2.1"
+}

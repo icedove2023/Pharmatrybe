@@ -1,0 +1,22 @@
+[2026-08-01 19:05:49,825] [INFO] ================================================================================
+[2026-08-01 19:05:49,841] [INFO] WP4 – CLINICAL DECISION ENGINE (PRODUCTION)
+[2026-08-01 19:05:49,842] [INFO] ================================================================================
+[2026-08-01 19:05:49,843] [WARNING] medians.json not found; will use per-column medians (may differ from WP3)
+[2026-08-01 19:05:49,879] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-01 19:05:49,879] [INFO] No patient ID provided; using first patient from WP2 table.
+[2026-08-01 19:05:50,239] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-01 19:05:50,293] [INFO] No patient ID provided; using first row.
+[2026-08-01 19:05:50,296] [INFO] Processing patient: 300712252
+[2026-08-01 19:05:50,391] [INFO] Preprocessed patient features: 32
+[2026-08-01 19:05:50,391] [INFO] Running predictions...
+[2026-08-01 19:05:57,604] [INFO] Predictions complete.
+[2026-08-01 19:05:57,606] [INFO] Generating SHAP explanation for Erythromycin...
+[2026-08-01 19:05:57,888] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-01 19:05:57,909] [INFO] Sampled 200 background patients.
+[2026-08-01 19:06:06,007] [INFO] Background preprocessed shape: (200, 32)
+[2026-08-01 19:06:06,010] [INFO] Background scaled shape: (200, 56)
+[2026-08-01 19:06:06,043] [INFO] Building SHAP explainer for RandomForestClassifier
+[2026-08-01 19:06:06,044] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-01 19:06:20,344] [INFO] SHAP explanation generated.
+[2026-08-01 19:06:20,364] [INFO] Report saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\report.txt
+[2026-08-01 19:06:20,423] [INFO] JSON saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\prediction.json

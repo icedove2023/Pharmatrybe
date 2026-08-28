@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Cefpodoxime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8752436647173489,0.8406584873427551,0.8711918447738818,0.852319710219165,0.25000000000000006

@@ -1,0 +1,11 @@
+{
+  "phase": "13D",
+  "engine_version": "4.0",
+  "python_version": "3.14.6",
+  "timestamp": "2026-08-10T00:12:19.195249",
+  "host_os": "Windows",
+  "recovery_duration": 0.0,
+  "deployment_uuid": "093c2f42-b2dc-4c4a-8dd9-df020951be1b",
+  "recovered_from": "artifact_recovery_v2\\Cefpodoxime_Haemophilus_influenzae",
+  "original_deployment": "deployment\\Cefpodoxime_Haemophilus_influenzae"
+}

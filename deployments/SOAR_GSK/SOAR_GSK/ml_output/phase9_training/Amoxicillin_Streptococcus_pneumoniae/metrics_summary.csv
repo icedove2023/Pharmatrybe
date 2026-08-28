@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Amoxicillin,Streptococcus pneumoniae,Multiclass (S/I/R),LogisticRegression,0.6376811594202898,0.4323821507212511,0.5634615839670751,0.701126549620112,N/A

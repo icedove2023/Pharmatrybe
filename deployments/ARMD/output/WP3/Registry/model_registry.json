@@ -1,0 +1,202 @@
+{
+  "Amikacin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Amikacin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Amoxicillin/Clavulanic Acid": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Amoxicillin_Clavulanic_Acid",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ampicillin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ampicillin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ampicillin/Sulbactam": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ampicillin_Sulbactam",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Aztreonam": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Aztreonam",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Cefazolin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Cefazolin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Cefepime": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Cefepime",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Cefoxitin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Cefoxitin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ceftaroline": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ceftaroline",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ceftazidime": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ceftazidime",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ceftriaxone": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ceftriaxone",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Cefuroxime": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Cefuroxime",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Ciprofloxacin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Ciprofloxacin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Clarithromycin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Clarithromycin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Clindamycin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Clindamycin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Daptomycin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Daptomycin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Doxycycline": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Doxycycline",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Erythromycin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Erythromycin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Gentamicin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Gentamicin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  },
+  "Levofloxacin": {
+    "folder": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP3\\Models\\Levofloxacin",
+    "model_file": "model.pkl",
+    "scaler_file": "scaler.pkl",
+    "threshold_file": "threshold.txt",
+    "feature_file": "features.json",
+    "metadata_file": "metadata.json",
+    "metrics_file": "metrics.json",
+    "ci_file": "ci.json"
+  }
+}

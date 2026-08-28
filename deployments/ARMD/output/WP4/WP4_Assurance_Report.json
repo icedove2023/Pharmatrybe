@@ -1,0 +1,775 @@
+{
+  "timestamp": "2026-08-01T15:00:09.177922",
+  "total_tested": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "patient_id": 300712252,
+      "status": "PASS",
+      "num_predictions": 20,
+      "top_abx": "Erythromycin",
+      "valid_probs": true,
+      "shap_ok": true
+    },
+    {
+      "patient_id": 300722884,
+      "status": "PASS",
+      "num_predictions": 20,
+      "top_abx": "Erythromycin",
+      "valid_probs": true,
+      "shap_ok": true
+    },
+    {
+      "patient_id": 300924693,
+      "status": "PASS",
+      "num_predictions": 20,
+      "top_abx": "Erythromycin",
+      "valid_probs": true,
+      "shap_ok": true
+    },
+    {
+      "patient_id": 301633327,
+      "status": "PASS",
+      "num_predictions": 20,
+      "top_abx": "Erythromycin",
+      "valid_probs": true,
+      "shap_ok": true
+    },
+    {
+      "patient_id": 302249417,
+      "status": "PASS",
+      "num_predictions": 20,
+      "top_abx": "Erythromycin",
+      "valid_probs": true,
+      "shap_ok": true
+    }
+  ],
+  "sample_predictions": [
+    {
+      "patient_id": 300712252,
+      "predictions": [
+        {
+          "antibiotic": "Erythromycin",
+          "probability": 0.155767418059383,
+          "threshold": 0.11519759934097473,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ciprofloxacin",
+          "probability": 0.18080404702032493,
+          "threshold": 0.13530011748290993,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Levofloxacin",
+          "probability": 0.2622714083347367,
+          "threshold": 0.06544111127177736,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Amikacin",
+          "probability": 0.29018284533442024,
+          "threshold": 0.2827892111242115,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clarithromycin",
+          "probability": 0.2972280753014668,
+          "threshold": 0.16958954602246634,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Gentamicin",
+          "probability": 0.30224372680328665,
+          "threshold": 0.31208436294931025,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ceftazidime",
+          "probability": 0.31953502454938304,
+          "threshold": 0.1954357468246603,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Aztreonam",
+          "probability": 0.33457130492959786,
+          "threshold": 0.381526777312973,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Daptomycin",
+          "probability": 0.3901572808937176,
+          "threshold": 0.1445412068763515,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefazolin",
+          "probability": 0.39417319037069426,
+          "threshold": 0.18357343141651614,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefuroxime",
+          "probability": 0.4558532227155251,
+          "threshold": 0.44749692445376904,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clindamycin",
+          "probability": 0.5247004000962707,
+          "threshold": 0.48673857274128124,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Doxycycline",
+          "probability": 0.5993743397987781,
+          "threshold": 0.20270245427132708,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftaroline",
+          "probability": 0.7146081042548873,
+          "threshold": 0.706802553513632,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefoxitin",
+          "probability": 0.7381853998218915,
+          "threshold": 0.3414685785108162,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amoxicillin/Clavulanic Acid",
+          "probability": 0.8088349177050602,
+          "threshold": 0.7975880544319109,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ampicillin",
+          "probability": 0.8107819405333393,
+          "threshold": 0.3497164590446203,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefepime",
+          "probability": 0.848922796547661,
+          "threshold": 0.4142475270838424,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin/Sulbactam",
+          "probability": 0.9018761827084368,
+          "threshold": 0.37784744944351634,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftriaxone",
+          "probability": 0.9999789287620459,
+          "threshold": 0.2004996535960805,
+          "class": "Resistant",
+          "confidence": "High"
+        }
+      ]
+    },
+    {
+      "patient_id": 300722884,
+      "predictions": [
+        {
+          "antibiotic": "Erythromycin",
+          "probability": 0.1517554566671923,
+          "threshold": 0.11519759934097473,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ciprofloxacin",
+          "probability": 0.17544177688020338,
+          "threshold": 0.13530011748290993,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Amikacin",
+          "probability": 0.26903089305663447,
+          "threshold": 0.2827892111242115,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Levofloxacin",
+          "probability": 0.2838508215614933,
+          "threshold": 0.06544111127177736,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Clarithromycin",
+          "probability": 0.2972458999292956,
+          "threshold": 0.16958954602246634,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Gentamicin",
+          "probability": 0.30321963630615995,
+          "threshold": 0.31208436294931025,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ceftazidime",
+          "probability": 0.31742108170285416,
+          "threshold": 0.1954357468246603,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Aztreonam",
+          "probability": 0.34978984835400007,
+          "threshold": 0.381526777312973,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefazolin",
+          "probability": 0.3913055628603111,
+          "threshold": 0.18357343141651614,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Daptomycin",
+          "probability": 0.3980983163551666,
+          "threshold": 0.1445412068763515,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefuroxime",
+          "probability": 0.48879229157087056,
+          "threshold": 0.44749692445376904,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clindamycin",
+          "probability": 0.5299633724909818,
+          "threshold": 0.48673857274128124,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Doxycycline",
+          "probability": 0.5992851920408675,
+          "threshold": 0.20270245427132708,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftaroline",
+          "probability": 0.7066225038551668,
+          "threshold": 0.706802553513632,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefoxitin",
+          "probability": 0.7561369666027512,
+          "threshold": 0.3414685785108162,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin",
+          "probability": 0.8286990324959138,
+          "threshold": 0.3497164590446203,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefepime",
+          "probability": 0.8398030168218436,
+          "threshold": 0.4142475270838424,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amoxicillin/Clavulanic Acid",
+          "probability": 0.8675613839725964,
+          "threshold": 0.7975880544319109,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ampicillin/Sulbactam",
+          "probability": 0.9015562493986321,
+          "threshold": 0.37784744944351634,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftriaxone",
+          "probability": 0.9999689455228571,
+          "threshold": 0.2004996535960805,
+          "class": "Resistant",
+          "confidence": "High"
+        }
+      ]
+    },
+    {
+      "patient_id": 300924693,
+      "predictions": [
+        {
+          "antibiotic": "Erythromycin",
+          "probability": 0.1517554566671923,
+          "threshold": 0.11519759934097473,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ciprofloxacin",
+          "probability": 0.17544177688020338,
+          "threshold": 0.13530011748290993,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Amikacin",
+          "probability": 0.26903089305663447,
+          "threshold": 0.2827892111242115,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Levofloxacin",
+          "probability": 0.2838508215614933,
+          "threshold": 0.06544111127177736,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Clarithromycin",
+          "probability": 0.2972458999292956,
+          "threshold": 0.16958954602246634,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Gentamicin",
+          "probability": 0.30321963630615995,
+          "threshold": 0.31208436294931025,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ceftazidime",
+          "probability": 0.31742108170285416,
+          "threshold": 0.1954357468246603,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Aztreonam",
+          "probability": 0.34978984835400007,
+          "threshold": 0.381526777312973,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefazolin",
+          "probability": 0.3913055628603111,
+          "threshold": 0.18357343141651614,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Daptomycin",
+          "probability": 0.3980983163551666,
+          "threshold": 0.1445412068763515,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefuroxime",
+          "probability": 0.48879229157087056,
+          "threshold": 0.44749692445376904,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clindamycin",
+          "probability": 0.5299633724909818,
+          "threshold": 0.48673857274128124,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Doxycycline",
+          "probability": 0.5992851920408675,
+          "threshold": 0.20270245427132708,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftaroline",
+          "probability": 0.7066225038551668,
+          "threshold": 0.706802553513632,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefoxitin",
+          "probability": 0.7561369666027512,
+          "threshold": 0.3414685785108162,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin",
+          "probability": 0.8286990324959138,
+          "threshold": 0.3497164590446203,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefepime",
+          "probability": 0.8398030168218436,
+          "threshold": 0.4142475270838424,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amoxicillin/Clavulanic Acid",
+          "probability": 0.8675613839725964,
+          "threshold": 0.7975880544319109,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ampicillin/Sulbactam",
+          "probability": 0.9015562493986321,
+          "threshold": 0.37784744944351634,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftriaxone",
+          "probability": 0.9999689455228571,
+          "threshold": 0.2004996535960805,
+          "class": "Resistant",
+          "confidence": "High"
+        }
+      ]
+    },
+    {
+      "patient_id": 301633327,
+      "predictions": [
+        {
+          "antibiotic": "Erythromycin",
+          "probability": 0.1700516693422974,
+          "threshold": 0.11519759934097473,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ciprofloxacin",
+          "probability": 0.17152249539302994,
+          "threshold": 0.13530011748290993,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Levofloxacin",
+          "probability": 0.2769743064035951,
+          "threshold": 0.06544111127177736,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amikacin",
+          "probability": 0.2859963011239974,
+          "threshold": 0.2827892111242115,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Gentamicin",
+          "probability": 0.2953366542476353,
+          "threshold": 0.31208436294931025,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Aztreonam",
+          "probability": 0.3070201353438837,
+          "threshold": 0.381526777312973,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ceftazidime",
+          "probability": 0.31635912595644455,
+          "threshold": 0.1954357468246603,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clarithromycin",
+          "probability": 0.32400279351402356,
+          "threshold": 0.16958954602246634,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefuroxime",
+          "probability": 0.37905960611257683,
+          "threshold": 0.44749692445376904,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefazolin",
+          "probability": 0.3899436403526315,
+          "threshold": 0.18357343141651614,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Daptomycin",
+          "probability": 0.430483057178017,
+          "threshold": 0.1445412068763515,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Clindamycin",
+          "probability": 0.5006156852449722,
+          "threshold": 0.48673857274128124,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Doxycycline",
+          "probability": 0.5992238707752174,
+          "threshold": 0.20270245427132708,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftaroline",
+          "probability": 0.7010667889978041,
+          "threshold": 0.706802553513632,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefoxitin",
+          "probability": 0.7677476071376617,
+          "threshold": 0.3414685785108162,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin",
+          "probability": 0.8148905757883614,
+          "threshold": 0.3497164590446203,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Cefepime",
+          "probability": 0.8652578467012558,
+          "threshold": 0.4142475270838424,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amoxicillin/Clavulanic Acid",
+          "probability": 0.886248095160315,
+          "threshold": 0.7975880544319109,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ampicillin/Sulbactam",
+          "probability": 0.9266579212400275,
+          "threshold": 0.37784744944351634,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftriaxone",
+          "probability": 0.9999605217751515,
+          "threshold": 0.2004996535960805,
+          "class": "Resistant",
+          "confidence": "High"
+        }
+      ]
+    },
+    {
+      "patient_id": 302249417,
+      "predictions": [
+        {
+          "antibiotic": "Erythromycin",
+          "probability": 0.16592206345689586,
+          "threshold": 0.11519759934097473,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ciprofloxacin",
+          "probability": 0.19047094954968538,
+          "threshold": 0.13530011748290993,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Levofloxacin",
+          "probability": 0.2349564387645346,
+          "threshold": 0.06544111127177736,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Clarithromycin",
+          "probability": 0.2733073980975883,
+          "threshold": 0.16958954602246634,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Amikacin",
+          "probability": 0.2740055278400552,
+          "threshold": 0.2827892111242115,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Aztreonam",
+          "probability": 0.2811323911413243,
+          "threshold": 0.381526777312973,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Ceftazidime",
+          "probability": 0.31167056798767717,
+          "threshold": 0.1954357468246603,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Gentamicin",
+          "probability": 0.31352985962738394,
+          "threshold": 0.31208436294931025,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefazolin",
+          "probability": 0.38395989933741625,
+          "threshold": 0.18357343141651614,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Daptomycin",
+          "probability": 0.40669370196199034,
+          "threshold": 0.1445412068763515,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Clindamycin",
+          "probability": 0.5148214454361754,
+          "threshold": 0.48673857274128124,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefuroxime",
+          "probability": 0.5154957782804871,
+          "threshold": 0.44749692445376904,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Doxycycline",
+          "probability": 0.5991160094665937,
+          "threshold": 0.20270245427132708,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftaroline",
+          "probability": 0.6934414759010308,
+          "threshold": 0.706802553513632,
+          "class": "Susceptible",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefoxitin",
+          "probability": 0.7896506830034826,
+          "threshold": 0.3414685785108162,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin",
+          "probability": 0.8275794877094217,
+          "threshold": 0.3497164590446203,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Amoxicillin/Clavulanic Acid",
+          "probability": 0.8628068080302367,
+          "threshold": 0.7975880544319109,
+          "class": "Resistant",
+          "confidence": "Moderate"
+        },
+        {
+          "antibiotic": "Cefepime",
+          "probability": 0.8701074866448177,
+          "threshold": 0.4142475270838424,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ampicillin/Sulbactam",
+          "probability": 0.8998465052439055,
+          "threshold": 0.37784744944351634,
+          "class": "Resistant",
+          "confidence": "High"
+        },
+        {
+          "antibiotic": "Ceftriaxone",
+          "probability": 0.9999464309895956,
+          "threshold": 0.2004996535960805,
+          "class": "Resistant",
+          "confidence": "High"
+        }
+      ]
+    }
+  ]
+}

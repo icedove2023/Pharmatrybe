@@ -1,0 +1,14 @@
+Feature,Mean |SHAP|
+num__Age,0.18311987111807113
+ohe__Region_Africa,0.14303731869436148
+num__YearCollected,0.05502047963052905
+ohe__Region_Middle East,0.044528107316243334
+target_enc__Country_2,0.03358637389570111
+target_enc__Country_1,0.0293354865500946
+ohe__Region_Asia,0.027760536102537238
+ohe__Region_Europe,0.018857863709992522
+bin__Beta_Lactamase_enc,0.009277566354332651
+target_enc__Country_0,0.008416742850716401
+ohe__BodyLocation_Group_Respiratory,0.00346330866821257
+ohe__BodyLocation_Group_Blood,0.002632013798932405
+ohe__BodyLocation_Group_Other,0.0018329245337077118

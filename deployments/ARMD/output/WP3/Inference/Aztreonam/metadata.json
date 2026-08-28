@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Aztreonam",
+  "best_model": "XGBoost",
+  "threshold": 0.231477422623034
+}

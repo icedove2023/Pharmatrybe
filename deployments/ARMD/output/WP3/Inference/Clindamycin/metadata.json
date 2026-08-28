@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Clindamycin",
+  "best_model": "RandomForest",
+  "threshold": 0.48172209846406516
+}

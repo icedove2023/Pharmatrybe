@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Levofloxacin",
+  "best_model": "RandomForest",
+  "threshold": 0.11222569895562291
+}

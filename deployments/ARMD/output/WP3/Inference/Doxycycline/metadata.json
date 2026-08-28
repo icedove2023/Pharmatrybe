@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Doxycycline",
+  "best_model": "RandomForest",
+  "threshold": 0.2385249874013801
+}

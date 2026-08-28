@@ -1,0 +1,11 @@
+{
+  "classes": [
+    "R",
+    "S"
+  ],
+  "mapping": {
+    "R": 0,
+    "S": 1
+  },
+  "n_classes": 2
+}

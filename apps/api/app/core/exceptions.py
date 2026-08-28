@@ -39,6 +39,8 @@ def build_api_failure(
 
 def map_http_exception_to_code(exc: FastAPIHTTPException) -> str:
     """Map FastAPI HTTP exceptions to the official PharmaTrybe error codes."""
+    if isinstance(exc.detail, dict) and isinstance(exc.detail.get("code"), str):
+        return exc.detail["code"]
     status_code = exc.status_code
     mapping = {
         400: "INVALID_REQUEST",

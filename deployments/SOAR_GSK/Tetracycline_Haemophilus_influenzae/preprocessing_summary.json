@@ -1,0 +1,53 @@
+{
+  "numeric_features": [
+    "Age",
+    "YearCollected"
+  ],
+  "categorical_features": [
+    "Region",
+    "BodyLocation_Group",
+    "Country"
+  ],
+  "total_features": 6,
+  "transformers": {
+    "num": {
+      "class": "StandardScaler",
+      "columns": [
+        "Age",
+        "YearCollected"
+      ],
+      "generated_columns": null
+    },
+    "ohe": {
+      "class": "OneHotEncoder",
+      "columns": [
+        "Region",
+        "BodyLocation_Group"
+      ],
+      "generated_columns": null
+    },
+    "target_enc": {
+      "class": "TargetEncoder",
+      "columns": [
+        "Country"
+      ],
+      "generated_columns": null
+    },
+    "bin": {
+      "class": "Passthrough",
+      "columns": [
+        "Beta_Lactamase_enc"
+      ],
+      "generated_columns": null
+    }
+  },
+  "pipeline_order": [
+    "num",
+    "ohe",
+    "target_enc",
+    "bin",
+    "smote",
+    "classifier"
+  ],
+  "contract_version": "1.0.0"
+}

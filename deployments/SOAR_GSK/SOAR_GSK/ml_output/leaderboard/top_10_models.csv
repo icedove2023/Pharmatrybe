@@ -1,0 +1,11 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold,Drug_Species
+Cefotaxime,Haemophilus influenzae,Binary (R vs Non-R),XGBoost,0.9376218323586744,0.9074216106474172,0.9386525566491608,0.9428571428571428,0.15,Cefotaxime_Haemophilus_influenzae
+Ceftibuten,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8908382066276803,0.8618474204593545,0.8891110959623333,0.8821432570639394,0.3500000000000001,Ceftibuten_Haemophilus_influenzae
+Cefpodoxime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8654970760233918,0.824476235340788,0.8593770312441323,0.8508836120156599,0.25,Cefpodoxime_Haemophilus_influenzae
+Cefixime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8576998050682261,0.8226720647773279,0.8544735658309065,0.847657952069717,0.225,Cefixime_Haemophilus_influenzae
+Ceftriaxone,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.8947368421052632,0.8148262032085563,0.907541514213341,0.9288045843609458,0.125,Ceftriaxone_Haemophilus_influenzae
+Trimethoprim Sulfa,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.7602339181286549,0.7545597759495887,0.7608886268416242,0.7560798122065727,0.4750000000000001,Trimethoprim_Sulfa_Haemophilus_influenzae
+Tetracycline,Haemophilus influenzae,Binary (R vs Non-R),XGBoost,0.9044834307992202,0.72609591056193,0.9135320731300972,0.8634912907064806,0.075,Tetracycline_Haemophilus_influenzae
+Tetracycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6980676328502415,0.6746817538896747,0.691536441428822,0.7197507818371355,0.3500000000000001,Tetracycline_Streptococcus_pneumoniae
+Levofloxacin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.6627680311890838,0.6626859998859771,0.66415230942901,0.688694792353329,0.225,Levofloxacin_Haemophilus_influenzae
+Doxycycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6763285024154589,0.6444302012562492,0.6593503743791053,0.6963792610931251,0.3500000000000001,Doxycycline_Streptococcus_pneumoniae

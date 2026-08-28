@@ -1,0 +1,73 @@
+[2026-08-27 19:44:46,641] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-27 19:44:46,658] [INFO] Loaded registry with 20 antibiotics
+[2026-08-27 19:44:46,696] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-27 19:44:46,696] [WARNING] Failed to load WP2 table (optional): WP2 feature table not found: C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\deployments\ARMD\output/WP2/WP2_Model_Ready_Feature_Table.parquet
+[2026-08-27 19:44:46,696] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-27 19:44:46,696] [INFO] ARMD Prediction Plugin initialization complete
+[2026-08-27 19:44:46,857] [INFO] Plugin soar instantiated
+[2026-08-27 19:44:46,878] [INFO] Runtime starting plugin_id=soar plugin_name=SOAR Prediction Plugin
+[2026-08-27 19:44:47,258] [INFO] Registry initialized plugin_id=soar deployment_count=10
+[2026-08-27 19:44:47,258] [INFO] Prediction engine ready plugin_id=soar engine=PredictionEngine
+[2026-08-27 19:44:47,258] [INFO] Explainability ready plugin_id=soar adapter=ExplainabilityAdapter
+[2026-08-27 19:44:47,258] [INFO] Runtime initialized plugin_id=soar plugin_version=0.1.0
+[2026-08-27 19:44:47,258] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-27 19:44:47,258] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-27 19:44:47,258] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-27 19:44:47,258] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-27 19:44:47,258] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-27 19:44:47,258] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-27 19:44:47,258] [INFO] Loaded 11 placeholder guidelines
+[2026-08-27 19:44:47,258] [INFO] Processing prediction request for patient
+[2026-08-27 19:44:49,938] [INFO] Loaded model package for Amikacin
+[2026-08-27 19:44:50,580] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:11,946] [INFO] Loaded model package for Amoxicillin/Clavulanic Acid
+[2026-08-27 19:45:12,032] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:13,080] [INFO] Loaded model package for Ampicillin
+[2026-08-27 19:45:13,155] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:13,680] [INFO] Loaded model package for Ampicillin/Sulbactam
+[2026-08-27 19:45:13,713] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:14,280] [INFO] Loaded model package for Aztreonam
+[2026-08-27 19:45:14,347] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:14,446] [INFO] Loaded model package for Cefazolin
+[2026-08-27 19:45:14,496] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:15,271] [INFO] Loaded model package for Cefepime
+[2026-08-27 19:45:15,281] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:16,580] [INFO] Loaded model package for Cefoxitin
+[2026-08-27 19:45:16,597] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:17,481] [INFO] Loaded model package for Ceftaroline
+[2026-08-27 19:45:17,497] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:17,662] [INFO] Loaded model package for Ceftazidime
+[2026-08-27 19:45:17,696] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:17,794] [INFO] Loaded model package for Ceftriaxone
+[2026-08-27 19:45:17,821] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:18,130] [INFO] Loaded model package for Cefuroxime
+[2026-08-27 19:45:18,164] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:18,897] [INFO] Loaded model package for Ciprofloxacin
+[2026-08-27 19:45:18,930] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:19,364] [INFO] Loaded model package for Clarithromycin
+[2026-08-27 19:45:19,397] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:21,482] [INFO] Loaded model package for Clindamycin
+[2026-08-27 19:45:21,515] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:21,998] [INFO] Loaded model package for Daptomycin
+[2026-08-27 19:45:22,031] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:22,415] [INFO] Loaded model package for Doxycycline
+[2026-08-27 19:45:22,447] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:23,532] [INFO] Loaded model package for Erythromycin
+[2026-08-27 19:45:23,671] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:24,065] [INFO] Loaded model package for Gentamicin
+[2026-08-27 19:45:24,098] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:24,330] [INFO] Loaded model package for Levofloxacin
+[2026-08-27 19:45:24,349] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-08-27 19:45:24,419] [INFO] Prediction completed successfully
+[2026-08-27 19:45:24,517] [INFO] Fusing decision
+[2026-08-27 19:45:24,518] [INFO] Decision fusion complete
+[2026-08-27 19:45:24,519] [INFO] Generating explanation
+[2026-08-27 19:45:24,519] [INFO] Explanation generated
+[2026-08-27 19:45:24,520] [INFO] Clinical intelligence pipeline completed
+[2026-08-27 19:45:24,520] [INFO] Generating evidence ranking
+[2026-08-27 19:45:24,520] [INFO] Evidence ranking generated
+[2026-08-27 19:45:24,521] [INFO] Generating recommendation trace
+[2026-08-27 19:45:24,521] [INFO] Recommendation trace generated
+[2026-08-27 19:45:24,700] [INFO] request.completed request_id=b13301eb-5df0-4892-91b3-0c8e65ae0a75 timestamp=2026-08-27T18:45:24.700426+00:00 method=POST endpoint=/api/v1/pipeline/execute status_code=200 processing_time_ms=163879.29 client_ip=testclient user_id=anonymous user_role=anonymous
+[2026-08-27 19:45:24,701] [INFO] audit.event event_id=cebe8133-76f2-49ab-b0b3-cc1193de13f6 request_id=b13301eb-5df0-4892-91b3-0c8e65ae0a75 timestamp=2026-08-27 18:45:24.701424+00:00 user_id=anonymous hospital_id=None user_role=anonymous action=REQUEST_COMPLETED resource=http_request resource_id=POST:/api/v1/pipeline/execute status=AuditStatus.SUCCESS details={'status_code': 200, 'processing_time_ms': 163879.29, 'client_ip': 'testclient'} source_service=pharmatrybe.api
+[2026-08-27 19:45:24,704] [INFO] HTTP Request: POST http://testserver/api/v1/pipeline/execute "HTTP/1.1 200 OK"

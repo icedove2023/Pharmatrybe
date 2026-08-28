@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test
+Trimethoprim Sulfa,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.7582846003898636,0.7493221941992434,0.7573606409887687,0.7541236306729265,0.7776499252292056,0.22333422814715462,True,513

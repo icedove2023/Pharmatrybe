@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Cefpodoxime,Haemophilus influenzae,Binary (R vs Non-R),0.8752436647173489,0.8406584873427551,0.8711918447738818,0.852319710219165,0.815031211729192,0.16803606636604387,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Cefpodoxime_Haemophilus_influenzae

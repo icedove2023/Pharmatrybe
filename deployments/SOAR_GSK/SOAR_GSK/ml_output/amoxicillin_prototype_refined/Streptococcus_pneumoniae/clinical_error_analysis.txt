@@ -1,0 +1,12 @@
+
+    Clinical Error Analysis for Streptococcus pneumoniae
+    ==========================================
+    Confusion Matrix (rows: actual, columns: predicted):
+       I    R  S
+I  0   98  0
+R  0   69  0
+S  0  247  0
+    
+    False Susceptible (predicted S, actual R) = 0
+    False Resistant (predicted R, actual S) = 247
+    

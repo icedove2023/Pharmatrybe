@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Moxifloxacin,Haemophilus influenzae,Binary (R vs Non-R),0.5360623781676414,0.5327797336598806,0.5189620904993063,0.5501197875073782,0.32462476057887657,0.22249533667184018,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Moxifloxacin_Haemophilus_influenzae

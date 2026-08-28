@@ -1,0 +1,20 @@
+{
+  "deployment_name": "Levofloxacin_Haemophilus_influenzae",
+  "deployment_uuid": "8387fd00-212c-47b0-a3a3-dc6ebe869445",
+  "antibiotic": "Levofloxacin",
+  "species": "Haemophilus influenzae",
+  "algorithm": "CalibratedClassifierCV",
+  "feature_count": 6,
+  "class_labels": [
+    "R",
+    "S"
+  ],
+  "package_grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "fingerprint": "f9dce9b15cf6545f8f8517ebd86169cb57f9fe7655be2a9e42c06df5d0f35208",
+  "created_at": "2026-08-10T00:12:17.802164",
+  "reconstructed_by": "Phase13D v4",
+  "recovered_from": "artifact_recovery_v2\\Levofloxacin_Haemophilus_influenzae",
+  "duration_seconds": 0.0
+}

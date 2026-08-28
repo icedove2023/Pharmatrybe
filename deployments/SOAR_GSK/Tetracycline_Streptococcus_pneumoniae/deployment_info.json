@@ -1,0 +1,20 @@
+{
+  "deployment_name": "Tetracycline_Streptococcus_pneumoniae",
+  "deployment_uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+  "antibiotic": "Tetracycline",
+  "species": "Streptococcus pneumoniae",
+  "algorithm": "CalibratedClassifierCV",
+  "feature_count": 5,
+  "class_labels": [
+    "R",
+    "S"
+  ],
+  "package_grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "fingerprint": "378808770036f2d74b392302e5301e33a7e9c0ab0e508abad0af1dd706c28b42",
+  "created_at": "2026-08-10T00:12:10.106749",
+  "reconstructed_by": "Phase13D v4",
+  "recovered_from": "artifact_recovery_v2\\Tetracycline_Streptococcus_pneumoniae",
+  "duration_seconds": 0.0
+}

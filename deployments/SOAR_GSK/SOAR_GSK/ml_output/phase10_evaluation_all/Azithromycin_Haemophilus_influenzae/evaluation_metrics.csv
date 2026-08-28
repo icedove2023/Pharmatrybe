@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Azithromycin,Haemophilus influenzae,Binary (R vs Non-R),0.9415204678362573,0.48493975903614456,0.9131614176002254,0.5218426501035196,0.06965953800280253,0.05646719842688453,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Azithromycin_Haemophilus_influenzae

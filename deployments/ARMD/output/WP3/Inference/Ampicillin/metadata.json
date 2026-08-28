@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ampicillin",
+  "best_model": "XGBoost",
+  "threshold": 0.28766487797689977
+}

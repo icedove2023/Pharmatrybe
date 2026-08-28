@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Amikacin",
+  "best_model": "RandomForest",
+  "threshold": 0.28277369023041315
+}

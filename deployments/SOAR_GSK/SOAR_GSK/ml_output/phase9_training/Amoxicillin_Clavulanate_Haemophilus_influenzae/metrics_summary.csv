@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Amoxicillin Clavulanate,Haemophilus influenzae,Multiclass (S/I/R),RandomForest,0.8011695906432749,0.29653679653679654,0.7127287916761601,0.6472380803676944,N/A

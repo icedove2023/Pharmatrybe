@@ -1,0 +1,9 @@
+{
+  "deployment": "Cefixime_Haemophilus_influenzae",
+  "model_sha256": "55b910537ead023834c11e7fba4f2ced2191f361cbe4381e9a17369631a0c745",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "2adeb3d95461e50b8c7730f09c86e2725eb1382dbe60e917913674f5b6bc4a5d",
+  "created": "2026-08-09T23:43:02.052008",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:47:58.690823"
+}

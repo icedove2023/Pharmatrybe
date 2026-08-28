@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Cefuroxime,Haemophilus influenzae,Multiclass (S/I/R),0.6608187134502924,0.2652582159624413,0.5258627790132608,0.7543885624379719,,0.1451809517180557,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Cefuroxime_Haemophilus_influenzae

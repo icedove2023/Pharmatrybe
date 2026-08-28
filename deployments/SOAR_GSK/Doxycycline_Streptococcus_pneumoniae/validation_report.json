@@ -1,0 +1,77 @@
+{
+  "deployment": "Doxycycline_Streptococcus_pneumoniae",
+  "uuid": "7da0244b-e201-4a56-87c9-b1b1e5e77dd3",
+  "timestamp": "2026-08-10T00:12:21.054084",
+  "duration_seconds": 0.0,
+  "grade": 79.1,
+  "overall_grade": "C",
+  "summary": {
+    "total_checks": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "check": "metadata_schema",
+      "passed": true,
+      "message": "Feature counts match",
+      "timestamp": "2026-08-10T00:12:20.628836"
+    },
+    {
+      "check": "label_encoder",
+      "passed": true,
+      "message": "Classes match",
+      "timestamp": "2026-08-10T00:12:20.629759"
+    },
+    {
+      "check": "pipeline_topology",
+      "passed": true,
+      "message": "Pipeline topology matches",
+      "timestamp": "2026-08-10T00:12:20.630757"
+    },
+    {
+      "check": "fingerprint",
+      "passed": true,
+      "message": "Fingerprint matches",
+      "timestamp": "2026-08-10T00:12:20.631601"
+    },
+    {
+      "check": "preprocessing_summary",
+      "passed": true,
+      "message": "total_features match",
+      "timestamp": "2026-08-10T00:12:20.632536"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "scores": {
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1
+  },
+  "contract_completeness": {
+    "required_files": [
+      "final_model.pkl",
+      "label_encoder.pkl",
+      "metadata.json",
+      "feature_schema.json",
+      "label_encoder.json",
+      "model_card.json",
+      "preprocessing_summary.json",
+      "deployment_manifest.json",
+      "deployment_fingerprint.json",
+      "README.md",
+      "VERSION.json",
+      "deployment_info.json",
+      "deployment_certificate.json",
+      "reconstruction_metadata.json",
+      "validation_report.json",
+      "package_manifest.json"
+    ],
+    "missing": [],
+    "complete": true
+  },
+  "contract_version": "1.0.0"
+}

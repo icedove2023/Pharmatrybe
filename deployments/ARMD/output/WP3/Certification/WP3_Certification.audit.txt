@@ -1,0 +1,8 @@
+WP3 CERTIFICATION
+============================================================
+Generated: 2026-08-01T20:46:04.382127
+Input Feature Table: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP2/WP2_Model_Ready_Feature_Table.parquet
+WP1 Source: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP1 – Phase B – Step 3B/Analysis_Ready_Positive_Cultures.parquet
+Models trained: 20
+Status: PASS
+============================================================

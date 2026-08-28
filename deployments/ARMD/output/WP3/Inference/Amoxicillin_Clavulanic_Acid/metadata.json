@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Amoxicillin/Clavulanic Acid",
+  "best_model": "XGBoost",
+  "threshold": 0.7651218959817193
+}

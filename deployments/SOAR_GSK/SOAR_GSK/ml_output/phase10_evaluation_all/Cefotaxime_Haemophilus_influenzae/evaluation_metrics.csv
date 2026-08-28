@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Cefotaxime,Haemophilus influenzae,Binary (R vs Non-R),0.9376218323586745,0.9074216106474171,0.9386525566491609,0.9520541549953314,0.8208591998226717,0.05626597091245637,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Cefotaxime_Haemophilus_influenzae

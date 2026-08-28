@@ -1,0 +1,12 @@
+{
+  "python_version": "3.14.6",
+  "reconstruction_python_version": "3.14.6",
+  "library_versions": {
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3",
+    "xgboost": "3.3.0",
+    "lightgbm": "not installed",
+    "pandas": "3.0.3",
+    "numpy": "2.4.6"
+  }
+}

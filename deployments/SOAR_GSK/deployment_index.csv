@@ -1,0 +1,11 @@
+Deployment,UUID,Antibiotic,Species,Algorithm,Features,Classes,Grade,Integrity,Overall
+Tetracycline_Streptococcus_pneumoniae,acbf3086-2750-4e7d-8cc2-61fbf8a4d566,Tetracycline,Streptococcus pneumoniae,CalibratedClassifierCV,,2,C,62.5,79.1
+Tetracycline_Haemophilus_influenzae,c76ddb86-ce86-43a2-8950-bca9d19bed49,Tetracycline,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Trimethoprim_Sulfa_Haemophilus_influenzae,b71e653b-7c71-459a-ab60-4c2441d2d305,Trimethoprim_Sulfa,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Ceftibuten_Haemophilus_influenzae,c505ded8-4940-410f-9cbf-d69ade638010,Ceftibuten,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Cefotaxime_Haemophilus_influenzae,44f923aa-813e-4da1-bcf1-56871d1ccdaa,Cefotaxime,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Ceftriaxone_Haemophilus_influenzae,ea78d611-af61-4056-a352-1fbff476628e,Ceftriaxone,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Levofloxacin_Haemophilus_influenzae,8387fd00-212c-47b0-a3a3-dc6ebe869445,Levofloxacin,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Cefpodoxime_Haemophilus_influenzae,093c2f42-b2dc-4c4a-8dd9-df020951be1b,Cefpodoxime,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Cefixime_Haemophilus_influenzae,000bc8b5-b4d0-4fe3-8dc0-8a49163e2007,Cefixime,Haemophilus influenzae,CalibratedClassifierCV,,2,C,62.5,79.1
+Doxycycline_Streptococcus_pneumoniae,7da0244b-e201-4a56-87c9-b1b1e5e77dd3,Doxycycline,Streptococcus pneumoniae,CalibratedClassifierCV,,2,C,62.5,79.1

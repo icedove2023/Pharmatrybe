@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Cefuroxime,Streptococcus pneumoniae,Multiclass (S/I/R),XGBoost,0.3719806763285024,0.24752884031572556,0.3689114155733305,0.3262212033805605,N/A

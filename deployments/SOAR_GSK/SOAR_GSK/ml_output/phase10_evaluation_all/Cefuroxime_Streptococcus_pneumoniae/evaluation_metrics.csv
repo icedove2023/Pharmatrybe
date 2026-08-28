@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Cefuroxime,Streptococcus pneumoniae,Multiclass (S/I/R),0.3719806763285024,0.24752884031572556,0.3689114155733305,0.3262212033805605,,0.19584898327476327,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Cefuroxime_Streptococcus_pneumoniae

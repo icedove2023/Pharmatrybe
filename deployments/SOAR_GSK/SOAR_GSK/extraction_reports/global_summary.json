@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-08-08T13:28:51.307389",
+  "deployment_root": "deployment",
+  "total_deployments": 10,
+  "total_artifacts_found": 40,
+  "total_artifacts_expected": 100,
+  "total_required_found": 20,
+  "total_required_expected": 20,
+  "grade_counts": {
+    "A": 10,
+    "B": 0,
+    "C": 0,
+    "F": 0
+  },
+  "deployments": {
+    "deployment_Cefixime_Haemophilus_influenzae": {
+      "antibiotic": "Cefixime",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Cefotaxime_Haemophilus_influenzae": {
+      "antibiotic": "Cefotaxime",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Cefpodoxime_Haemophilus_influenzae": {
+      "antibiotic": "Cefpodoxime",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Ceftibuten_Haemophilus_influenzae": {
+      "antibiotic": "Ceftibuten",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Ceftriaxone_Haemophilus_influenzae": {
+      "antibiotic": "Ceftriaxone",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Doxycycline_Streptococcus_pneumoniae": {
+      "antibiotic": "Doxycycline",
+      "organism": "Streptococcus_pneumoniae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Levofloxacin_Haemophilus_influenzae": {
+      "antibiotic": "Levofloxacin",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Tetracycline_Haemophilus_influenzae": {
+      "antibiotic": "Tetracycline",
+      "organism": "Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Tetracycline_Streptococcus_pneumoniae": {
+      "antibiotic": "Tetracycline",
+      "organism": "Streptococcus_pneumoniae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    },
+    "deployment_Trimethoprim_Sulfa_Haemophilus_influenzae": {
+      "antibiotic": "Trimethoprim",
+      "organism": "Sulfa_Haemophilus_influenzae",
+      "integrity_score": 1.0,
+      "grade": "A",
+      "errors": [],
+      "warnings": [
+        "Preprocessing pipeline missing (optional)",
+        "Calibration model missing (optional)",
+        "SHAP explainer missing (optional)",
+        "Feature schema missing (optional)",
+        "Metadata file missing (optional)",
+        "Manifest file missing (optional)",
+        "Optional artifact missing: preprocessing_pipeline.pkl",
+        "Optional artifact missing: calibration_model.pkl",
+        "Optional artifact missing: shap_explainer.pkl",
+        "Optional artifact missing: feature_schema.json",
+        "Optional artifact missing: metadata.json",
+        "Optional artifact missing: manifest.json"
+      ]
+    }
+  }
+}

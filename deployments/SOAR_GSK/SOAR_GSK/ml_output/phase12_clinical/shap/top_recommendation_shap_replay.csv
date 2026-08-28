@@ -1,0 +1,201 @@
+num__Age,num__YearCollected,ohe__Region_Africa,ohe__Region_Asia,ohe__Region_Europe,ohe__Region_Middle East,ohe__BodyLocation_Group_Blood,ohe__BodyLocation_Group_Other,ohe__BodyLocation_Group_Respiratory,target_enc__Country,bin__Beta_Lactamase_enc,patient_id,drug,species,Age,BodyLocation_Group,Region,Country,YearCollected,Beta_Lactamase_enc
+-0.0013717495551845028,-0.024224080962428444,-0.00011779364893863574,-0.14487794136069382,-0.08482798640329722,-0.003291598752704491,-0.00019516200848284122,-0.00082316766208391,-0.0065031805644593255,-0.23384464367891794,0.0009837085380776632,751,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,2443,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1413,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,325,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,2448,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,292,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,531,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,2470,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.00015731541151706662,-0.02312638431281113,-7.088927465475284e-05,-0.14619690248724876,-0.0798476867505606,-0.0034410921420449546,-0.0001793585004205207,-0.0008286218706564786,-0.00665066031894841,-0.24593472071558248,0.007025404902297317,781,Cefotaxime,Haemophilus influenzae,,,,,,
+0.020711208763852285,-0.02373733202048965,-0.00023752558837653671,-0.14230820288465204,-0.08340294481280681,-0.003249659338842552,-0.00016704847245622818,-0.001139053381217811,-0.006348548011223711,-0.21790845710914744,-0.0013060332037530718,650,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1194,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1111,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.2806639075279236,0.03503337502479553,0.0,1.3437505960464478,-0.010775723494589329,-0.1703590750694275,0.0,-0.0036399364471435547,0.0,1.7480454444885254,2.701157808303833,723,Tetracycline,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,205,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,22,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+-0.0050031434373836664,-0.023150108647568928,-9.346734907203008e-05,-0.14530244375623405,-0.07996047566084809,-0.0034578216048054633,-0.00018027974308405882,-0.0008466805707060536,-0.006694060097019134,-0.2400410405809315,0.005635925388539273,779,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,194,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,94,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,491,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,505,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+-0.021540446238350067,-0.02355073225996952,-0.00037597558971993615,-0.14656212197985205,-0.07923569779243976,-0.003498008737494435,-0.0001834614169626813,-0.0011426868868537252,-0.006882568743095,-0.2195931938614215,0.003471297447045263,621,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,536,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.0027681191759182638,-0.024237959599878213,-0.00023002221506527402,-0.14538357673371916,-0.08344488076797915,-0.0032756042142300336,-0.00019516200848284122,-0.000767746204065732,-0.00654288009275418,-0.22555783649373926,0.00777395309488212,705,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,535,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,277,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.016564256232453937,-0.022903274469385546,-0.00013403191749651288,-0.14378257971140224,-0.07795600942712438,-0.0033742419416984337,-0.00017373909642045705,-0.0010386185700726716,-0.006672507665255867,-0.22334126344638205,-0.03628158604632938,657,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,179,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1222,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1029,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+-0.005714200238055605,-0.023152510967255954,-9.346734907203008e-05,-0.14549402945014253,-0.07996047566084809,-0.0034578216048054633,-0.00018027974308405882,-0.000849064421796189,-0.006694060097019134,-0.2388546606354336,0.005356974108398935,777,Cefotaxime,Haemophilus influenzae,,,,,,
+0.10196939620608073,-0.022325465011361158,-0.000259685123439264,-0.12832680883089065,-0.07218750862300388,-0.003255835929976879,-0.00018491972699207816,-0.0010178498982076796,-0.006083933794134872,-0.11584463015848738,0.07842364483129977,646,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,923,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,303,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,20,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,166,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1243,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,2175,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.14245839152240053,-0.02111849514657386,-0.00024038790964064273,-0.12445675485932835,-0.07241968369943562,-0.0032395992446595384,-0.0001834614169626813,-0.0007057867997814136,-0.005764404410632811,-0.08512951522993285,0.10170610113543378,626,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,167,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,462,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1376,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,162,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,333,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,143,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1316,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.016541673728916424,-0.02414654554926716,-0.00022867264891458184,-0.1450326689758364,-0.08119380092161839,-0.0032493832583013757,-0.00019516200848284122,-0.0007379840725560365,-0.006496766235345858,-0.22499080417767453,0.0006365180599672114,738,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,181,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,2460,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.021256353757235127,-0.027419609096940255,-0.0002683501241462697,-0.15940564307702698,-0.09327128814771109,-0.0039459952123443946,-0.0003072826259717209,-0.0014534424522961054,-0.006515117562991178,-0.18072030360137845,-0.017042917915542063,768,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1838,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,227,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.0895590562788887,-0.02201344436296011,-0.0002753519080007021,-0.13407740799874554,-0.07519605326768335,-0.003186997745700281,-0.00018086998017663162,-0.0008842125035522567,-0.006561156124783595,-0.15179551714972592,0.05551835870332603,639,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1972,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,151,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1748,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,164,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,3,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.0010824937593813693,-0.024330025111478117,-0.00024827894167558446,-0.14498487434432322,-0.08313800191152529,-0.0032796446671884897,-0.00019516200848284122,-0.0007723411642429021,-0.006580324979848937,-0.2243927391633542,0.007745302473624796,720,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1016,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,300,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.20935033930604457,-0.021124705116863485,9.545468829120344e-05,-0.12030380830355239,-0.07233229783432014,-0.002631523940723013,-0.00015507133657730507,-0.0009676466706235847,-0.0047096215112855415,-0.13828136580315858,0.07196665046365458,655,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,504,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,378,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,199,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1620,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.08689573864410732,-0.024724491377817764,0.00023944476457395464,-0.14203661336493598,-0.08502076750528992,-0.0036006254923739347,-0.00029749046201344863,-0.0012536265561222523,-0.0059721851137772685,-0.21799565514349184,-0.015327324451971797,769,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,108,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1377,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.00832249339426542,-0.024397070683050075,-0.0002707810395784093,-0.14284313587442282,-0.08257041341446146,-0.003354726094573217,-0.00020105201339949924,-0.001250040391604218,-0.006637134196328629,-0.20517832802059863,-0.04071340772536202,628,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,0,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,26,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.00020693501310893895,-0.02489858202251426,-0.00029998207995409897,-0.14143500479278495,-0.08040230759051532,-0.0033798339065501965,-0.00020314046020625354,-0.001339981037185335,-0.006796515188272469,-0.20892275689990686,-0.031622427094332724,638,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,70,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,248,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.22419423132204333,-0.021362405859294553,0.0021170902921405165,-0.11893692795076563,-0.08370989718876061,-0.0036240181020153845,-0.00016118667575304308,-0.0010870252430128628,-0.004990543671400456,-0.17475199717599182,0.003219084193697393,735,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,245,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,195,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1414,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1395,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,45,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,461,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.0123312684038231,-0.024310825389650986,-0.0002707810395784094,-0.14232563871099554,-0.08257041341446146,-0.003354726094573218,-0.00020105201339949924,-0.001218155807224862,-0.006566322557274737,-0.21004695555449773,-0.04055999388128024,632,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,2461,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,293,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,123,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1791,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,133,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1189,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.0029945582437510385,-0.023217299780709775,-0.00017593288897326423,-0.1440248619395715,-0.07754420944661089,-0.003434627620316138,-0.00017806405788767035,-0.001090808409321741,-0.006765021322599481,-0.20653940325869746,-0.039117925578176824,699,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1193,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,230,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1218,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,528,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,1444,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,319,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.00832249339426542,-0.024397070683050075,-0.0002707810395784093,-0.14284313587442282,-0.08257041341446146,-0.003354726094573217,-0.00020105201339949924,-0.001250040391604218,-0.006637134196328629,-0.20517832802059863,-0.04071340772536202,612,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,163,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+0.00832249339426542,-0.024397070683050075,-0.0002707810395784093,-0.14284313587442282,-0.08257041341446146,-0.003354726094573217,-0.00020105201339949924,-0.001250040391604218,-0.006637134196328629,-0.20517832802059863,-0.04071340772536202,660,Cefotaxime,Haemophilus influenzae,,,,,,
+,,,,,,,,,,,1239,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,354,Trimethoprim Sulfa,Haemophilus influenzae,0.0,0.0,0.0,0.0,0.0,0.0
+,,,,,,,,,,,2066,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2034,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2300,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2500,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2158,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,316,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,901,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,439,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,374,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,314,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,406,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,425,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1515,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,211,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,417,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2450,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,212,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1163,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2125,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,359,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,403,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,69,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2396,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,433,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1266,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2503,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,855,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,371,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,376,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,542,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,135,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,440,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,389,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,348,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,154,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1158,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1150,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2516,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,843,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2111,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,88,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1253,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,10,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1263,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,920,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,415,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,919,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,565,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,934,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2109,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,847,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2047,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2122,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,932,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,544,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,317,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,174,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,477,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,331,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,171,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2502,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,117,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,465,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,558,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1675,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,908,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,114,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,185,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,332,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,457,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,352,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,330,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,214,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,396,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,116,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,97,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,867,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2510,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,152,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1141,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,467,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,810,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,818,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,588,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,862,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,57,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,184,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,879,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1674,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,595,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2464,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2501,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,1177,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,55,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,99,Tetracycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,887,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,217,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2488,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,2515,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,
+,,,,,,,,,,,232,Doxycycline,Streptococcus pneumoniae,0.0,0.0,0.0,0.0,0.0,

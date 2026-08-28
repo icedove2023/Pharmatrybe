@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Cefotaxime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.9376218323586745,0.9074216106474171,0.9386525566491609,0.9520541549953314,0.3000000000000001

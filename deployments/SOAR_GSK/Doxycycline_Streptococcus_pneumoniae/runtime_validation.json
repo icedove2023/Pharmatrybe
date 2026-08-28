@@ -1,0 +1,19 @@
+{
+  "predict_shape": [
+    1
+  ],
+  "predict_sample": [
+    0
+  ],
+  "predict_proba_shape": [
+    1,
+    2
+  ],
+  "predict_proba_sample": [
+    [
+      0.999999999998337,
+      1.6629579878677727e-12
+    ]
+  ],
+  "proba_sum_ok": true
+}

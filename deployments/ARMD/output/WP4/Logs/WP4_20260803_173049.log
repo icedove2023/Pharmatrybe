@@ -1,0 +1,14 @@
+[2026-08-03 17:30:50,178] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:30:50,735] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-03 17:31:15,547] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:31:15,650] [INFO] Sampled 200 background patients.
+[2026-08-03 17:31:26,525] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-03 17:31:26,532] [INFO] Background scaled shape: (200, 56)
+[2026-08-03 17:31:26,561] [INFO] Building SHAP explainer for LogisticRegression
+[2026-08-03 17:31:26,562] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-03 17:32:14,652] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:32:14,667] [INFO] Sampled 200 background patients.
+[2026-08-03 17:32:24,808] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-03 17:32:24,822] [INFO] Background scaled shape: (200, 56)
+[2026-08-03 17:32:24,844] [INFO] Building SHAP explainer for LogisticRegression
+[2026-08-03 17:32:24,845] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.

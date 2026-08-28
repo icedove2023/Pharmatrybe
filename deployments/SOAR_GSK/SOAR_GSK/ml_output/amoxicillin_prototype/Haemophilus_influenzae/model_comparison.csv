@@ -1,0 +1,6 @@
+,Accuracy,F1 (macro),F1 (weighted),AUC (weighted)
+LogisticRegression,0.7212,0.6232,0.7278,0.8283
+RandomForest,0.6803,0.5829,0.6902,0.8106
+XGBoost,0.4717,0.487,0.4903,0.8157
+XGBoost_Tuned,0.5789,0.5479,0.6184,0.8024
+XGBoost_Calibrated,0.7934,0.5635,0.7354,0.8098

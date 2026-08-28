@@ -1,0 +1,145 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-08-08T13:28:44.651751",
+  "deployment_path": "deployment\\Cefixime_Haemophilus_influenzae",
+  "antibiotic": "Cefixime",
+  "organism": "Haemophilus_influenzae",
+  "required_artifacts": [
+    "final_model.pkl",
+    "label_encoder.pkl"
+  ],
+  "optional_artifacts": [
+    "optimal_threshold.json",
+    "evaluation_metrics.csv",
+    "preprocessing_pipeline.pkl",
+    "calibration_model.pkl",
+    "shap_explainer.pkl",
+    "feature_schema.json",
+    "metadata.json",
+    "manifest.json"
+  ],
+  "artifacts": {
+    "final_model.pkl": {
+      "status": "found",
+      "path": "deployment\\Cefixime_Haemophilus_influenzae\\final_model.pkl",
+      "size_bytes": 8297994,
+      "sha256": "55b910537ead023834c11e7fba4f2ced2191f361cbe4381e9a17369631a0c745",
+      "error": null
+    },
+    "label_encoder.pkl": {
+      "status": "found",
+      "path": "deployment\\Cefixime_Haemophilus_influenzae\\label_encoder.pkl",
+      "size_bytes": 481,
+      "sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+      "error": null
+    },
+    "optimal_threshold.json": {
+      "status": "found",
+      "path": "deployment\\Cefixime_Haemophilus_influenzae\\optimal_threshold.json",
+      "size_bytes": 34,
+      "sha256": "897706c976b1534d5868c326d870ae5a84d3206cd8295533f325c7747545d86a",
+      "error": null
+    },
+    "evaluation_metrics.csv": {
+      "status": "found",
+      "path": "deployment\\Cefixime_Haemophilus_influenzae\\evaluation_metrics.csv",
+      "size_bytes": 309,
+      "sha256": "512be240fcf9b47ccef0009999595f4913c3215f848ee6d57c2a7b4982cc8e15",
+      "error": null
+    },
+    "preprocessing_pipeline.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "calibration_model.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "shap_explainer.pkl": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "feature_schema.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "metadata.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    },
+    "manifest.json": {
+      "status": "missing",
+      "path": null,
+      "size_bytes": null,
+      "sha256": null,
+      "error": "File not found"
+    }
+  },
+  "summary": {
+    "found": 4,
+    "total": 10,
+    "required_found": 2,
+    "required_total": 2,
+    "integrity_score": 1.0,
+    "grade": "A"
+  },
+  "model_metadata": {
+    "model_type": "CalibratedClassifierCV",
+    "is_pipeline": true,
+    "is_calibrated": true,
+    "pipeline_steps": [
+      "preprocessor",
+      "classifier"
+    ],
+    "calibration_method": "sigmoid",
+    "feature_count": 11,
+    "model_class": "RandomForestClassifier",
+    "sklearn_version": "1.9.0",
+    "xgboost_version": "3.3.0",
+    "shap_version": "0.52.0"
+  },
+  "validation_details": {
+    "valid": true,
+    "required_checks_passed": 2,
+    "required_checks_total": 2,
+    "optional_checks_passed": 2,
+    "optional_checks_total": 8,
+    "severity": "warning",
+    "details": {
+      "model_valid": true,
+      "label_encoder_valid": true,
+      "threshold_valid": true,
+      "metrics_valid": true,
+      "preprocessor_valid": false,
+      "calibration_valid": false,
+      "shap_valid": false,
+      "schema_valid": false,
+      "metadata_valid": false,
+      "manifest_valid": false
+    },
+    "errors": [],
+    "warnings": [
+      "Preprocessing pipeline missing (optional)",
+      "Calibration model missing (optional)",
+      "SHAP explainer missing (optional)",
+      "Feature schema missing (optional)",
+      "Metadata file missing (optional)",
+      "Manifest file missing (optional)"
+    ]
+  }
+}

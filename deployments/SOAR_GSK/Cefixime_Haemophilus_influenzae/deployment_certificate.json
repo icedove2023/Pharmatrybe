@@ -1,0 +1,17 @@
+{
+  "certificate_id": "CERT-000bc8b5",
+  "deployment_uuid": "000bc8b5-b4d0-4fe3-8dc0-8a49163e2007",
+  "deployment_hash": "bed309bd3dc647545f8c48ed601b659fd238e16ee92d62679b0858aa7bba18a7",
+  "created": "2026-08-10T00:12:20.172840",
+  "validator_version": "1.0.0",
+  "grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "recoverability_score": 77.77777777777779,
+  "completeness_score": 77.77777777777779,
+  "compatibility_score": 100.0,
+  "errors": [],
+  "warnings": [],
+  "certified": false,
+  "certificate_sha256": "cd8eb27313a2eb05ab37db0b1e923863009c7b11234a35ddfebcd3f2a8d026b8"
+}

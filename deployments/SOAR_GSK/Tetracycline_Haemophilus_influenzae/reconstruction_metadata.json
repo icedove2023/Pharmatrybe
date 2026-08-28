@@ -1,0 +1,11 @@
+{
+  "phase": "13D",
+  "engine_version": "4.0",
+  "python_version": "3.14.6",
+  "timestamp": "2026-08-10T00:12:11.227591",
+  "host_os": "Windows",
+  "recovery_duration": 0.0,
+  "deployment_uuid": "c76ddb86-ce86-43a2-8950-bca9d19bed49",
+  "recovered_from": "artifact_recovery_v2\\Tetracycline_Haemophilus_influenzae",
+  "original_deployment": "deployment\\Tetracycline_Haemophilus_influenzae"
+}

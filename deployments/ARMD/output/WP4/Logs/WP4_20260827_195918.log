@@ -1,0 +1,10 @@
+[2026-08-27 19:59:18,479] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-27 19:59:18,479] [INFO] Loaded registry with 20 antibiotics
+[2026-08-27 19:59:18,479] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-27 19:59:18,496] [WARNING] Failed to load WP2 table (optional): Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+[2026-08-27 19:59:18,589] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-27 19:59:18,589] [INFO] ARMD Prediction Plugin initialization complete

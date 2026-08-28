@@ -1,0 +1,17 @@
+[2026-08-03 17:34:36,908] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:34:37,138] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-03 17:34:42,910] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:34:42,929] [INFO] Sampled 200 background patients.
+[2026-08-03 17:34:52,919] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-03 17:34:52,929] [INFO] Background scaled shape: (200, 56)
+[2026-08-03 17:34:52,948] [INFO] Building SHAP explainer for LogisticRegression
+[2026-08-03 17:34:52,949] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-03 17:35:02,334] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-03 17:35:02,347] [INFO] Sampled 200 background patients.
+[2026-08-03 17:35:12,066] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-03 17:35:12,073] [INFO] Background scaled shape: (200, 56)
+[2026-08-03 17:35:12,115] [INFO] Building SHAP explainer for LogisticRegression
+[2026-08-03 17:35:12,116] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-03 17:35:17,132] [INFO] Report saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output\tmp\wp5_integration_ccg13r27\report.txt
+[2026-08-03 17:35:17,166] [INFO] JSON saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output\tmp\wp5_integration_ccg13r27\prediction.json
+[2026-08-03 17:35:19,270] [INFO] Audit saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output\tmp\wp5_integration_ccg13r27\audit.json

@@ -1,0 +1,17 @@
+{
+  "certificate_id": "CERT-acbf3086",
+  "deployment_uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+  "deployment_hash": "10c855f41434934906a2f4a5bdcde082ff50e6bd314f25d9f893850277597292",
+  "created": "2026-08-10T00:12:10.109395",
+  "validator_version": "1.0.0",
+  "grade": "C",
+  "overall_score": 79.09722222222223,
+  "integrity_score": 62.5,
+  "recoverability_score": 77.77777777777779,
+  "completeness_score": 77.77777777777779,
+  "compatibility_score": 100.0,
+  "errors": [],
+  "warnings": [],
+  "certified": false,
+  "certificate_sha256": "cec353439b8fe6c560202513ce5f4ae94a8616feb5f7f7998b69c8b9851f197f"
+}

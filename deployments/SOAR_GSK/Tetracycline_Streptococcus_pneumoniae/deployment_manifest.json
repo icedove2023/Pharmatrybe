@@ -1,0 +1,70 @@
+{
+  "final_model.pkl": {
+    "size_bytes": 21541,
+    "sha256": "cbf4c68613f8679c91cb0a66c80ddf92f31603ae7e29780e2bd1907e41ff621f",
+    "mtime": "2026-07-16T00:52:56.798682"
+  },
+  "label_encoder.pkl": {
+    "size_bytes": 481,
+    "sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+    "mtime": "2026-07-16T00:52:56.805744"
+  },
+  "metadata.json": {
+    "size_bytes": 6169,
+    "sha256": "fb33d65a4f6f997779ad637464fb6b868e7353aed1bc9d2026c0787f03d82e94",
+    "mtime": "2026-08-09T23:43:04.896694"
+  },
+  "feature_schema.json": {
+    "size_bytes": 1469,
+    "sha256": "2e5bbe987c4d58e6cbeb560445b4f7454555cba8b9451e6c81a487fd7e18db19",
+    "mtime": "2026-08-09T23:43:04.897694"
+  },
+  "label_encoder.json": {
+    "size_bytes": 110,
+    "sha256": "56e75d36201f99442c9ffec8f3f59f81fecb1c06baae349f1c419b208d48d760",
+    "mtime": "2026-08-09T23:43:04.898696"
+  },
+  "model_card.json": {
+    "size_bytes": 2540,
+    "sha256": "4d0ccf2d2322900536f015e64a433c00cd2585accd5ba70351c1f35740f6147f",
+    "mtime": "2026-08-09T23:43:04.906863"
+  },
+  "preprocessing_summary.json": {
+    "size_bytes": 922,
+    "sha256": "ee4c73df25649f8340d6dc09323600fa8e378ccc7856cc9d808ded2e027755da",
+    "mtime": "2026-08-09T23:43:04.901029"
+  },
+  "deployment_manifest.json": null,
+  "deployment_fingerprint.json": null,
+  "contract_version": "1.0.0",
+  "preprocessing_pipeline.pkl": {
+    "sha256": "240d81be03d72c01e8f96dbabc3ea03ccfc762901a50b95a341a48b7935d841e",
+    "size_bytes": 4199,
+    "added_by": "Phase13F_Deployment_Completion_Engine",
+    "added_at": "2026-08-10T00:48:04.212235"
+  },
+  "calibration.pkl": {
+    "sha256": "96f7174bb66612ca584d068636fb9afe786e1926af9af330a3c74f5082abbc95",
+    "size_bytes": 414,
+    "added_by": "Phase13F_Deployment_Completion_Engine",
+    "added_at": "2026-08-10T00:48:04.298539"
+  },
+  "shap_explainer.pkl": {
+    "sha256": "bff9a395675245f89d9fabca0b1f6e8915f46732ae650909795215b910f5cdf0",
+    "size_bytes": 2974,
+    "added_by": "Phase13F_Deployment_Completion_Engine",
+    "added_at": "2026-08-10T00:48:04.338156"
+  },
+  "optimal_threshold.json": {
+    "sha256": "828a0e369ca183f8bc1393cdf8454fb5777f0032405dcb6163e53cccdcc36504",
+    "size_bytes": 595,
+    "added_by": "Phase13F_Deployment_Completion_Engine",
+    "added_at": "2026-08-10T00:48:04.341147"
+  },
+  "evaluation_metrics.csv": {
+    "sha256": "12cfad44586b5b7e6649026f4a7b43fccefd62d82fbee79bcf481b9d019355d5",
+    "size_bytes": 124,
+    "added_by": "Phase13F_Deployment_Completion_Engine",
+    "added_at": "2026-08-10T00:48:04.343911"
+  }
+}

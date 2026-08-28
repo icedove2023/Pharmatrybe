@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test
+Ceftibuten,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8869395711500975,0.848262004814165,0.8812648702977213,0.858599902952484,0.8158001994709045,0.1263047733339655,True,513

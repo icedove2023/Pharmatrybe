@@ -1,0 +1,2 @@
+Drug,Species,Train_Source,Test_Source,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,N_Train,N_Test,SHAP_Success
+Ceftriaxone,Haemophilus influenzae,SOAR,GSK,LogisticRegression,0.7857142857142857,0.44,0.6914285714285714,0.30303030303030304,0.20206228956228958,0.21067941564189416,1528,28,True

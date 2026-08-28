@@ -1,0 +1,21 @@
+{
+  "auc": 0.6281818181818182,
+  "ap": 0.31537620503333297,
+  "brier": 0.089720264623588,
+  "accuracy": 0.772972972972973,
+  "f1": 0.3,
+  "mcc": 0.19771751378167882,
+  "precision": 0.225,
+  "recall": 0.45,
+  "specificity": 0.8121212121212121,
+  "balanced_accuracy": 0.6310606060606061,
+  "ppv": 0.225,
+  "npv": 0.9241379310344827,
+  "antibiotic": "Daptomycin",
+  "best_model": "XGBoost",
+  "train_size": 589,
+  "val_size": 148,
+  "test_size": 185,
+  "positive_rate": 0.10865874363327674,
+  "threshold": 0.15023241210565816
+}

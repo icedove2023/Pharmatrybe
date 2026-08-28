@@ -1,0 +1,69 @@
+Column,Dtype
+order_proc_id_coded,int64
+anon_id,str
+pat_enc_csn_id_coded,int64
+order_time_jittered_utc,"datetime64[us, UTC]"
+ordering_mode,str
+culture_description,str
+was_positive,int64
+n_organisms,int64
+n_antibiotics,int64
+organisms,str
+antibiotics,str
+susceptibilities,str
+culture_year,int64
+culture_month,int64
+culture_quarter,int64
+culture_date,"datetime64[us, UTC]"
+polymicrobial,int32
+n_prior_meds,float64
+n_prior_classes,float64
+days_since_last_antibiotic,float64
+n_abx_exposures,float64
+class_Aminoglycoside,int64
+class_Ansamycin,int64
+class_Antitubercular,int64
+class_Beta Lactam,int64
+class_Combination Antibiotic,int64
+class_Fluoroquinolone,int64
+class_Folate Synthesis Inhibitor,int64
+class_Fosfomycin,int64
+class_Glycopeptide,int64
+class_Macrolide Lincosamide,int64
+class_Monobactam,int64
+class_Nitrofuran,int64
+class_Nitroimidazole,int64
+class_Oxazolidinone,int64
+"class_Polymyxin, Lipopeptide",int64
+class_Sulfonamide,int64
+class_Tetracycline,int64
+class_Urinary Antiseptic,int64
+creatinine,str
+bun,str
+wbc,str
+neutrophils,str
+lymphocytes,str
+lactate,str
+procalcitonin,str
+heartrate,str
+resp_rate,str
+temperature,str
+sys_bp,str
+dias_bp,str
+age,float64
+gender_male,float64
+inpatient,int64
+outpatient,int64
+emergency,int64
+icu,int64
+has_any_procedure,float64
+has_urinary_catheter,float64
+has_cvc,float64
+days_since_last_prior_organism,float64
+n_prior_organisms,float64
+nursing_home_visit,float64
+adi_score,str
+adi_state_rank,str
+n_abx_classes_exposed,int64
+age_group,category
+log_days_since_abx,float64

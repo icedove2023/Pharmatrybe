@@ -1,0 +1,112 @@
+{
+  "algorithm": "CalibratedClassifierCV",
+  "wrapper": "CalibratedClassifierCV",
+  "calibration": "sigmoid",
+  "number_of_features": 5,
+  "raw_input_features": 5,
+  "target_labels": [
+    "R",
+    "S"
+  ],
+  "prediction_classes": [
+    "R",
+    "S"
+  ],
+  "pipeline": [
+    "preprocessor",
+    "classifier"
+  ],
+  "preprocessing": {
+    "numeric_features": [
+      "Age",
+      "YearCollected"
+    ],
+    "categorical_features": [
+      "Region",
+      "BodyLocation_Group",
+      "Country"
+    ],
+    "pipeline_order": [
+      "num",
+      "ohe",
+      "target_enc",
+      "bin",
+      "classifier"
+    ],
+    "transformers": {
+      "num": {
+        "class": "StandardScaler",
+        "columns": [
+          "Age",
+          "YearCollected"
+        ],
+        "generated_columns": null
+      },
+      "ohe": {
+        "class": "OneHotEncoder",
+        "columns": [
+          "Region",
+          "BodyLocation_Group"
+        ],
+        "generated_columns": null
+      },
+      "target_enc": {
+        "class": "TargetEncoder",
+        "columns": [
+          "Country"
+        ],
+        "generated_columns": null
+      },
+      "bin": {
+        "class": "Passthrough",
+        "columns": [],
+        "generated_columns": null
+      }
+    }
+  },
+  "methods": {
+    "predict_proba": true,
+    "decision_function": false,
+    "predict": true
+  },
+  "training_date": {
+    "recoverable": false,
+    "reason": "Not stored inside trained estimator."
+  },
+  "deployment_version": {
+    "recoverable": false,
+    "reason": "Not stored inside trained estimator."
+  },
+  "optimal_threshold": {
+    "recoverable": false,
+    "reason": "Requires validation data and probabilities."
+  },
+  "evaluation_metrics": {
+    "recoverable": false,
+    "reason": "Requires original validation predictions."
+  },
+  "shap_explainer": {
+    "recoverable": "partial",
+    "reason": "Can be regenerated but not recovered from model."
+  },
+  "known_limitations": [
+    "Optimal threshold not recoverable without validation data.",
+    "Evaluation metrics unavailable without original test set.",
+    "Training date and version not stored in model."
+  ],
+  "recoverable_fields": [
+    "algorithm",
+    "number_of_features",
+    "target_labels",
+    "pipeline",
+    "preprocessing",
+    "methods"
+  ],
+  "missing_fields": [
+    "training_date",
+    "deployment_version",
+    "optimal_threshold",
+    "evaluation_metrics"
+  ],
+  "contract_version": "1.0.0"
+}

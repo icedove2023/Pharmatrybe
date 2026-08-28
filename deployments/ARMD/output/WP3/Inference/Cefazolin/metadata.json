@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Cefazolin",
+  "best_model": "LogisticRegression",
+  "threshold": 0.18383340198245515
+}

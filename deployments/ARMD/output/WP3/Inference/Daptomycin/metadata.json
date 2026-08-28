@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Daptomycin",
+  "best_model": "XGBoost",
+  "threshold": 0.15023241210565816
+}

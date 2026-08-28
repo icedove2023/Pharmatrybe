@@ -1,0 +1,222 @@
+[
+  {
+    "deployment": "Tetracycline_Streptococcus_pneumoniae",
+    "uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+    "antibiotic": "Tetracycline",
+    "species": "Streptococcus pneumoniae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "378808770036f2d74b392302e5301e33a7e9c0ab0e508abad0af1dd706c28b42",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:10.968448"
+  },
+  {
+    "deployment": "Tetracycline_Haemophilus_influenzae",
+    "uuid": "c76ddb86-ce86-43a2-8950-bca9d19bed49",
+    "antibiotic": "Tetracycline",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "53e57528a44fc054670019a7ba65414d067c501eb26875190127cd52e2f405f8",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:12.203574"
+  },
+  {
+    "deployment": "Trimethoprim_Sulfa_Haemophilus_influenzae",
+    "uuid": "b71e653b-7c71-459a-ab60-4c2441d2d305",
+    "antibiotic": "Trimethoprim_Sulfa",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "ba91b467d73a4d836c0d755424395ba12ea3b1e54bfc2083fb29dcc0409391e2",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:13.752516"
+  },
+  {
+    "deployment": "Ceftibuten_Haemophilus_influenzae",
+    "uuid": "c505ded8-4940-410f-9cbf-d69ade638010",
+    "antibiotic": "Ceftibuten",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "c1fda85b53f34a9c06ea2a8cc254b6813a0edd957c5262b015dc659f24d5f269",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:15.870851"
+  },
+  {
+    "deployment": "Cefotaxime_Haemophilus_influenzae",
+    "uuid": "44f923aa-813e-4da1-bcf1-56871d1ccdaa",
+    "antibiotic": "Cefotaxime",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "057849712d68bbf073d206be1201cb01aa83205ab87c0539a9006eee412418ad",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:16.308176"
+  },
+  {
+    "deployment": "Ceftriaxone_Haemophilus_influenzae",
+    "uuid": "ea78d611-af61-4056-a352-1fbff476628e",
+    "antibiotic": "Ceftriaxone",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "cc1f48b1444f53733318462811b4d32afb093e73d8c00a83e1d7a5c1c8e1b168",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:16.615955"
+  },
+  {
+    "deployment": "Levofloxacin_Haemophilus_influenzae",
+    "uuid": "8387fd00-212c-47b0-a3a3-dc6ebe869445",
+    "antibiotic": "Levofloxacin",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "f9dce9b15cf6545f8f8517ebd86169cb57f9fe7655be2a9e42c06df5d0f35208",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:18.012962"
+  },
+  {
+    "deployment": "Cefpodoxime_Haemophilus_influenzae",
+    "uuid": "093c2f42-b2dc-4c4a-8dd9-df020951be1b",
+    "antibiotic": "Cefpodoxime",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "2ebda18242cb8dfe6e3fa08187d31ecff4b79da416472a51488b174b90d798fd",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:19.378011"
+  },
+  {
+    "deployment": "Cefixime_Haemophilus_influenzae",
+    "uuid": "000bc8b5-b4d0-4fe3-8dc0-8a49163e2007",
+    "antibiotic": "Cefixime",
+    "species": "Haemophilus influenzae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "2adeb3d95461e50b8c7730f09c86e2725eb1382dbe60e917913674f5b6bc4a5d",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:20.610714"
+  },
+  {
+    "deployment": "Doxycycline_Streptococcus_pneumoniae",
+    "uuid": "7da0244b-e201-4a56-87c9-b1b1e5e77dd3",
+    "antibiotic": "Doxycycline",
+    "species": "Streptococcus pneumoniae",
+    "algorithm": "CalibratedClassifierCV",
+    "feature_count": null,
+    "classes": [
+      "R",
+      "S"
+    ],
+    "fingerprint": "d2a2b68c3817d3e5ac1a2b70b32ec58b63f497c2439db9f6b05111e664aac5b0",
+    "grade": "C",
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1,
+    "errors_count": 0,
+    "warnings_count": 0,
+    "timestamp": "2026-08-10T00:12:21.057297"
+  }
+]

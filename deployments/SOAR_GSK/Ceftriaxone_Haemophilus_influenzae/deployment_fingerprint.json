@@ -1,0 +1,9 @@
+{
+  "deployment": "Ceftriaxone_Haemophilus_influenzae",
+  "model_sha256": "2b4a4669eaa69636b1cc46b989d3903e2ea126f1b4fe604c52ac3d46dca3e76a",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "cc1f48b1444f53733318462811b4d32afb093e73d8c00a83e1d7a5c1c8e1b168",
+  "created": "2026-08-09T23:43:03.412627",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:01.755004"
+}

@@ -1,0 +1,149 @@
+{
+  "patient_id": "300712252",
+  "timestamp": "2026-08-01T17:41:02.329290",
+  "predictions": [
+    {
+      "antibiotic": "Erythromycin",
+      "probability": 0.155767418059383,
+      "threshold": 0.11519759934097473,
+      "class": "Resistant",
+      "confidence_metric": 0.04056981871840826
+    },
+    {
+      "antibiotic": "Ciprofloxacin",
+      "probability": 0.18080404702032493,
+      "threshold": 0.13530011748290993,
+      "class": "Resistant",
+      "confidence_metric": 0.045503929537415
+    },
+    {
+      "antibiotic": "Levofloxacin",
+      "probability": 0.2622714083347367,
+      "threshold": 0.06544111127177736,
+      "class": "Resistant",
+      "confidence_metric": 0.19683029706295935
+    },
+    {
+      "antibiotic": "Amikacin",
+      "probability": 0.29018284533442024,
+      "threshold": 0.2827892111242115,
+      "class": "Resistant",
+      "confidence_metric": 0.007393634210208722
+    },
+    {
+      "antibiotic": "Clarithromycin",
+      "probability": 0.2972280753014668,
+      "threshold": 0.16958954602246634,
+      "class": "Resistant",
+      "confidence_metric": 0.12763852927900043
+    },
+    {
+      "antibiotic": "Gentamicin",
+      "probability": 0.30224372680328665,
+      "threshold": 0.31208436294931025,
+      "class": "Susceptible",
+      "confidence_metric": 0.009840636146023596
+    },
+    {
+      "antibiotic": "Ceftazidime",
+      "probability": 0.31953502454938304,
+      "threshold": 0.1954357468246603,
+      "class": "Resistant",
+      "confidence_metric": 0.12409927772472273
+    },
+    {
+      "antibiotic": "Aztreonam",
+      "probability": 0.33457130492959786,
+      "threshold": 0.381526777312973,
+      "class": "Susceptible",
+      "confidence_metric": 0.04695547238337516
+    },
+    {
+      "antibiotic": "Daptomycin",
+      "probability": 0.3901572808937176,
+      "threshold": 0.1445412068763515,
+      "class": "Resistant",
+      "confidence_metric": 0.2456160740173661
+    },
+    {
+      "antibiotic": "Cefazolin",
+      "probability": 0.39417319037069426,
+      "threshold": 0.18357343141651614,
+      "class": "Resistant",
+      "confidence_metric": 0.21059975895417812
+    },
+    {
+      "antibiotic": "Cefuroxime",
+      "probability": 0.4558532227155251,
+      "threshold": 0.44749692445376904,
+      "class": "Resistant",
+      "confidence_metric": 0.008356298261756046
+    },
+    {
+      "antibiotic": "Clindamycin",
+      "probability": 0.5247004000962707,
+      "threshold": 0.48673857274128124,
+      "class": "Resistant",
+      "confidence_metric": 0.037961827354989486
+    },
+    {
+      "antibiotic": "Doxycycline",
+      "probability": 0.5993743397987781,
+      "threshold": 0.20270245427132708,
+      "class": "Resistant",
+      "confidence_metric": 0.39667188552745103
+    },
+    {
+      "antibiotic": "Ceftaroline",
+      "probability": 0.7146081042548873,
+      "threshold": 0.706802553513632,
+      "class": "Resistant",
+      "confidence_metric": 0.007805550741255329
+    },
+    {
+      "antibiotic": "Cefoxitin",
+      "probability": 0.7381853998218915,
+      "threshold": 0.3414685785108162,
+      "class": "Resistant",
+      "confidence_metric": 0.3967168213110753
+    },
+    {
+      "antibiotic": "Amoxicillin/Clavulanic Acid",
+      "probability": 0.8088349177050602,
+      "threshold": 0.7975880544319109,
+      "class": "Resistant",
+      "confidence_metric": 0.011246863273149277
+    },
+    {
+      "antibiotic": "Ampicillin",
+      "probability": 0.8107819405333393,
+      "threshold": 0.3497164590446203,
+      "class": "Resistant",
+      "confidence_metric": 0.461065481488719
+    },
+    {
+      "antibiotic": "Cefepime",
+      "probability": 0.848922796547661,
+      "threshold": 0.4142475270838424,
+      "class": "Resistant",
+      "confidence_metric": 0.4346752694638186
+    },
+    {
+      "antibiotic": "Ampicillin/Sulbactam",
+      "probability": 0.9018761827084368,
+      "threshold": 0.37784744944351634,
+      "class": "Resistant",
+      "confidence_metric": 0.5240287332649205
+    },
+    {
+      "antibiotic": "Ceftriaxone",
+      "probability": 0.9999789287620459,
+      "threshold": 0.2004996535960805,
+      "class": "Resistant",
+      "confidence_metric": 0.7994792751659654
+    }
+  ],
+  "explanation": {
+    "error": "(slice(None, None, None), 15)"
+  }
+}

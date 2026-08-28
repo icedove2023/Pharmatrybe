@@ -1,0 +1,43 @@
+[2026-08-02 05:37:31,101] [INFO] ================================================================================
+[2026-08-02 05:37:31,102] [INFO] WP4 – CLINICAL DECISION ENGINE (PRODUCTION)
+[2026-08-02 05:37:31,116] [INFO] ================================================================================
+[2026-08-02 05:37:35,020] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-02 05:37:35,022] [INFO] No patient ID provided; using first patient from WP2 table.
+[2026-08-02 05:37:42,763] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-02 05:37:42,764] [INFO] No patient ID provided; using first row.
+[2026-08-02 05:37:42,820] [INFO] Processing patient: 300712252
+[2026-08-02 05:37:43,113] [INFO] Preprocessed patient features: 37
+[2026-08-02 05:37:43,113] [INFO] Running predictions...
+[2026-08-02 05:38:12,431] [INFO] Predictions complete.
+[2026-08-02 05:38:12,433] [INFO] Generating SHAP explanation for Ciprofloxacin...
+[2026-08-02 05:38:12,781] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-02 05:38:12,878] [INFO] Sampled 200 background patients.
+[2026-08-02 05:38:23,527] [INFO] Background preprocessed shape: (200, 37)
+[2026-08-02 05:38:23,533] [INFO] Background scaled shape: (200, 56)
+[2026-08-02 05:38:23,554] [INFO] Building SHAP explainer for XGBClassifier
+[2026-08-02 05:38:23,554] [WARNING] Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+[2026-08-02 05:38:23,602] [ERROR] SHAP explanation failed for Ciprofloxacin
+Traceback (most recent call last):
+  File "C:\Users\Adetokunbo\Desktop\villi\ARMD\WP4_Decision_Engine.py", line 556, in generate_shap_explanation
+    shap_values = explainer.shap_values(X_scaled)
+  File "C:\Users\Adetokunbo\Desktop\villi\.venv\Lib\site-packages\shap\explainers\_tree.py", line 673, in shap_values
+    _xgboost_cat_unsupported(self.model)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Adetokunbo\Desktop\villi\.venv\Lib\site-packages\shap\explainers\_tree.py", line 111, in _xgboost_cat_unsupported
+    raise NotImplementedError(
+    ...<2 lines>...
+    )
+NotImplementedError: Categorical split is not yet supported. You can still use TreeExplainer with `feature_perturbation=tree_path_dependent`.
+[2026-08-02 05:38:23,783] [ERROR] SHAP failed: Categorical split is not yet supported. You can still use TreeExplainer with `feature_perturbation=tree_path_dependent`.
+[2026-08-02 05:38:23,869] [INFO] Report saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\report.txt
+[2026-08-02 05:38:23,921] [INFO] JSON saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\prediction.json
+[2026-08-02 05:38:25,702] [INFO] Audit saved to C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\audit.json
+[2026-08-02 05:38:25,710] [INFO] Validation passed.
+[2026-08-02 05:38:25,711] [INFO] ================================================================================
+[2026-08-02 05:38:25,711] [INFO] WP4 COMPLETE
+[2026-08-02 05:38:25,716] [INFO] ================================================================================
+[2026-08-02 05:38:25,718] [INFO] Report: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\report.txt
+[2026-08-02 05:38:25,720] [INFO] JSON: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\prediction.json
+[2026-08-02 05:38:25,723] [INFO] Audit: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Patients\300712252\audit.json
+[2026-08-02 05:38:25,724] [INFO] Log: C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP4\Logs\WP4_20260802_053730.log
+[2026-08-02 05:38:25,725] [INFO] ================================================================================

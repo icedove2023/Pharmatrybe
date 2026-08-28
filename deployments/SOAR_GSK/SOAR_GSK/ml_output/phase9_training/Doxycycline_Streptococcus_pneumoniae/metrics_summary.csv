@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Doxycycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6714975845410628,0.637962962962963,0.653399534800501,0.6955698914492476,0.3500000000000001

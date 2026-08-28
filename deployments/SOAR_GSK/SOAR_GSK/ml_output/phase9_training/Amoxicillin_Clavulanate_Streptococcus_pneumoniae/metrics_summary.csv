@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Amoxicillin Clavulanate,Streptococcus pneumoniae,Multiclass (S/I/R),LogisticRegression,0.5893719806763285,0.24721377912867273,0.43710262396663874,0.4633029112367329,N/A

@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Amoxicillin,Haemophilus influenzae,Multiclass (S/I/R),0.7270955165692008,0.49940865601854584,0.6653603354108669,0.8304075687586069,,0.12359970511471446,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Amoxicillin_Haemophilus_influenzae

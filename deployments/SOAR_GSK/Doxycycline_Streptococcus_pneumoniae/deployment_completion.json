@@ -1,0 +1,30 @@
+{
+  "deployment": "Doxycycline_Streptococcus_pneumoniae",
+  "timestamp": "2026-08-10T00:48:01.948542",
+  "duration_seconds": 0.159,
+  "recovered": [
+    "calibration.pkl",
+    "preprocessing_pipeline.pkl"
+  ],
+  "generated": [
+    "shap_explainer.pkl"
+  ],
+  "regenerated": [],
+  "unavailable": [
+    "evaluation_metrics.csv",
+    "optimal_threshold.json"
+  ],
+  "reasons": {
+    "preprocessing_pipeline.pkl": "Extracted from final_model.pkl: all transform-capable pipeline steps preceding the classifier.",
+    "calibration.pkl": "Extracted calibration (sigmoid) from CalibratedClassifierCV.",
+    "shap_explainer.pkl": "Regenerated a LinearExplainer directly from the fitted LogisticRegression in final_model.pkl. Built with a zero-vector background (no training data was available); SHAP values from this explainer are an approximation and should be re-fit against real background data before clinical use if precision matters.",
+    "optimal_threshold.json": "The threshold selected during original model development was not persisted anywhere reachable from final_model.pkl or the recovered training artifacts, so it cannot be reconstructed without the original validation-set predictions.",
+    "evaluation_metrics.csv": "Original evaluation-set metrics were not persisted in a form reachable from this deployment folder; fabricating numeric values would misrepresent model performance, so a documented N/A placeholder is written instead."
+  },
+  "errors": [],
+  "compatibility": {
+    "backend_required_count": 21,
+    "artifacts_present": 21
+  },
+  "contract_version": "1.0.0"
+}

@@ -1,0 +1,4 @@
+,Accuracy,F1 (macro),F1 (weighted),Precision (weighted),Recall (weighted),AUC (weighted)
+Logistic Regression,0.6515,0.594,0.6784,0.7222,0.6515,0.7921
+Random Forest,0.6119,0.5309,0.6309,0.6599,0.6119,0.7319
+XGBoost,0.6891,0.5925,0.6997,0.7146,0.6891,0.7998

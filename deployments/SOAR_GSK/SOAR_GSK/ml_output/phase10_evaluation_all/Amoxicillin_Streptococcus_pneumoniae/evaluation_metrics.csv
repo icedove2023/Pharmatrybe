@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Amoxicillin,Streptococcus pneumoniae,Multiclass (S/I/R),0.6376811594202898,0.4323821507212511,0.5634615839670751,0.701126549620112,,0.16504479988686746,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Amoxicillin_Streptococcus_pneumoniae

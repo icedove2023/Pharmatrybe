@@ -1,0 +1,9 @@
+{
+  "deployment": "Levofloxacin_Haemophilus_influenzae",
+  "model_sha256": "dddbe399218a79a9b76fc5162d84868cbd0b93988669c9950b9977ef0ed44888",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "f9dce9b15cf6545f8f8517ebd86169cb57f9fe7655be2a9e42c06df5d0f35208",
+  "created": "2026-08-09T23:43:04.144447",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:02.720212"
+}

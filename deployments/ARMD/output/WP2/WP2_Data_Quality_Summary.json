@@ -1,0 +1,36 @@
+{
+    "rows": 118767,
+    "columns": 68,
+    "duplicate_rows": 0,
+    "all_missing_columns": [],
+    "constant_columns": [
+        "was_positive",
+        "gender_male",
+        "has_any_procedure"
+    ],
+    "object_columns": [
+        "anon_id",
+        "ordering_mode",
+        "culture_description",
+        "organisms",
+        "antibiotics",
+        "susceptibilities",
+        "creatinine",
+        "bun",
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "lactate",
+        "procalcitonin",
+        "heartrate",
+        "resp_rate",
+        "temperature",
+        "sys_bp",
+        "dias_bp",
+        "adi_score",
+        "adi_state_rank"
+    ],
+    "object_columns_that_look_numeric": [],
+    "columns_over_50_percent_missing": [],
+    "columns_over_80_percent_missing": []
+}

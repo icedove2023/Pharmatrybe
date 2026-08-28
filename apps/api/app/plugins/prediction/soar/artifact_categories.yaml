@@ -1,0 +1,43 @@
+MODEL:
+  - final_model.pkl
+  - model.pkl
+  - "*.model.pkl"
+  - ".onnx"
+  - ".pt"
+  - ".pth"
+  - ".pb"
+  - ".tflite"
+  - ".trt"
+  - ".joblib"
+ENCODER:
+  - label_encoder.pkl
+  - encoder.pkl
+  - "*.encoder.pkl"
+PREPROCESSOR:
+  - preprocessing_pipeline.pkl
+  - scaler.pkl
+  - feature_encoder.pkl
+  - preprocessing.pkl
+METADATA:
+  - metadata.json
+  - organism_profile.json
+  - feature_dictionary.json
+  - model_metadata.json
+  - artifact_metadata.json
+  - README.md
+CONFIG:
+  - artifact_categories.yaml
+  - inference_config.yaml
+  - ".yaml"
+  - ".yml"
+THRESHOLD:
+  - optimal_threshold.json
+  - threshold.json
+METRICS:
+  - evaluation_metrics.csv
+  - "*.csv"
+SCHEMA:
+  - schema.json
+  - "*.schema.json"
+OTHER:
+  - "*"

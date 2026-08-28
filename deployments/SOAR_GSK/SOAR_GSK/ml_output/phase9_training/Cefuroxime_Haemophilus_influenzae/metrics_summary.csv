@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Cefuroxime,Haemophilus influenzae,Multiclass (S/I/R),LogisticRegression,0.6608187134502924,0.2652582159624413,0.5258627790132608,0.7543885624379719,N/A

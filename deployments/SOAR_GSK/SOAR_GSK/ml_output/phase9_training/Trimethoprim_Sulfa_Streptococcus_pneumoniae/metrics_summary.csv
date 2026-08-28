@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Trimethoprim Sulfa,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6884057971014492,0.6206178829446406,0.6547055197777788,0.7411214039547332,0.4000000000000001

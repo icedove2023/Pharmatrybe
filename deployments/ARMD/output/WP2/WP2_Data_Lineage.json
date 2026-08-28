@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-07-31T20:34:49.121165",
+  "wp1_hash": "1afee3b9b0d91afc23945b01ec5cfb6e7a65ea12406fdc992bd51c4b1bd95199",
+  "excluded_files": [
+    "microbiology_cultures_microbial_resistance.csv"
+  ],
+  "output_file": "C:\\Users\\Adetokunbo\\Desktop\\villi\\ARMD\\output/WP2\\WP2_Model_Ready_Feature_Table.parquet",
+  "join_log": [
+    {
+      "file": "prior_med",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "98119",
+      "join_success_rate": 82.61
+    },
+    {
+      "file": "class_exposure",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "82780",
+      "join_success_rate": 69.7
+    },
+    {
+      "file": "labs",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "54824",
+      "join_success_rate": 46.16
+    },
+    {
+      "file": "vitals",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "85223",
+      "join_success_rate": 71.76
+    },
+    {
+      "file": "demographics",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "112339",
+      "join_success_rate": 94.59
+    },
+    {
+      "file": "ward",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "118767",
+      "join_success_rate": 100.0
+    },
+    {
+      "file": "procedures",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "40907",
+      "join_success_rate": 34.44
+    },
+    {
+      "file": "prior_organism",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "56100",
+      "join_success_rate": 47.24
+    },
+    {
+      "file": "nursing_home",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "1217",
+      "join_success_rate": 1.02
+    },
+    {
+      "file": "adi",
+      "before_rows": 118767,
+      "after_rows": 118767,
+      "matched_rows": "118767",
+      "join_success_rate": 100.0
+    }
+  ]
+}

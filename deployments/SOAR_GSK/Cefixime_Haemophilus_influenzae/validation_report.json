@@ -1,0 +1,77 @@
+{
+  "deployment": "Cefixime_Haemophilus_influenzae",
+  "uuid": "000bc8b5-b4d0-4fe3-8dc0-8a49163e2007",
+  "timestamp": "2026-08-10T00:12:20.606919",
+  "duration_seconds": 0.0,
+  "grade": 79.1,
+  "overall_grade": "C",
+  "summary": {
+    "total_checks": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "check": "metadata_schema",
+      "passed": true,
+      "message": "Feature counts match",
+      "timestamp": "2026-08-10T00:12:19.390892"
+    },
+    {
+      "check": "label_encoder",
+      "passed": true,
+      "message": "Classes match",
+      "timestamp": "2026-08-10T00:12:19.391717"
+    },
+    {
+      "check": "pipeline_topology",
+      "passed": true,
+      "message": "Pipeline topology matches",
+      "timestamp": "2026-08-10T00:12:19.392377"
+    },
+    {
+      "check": "fingerprint",
+      "passed": true,
+      "message": "Fingerprint matches",
+      "timestamp": "2026-08-10T00:12:19.392925"
+    },
+    {
+      "check": "preprocessing_summary",
+      "passed": true,
+      "message": "total_features match",
+      "timestamp": "2026-08-10T00:12:19.393382"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "scores": {
+    "integrity": 62.5,
+    "recoverability": 77.78,
+    "completeness": 77.78,
+    "compatibility": 100.0,
+    "overall": 79.1
+  },
+  "contract_completeness": {
+    "required_files": [
+      "final_model.pkl",
+      "label_encoder.pkl",
+      "metadata.json",
+      "feature_schema.json",
+      "label_encoder.json",
+      "model_card.json",
+      "preprocessing_summary.json",
+      "deployment_manifest.json",
+      "deployment_fingerprint.json",
+      "README.md",
+      "VERSION.json",
+      "deployment_info.json",
+      "deployment_certificate.json",
+      "reconstruction_metadata.json",
+      "validation_report.json",
+      "package_manifest.json"
+    ],
+    "missing": [],
+    "complete": true
+  },
+  "contract_version": "1.0.0"
+}

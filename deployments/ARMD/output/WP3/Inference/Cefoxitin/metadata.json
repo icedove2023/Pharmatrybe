@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Cefoxitin",
+  "best_model": "XGBoost",
+  "threshold": 0.3393186545302337
+}

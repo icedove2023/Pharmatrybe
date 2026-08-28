@@ -1,0 +1,11 @@
+{
+  "phase": "13D",
+  "engine_version": "4.0",
+  "python_version": "3.14.6",
+  "timestamp": "2026-08-10T00:12:13.612781",
+  "host_os": "Windows",
+  "recovery_duration": 0.0,
+  "deployment_uuid": "b71e653b-7c71-459a-ab60-4c2441d2d305",
+  "recovered_from": "artifact_recovery_v2\\Trimethoprim_Sulfa_Haemophilus_influenzae",
+  "original_deployment": "deployment\\Trimethoprim_Sulfa_Haemophilus_influenzae"
+}

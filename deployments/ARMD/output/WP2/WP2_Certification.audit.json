@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-07-31T20:34:50.672930",
+  "rows": 118767,
+  "columns": 68,
+  "duplicate_rows": 0,
+  "constant_columns": [
+    "was_positive",
+    "gender_male",
+    "has_any_procedure"
+  ],
+  "columns_with_nulls": [
+    "age_group"
+  ],
+  "hash": "d6dbcb56ca3078b8a1b9d245dc321359d83167ec763bf6247a2d7cec2c730d31",
+  "wp1_hash": "1afee3b9b0d91afc23945b01ec5cfb6e7a65ea12406fdc992bd51c4b1bd95199",
+  "excluded_files": [
+    "microbiology_cultures_microbial_resistance.csv"
+  ]
+}

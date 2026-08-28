@@ -11,6 +11,10 @@ from starlette.responses import Response
 class TimingMiddleware(BaseHTTPMiddleware):
     """Measure the processing time for each request and expose it in headers."""
 
+    def __init__(self, app=None):
+        if app is not None:
+            super().__init__(app)
+
     async def dispatch(
         self,
         request: Request,

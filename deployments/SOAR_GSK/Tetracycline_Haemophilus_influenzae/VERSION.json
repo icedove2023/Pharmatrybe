@@ -1,0 +1,8 @@
+{
+  "deployment_version": "1.0.0",
+  "artifact_schema": "2.0",
+  "recovery_phase": "13D",
+  "recovery_version": "1.0.0",
+  "created_at": "2026-08-10T00:12:11.191898",
+  "reconstructed_from": "Phase13C"
+}

@@ -1,0 +1,19 @@
+plugin_id: armd
+plugin_name: ARMD Prediction Plugin
+plugin_version: 0.1.0
+plugin_type: prediction
+deployment_type: artifact
+description: PharmaTrybe ARMD prediction plugin
+author: PharmaTrybe
+organization: PharmaTrybe
+entrypoint_module: armd_prediction_plugin
+entrypoint_class: ARMDPredictionPlugin
+capabilities:
+  - resistance_prediction
+  - antibiotic_ranking
+  - shap_explainability
+dependencies: []
+supported_domains:
+  - general
+minimum_platform_version: 0.1.0
+sdk_version: 0.1.0

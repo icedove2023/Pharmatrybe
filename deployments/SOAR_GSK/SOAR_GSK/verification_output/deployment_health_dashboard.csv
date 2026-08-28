@@ -1,0 +1,11 @@
+Deployment,UUID,Grade,Score,Certified,Errors,Warnings
+Cefixime_Haemophilus_influenzae,454316c7-2b64-47ed-93e5-d197033457b1,F,68.75,False,5,28
+Cefotaxime_Haemophilus_influenzae,41fa93f9-aaf3-4a65-8f00-8dc5b1a96146,F,68.75,False,4,28
+Cefpodoxime_Haemophilus_influenzae,a2d6cfbc-5484-45d9-9c50-41722450e92e,F,68.75,False,4,28
+Ceftibuten_Haemophilus_influenzae,e7e6e0e1-1145-4d94-a8a2-a1c0c20dfafe,F,76.44,False,3,28
+Ceftriaxone_Haemophilus_influenzae,ecbf53dc-0e13-41bb-bfee-94c6902788c8,F,76.44,False,3,28
+Doxycycline_Streptococcus_pneumoniae,397c6ba4-79da-44d2-9495-de430c8afc68,B,84.35,True,2,28
+Levofloxacin_Haemophilus_influenzae,f9585588-2849-48ee-bc41-b494db1c0b61,F,76.44,False,3,28
+Tetracycline_Haemophilus_influenzae,1f200de8-f3be-42be-a3bb-24e192f0476d,F,61.06,False,5,28
+Tetracycline_Streptococcus_pneumoniae,749b11dc-45e0-4ea5-ad02-9041a4de3d7b,F,84.13,False,2,28
+Trimethoprim_Sulfa_Haemophilus_influenzae,87b77b5a-9d01-4444-ad67-9fac64bb5951,F,76.44,False,3,28

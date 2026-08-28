@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Levofloxacin,Haemophilus influenzae,Binary (R vs Non-R),0.5964912280701754,0.592927376229084,0.5823100676191657,0.5959541858932103,0.39360893562969224,0.23615728947421316,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Levofloxacin_Haemophilus_influenzae

@@ -1,0 +1,10 @@
+{
+  "certificate_id": "CERT-8387fd00",
+  "deployment": "Levofloxacin_Haemophilus_influenzae",
+  "uuid": "8387fd00-212c-47b0-a3a3-dc6ebe869445",
+  "grade": "B",
+  "score": 84.62,
+  "certified": true,
+  "timestamp": "2026-08-10T00:13:56.738623",
+  "verification_version": "2.1"
+}

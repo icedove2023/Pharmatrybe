@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ceftaroline",
+  "best_model": "RandomForest",
+  "threshold": 0.7137117643404579
+}

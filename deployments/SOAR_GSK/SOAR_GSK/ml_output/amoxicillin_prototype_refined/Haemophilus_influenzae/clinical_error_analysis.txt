@@ -1,0 +1,12 @@
+
+    Clinical Error Analysis for Haemophilus influenzae
+    ==========================================
+    Confusion Matrix (rows: actual, columns: predicted):
+       I   R    S
+I  0   3   66
+R  0  96   53
+S  0   5  290
+    
+    False Susceptible (predicted S, actual R) = 53
+    False Resistant (predicted R, actual S) = 5
+    

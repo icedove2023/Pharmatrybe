@@ -31,9 +31,9 @@ class BaseService:
         self.name = name
         self.version = version
         self.endpoint = endpoint or ""
-        self.timeout_seconds = 5.0
-        self.retry_count = 0
-        self.retry_backoff_seconds = 0.0
+        self.timeout_seconds = self.settings.default_timeout_seconds
+        self.retry_count = self.settings.default_retry_count
+        self.retry_backoff_seconds = self.settings.default_retry_backoff_seconds
         self.enabled = True
         self.healthy = True
         self.metadata = ServiceMetadata(

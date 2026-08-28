@@ -1,0 +1,9 @@
+{
+  "deployment": "Trimethoprim_Sulfa_Haemophilus_influenzae",
+  "model_sha256": "8932eb54826e2675c48712a21be0ad33cacae2b84bc06bc172efeeda03f5caf3",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "ba91b467d73a4d836c0d755424395ba12ea3b1e54bfc2083fb29dcc0409391e2",
+  "created": "2026-08-09T23:43:04.980860",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:04.742260"
+}

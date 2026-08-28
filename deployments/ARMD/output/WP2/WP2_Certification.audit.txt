@@ -1,0 +1,13 @@
+WP2 FEATURE ENGINEERING CERTIFICATION
+============================================================
+Generated: 2026-07-31T20:34:50.672930
+Rows: 118767
+Columns: 68
+Duplicate rows: 0
+Constant columns: ['was_positive', 'gender_male', 'has_any_procedure']
+Columns with nulls: ['age_group']
+SHA256: d6dbcb56ca3078b8a1b9d245dc321359d83167ec763bf6247a2d7cec2c730d31
+WP1 SHA256: 1afee3b9b0d91afc23945b01ec5cfb6e7a65ea12406fdc992bd51c4b1bd95199
+Excluded files: ['microbiology_cultures_microbial_resistance.csv']
+============================================================
+STATUS: PASS

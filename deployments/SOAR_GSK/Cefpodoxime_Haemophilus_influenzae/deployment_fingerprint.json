@@ -1,0 +1,9 @@
+{
+  "deployment": "Cefpodoxime_Haemophilus_influenzae",
+  "model_sha256": "e8e2ee31d1747fecb4d8a74cd27553c9a34d1ca7f771aa7040b1c4b1dc52fe44",
+  "encoder_sha256": "aeaf9640413f70d94799f8da27e8b87df6f4a3de486bddd867146da2a3cbceb5",
+  "combined_sha256": "2ebda18242cb8dfe6e3fa08187d31ecff4b79da416472a51488b174b90d798fd",
+  "created": "2026-08-09T23:43:02.850023",
+  "contract_version": "1.0.0",
+  "completion_updated": "2026-08-10T00:48:00.632254"
+}

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-08-02T05:51:53.594463",
+  "patient_id": 300712252,
+  "num_predictions": 20,
+  "model_hashes": {
+    "Amikacin": "fc84f20fdf8fb3fad28692099b6e4da1b1bfdf806eaaae5b4a0a44d07ee6f0f3",
+    "Amoxicillin/Clavulanic Acid": "ebdb301705969e581512f3851b84378861cc57f5a0050c589a6976003ad3cbf7",
+    "Ampicillin": "93dc22572263879b80e893edfbac5a397a957252a4f8348fdabdbeaffa216343",
+    "Ampicillin/Sulbactam": "6b8d17a2f68ddc3cb99446fa990d99eb794a32ea013ffd882c5d84be8e519bcc",
+    "Aztreonam": "ed39516f7bf34b6794db633cdb447c5b20fa8523209073a210eb65be984dae88",
+    "Cefazolin": "8e9fd25d4b58526cd419b1cb5c7580c796ad6f56ebc8dd7266e2f7f082de3780",
+    "Cefepime": "c06f2857ede005ca711bc64c4a8ac0edfeea7c3983ebc3f1e3774744adef80b6",
+    "Cefoxitin": "1feb32e90e1d15ac25811f36e8f86ff6f6eab2774cd88ce515a4d2db12b01247",
+    "Ceftaroline": "4250310d6470796c4498553328b8a5311acca9416c6c3af9c85243d3c68bd18c",
+    "Ceftazidime": "ad6cabf7d098b9facd3987c42d49e4a923de6cf959aec20a2f989ba56b82fd2d",
+    "Ceftriaxone": "863adfdb8bdef296fa412078df269c5d35312851e7f2c0fa776287fbcd0607f1",
+    "Cefuroxime": "b45412ee71b0950dd732243fa1b807f1f866ea92b43f64b2568551054f434479",
+    "Ciprofloxacin": "e1de57ae26566b4c660dc2ed0dbc022bed5ac26c1b056a48561aa8ee4bf4fffb",
+    "Clarithromycin": "985e1930dc7748e9f9a1ec25f67efb1d2f187de30128eb79d329835cb7c7f1da",
+    "Clindamycin": "6517542ab27e7d0ce7668d07cda1e688030b33dda3360672bdce6292c94d4f47",
+    "Daptomycin": "d79103677cbe18fe114ee757470385eb04266635b98d7e4377966fdf6e664643",
+    "Doxycycline": "b67e0385b4fde5e463a53557d8092383ebe97a6ffb0744d1a0ea58f14d3abc65",
+    "Erythromycin": "0ea07af4eab7280b9f51fe3bdb83816347da85939b8989dbb55d49d9eb8e1501",
+    "Gentamicin": "10ed264063861854c7cd51ef30914e0cc0520975ae1afd679cc1e4d0ffd9c5eb",
+    "Levofloxacin": "09bcf3f8bd4221bcf006db986882cb926e8cc578520dadf4e8ef47de419c4eb1"
+  },
+  "python_version": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "shap_version": "0.52.0",
+  "status": "PASS"
+}

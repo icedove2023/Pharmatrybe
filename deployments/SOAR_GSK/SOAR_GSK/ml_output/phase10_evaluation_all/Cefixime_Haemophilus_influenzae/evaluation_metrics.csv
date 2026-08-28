@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Cefixime,Haemophilus influenzae,Binary (R vs Non-R),0.8674463937621832,0.8306996428016773,0.8625263266879731,0.8567356572258532,0.8252212315734199,0.16072562107059327,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Cefixime_Haemophilus_influenzae

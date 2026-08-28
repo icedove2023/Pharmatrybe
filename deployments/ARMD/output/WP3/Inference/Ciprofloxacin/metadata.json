@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Ciprofloxacin",
+  "best_model": "XGBoost",
+  "threshold": 0.13722643225202158
+}

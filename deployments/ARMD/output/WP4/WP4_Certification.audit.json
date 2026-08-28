@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-01T17:41:10.946095",
+  "patient_id": 300712252,
+  "num_predictions": 20,
+  "model_hashes": {
+    "Amikacin": "3d0dce10867163065855c2d05545a1afd024dbd76fafdf7acb89750cb35ba571",
+    "Amoxicillin/Clavulanic Acid": "42cf0dec48eb7765ee2d3bae8511566516a1b163b8c727db8535a04470eefc3e",
+    "Ampicillin": "17378592d4151eb3f8d01dea437101d3df3349fe79f5fb10d30eca432cf6bd7f",
+    "Ampicillin/Sulbactam": "6f39ec131690b81cf4579a86041b0f5c953cdbebb1918177180b644a31d38d0c",
+    "Aztreonam": "8a05da8bd90fff955002d4202e1b67f8ab9f922d3492f28347af7b8aa31e9279",
+    "Cefazolin": "9c6cdcd14eb374ac42636b96ec0535378c248d2d430dc3e9ca3d9c14c9444acf",
+    "Cefepime": "ad50584a7aab26fcbd6d91468ad94e5ae5631a3b9773ed0f6f9cbae24ac5f381",
+    "Cefoxitin": "0c8949f9b6e0a6f8a46de499c0571729d47a06b2332875b32e49eec946e1ba3f",
+    "Ceftaroline": "26af35ba78e8d2cbfd2589984ed09cbe7dd68b1e2bbbecfc76849b562c0a946b",
+    "Ceftazidime": "58ae00b25a8f9a58be3183160036119b003b7fc775320443e2439aa6369184c2",
+    "Ceftriaxone": "c04b22815ac99323e8d34f5f75ab44139b5866dce23e3082e739efe1f4e2e09d",
+    "Cefuroxime": "7d4c96d414f34cb7a450472bf31a88b36c5e664f530c439eb8aae063ee6dae73",
+    "Ciprofloxacin": "da1cdc6bdce14bbece800c9d04bf85ccbc8f425e64987b9a3bc56aa76105ac2d",
+    "Clarithromycin": "4750a333a90cc56d614c411211d6ae1cfd046021d96961b1cf07c3e33b3c230a",
+    "Clindamycin": "53032999d22abd965283e438d97dbdafe2431d72917e6fdfe48444c17a9fcbc1",
+    "Daptomycin": "a2553a9a7f2f038573e265c3c4f410b921d1c2521f128d7b89eb2c8317860576",
+    "Doxycycline": "7e6963943e30ce1682cae36276603ec36cb7dee175bcdfe7e4336fe6dedc8d4d",
+    "Erythromycin": "3713f1cf982f7a9a1c117a2ca4df951141ca009a64d7d455ea324987f55640bc",
+    "Gentamicin": "e2ab606aa65918b313c5f2b054188ef62a2bc1e6bb2cc77311a0a89cf72fcff5",
+    "Levofloxacin": "f819f56ff967e90ed393938e1c249af74905dba1a65e407a9181873dc7412b25"
+  },
+  "status": "PASS"
+}

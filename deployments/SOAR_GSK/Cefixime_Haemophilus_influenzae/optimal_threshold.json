@@ -1,0 +1,7 @@
+{
+  "recoverable": false,
+  "reason": "The threshold selected during original model development was not persisted anywhere reachable from final_model.pkl or the recovered training artifacts, so it cannot be reconstructed without the original validation-set predictions.",
+  "recommended_default": 0.5,
+  "recommended_strategy": "Recompute using validation probabilities: score a held-out validation set with predict_proba() and select the threshold that maximizes the clinically appropriate metric (e.g. Youden's J, or F1/F-beta if class costs are known).",
+  "contract_version": "1.0.0"
+}

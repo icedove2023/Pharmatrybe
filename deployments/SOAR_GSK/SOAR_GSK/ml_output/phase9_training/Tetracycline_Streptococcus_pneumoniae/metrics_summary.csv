@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Tetracycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6908212560386473,0.6546402502606882,0.6762408507251414,0.7186113602754005,0.32500000000000007

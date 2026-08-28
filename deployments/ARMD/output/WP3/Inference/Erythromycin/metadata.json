@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Erythromycin",
+  "best_model": "RandomForest",
+  "threshold": 0.18151522875427853
+}

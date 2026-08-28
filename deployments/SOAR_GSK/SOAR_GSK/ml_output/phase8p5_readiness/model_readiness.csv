@@ -1,0 +1,43 @@
+Drug,Species,Total_Isolates,S,I,R,Min_Class,Class_Imbalance_Ratio,Recommended_Type,Recommended_Model,Validation_Strategy,Notes
+Amoxicillin Clavulanate fixed at 2,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Amoxicillin Clavulanate fixed at 2,Streptococcus pneumoniae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Amoxicillin Clavulanate,Haemophilus influenzae,2595,2336,201,58,58,40.28,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=2336, I=201, R=58)."
+Amoxicillin Clavulanate,Streptococcus pneumoniae,1532,841,363,328,328,2.56,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=841, I=363, R=328)."
+Amoxicillin,Haemophilus influenzae,1691,986,172,533,172,5.73,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=986, I=172, R=533)."
+Amoxicillin,Streptococcus pneumoniae,1933,1206,377,350,350,3.45,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=1206, I=377, R=350)."
+Ampicillin,Haemophilus influenzae,2580,2046,72,462,72,28.42,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=2046, I=72, R=462)."
+Ampicillin,Streptococcus pneumoniae,525,148,377,0,0,inf,Binary (S vs I),"Logistic Regression, Random Forest","Temporal (2014-2020 train, 2021 test)",No R isolates. Predicting S vs I may inform de-escalation. SMOTE recommended due to class imbalance.
+Azithromycin,Haemophilus influenzae,2593,2525,0,68,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=68; Non-R (S+I)=2525. Limited S/I separation. SMOTE recommended due to class imbalance.
+Azithromycin,Streptococcus pneumoniae,2329,1247,0,1082,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=1082; Non-R (S+I)=1247. Limited S/I separation. SMOTE recommended due to class imbalance.
+Cefaclor,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Cefaclor,Streptococcus pneumoniae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Cefdinir,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Cefdinir,Streptococcus pneumoniae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Cefixime,Haemophilus influenzae,1528,1274,0,254,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=254; Non-R (S+I)=1274. Limited S/I separation. SMOTE recommended due to class imbalance.
+Cefixime,Streptococcus pneumoniae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Cefotaxime,Haemophilus influenzae,1528,1350,0,178,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=178; Non-R (S+I)=1350. Limited S/I separation. SMOTE recommended due to class imbalance.
+Cefotaxime,Streptococcus pneumoniae,993,694,277,22,22,31.55,Exclude - Inadequate Class Representation,N/A,N/A,"S=694, I=277, R=22. Not enough samples for reliable modeling."
+Cefpodoxime,Haemophilus influenzae,1528,1260,0,268,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=268; Non-R (S+I)=1260. Limited S/I separation. SMOTE recommended due to class imbalance.
+Cefpodoxime,Streptococcus pneumoniae,993,564,0,429,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=429; Non-R (S+I)=564. Limited S/I separation. SMOTE recommended due to class imbalance.
+Ceftibuten,Haemophilus influenzae,1528,1286,0,242,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=242; Non-R (S+I)=1286. Limited S/I separation. SMOTE recommended due to class imbalance.
+Ceftibuten,Streptococcus pneumoniae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Ceftriaxone,Haemophilus influenzae,1556,1443,0,113,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=113; Non-R (S+I)=1443. Limited S/I separation. SMOTE recommended due to class imbalance.
+Ceftriaxone,Streptococcus pneumoniae,2329,1673,611,45,45,37.18,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=45; Non-R (S+I)=2284. Limited S/I separation. SMOTE recommended due to class imbalance.
+Cefuroxime,Haemophilus influenzae,2595,1886,440,269,269,7.01,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=1886, I=440, R=269)."
+Cefuroxime,Streptococcus pneumoniae,1504,726,59,719,59,12.31,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=726, I=59, R=719)."
+Clarithromycin,Haemophilus influenzae,2589,2589,0,0,0,inf,Exclude - No Resistance,N/A,N/A,No R isolates and insufficient S/I data for meaningful prediction.
+Clarithromycin,Streptococcus pneumoniae,1676,609,0,1067,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=1067; Non-R (S+I)=609. Limited S/I separation. SMOTE recommended due to class imbalance.
+Doxycycline,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Doxycycline,Streptococcus pneumoniae,993,532,0,461,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=461; Non-R (S+I)=532. Limited S/I separation. SMOTE recommended due to class imbalance.
+Erythromycin,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Erythromycin,Streptococcus pneumoniae,2337,1259,0,1078,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=1078; Non-R (S+I)=1259. Limited S/I separation. SMOTE recommended due to class imbalance.
+Levofloxacin,Haemophilus influenzae,2593,2271,0,322,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=322; Non-R (S+I)=2271. Limited S/I separation. SMOTE recommended due to class imbalance.
+Levofloxacin,Streptococcus pneumoniae,2338,0,2312,26,0,inf,Exclude - Inadequate Class Representation,N/A,N/A,"S=0, I=2312, R=26. Not enough samples for reliable modeling."
+Moxifloxacin,Haemophilus influenzae,2593,2303,0,290,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=290; Non-R (S+I)=2303. Limited S/I separation. SMOTE recommended due to class imbalance.
+Moxifloxacin,Streptococcus pneumoniae,2338,2318,0,20,0,inf,Exclude - Inadequate Class Representation,N/A,N/A,"S=2318, I=0, R=20. Not enough samples for reliable modeling."
+Penicillin,Haemophilus influenzae,0,0,0,0,0,,Exclude - No Data,N/A,N/A,No isolates with SIR label.
+Penicillin,Streptococcus pneumoniae,1527,403,826,298,298,2.77,Multiclass (S/I/R),"XGBoost (primary), Random Forest (baseline)","Temporal (2014-2020 train, 2021 test) + Geographic (GroupKFold by Country)","All classes well-represented (S=403, I=826, R=298)."
+Tetracycline,Haemophilus influenzae,1528,1470,0,58,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=58; Non-R (S+I)=1470. Limited S/I separation. SMOTE recommended due to class imbalance.
+Tetracycline,Streptococcus pneumoniae,993,503,0,490,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=490; Non-R (S+I)=503. Limited S/I separation. SMOTE recommended due to class imbalance.
+Trimethoprim Sulfa,Haemophilus influenzae,2522,1458,0,1064,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=1064; Non-R (S+I)=1458. Limited S/I separation. SMOTE recommended due to class imbalance.
+Trimethoprim Sulfa,Streptococcus pneumoniae,2332,1393,0,939,0,inf,Binary (R vs Non-R),"XGBoost, Logistic Regression","Temporal (2014-2020 train, 2021 test)",R=939; Non-R (S+I)=1393. Limited S/I separation. SMOTE recommended due to class imbalance.

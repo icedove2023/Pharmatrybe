@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Ceftriaxone,Haemophilus influenzae,Binary (R vs Non-R),0.8947368421052632,0.8148262032085563,0.907541514213341,0.9335195125489627,0.5085063410073274,0.05741184605529621,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Ceftriaxone_Haemophilus_influenzae

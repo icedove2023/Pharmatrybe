@@ -1,0 +1,11 @@
+{
+  "phase": "13D",
+  "engine_version": "4.0",
+  "python_version": "3.14.6",
+  "timestamp": "2026-08-10T00:12:10.112479",
+  "host_os": "Windows",
+  "recovery_duration": 0.0,
+  "deployment_uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+  "recovered_from": "artifact_recovery_v2\\Tetracycline_Streptococcus_pneumoniae",
+  "original_deployment": "deployment\\Tetracycline_Streptococcus_pneumoniae"
+}

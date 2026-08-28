@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Erythromycin,Streptococcus pneumoniae,Binary (R vs Non-R),RandomForest,0.6763285024154589,0.4034582132564842,0.5457405783179496,0.6201492537313433,0.05

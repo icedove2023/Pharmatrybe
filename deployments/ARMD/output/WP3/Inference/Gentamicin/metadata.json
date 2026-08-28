@@ -1,0 +1,5 @@
+{
+  "antibiotic": "Gentamicin",
+  "best_model": "XGBoost",
+  "threshold": 0.2997349245810621
+}

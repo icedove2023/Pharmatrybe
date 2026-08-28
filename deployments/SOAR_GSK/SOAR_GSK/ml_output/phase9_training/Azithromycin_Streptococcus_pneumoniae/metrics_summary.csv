@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Azithromycin,Streptococcus pneumoniae,Binary (R vs Non-R),XGBoost,0.6763285024154589,0.4034582132564842,0.5457405783179496,0.6395122601279318,0.05

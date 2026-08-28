@@ -1,0 +1,6 @@
+{
+  "name": "PharmaTrybe CDSS",
+  "description": "An Explainable Clinical Decision Support System for Personalized Antimicrobial Prescribing and Stewardship.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Amoxicillin Clavulanate,Streptococcus pneumoniae,Multiclass (S/I/R),0.5893719806763285,0.24721377912867273,0.43710262396663874,0.4633029112367329,,0.19247803504703984,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Amoxicillin_Clavulanate_Streptococcus_pneumoniae

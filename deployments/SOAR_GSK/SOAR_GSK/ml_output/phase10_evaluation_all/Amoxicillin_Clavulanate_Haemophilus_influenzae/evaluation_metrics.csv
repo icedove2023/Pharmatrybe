@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Amoxicillin Clavulanate,Haemophilus influenzae,Multiclass (S/I/R),0.8011695906432749,0.29653679653679654,0.7127287916761601,0.6472380803676944,,0.11392855268726128,True,513,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Amoxicillin_Clavulanate_Haemophilus_influenzae

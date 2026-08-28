@@ -1,0 +1,27 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold,Drug_Species
+Cefotaxime,Haemophilus influenzae,Binary (R vs Non-R),XGBoost,0.9376218323586744,0.9074216106474172,0.9386525566491608,0.9428571428571428,0.15,Cefotaxime_Haemophilus_influenzae
+Ceftibuten,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8908382066276803,0.8618474204593545,0.8891110959623333,0.8821432570639394,0.3500000000000001,Ceftibuten_Haemophilus_influenzae
+Cefpodoxime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8654970760233918,0.824476235340788,0.8593770312441323,0.8508836120156599,0.25,Cefpodoxime_Haemophilus_influenzae
+Cefixime,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.8576998050682261,0.8226720647773279,0.8544735658309065,0.847657952069717,0.225,Cefixime_Haemophilus_influenzae
+Ceftriaxone,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.8947368421052632,0.8148262032085563,0.907541514213341,0.9288045843609458,0.125,Ceftriaxone_Haemophilus_influenzae
+Trimethoprim Sulfa,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.7602339181286549,0.7545597759495887,0.7608886268416242,0.7560798122065727,0.4750000000000001,Trimethoprim_Sulfa_Haemophilus_influenzae
+Tetracycline,Haemophilus influenzae,Binary (R vs Non-R),XGBoost,0.9044834307992202,0.72609591056193,0.9135320731300972,0.8634912907064806,0.075,Tetracycline_Haemophilus_influenzae
+Tetracycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6980676328502415,0.6746817538896747,0.691536441428822,0.7197507818371355,0.3500000000000001,Tetracycline_Streptococcus_pneumoniae
+Levofloxacin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.6627680311890838,0.6626859998859771,0.66415230942901,0.688694792353329,0.225,Levofloxacin_Haemophilus_influenzae
+Doxycycline,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6763285024154589,0.6444302012562492,0.6593503743791053,0.6963792610931251,0.3500000000000001,Doxycycline_Streptococcus_pneumoniae
+Trimethoprim Sulfa,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6884057971014492,0.6206178829446406,0.6547055197777788,0.7412924987167893,0.4000000000000001,Trimethoprim_Sulfa_Streptococcus_pneumoniae
+Ampicillin,Haemophilus influenzae,Multiclass (S/I/R),RandomForest,0.9083820662768032,0.6179342952637157,0.8804905663795368,0.9100553205599056,,Ampicillin_Haemophilus_influenzae
+Ceftriaxone,Streptococcus pneumoniae,Binary (R vs Non-R),RandomForest,0.961352657004831,0.5900990099009901,0.9632371932845458,0.7422496570644719,0.05,Ceftriaxone_Streptococcus_pneumoniae
+Cefpodoxime,Streptococcus pneumoniae,Binary (R vs Non-R),XGBoost,0.5869565217391305,0.5650058065586463,0.5621734562127774,0.6686170088524513,0.4000000000000001,Cefpodoxime_Streptococcus_pneumoniae
+Amoxicillin,Haemophilus influenzae,Multiclass (S/I/R),LogisticRegression,0.7270955165692008,0.4994086560185458,0.6653603354108669,0.8308919228965906,,Amoxicillin_Haemophilus_influenzae
+Azithromycin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.9415204678362572,0.4849397590361445,0.9131614176002254,0.5236714975845411,0.5,Azithromycin_Haemophilus_influenzae
+Moxifloxacin,Haemophilus influenzae,Binary (R vs Non-R),RandomForest,0.4775828460038986,0.4673805243909998,0.441371789011638,0.465660914551578,0.175,Moxifloxacin_Haemophilus_influenzae
+Amoxicillin,Streptococcus pneumoniae,Multiclass (S/I/R),LogisticRegression,0.6376811594202898,0.4323821507212511,0.5634615839670751,0.7007198637694926,,Amoxicillin_Streptococcus_pneumoniae
+Erythromycin,Streptococcus pneumoniae,Binary (R vs Non-R),RandomForest,0.6811594202898551,0.4260869565217391,0.561016593152699,0.6083688699360341,0.3000000000000001,Erythromycin_Streptococcus_pneumoniae
+Clarithromycin,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6642512077294686,0.4059277153210072,0.5327238617779076,0.7029588112617311,0.3000000000000001,Clarithromycin_Streptococcus_pneumoniae
+Azithromycin,Streptococcus pneumoniae,Binary (R vs Non-R),LogisticRegression,0.6763285024154589,0.4034582132564842,0.5457405783179496,0.6998534115138594,0.05,Azithromycin_Streptococcus_pneumoniae
+Penicillin,Streptococcus pneumoniae,Multiclass (S/I/R),RandomForest,0.5048309178743962,0.3690349289769206,0.479139683692781,0.6272580349382694,,Penicillin_Streptococcus_pneumoniae
+Amoxicillin Clavulanate,Haemophilus influenzae,Multiclass (S/I/R),RandomForest,0.8011695906432749,0.2965367965367965,0.7127287916761601,0.4711487161203771,,Amoxicillin_Clavulanate_Haemophilus_influenzae
+Cefuroxime,Haemophilus influenzae,Multiclass (S/I/R),LogisticRegression,0.6608187134502924,0.2652582159624413,0.5258627790132608,0.7579140771016277,,Cefuroxime_Haemophilus_influenzae
+Amoxicillin Clavulanate,Streptococcus pneumoniae,Multiclass (S/I/R),LogisticRegression,0.5845410628019324,0.2519569942107591,0.4390175712059343,0.4424506131212664,,Amoxicillin_Clavulanate_Streptococcus_pneumoniae
+Cefuroxime,Streptococcus pneumoniae,Multiclass (S/I/R),RandomForest,0.3140096618357488,0.204153605015674,0.2847004528039011,0.3359847352432759,,Cefuroxime_Streptococcus_pneumoniae

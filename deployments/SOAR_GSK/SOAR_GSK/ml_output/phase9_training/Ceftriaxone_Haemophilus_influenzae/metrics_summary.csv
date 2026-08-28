@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Ceftriaxone,Haemophilus influenzae,Binary (R vs Non-R),LogisticRegression,0.8947368421052632,0.8148262032085563,0.907541514213341,0.9335195125489627,0.12500000000000003

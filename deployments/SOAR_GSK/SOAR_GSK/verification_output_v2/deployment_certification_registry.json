@@ -1,0 +1,102 @@
+[
+  {
+    "deployment": "Cefixime_Haemophilus_influenzae",
+    "uuid": "000bc8b5-b4d0-4fe3-8dc0-8a49163e2007",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:22.036716"
+  },
+  {
+    "deployment": "Cefotaxime_Haemophilus_influenzae",
+    "uuid": "44f923aa-813e-4da1-bcf1-56871d1ccdaa",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:27.440172"
+  },
+  {
+    "deployment": "Cefpodoxime_Haemophilus_influenzae",
+    "uuid": "093c2f42-b2dc-4c4a-8dd9-df020951be1b",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:33.052820"
+  },
+  {
+    "deployment": "Ceftibuten_Haemophilus_influenzae",
+    "uuid": "c505ded8-4940-410f-9cbf-d69ade638010",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:40.535045"
+  },
+  {
+    "deployment": "Ceftriaxone_Haemophilus_influenzae",
+    "uuid": "ea78d611-af61-4056-a352-1fbff476628e",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:46.284547"
+  },
+  {
+    "deployment": "Doxycycline_Streptococcus_pneumoniae",
+    "uuid": "7da0244b-e201-4a56-87c9-b1b1e5e77dd3",
+    "grade": "A",
+    "overall_score": 92.31,
+    "certified": true,
+    "errors_count": 0,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:52.057771"
+  },
+  {
+    "deployment": "Levofloxacin_Haemophilus_influenzae",
+    "uuid": "8387fd00-212c-47b0-a3a3-dc6ebe869445",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:13:57.371842"
+  },
+  {
+    "deployment": "Tetracycline_Haemophilus_influenzae",
+    "uuid": "c76ddb86-ce86-43a2-8950-bca9d19bed49",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:14:02.953301"
+  },
+  {
+    "deployment": "Tetracycline_Streptococcus_pneumoniae",
+    "uuid": "acbf3086-2750-4e7d-8cc2-61fbf8a4d566",
+    "grade": "A",
+    "overall_score": 92.31,
+    "certified": true,
+    "errors_count": 0,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:14:08.700401"
+  },
+  {
+    "deployment": "Trimethoprim_Sulfa_Haemophilus_influenzae",
+    "uuid": "b71e653b-7c71-459a-ab60-4c2441d2d305",
+    "grade": "B",
+    "overall_score": 84.62,
+    "certified": true,
+    "errors_count": 1,
+    "warnings_count": 28,
+    "timestamp": "2026-08-10T00:14:14.092728"
+  }
+]

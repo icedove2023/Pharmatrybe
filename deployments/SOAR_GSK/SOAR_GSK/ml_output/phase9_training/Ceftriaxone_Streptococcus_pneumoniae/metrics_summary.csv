@@ -1,0 +1,2 @@
+Drug,Species,Task,Best_Model,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,Optimal_Threshold
+Ceftriaxone,Streptococcus pneumoniae,Binary (R vs Non-R),RandomForest,0.961352657004831,0.5900990099009901,0.9632371932845458,0.6665294924554183,0.05

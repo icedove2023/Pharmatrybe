@@ -1,0 +1,2 @@
+Drug,Species,Task,Test_Accuracy,Test_F1_macro,Test_F1_weighted,Test_AUC,AP,Brier_Score,SHAP_Success,N_Test,Model_Path
+Azithromycin,Streptococcus pneumoniae,Binary (R vs Non-R),0.6763285024154589,0.4034582132564842,0.5457405783179496,0.6395122601279318,0.8094083755856526,0.23454855325539556,True,414,C:\Users\Adetokunbo\Desktop\villi\ml_output\phase9_training\Azithromycin_Streptococcus_pneumoniae

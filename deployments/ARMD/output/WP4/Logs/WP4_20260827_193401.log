@@ -1,0 +1,52 @@
+[2026-08-27 19:34:01,871] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-27 19:34:01,871] [INFO] Loaded registry with 20 antibiotics
+[2026-08-27 19:34:01,871] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-27 19:34:01,871] [WARNING] Failed to load WP2 table (optional): WP2 feature table not found: C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\deployments\ARMD\output/WP2/WP2_Model_Ready_Feature_Table.parquet
+[2026-08-27 19:34:01,871] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-27 19:34:01,871] [INFO] ARMD Prediction Plugin initialization complete
+[2026-08-27 19:34:01,952] [INFO] Plugin soar instantiated
+[2026-08-27 19:34:01,955] [INFO] Runtime starting plugin_id=soar plugin_name=SOAR Prediction Plugin
+[2026-08-27 19:34:02,322] [INFO] Registry initialized plugin_id=soar deployment_count=10
+[2026-08-27 19:34:02,339] [INFO] Prediction engine ready plugin_id=soar engine=PredictionEngine
+[2026-08-27 19:34:02,339] [INFO] Explainability ready plugin_id=soar adapter=ExplainabilityAdapter
+[2026-08-27 19:34:02,339] [INFO] Runtime initialized plugin_id=soar plugin_version=0.1.0
+[2026-08-27 19:34:02,339] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-27 19:34:02,339] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-27 19:34:02,339] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-27 19:34:02,339] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-27 19:34:02,339] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-27 19:34:02,339] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-27 19:34:02,339] [INFO] Loaded 11 placeholder guidelines
+[2026-08-27 19:34:02,339] [INFO] Processing prediction request for patient
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Amikacin failed: Failed to load model package for Amikacin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Amikacin
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Amoxicillin/Clavulanic Acid failed: Failed to load model package for Amoxicillin/Clavulanic Acid: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Amoxicillin_Clavulanic_Acid
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ampicillin failed: Failed to load model package for Ampicillin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ampicillin
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ampicillin/Sulbactam failed: Failed to load model package for Ampicillin/Sulbactam: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ampicillin_Sulbactam
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Aztreonam failed: Failed to load model package for Aztreonam: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Aztreonam
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Cefazolin failed: Failed to load model package for Cefazolin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Cefazolin
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Cefepime failed: Failed to load model package for Cefepime: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Cefepime
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Cefoxitin failed: Failed to load model package for Cefoxitin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Cefoxitin
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ceftaroline failed: Failed to load model package for Ceftaroline: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ceftaroline
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ceftazidime failed: Failed to load model package for Ceftazidime: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ceftazidime
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ceftriaxone failed: Failed to load model package for Ceftriaxone: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ceftriaxone
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Cefuroxime failed: Failed to load model package for Cefuroxime: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Cefuroxime
+[2026-08-27 19:34:02,339] [ERROR] Prediction for Ciprofloxacin failed: Failed to load model package for Ciprofloxacin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Ciprofloxacin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Clarithromycin failed: Failed to load model package for Clarithromycin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Clarithromycin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Clindamycin failed: Failed to load model package for Clindamycin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Clindamycin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Daptomycin failed: Failed to load model package for Daptomycin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Daptomycin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Doxycycline failed: Failed to load model package for Doxycycline: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Doxycycline
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Erythromycin failed: Failed to load model package for Erythromycin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Erythromycin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Gentamicin failed: Failed to load model package for Gentamicin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Gentamicin
+[2026-08-27 19:34:02,355] [ERROR] Prediction for Levofloxacin failed: Failed to load model package for Levofloxacin: Missing model.pkl in C:\Users\Adetokunbo\Desktop\villi\ARMD\output/WP3\Models\Levofloxacin
+[2026-08-27 19:34:02,355] [ERROR] Unexpected error during prediction: PredictionResult.__init__() got an unexpected keyword argument 'prediction'
+Traceback (most recent call last):
+  File "C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\apps\api\app\plugins\prediction\armd\prediction_engine.py", line 96, in predict
+    result = PredictionResult(
+             ^^^^^^^^^^^^^^^^^
+TypeError: PredictionResult.__init__() got an unexpected keyword argument 'prediction'
+[2026-08-27 19:34:02,355] [INFO] Registering deployment artifacts deployment_id=Cefixime_Haemophilus_influenzae
+[2026-08-27 19:34:02,450] [ERROR] Artifact registration failed deployment_id=Cefixime_Haemophilus_influenzae error=Failed to load artifact C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\deployments\SOAR_GSK\Cefixime_Haemophilus_influenzae\final_model.pkl: Failed to load pickle artifact at C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\deployments\SOAR_GSK\Cefixime_Haemophilus_influenzae\final_model.pkl: STACK_GLOBAL requires str
+[2026-08-27 19:34:02,451] [ERROR] Pipeline error for patient patient-e2e: No antibiotic predictions available from Prediction Plugins. Candidates must originate from SOAR/ARMD predictions only.
+[2026-08-27 19:34:02,453] [INFO] request.completed request_id=6d595ecd-7480-471a-ab8e-f4ebb327ebe5 timestamp=2026-08-27T18:34:02.452484+00:00 method=POST endpoint=/api/v1/pipeline/execute status_code=422 processing_time_ms=7670.64 client_ip=testclient user_id=anonymous user_role=anonymous
+[2026-08-27 19:34:02,454] [INFO] audit.event event_id=e1b8d935-f09d-49ac-aa60-f62594140d70 request_id=6d595ecd-7480-471a-ab8e-f4ebb327ebe5 timestamp=2026-08-27 18:34:02.454198+00:00 user_id=anonymous hospital_id=None user_role=anonymous action=REQUEST_COMPLETED resource=http_request resource_id=POST:/api/v1/pipeline/execute status=AuditStatus.FAILURE details={'status_code': 422, 'processing_time_ms': 7670.64, 'client_ip': 'testclient'} source_service=pharmatrybe.api
+[2026-08-27 19:34:02,459] [INFO] HTTP Request: POST http://testserver/api/v1/pipeline/execute "HTTP/1.1 422 Unprocessable Content"

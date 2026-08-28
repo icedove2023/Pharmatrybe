@@ -11,6 +11,6 @@ router = APIRouter(tags=["version"])
 async def get_version() -> dict[str, str]:
     """Return the platform version payload."""
     return {
-        "platform": "PharmaTrybe",
+        "service": "Platform Version",
         "version": settings.app_version,
     }

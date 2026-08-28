@@ -1,0 +1,11 @@
+{
+  "phase": "13D",
+  "engine_version": "4.0",
+  "python_version": "3.14.6",
+  "timestamp": "2026-08-10T00:12:17.806299",
+  "host_os": "Windows",
+  "recovery_duration": 0.0,
+  "deployment_uuid": "8387fd00-212c-47b0-a3a3-dc6ebe869445",
+  "recovered_from": "artifact_recovery_v2\\Levofloxacin_Haemophilus_influenzae",
+  "original_deployment": "deployment\\Levofloxacin_Haemophilus_influenzae"
+}
