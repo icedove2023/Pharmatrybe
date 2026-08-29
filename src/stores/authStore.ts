@@ -19,7 +19,7 @@ interface AuthState {
   // Core Actions
   initialize: (queryClient?: QueryClient) => Promise<() => void>;
   login: (credentials: LoginCredentials) => Promise<void>;
-  registerHospital: (payload: HospitalRegistrationPayload) => Promise<void>;
+  registerHospital: (payload: HospitalRegistrationPayload) => Promise<boolean>;
   logout: () => Promise<void>;
   switchRole: (role: UserRole) => Promise<void>;
   clearError: () => void;
@@ -119,7 +119,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   registerHospital: async (payload: HospitalRegistrationPayload) => {
     set({ isAuthenticating: true, error: null });
     try {
-      const { user, session } = await authApi.registerHospital(payload);
+      const result = await authApi.registerHospital(payload);
+      if (!result) {
+        set({ isAuthenticating: false, status: 'unauthenticated', error: null });
+        return false;
+      }
+      const { user, session } = result;
       set({
         user,
         session,
@@ -127,6 +132,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         isAuthenticating: false,
         error: null,
       });
+      return true;
     } catch (err: any) {
       set({
         error: err instanceof AuthError ? err.message : (err?.message || 'Registration failed. Please try again.'),

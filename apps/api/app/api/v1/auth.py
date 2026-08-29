@@ -7,17 +7,14 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.auth import AuthorizationContext, AuthenticatedUser, get_authorization_context, get_current_user
-from app.auth.rbac_catalog import HOSPITAL_ADMIN_PERMISSION_CODES
 from app.database.session import get_db_session
 from app.models.identity import (
     Hospital,
     HospitalMembership,
     MembershipEvent,
     MembershipRole,
-    Permission,
     ProfessionalProfile,
     Role,
-    RolePermission,
 )
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -29,9 +26,6 @@ class HospitalRegistrationRequest(BaseModel):
     hospital_name: str = Field(..., min_length=2)
     country: str = Field(..., min_length=2)
     admin_name: str = Field(..., min_length=2)
-
-
-ADMIN_PERMISSIONS = HOSPITAL_ADMIN_PERMISSION_CODES
 
 
 @router.get("", summary="Authentication service status")
@@ -99,7 +93,7 @@ async def register_hospital(
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Application profile already exists")
 
     first_name, _, last_name = payload.admin_name.partition(" ")
-    hospital = Hospital(name=payload.hospital_name, legal_name=payload.hospital_name)
+    hospital = Hospital(name=payload.hospital_name, legal_name=payload.hospital_name, country=payload.country)
     profile = ProfessionalProfile(
         auth_user_id=current_user.user_id,
         first_name=first_name,
@@ -110,6 +104,7 @@ async def register_hospital(
     if role is None:
         role = Role(code="HOSPITAL_ADMIN", name="Hospital Administrator")
         db.add(role)
+        db.flush()
 
     try:
         db.add_all([hospital, profile])
@@ -135,13 +130,6 @@ async def register_hospital(
                 },
             )
         )
-        for permission_code in ADMIN_PERMISSIONS:
-            permission = db.scalar(select(Permission).where(Permission.code == permission_code))
-            if permission is None:
-                permission = Permission(code=permission_code)
-                db.add(permission)
-                db.flush()
-            db.add(RolePermission(role_id=role.id, permission_id=permission.id))
         db.commit()
     except Exception as exc:
         db.rollback()

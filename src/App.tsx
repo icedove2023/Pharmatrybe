@@ -22,6 +22,7 @@ import { PluginGovernanceView } from '@/components/admin/PluginGovernanceView';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { LandingPage } from '@/components/auth/LandingPage';
 import { HospitalRegistrationForm } from '@/components/auth/HospitalRegistrationForm';
+import { InvitationAcceptanceForm } from '@/components/auth/InvitationAcceptanceForm';
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
@@ -37,6 +38,7 @@ export default function App() {
   const [activeCaseId, setActiveCaseId] = useState<string>('CASE-812901');
   const [recSubTab, setRecSubTab] = useState<'recommendation' | 'explainability'>('recommendation');
   const [authView, setAuthView] = useState<'landing' | 'login' | 'register'>('landing');
+  const invitationToken = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('token') : null;
 
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
@@ -128,6 +130,14 @@ export default function App() {
             <p className="text-xs text-slate-text-muted">Verifying session…</p>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (invitationToken) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-canvas p-3 sm:p-6 lg:p-8">
+        <InvitationAcceptanceForm token={invitationToken} />
       </div>
     );
   }

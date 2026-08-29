@@ -4,6 +4,7 @@ export type UserRole =
   | 'Infectious Disease Specialist'
   | 'General Practitioner'
   | 'Pharmacist'
+   | 'Laboratory Scientist'
   | 'Admin'
   | 'Researcher';
 
@@ -171,4 +172,17 @@ export const ROLE_PERMISSIONS_MAP: Record<UserRole, RolePermissions> = {
     canManageUsers: false,
     canViewAuditLogs: false,
   },
+   'Laboratory Scientist': {
+     canSubmitAssessment: false,
+     canViewRecommendations: false,
+     canSignPrescription: false,
+     canOverrideStewardship: false,
+     canViewExplainability: false,
+     canAccessKnowledgeExplorer: true,
+     canViewPatientDirectory: false,
+     canManagePlugins: false,
+     canViewSystemHealth: false,
+     canManageUsers: false,
+     canViewAuditLogs: false,
+   },
 };

@@ -60,7 +60,7 @@ class RegistrationSession:
     def flush(self):
         self.flush_count += 1
         for entity in self.added:
-            if isinstance(entity, (Hospital, ProfessionalProfile, HospitalMembership)) and entity.id is None:
+            if isinstance(entity, (Role, Hospital, ProfessionalProfile, HospitalMembership)) and getattr(entity, 'id', None) is None:
                 entity.id = str(uuid4())
 
     def commit(self):
@@ -103,6 +103,7 @@ def test_registration_creates_one_membership_event_with_trusted_actor_and_detail
     assert len(memberships) == 1
     assert len(roles) == 1
     assert len(events) == 1
+    assert hospitals[0].country == "NG"
     assert memberships[0].status == "ACTIVE"
     assert memberships[0].hospital_id == hospitals[0].id
     assert memberships[0].professional_id == profiles[0].id
@@ -134,6 +135,22 @@ def test_event_failure_rolls_back_entire_registration_without_commit():
     assert len(_added(session, Hospital)) == 1
     assert len(_added(session, ProfessionalProfile)) == 1
     assert len(_added(session, HospitalMembership)) == 1
+
+
+def test_registration_creates_and_flushes_missing_hospital_admin_role_before_membership_assignment():
+    session = RegistrationSession()
+    session.role = None
+
+    result = asyncio.run(register_hospital(_registration_payload(), _actor(), session))
+
+    membership_roles = _added(session, MembershipRole)
+    created_roles = _added(session, Role)
+    assert result["status"] == "ACTIVE"
+    assert len(created_roles) == 1
+    assert len(membership_roles) == 1
+    assert membership_roles[0].role_id == created_roles[0].id
+    assert session.commit_count == 1
+    assert session.rollback_count == 0
 
 
 def test_existing_profile_rejects_duplicate_registration_without_writes():

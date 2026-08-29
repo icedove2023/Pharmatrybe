@@ -39,11 +39,16 @@ async function refreshSessionOnce(): Promise<boolean> {
 async function parseResponse(response: Response): Promise<unknown> {
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
-    const error = (payload as { error?: { code?: string; message?: string; details?: unknown } } | null)?.error;
+    const body = payload as {
+      error?: { code?: string; message?: string; details?: unknown };
+      detail?: string | { code?: string; message?: string };
+    } | null;
+    const error = body?.error;
+    const detail = typeof body?.detail === 'string' ? body.detail : body?.detail?.message;
     throw new ApiClientError(
-      error?.message || `Request failed with HTTP ${response.status}`,
+      error?.message || detail || `Request failed with HTTP ${response.status}`,
       response.status,
-      error?.code,
+      error?.code || (typeof body?.detail === 'object' ? body.detail.code : undefined),
       error?.details,
     );
   }

@@ -22,6 +22,8 @@ const INPUT_CLASSES =
 export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchToSignIn }: HospitalRegistrationFormProps) {
   const { registerHospital, isAuthenticating, error, clearError } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
+  const [verificationPending, setVerificationPending] = useState(false);
+  const [verificationEmail, setVerificationEmail] = useState('');
   const prefersReducedMotion = useReducedMotion();
 
   const {
@@ -36,8 +38,12 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
   const onSubmit = async (data: HospitalRegistrationPayload) => {
     clearError();
     try {
-      await registerHospital(data);
-      onSuccess?.();
+      const completed = await registerHospital(data);
+      if (completed) onSuccess?.();
+      else {
+        setVerificationEmail(data.adminEmail);
+        setVerificationPending(true);
+      }
     } catch {
       // Error surfaced via store state
     }
@@ -69,9 +75,13 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
           </p>
         </div>
 
-        {error && <SafetyAlert level="warning" title="Registration error">{error}</SafetyAlert>}
+        {verificationPending ? (
+          <SafetyAlert level="success" title="Check your email">
+            We sent a verification link to {verificationEmail}. Open it, then return here and sign in to finish creating your hospital workspace.
+          </SafetyAlert>
+        ) : error && <SafetyAlert level="warning" title="Registration error">{error}</SafetyAlert>}
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs">
+        {!verificationPending && <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs">
           <div className="space-y-1.5">
             <label className="block font-semibold text-slate-text-secondary">Hospital / institution name</label>
             <div className="relative">
@@ -83,7 +93,7 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
 
           <div className="space-y-1.5">
             <label className="block font-semibold text-slate-text-secondary">Country</label>
-            <input {...register('country')} type="text" placeholder="United Kingdom" className={`focus-clinical w-full rounded-[var(--radius-sm)] border bg-slate-inset px-3.5 py-2.5 text-xs font-medium text-slate-text-primary placeholder-slate-text-muted ${errors.country ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
+            <input {...register('country')} type="text" placeholder="Nigeria" className={`focus-clinical w-full rounded-[var(--radius-sm)] border bg-slate-inset px-3.5 py-2.5 text-xs font-medium text-slate-text-primary placeholder-slate-text-muted ${errors.country ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
             {errors.country && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.country.message}</p>}
           </div>
 
@@ -91,7 +101,7 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
             <label className="block font-semibold text-slate-text-secondary">Your full name (first administrator)</label>
             <div className="relative">
               <User className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-text-muted" aria-hidden="true" />
-              <input {...register('adminName')} type="text" placeholder="Dr. Jane Okoye" className={`${INPUT_CLASSES} ${errors.adminName ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
+              <input {...register('adminName')} type="text" placeholder="Pharm. Jane Okoye" className={`${INPUT_CLASSES} ${errors.adminName ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
             </div>
             {errors.adminName && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.adminName.message}</p>}
           </div>
@@ -138,7 +148,7 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
           <ClinicalButton type="submit" variant="primary" size="lg" icon={ShieldCheck} loading={isAuthenticating} className="w-full">
             {isAuthenticating ? 'Creating workspace…' : 'Create hospital workspace'}
           </ClinicalButton>
-        </form>
+        </form>}
 
         <p className="text-center text-[11px] text-slate-text-muted">
           Already registered?{' '}
