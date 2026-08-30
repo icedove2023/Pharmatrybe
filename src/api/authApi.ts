@@ -20,7 +20,7 @@ async function completePendingRegistration(email: string): Promise<boolean> {
   const raw = window.localStorage.getItem(PENDING_HOSPITAL_REGISTRATION);
   if (!raw) return false;
   const payload = JSON.parse(raw) as Pick<HospitalRegistrationPayload, 'hospitalName' | 'country' | 'adminName' | 'adminEmail'>;
-  if (payload.adminEmail.toLowerCase() !== email.toLowerCase()) return false;
+  if (!payload.adminEmail || payload.adminEmail.toLowerCase() !== email.toLowerCase()) return false;
   try {
     await apiRequest<{ id: string; hospital_id: string; status: string }>('/auth/register-hospital', {
       method: 'POST',
@@ -34,6 +34,12 @@ async function completePendingRegistration(email: string): Promise<boolean> {
   }
   window.localStorage.removeItem(PENDING_HOSPITAL_REGISTRATION);
   return true;
+}
+
+async function completePendingRegistrationForSession(session: Pick<NonNullable<Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']>, 'user'> | null): Promise<void> {
+  const email = session?.user?.email;
+  if (!email) return;
+  await completePendingRegistration(email);
 }
 
 export class AuthError extends Error {
@@ -81,12 +87,13 @@ export const authApi = {
   login: async (credentials: LoginCredentials): Promise<{ user: User; session: AuthSession }> => {
     const { data, error } = await supabase.auth.signInWithPassword(credentials);
     if (error || !data.session) throw new AuthError(error?.message || 'Authentication failed.');
-    await completePendingRegistration(data.user?.email || credentials.email);
+    await completePendingRegistrationForSession(data.session);
     return { user: await getApplicationUser(), session: toAuthSession(data.session) };
   },
   getCurrentSession: async (): Promise<{ user: User; session: AuthSession } | null> => {
     const { data, error } = await supabase.auth.getSession();
     if (error || !data.session) return null;
+    await completePendingRegistrationForSession(data.session);
     return { user: await getApplicationUser(), session: toAuthSession(data.session) };
   },
   logout: async (): Promise<void> => {

@@ -1,9 +1,4 @@
-import importlib
+from pathlib import Path
 
-_module = importlib.import_module("packages.prediction-framework.explainability")
-
-for _name in dir(_module):
-    if not _name.startswith("__"):
-        globals()[_name] = getattr(_module, _name)
-
-__all__ = getattr(_module, "__all__", [])
+_source = Path(__file__).resolve().parents[1] / "prediction-framework" / "explainability.py"
+exec(compile(_source.read_text(encoding="utf-8"), str(_source), "exec"), globals())

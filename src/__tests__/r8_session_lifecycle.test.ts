@@ -136,6 +136,48 @@ export async function runR8SessionLifecycleTests() {
     globalThis.fetch = async () => new Response(JSON.stringify({ error: { code: 'FORBIDDEN', message: 'denied' } }), { status: 403 });
     await authApi.login({ email: 'a@example.com', password: 'password' }).catch((error) => assert(error instanceof AuthError && error.code === 'forbidden', 'R8 runtime: ordinary 403 maps to forbidden'));
 
+    const pendingRegistration = {
+      hospitalName: 'Auto Hospital',
+      country: 'Nigeria',
+      adminName: 'Ada Lovelace',
+      adminEmail: 'auto@example.com',
+    };
+    localStorage.setItem('pharmatrybe.pending-hospital-registration', JSON.stringify(pendingRegistration));
+    const verifiedSession = {
+      access_token: 'access-auto',
+      refresh_token: 'refresh-auto',
+      expires_at: 200000,
+      user: { id: 'auth-c', email: 'auto@example.com' },
+    } as Record<string, any>;
+    (supabase.auth as any).getSession = async () => ({ data: { session: verifiedSession }, error: null });
+    globalThis.fetch = async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes('/auth/register-hospital')) {
+        return new Response(JSON.stringify({ id: 'register-c', hospital_id: 'hospital-c', status: 'ACTIVE' }), { status: 201 });
+      }
+      if (url.includes('/auth/me')) {
+        return new Response(JSON.stringify({
+          id: 'auth-c',
+          professionalId: 'professional-c',
+          membershipId: 'membership-c',
+          hospitalId: 'hospital-c',
+          name: 'Ada Lovelace',
+          email: 'auto@example.com',
+          role: 'Admin',
+          organization: 'Auto Hospital',
+          department: '',
+          permissions: {},
+          roles: ['HOSPITAL_ADMIN'],
+          permissionCodes: ['professionals:manage'],
+        }), { status: 200 });
+      }
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    };
+    const autoCompleted = await authApi.getCurrentSession();
+    assert(autoCompleted?.user.email === 'auto@example.com', 'R8 runtime: verified session auto-completes pending hospital registration');
+    assert(localStorage.getItem('pharmatrybe.pending-hospital-registration') === null, 'R8 runtime: pending hospital registration is cleared after completion');
+    localStorage.removeItem('pharmatrybe.pending-hospital-registration');
+
     queryClient.setQueryData(['protected'], { patient: 'private' });
     (authApi as any).logout = async () => undefined;
     await useAuthStore.getState().logout();

@@ -87,6 +87,17 @@ class PluginManifestReader:
                 if not inner:
                     return []
                 return [item.strip() for item in inner.split(",")]
+            if value.startswith("{") and value.endswith("}"):
+                inner = value[1:-1].strip()
+                if not inner:
+                    return {}
+                result: Dict[str, Any] = {}
+                for entry in inner.split(","):
+                    if ":" not in entry:
+                        continue
+                    key, raw_entry_value = entry.split(":", 1)
+                    result[key.strip().strip('"\'')] = parse_scalar(raw_entry_value.strip())
+                return result
             if value.startswith("\"") and value.endswith("\""):
                 return value[1:-1]
             if value.startswith("'") and value.endswith("'"):

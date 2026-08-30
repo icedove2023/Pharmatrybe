@@ -1,11 +1,18 @@
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass, field
 from importlib import import_module
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 import tempfile
 from typing import Any, Dict, List, Optional
+
+REPO_ROOT = Path(__file__).resolve().parents[5]
+for candidate in (REPO_ROOT, REPO_ROOT / "apps" / "api"):
+    candidate_str = str(candidate)
+    if candidate.exists() and candidate_str not in sys.path:
+        sys.path.insert(0, candidate_str)
 
 from app.plugins.base.plugin import BasePlugin
 from app.plugins.contracts.plugin_manifest import PluginManifest
@@ -61,16 +68,31 @@ class PluginLoader:
             return []
 
         candidate_paths: List[Path] = []
-        if any((self.plugin_root / candidate).exists() for candidate in self.MANIFEST_FILENAMES):
-            candidate_paths.append(self.plugin_root)
+        seen: set[Path] = set()
+
+        def add_candidate(path: Path) -> None:
+            resolved = path.resolve()
+            if resolved not in seen:
+                seen.add(resolved)
+                candidate_paths.append(path)
+
+        if any(self._matches_manifest(self.plugin_root, manifest) for manifest in self.MANIFEST_FILENAMES):
+            add_candidate(self.plugin_root)
 
         for candidate in self.plugin_root.rglob("*"):
             if not candidate.is_dir():
                 continue
-            if any((candidate / manifest).exists() for manifest in self.MANIFEST_FILENAMES):
-                candidate_paths.append(candidate)
+            if any(self._matches_manifest(candidate, manifest) for manifest in self.MANIFEST_FILENAMES):
+                add_candidate(candidate)
 
         return candidate_paths
+
+    @staticmethod
+    def _matches_manifest(directory: Path, manifest_pattern: str) -> bool:
+        """Return whether a directory contains a manifest matching the supported pattern."""
+        if "*" not in manifest_pattern:
+            return (directory / manifest_pattern).exists()
+        return bool(sorted(directory.glob(manifest_pattern)))
 
     def load_all_plugins(self) -> List[PluginLoadResult]:
         """Attempt to load every discovered plugin."""
@@ -295,6 +317,10 @@ class PluginLoader:
         candidate = Path(module_reference)
         if candidate.suffix == ".py":
             return plugin_path / candidate
+
+        if module_reference.startswith("app."):
+            api_root = plugin_path.parents[2]
+            return api_root / Path(*module_reference.split(".")).with_suffix(".py")
 
         relative_path = Path(*module_reference.split("."))
         return plugin_path / relative_path.with_suffix(".py")

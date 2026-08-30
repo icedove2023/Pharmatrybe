@@ -1,0 +1,13 @@
+[2026-08-29 12:45:32,918] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-29 12:45:32,945] [INFO] Loaded registry with 20 antibiotics
+[2026-08-29 12:45:32,945] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-29 12:45:33,552] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-29 12:45:33,552] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-29 12:45:33,552] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-29 12:45:33,552] [INFO] ARMD Prediction Plugin initialization complete
+[2026-08-29 12:45:33,653] [INFO] Plugin soar instantiated
+[2026-08-29 12:45:33,653] [INFO] Runtime starting plugin_id=soar plugin_name=SOAR Prediction Plugin
+[2026-08-29 12:45:33,784] [INFO] Registry initialized plugin_id=soar deployment_count=10
+[2026-08-29 12:45:33,784] [INFO] Prediction engine ready plugin_id=soar engine=PredictionEngine
+[2026-08-29 12:45:33,784] [INFO] Explainability ready plugin_id=soar adapter=ExplainabilityAdapter
+[2026-08-29 12:45:33,784] [INFO] Runtime initialized plugin_id=soar plugin_version=0.1.0

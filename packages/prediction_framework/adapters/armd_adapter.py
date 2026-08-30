@@ -1,10 +1,6 @@
 """Importable compatibility wrapper for the shared ARMD adapter."""
 
-from importlib import import_module
+from pathlib import Path
 
-_module = import_module("packages.prediction-framework.adapters.armd_adapter")
-
-ARMDAdapter = _module.ARMDAdapter
-ARMDAdapterError = _module.ARMDAdapterError
-
-__all__ = ["ARMDAdapter", "ARMDAdapterError"]
+_source = Path(__file__).resolve().parents[2] / "prediction-framework" / "adapters" / "armd_adapter.py"
+exec(compile(_source.read_text(encoding="utf-8"), str(_source), "exec"), globals())

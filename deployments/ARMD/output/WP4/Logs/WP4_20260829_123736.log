@@ -1,0 +1,20 @@
+[2026-08-29 12:37:36,660] [INFO] Loaded registry with 20 antibiotics.
+[2026-08-29 12:37:36,679] [INFO] Loaded registry with 20 antibiotics
+[2026-08-29 12:37:36,691] [INFO] Loaded WP3 preprocessing artifacts
+[2026-08-29 12:37:37,380] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-29 12:37:37,382] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-08-29 12:37:37,382] [INFO] ARMD runtime initialized with 20 antibiotics
+[2026-08-29 12:37:37,382] [INFO] ARMD Prediction Plugin initialization complete
+[2026-08-29 12:37:37,476] [INFO] Plugin soar instantiated
+[2026-08-29 12:37:37,481] [INFO] Runtime starting plugin_id=soar plugin_name=SOAR Prediction Plugin
+[2026-08-29 12:37:37,752] [INFO] Registry initialized plugin_id=soar deployment_count=10
+[2026-08-29 12:37:37,752] [INFO] Prediction engine ready plugin_id=soar engine=PredictionEngine
+[2026-08-29 12:37:37,752] [INFO] Explainability ready plugin_id=soar adapter=ExplainabilityAdapter
+[2026-08-29 12:37:37,759] [INFO] Runtime initialized plugin_id=soar plugin_version=0.1.0
+[2026-08-29 12:37:37,759] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-29 12:37:37,759] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-29 12:37:37,759] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-29 12:37:37,759] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-08-29 12:37:37,767] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-08-29 12:37:37,767] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-08-29 12:37:37,767] [INFO] Loaded 11 placeholder guidelines

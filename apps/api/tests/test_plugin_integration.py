@@ -53,6 +53,16 @@ def test_plugin_manifest_reader_loads_manifest_from_soar_package() -> None:
     assert manifest.deployment_type == DeploymentType.ARTIFACT
 
 
+def test_plugin_manifest_reader_loads_who_manifest_with_empty_config_schema() -> None:
+    manifest_path = Path(__file__).resolve().parents[1] / "app" / "plugins" / "knowledge" / "who_knowledge_plugin_manifest.yml"
+    manifest = PluginManifestReader.load_from_file(manifest_path)
+
+    assert isinstance(manifest, PluginManifest)
+    assert manifest.plugin_id == "who_knowledge"
+    assert manifest.plugin_type == PluginType.KNOWLEDGE
+    assert manifest.configuration_schema == {}
+
+
 def test_plugin_manifest_reader_rejects_manifest_with_missing_fields(tmp_path: Path) -> None:
     manifest_path = tmp_path / "plugin.yaml"
     manifest_path.write_text("plugin_id: test_plugin\nplugin_name: Test Plugin\n")
@@ -72,6 +82,7 @@ def test_plugin_loader_discovers_nested_plugin_manifests() -> None:
     discovered = loader.discover_plugin_paths()
 
     assert any(str(path).endswith("plugins\\prediction\\soar") for path in discovered)
+    assert any(str(path).endswith("plugins\\knowledge") for path in discovered)
     assert any((path / "plugin.yaml").exists() for path in discovered)
 
 

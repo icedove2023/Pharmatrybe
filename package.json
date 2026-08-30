@@ -17,6 +17,8 @@
     "@supabase/supabase-js": "^2.112.3",
     "@tailwindcss/vite": "^4.1.14",
     "@tanstack/react-query": "^5.101.4",
+    "@tanstack/react-router": "1.120.0",
+    "@tanstack/react-start": "1.120.0",
     "@vitejs/plugin-react": "^5.0.4",
     "axios": "^1.19.0",
     "class-variance-authority": "^0.7.1",
