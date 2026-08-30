@@ -64,6 +64,28 @@ def _patient_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
     return case if isinstance(case, dict) else payload
 
 
+@router.get("/schema")
+async def get_pipeline_schema() -> Dict[str, Any]:
+    """Expose the live plugin input contract for pipeline execution."""
+    from app.plugins.manager.plugin_manager import PluginManager
+    from app.plugins.schema.composer import PluginSchemaComposer
+
+    plugin_root = Path(__file__).resolve().parents[2] / "plugins"
+    manager = PluginManager(
+        plugin_root=plugin_root,
+        platform_version=settings.app_version,
+        sdk_version="0.1.0",
+    )
+    manager.load_all_plugins()
+    composer = PluginSchemaComposer(manager)
+    return {
+        "plugin_ids": sorted([plugin.plugin_id for plugin in manager.list_plugins()]),
+        "schema": composer.compose([plugin.plugin_id for plugin in manager.list_plugins()])["schema"],
+        "field_provenance": composer.compose([plugin.plugin_id for plugin in manager.list_plugins()])["field_provenance"],
+        "conflicts": composer.compose([plugin.plugin_id for plugin in manager.list_plugins()])["conflicts"],
+    }
+
+
 @router.post("/execute", response_model=ExplainabilityResponseContract)
 async def execute_pipeline(
     request: PipelineExecutionRequest,

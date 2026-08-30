@@ -170,12 +170,41 @@ class ARMDPredictionPlugin(BasePredictionPlugin):
         return isinstance(request, PredictionRequest) and bool(request.payload)
 
     def input_schema(self) -> Dict[str, Any]:
-        """Return the ARMD input schema placeholder."""
-        return {}
+        """Return the ARMD input schema for patient and resistance-risk context."""
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "ARMD prediction input",
+            "type": "object",
+            "properties": {
+                "age": {"type": "integer", "minimum": 0, "maximum": 120, "description": "Patient age in years"},
+                "weight": {"type": "number", "minimum": 0, "description": "Patient weight in kilograms"},
+                "egfr": {"type": "number", "minimum": 0, "description": "Estimated glomerular filtration rate"},
+                "prior_antibiotics": {"type": "boolean", "description": "Antibiotic exposure in the previous 90 days"},
+                "recent_hospitalization": {"type": "boolean", "description": "Hospitalization in the last 90 days"},
+                "organism": {"type": "string", "description": "Suspected pathogen"},
+                "infection_site": {"type": "string", "description": "Clinical infection site"},
+            },
+            "required": ["age"],
+            "additionalProperties": True,
+        }
 
     def output_schema(self) -> Dict[str, Any]:
         """Return the ARMD output schema placeholder."""
-        return {}
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "ARMD prediction output",
+            "type": "object",
+            "properties": {
+                "predicted_class": {"type": "string"},
+                "probabilities": {"type": "object", "additionalProperties": {"type": "number"}},
+                "confidence": {"type": "number"},
+                "model_name": {"type": "string"},
+                "model_version": {"type": "string"},
+                "execution_time_ms": {"type": "number"},
+            },
+            "required": ["predicted_class", "confidence"],
+            "additionalProperties": True,
+        }
 
     def reload(self) -> None:
         """Reload plugin configuration and registry.

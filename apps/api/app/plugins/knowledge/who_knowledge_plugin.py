@@ -227,6 +227,41 @@ class WHOKnowledgePlugin(KnowledgePlugin):
             timestamp=datetime.now(timezone.utc),
         )
 
+    def input_schema(self) -> Dict[str, Any]:
+        """Return the WHO knowledge plugin input schema for guideline lookup."""
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "WHO knowledge input",
+            "type": "object",
+            "properties": {
+                "diagnosis": {"type": "string", "description": "Primary infection diagnosis or syndrome"},
+                "severity": {"type": "string", "description": "Clinical severity classification"},
+                "infection_site": {"type": "string", "description": "Site of infection"},
+                "population": {"type": "string", "description": "Target patient population or age cohort"},
+                "query": {"type": "string", "description": "Free-text WHO guideline search term"},
+            },
+            "required": ["diagnosis"],
+            "additionalProperties": True,
+        }
+
+    def output_schema(self) -> Dict[str, Any]:
+        """Return the WHO knowledge query output schema."""
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "WHO knowledge output",
+            "type": "object",
+            "properties": {
+                "result_type": {"type": "string"},
+                "entity_name": {"type": "string"},
+                "clinical_recommendation": {"type": "string"},
+                "evidence_level": {"type": "string"},
+                "citation": {"type": "string"},
+                "metadata": {"type": "object", "additionalProperties": True},
+            },
+            "required": ["result_type"],
+            "additionalProperties": True,
+        }
+
     # ========== Connection Management ==========
 
     def connect(self) -> None:

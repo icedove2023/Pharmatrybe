@@ -253,10 +253,37 @@ class SOARPredictionPlugin(BasePredictionPlugin):
         return len(self._runtime_context.deployment_registry.get_all()) > 0
 
     def input_schema(self) -> Dict[str, Any]:
-        return {}
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "SOAR prediction input",
+            "type": "object",
+            "properties": {
+                "pathogen": {"type": "string", "description": "Suspected respiratory pathogen"},
+                "culture": {"type": "string", "description": "Microbiology culture and sensitivity observations"},
+                "infection_site": {"type": "string", "description": "Clinical infection site"},
+                "organism": {"type": "string", "description": "Organism of interest"},
+                "antimicrobial": {"type": "string", "description": "Target antimicrobial or treatment candidate"},
+                "severity": {"type": "string", "description": "Clinical severity score or classification"},
+            },
+            "required": ["pathogen"],
+            "additionalProperties": True,
+        }
 
     def output_schema(self) -> Dict[str, Any]:
-        return {}
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "SOAR prediction output",
+            "type": "object",
+            "properties": {
+                "predicted_class": {"type": "string"},
+                "probability": {"type": "number"},
+                "confidence": {"type": "number"},
+                "deployment_id": {"type": "string"},
+                "metadata": {"type": "object", "additionalProperties": True},
+            },
+            "required": ["predicted_class", "probability"],
+            "additionalProperties": True,
+        }
 
     def _select_deployment(self, request: PredictionRequest) -> DeploymentInfo:
         payload = request.payload
