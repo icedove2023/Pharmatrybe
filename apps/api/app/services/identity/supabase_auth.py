@@ -22,7 +22,7 @@ def invite_user_by_email(email: str) -> str:
 
     try:
         response = httpx.post(
-            f"{settings.supabase_url.rstrip('/')}/auth/v1/admin/invite",
+            f"{settings.supabase_url.rstrip('/')}/auth/v1/invite",
             headers={
                 "apikey": settings.supabase_service_role_key,
                 "Authorization": f"Bearer {settings.supabase_service_role_key}",
@@ -38,7 +38,14 @@ def invite_user_by_email(email: str) -> str:
             detail: Any = response.json() if response.content else None
         except ValueError:
             detail = None
-        message = detail.get("msg") or detail.get("message") if isinstance(detail, dict) else None
+        message = None
+        if isinstance(detail, dict):
+            message = (
+                detail.get("msg")
+                or detail.get("message")
+                or detail.get("error_description")
+                or detail.get("error")
+            )
         raise SupabaseAuthError(message or "Supabase Auth rejected the invitation")
     try:
         user_id = response.json().get("id")

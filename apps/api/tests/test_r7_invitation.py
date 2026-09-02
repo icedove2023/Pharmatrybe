@@ -18,6 +18,7 @@ from app.api.v1.professionals import InvitationAcceptanceRequest, accept_profess
 from app.auth.current_user import AuthenticatedUser
 from app.core import config as app_config
 from app.models.identity import HospitalInvitation, HospitalMembership, MembershipEvent, ProfessionalProfile, Role
+from app.services.identity import supabase_auth
 
 
 def test_backend_settings_resolve_env_file_from_workspace_root() -> None:
@@ -262,6 +263,27 @@ def test_production_configuration_requires_handoff_key_and_route(monkeypatch: py
 
     with pytest.raises(ValueError, match="INVITATION_FRONTEND_ROUTE"):
         Settings(_env_file=None, environment="production", invitation_handoff_encryption_key=key)
+
+
+def test_supabase_invitation_preserves_provider_error_detail(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(supabase_auth.settings, "supabase_url", "https://project.supabase.co")
+    monkeypatch.setattr(supabase_auth.settings, "supabase_service_role_key", "service-role-key")
+    monkeypatch.setattr(supabase_auth.settings, "invitation_frontend_route", "http://localhost:3000/")
+    response = supabase_auth.httpx.Response(
+        422,
+        json={"error": "email_address_invalid", "error_description": "Invalid email address"},
+    )
+    request = {}
+
+    def fake_post(*args, **kwargs):
+        request["url"] = args[0]
+        return response
+
+    monkeypatch.setattr(supabase_auth.httpx, "post", fake_post)
+
+    with pytest.raises(supabase_auth.SupabaseAuthError, match="Invalid email address"):
+        supabase_auth.invite_user_by_email("invalid")
+    assert request["url"] == "https://project.supabase.co/auth/v1/invite"
 
 
 class _AcceptanceSession:

@@ -1,0 +1,9 @@
+[    4575ms] [ERROR] WebSocket connection to 'ws://localhost:3001/?token=Vyr1-3HUKp3Y' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3001/@vite/client:801
+[    7546ms] [ERROR] WebSocket connection to 'ws://localhost:3001/?token=Vyr1-3HUKp3Y' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3001/@vite/client:814
+[    7546ms] [ERROR] [vite] failed to connect to websocket.
+your current setup:
+  (browser) localhost:3001/ <--[HTTP]--> localhost:3001/ (server)
+  (browser) localhost:3001/ <--[WebSocket (failing)]--> localhost:3001/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr . @ http://localhost:3001/@vite/client:829
+[   15378ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[   22838ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3001/favicon.ico:0
