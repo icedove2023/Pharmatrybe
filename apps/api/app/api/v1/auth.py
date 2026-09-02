@@ -26,6 +26,8 @@ class HospitalRegistrationRequest(BaseModel):
     hospital_name: str = Field(..., min_length=2)
     country: str = Field(..., min_length=2)
     admin_name: str = Field(..., min_length=2)
+    admin_phone: str | None = Field(None, min_length=5)
+    admin_professional_number: str | None = Field(None, min_length=2)
 
 
 @router.get("", summary="Authentication service status")
@@ -85,28 +87,55 @@ async def register_hospital(
     current_user: Annotated[AuthenticatedUser, Depends(get_current_user)],
     db: Annotated[Session, Depends(get_db_session)],
 ) -> dict[str, Any]:
-    """Create a hospital and its first administrator transactionally."""
+    """Create a hospital and its first administrator transactionally. Idempotent: returns existing membership if already registered."""
+    # Check if profile already exists. Some concurrent or repeated registration flows
+    # can hit this path before the relationship is fully loaded; treat it as a
+    # duplicate registration instead of a 500 crash.
     existing_profile = db.scalar(
         select(ProfessionalProfile).where(ProfessionalProfile.auth_user_id == current_user.user_id)
     )
+
     if existing_profile is not None:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Application profile already exists")
+        memberships = list(getattr(existing_profile, "memberships", []) or [])
+        active_memberships = [m for m in memberships if getattr(m, "status", None) == "ACTIVE"]
+        if active_memberships:
+            membership = active_memberships[0]
+            return {
+                "id": current_user.user_id,
+                "hospital_id": str(membership.hospital_id),
+                "status": "ACTIVE",
+                "idempotent": True,
+            }
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail={
+                "code": "PROFILE_EXISTS_NO_MEMBERSHIP",
+                "message": "Hospital profile already exists for this user.",
+            },
+        )
 
-    first_name, _, last_name = payload.admin_name.partition(" ")
-    hospital = Hospital(name=payload.hospital_name, legal_name=payload.hospital_name, country=payload.country)
-    profile = ProfessionalProfile(
-        auth_user_id=current_user.user_id,
-        first_name=first_name,
-        last_name=last_name or first_name,
-        professional_type="Hospital Administrator",
-    )
-    role = db.scalar(select(Role).where(Role.code == "HOSPITAL_ADMIN"))
-    if role is None:
-        role = Role(code="HOSPITAL_ADMIN", name="Hospital Administrator")
-        db.add(role)
-        db.flush()
-
+    # Create new registration
     try:
+        first_name, _, last_name = payload.admin_name.partition(" ")
+        hospital = Hospital(
+            name=payload.hospital_name,
+            legal_name=payload.hospital_name,
+            country=payload.country,
+        )
+        profile = ProfessionalProfile(
+            auth_user_id=current_user.user_id,
+            first_name=first_name or payload.admin_name,
+            last_name=last_name or first_name or payload.admin_name,
+            professional_type="Hospital Administrator",
+            phone=payload.admin_phone,
+            professional_registration_number=payload.admin_professional_number,
+        )
+        role = db.scalar(select(Role).where(Role.code == "HOSPITAL_ADMIN"))
+        if role is None:
+            role = Role(code="HOSPITAL_ADMIN", name="Hospital Administrator")
+            db.add(role)
+            db.flush()
+
         db.add_all([hospital, profile])
         db.flush()
         membership = HospitalMembership(
@@ -133,6 +162,9 @@ async def register_hospital(
         db.commit()
     except Exception as exc:
         db.rollback()
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Hospital registration failed") from exc
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"code": "REGISTRATION_FAILED", "message": f"Hospital registration failed: {str(exc)[:100]}"},
+        ) from exc
 
-    return {"id": current_user.user_id, "hospital_id": hospital.id, "status": "ACTIVE"}
+    return {"id": current_user.user_id, "hospital_id": str(hospital.id), "status": "ACTIVE"}

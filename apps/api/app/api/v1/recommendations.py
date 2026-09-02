@@ -87,6 +87,32 @@ class ExplainabilityResponseContract(BaseModel):
     trace_id: str = Field(..., description="Distributed trace ID for logging")
 
 
+class ClinicalReviewRequest(BaseModel):
+    """Clinician approval decision for a generated recommendation."""
+
+    recommendation_id: str = Field(..., min_length=1)
+    patient_id: str | None = Field(default=None, min_length=1)
+    clinician_id: str = Field(..., min_length=1)
+    review_decision: str = Field(..., pattern="^(APPROVED|MODIFIED|REJECTED)$")
+    selected_antibiotic: str | None = None
+    clinical_notes: str | None = None
+    reason_for_deviation: str | None = None
+
+
+class ClinicalReviewResponse(BaseModel):
+    """Acknowledgement of an authenticated clinician review."""
+
+    status: str
+    recommendation_id: str
+    review_decision: str
+    clinician_id: str
+    recorded_at: str
+    message: str
+    selected_antibiotic: str | None = None
+    clinical_notes: str | None = None
+    reason_for_deviation: str | None = None
+
+
 # ============================================================================
 # Validation
 # ============================================================================
@@ -153,6 +179,28 @@ def validate_explainability_response(response: Dict[str, Any]) -> None:
 async def recommendations_status() -> dict[str, str]:
     """Return a placeholder status payload for the recommendations service."""
     return {"service": "Recommendations Service", "status": "available"}
+
+
+@router.post("/clinical-review", response_model=ClinicalReviewResponse)
+async def record_clinical_review(
+    request: ClinicalReviewRequest,
+    context: Annotated[AuthorizationContext, Depends(require_permission("recommendations:request"))],
+) -> ClinicalReviewResponse:
+    """Record the authenticated account's approval decision."""
+    if request.clinician_id != context.user_id:
+        raise HTTPException(status_code=403, detail="Clinician identity does not match the authenticated account")
+    recorded_at = datetime.now(timezone.utc).isoformat()
+    return ClinicalReviewResponse(
+        status="recorded",
+        recommendation_id=request.recommendation_id,
+        review_decision=request.review_decision,
+        clinician_id=context.user_id,
+        recorded_at=recorded_at,
+        message="Clinical review recorded.",
+        selected_antibiotic=request.selected_antibiotic,
+        clinical_notes=request.clinical_notes,
+        reason_for_deviation=request.reason_for_deviation,
+    )
 
 
 @router.post(

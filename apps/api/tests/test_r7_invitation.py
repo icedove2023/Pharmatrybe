@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import asyncio
-import hashlib
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from uuid import uuid4
 
 import pytest
@@ -16,7 +16,15 @@ from app.models.identity import InvitationTokenHandoff
 from app.core.config import Settings
 from app.api.v1.professionals import InvitationAcceptanceRequest, accept_professional_invitation
 from app.auth.current_user import AuthenticatedUser
+from app.core import config as app_config
 from app.models.identity import HospitalInvitation, HospitalMembership, MembershipEvent, ProfessionalProfile, Role
+
+
+def test_backend_settings_resolve_env_file_from_workspace_root() -> None:
+    expected_root = Path(__file__).resolve().parents[4]
+    assert app_config.PROJECT_ROOT == expected_root
+    assert app_config.PROJECT_ROOT / ".env" == expected_root / ".env"
+    assert (app_config.PROJECT_ROOT / ".env").exists()
 
 
 def test_handoff_is_replayable_until_successful_delivery() -> None:
@@ -238,7 +246,9 @@ def test_worker_recovers_stale_processing_records_with_attempt_limit() -> None:
     assert exhausted_session.commits == 1
 
 
-def test_production_configuration_requires_handoff_key_and_route() -> None:
+def test_production_configuration_requires_handoff_key_and_route(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("INVITATION_HANDOFF_ENCRYPTION_KEY", raising=False)
+    monkeypatch.delenv("INVITATION_FRONTEND_ROUTE", raising=False)
     key = Fernet.generate_key().decode()
     configured = Settings(
         environment="production",
@@ -248,10 +258,10 @@ def test_production_configuration_requires_handoff_key_and_route() -> None:
     assert configured.invitation_frontend_route == "/invite"
 
     with pytest.raises(ValueError, match="INVITATION_HANDOFF_ENCRYPTION_KEY"):
-        Settings(environment="production", invitation_frontend_route="/invite")
+        Settings(_env_file=None, environment="production", invitation_frontend_route="/invite")
 
     with pytest.raises(ValueError, match="INVITATION_FRONTEND_ROUTE"):
-        Settings(environment="production", invitation_handoff_encryption_key=key)
+        Settings(_env_file=None, environment="production", invitation_handoff_encryption_key=key)
 
 
 class _AcceptanceSession:
@@ -282,31 +292,30 @@ class _AcceptanceSession:
         self.rollback_count += 1
 
 
-def _acceptance_payload(token: str) -> InvitationAcceptanceRequest:
-    return InvitationAcceptanceRequest(token=token, first_name="Ada", last_name="Lovelace")
+def _acceptance_payload() -> InvitationAcceptanceRequest:
+    return InvitationAcceptanceRequest(first_name="Ada", last_name="Lovelace")
 
 
-def _invitation(token: str, *, status: str = "PENDING") -> HospitalInvitation:
+def _invitation(*, status: str = "PENDING") -> HospitalInvitation:
     return HospitalInvitation(
         id=str(uuid4()),
         hospital_id=str(uuid4()),
         email="invitee@example.com",
         invited_by=str(uuid4()),
         role_code="CLINICIAN",
-        token_hash=hashlib.sha256(token.encode()).hexdigest(),
+        token_hash=None,
         status=status,
         expires_at=datetime.now(timezone.utc) + timedelta(days=7),
     )
 
 
 def test_acceptance_creates_one_approved_event_atomically() -> None:
-    token = "a" * 32
-    invitation = _invitation(token)
+    invitation = _invitation()
     role = Role(id=str(uuid4()), code="CLINICIAN", name="Clinician")
     session = _AcceptanceSession([invitation, None, None, role])
 
     result = asyncio.run(accept_professional_invitation(
-        _acceptance_payload(token),
+        _acceptance_payload(),
         AuthenticatedUser(user_id=str(uuid4()), email="invitee@example.com"),
         session,
     ))
@@ -322,20 +331,19 @@ def test_acceptance_creates_one_approved_event_atomically() -> None:
 
 
 def test_acceptance_rejects_wrong_identity_and_already_accepted_invitation() -> None:
-    token = "b" * 32
-    wrong_identity_session = _AcceptanceSession([_invitation(token)])
+    wrong_identity_session = _AcceptanceSession([_invitation()])
     with pytest.raises(Exception):
         asyncio.run(accept_professional_invitation(
-            _acceptance_payload(token),
+            _acceptance_payload(),
             AuthenticatedUser(user_id=str(uuid4()), email="other@example.com"),
             wrong_identity_session,
         ))
     assert wrong_identity_session.commit_count == 0
 
-    accepted_session = _AcceptanceSession([_invitation(token, status="ACCEPTED")])
+    accepted_session = _AcceptanceSession([_invitation(status="ACCEPTED")])
     with pytest.raises(Exception):
         asyncio.run(accept_professional_invitation(
-            _acceptance_payload(token),
+            _acceptance_payload(),
             AuthenticatedUser(user_id=str(uuid4()), email="invitee@example.com"),
             accepted_session,
         ))
@@ -343,12 +351,11 @@ def test_acceptance_rejects_wrong_identity_and_already_accepted_invitation() -> 
 
 
 def test_acceptance_rejects_existing_profile_without_writes() -> None:
-    token = "c" * 32
-    session = _AcceptanceSession([_invitation(token), ProfessionalProfile(auth_user_id="existing")])
+    session = _AcceptanceSession([_invitation(), ProfessionalProfile(auth_user_id="existing")])
 
     with pytest.raises(Exception):
         asyncio.run(accept_professional_invitation(
-            _acceptance_payload(token),
+            _acceptance_payload(),
             AuthenticatedUser(user_id="existing", email="invitee@example.com"),
             session,
         ))
@@ -358,14 +365,13 @@ def test_acceptance_rejects_existing_profile_without_writes() -> None:
 
 
 def test_acceptance_rolls_back_when_membership_event_insert_fails() -> None:
-    token = "d" * 32
-    invitation = _invitation(token)
+    invitation = _invitation()
     role = Role(id=str(uuid4()), code="CLINICIAN", name="Clinician")
     session = _AcceptanceSession([invitation, None, None, role], fail_on_event=True)
 
     with pytest.raises(Exception):
         asyncio.run(accept_professional_invitation(
-            _acceptance_payload(token),
+            _acceptance_payload(),
             AuthenticatedUser(user_id=str(uuid4()), email="invitee@example.com"),
             session,
         ))

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getPatientById, getPatientHistory, searchPatients } from '@/api/patientsApi';
 import { ApiClientError } from '@/api/client';
+import { useAuthStore } from '@/stores/authStore';
 
 interface Props {
   patientId?: string;
@@ -23,20 +24,18 @@ export default function PatientHistoryView({ patientId: initialPatientId }: Prop
     setHistory(null);
     (async () => {
       try {
-        const p = await getPatientById(patientId);
+          const p = await getPatientById(patientId);
         if (!p) {
-          // backend does not expose patient details
-          setError('Patient details are not exposed by the backend.');
+          setError('This patient history is not visible to this account.');
           setLoading(false);
           return;
         }
         setPatient(p);
 
-        // attempt to fetch longitudinal history — if backend does not provide it, the client returns null
-        const h = await getPatientHistory(patientId);
+          const h = await getPatientHistory(patientId);
         if (!h) {
           setHistory(null);
-          setError('Longitudinal patient history is not currently available from the backend.');
+          setError('No patient history is available for this account.');
         } else {
           setHistory(h);
         }
@@ -56,7 +55,7 @@ export default function PatientHistoryView({ patientId: initialPatientId }: Prop
     setError(null);
     setSearchResults(null);
     try {
-      const results = await searchPatients(query);
+        const results = await searchPatients(query);
       setSearchResults(results);
     } catch (err: any) {
       if (err instanceof ApiClientError && (err.status === 404 || err.status === 501)) {
@@ -100,7 +99,7 @@ export default function PatientHistoryView({ patientId: initialPatientId }: Prop
           <ul className="space-y-2">
             {searchResults.map((s) => (
               <li key={s.id} className="p-2 border rounded hover:shadow cursor-pointer" onClick={() => setPatientId(s.id)}>
-                <div className="font-semibold">{s.name || s.id}</div>
+                <div className="font-semibold">{s.name || 'Patient not named'}</div>
                 <div className="text-sm text-muted">{s.date_of_birth || ''} {s.sex ? `· ${s.sex}` : ''}</div>
               </li>
             ))}
@@ -112,7 +111,7 @@ export default function PatientHistoryView({ patientId: initialPatientId }: Prop
         <div className="bg-white border rounded p-4 mb-4">
           <div className="flex items-start gap-4">
             <div>
-              <div className="text-lg font-semibold">{patient.name || patient.id}</div>
+              <div className="text-lg font-semibold">{patient.name || 'Patient not named'}</div>
               <div className="text-sm text-muted">{patient.date_of_birth || ''} {patient.sex ? `· ${patient.sex}` : ''}</div>
             </div>
           </div>

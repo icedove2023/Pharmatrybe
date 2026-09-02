@@ -58,7 +58,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           } else {
             clearApplicationSession('session-expired');
           }
-        }).catch(() => clearApplicationSession('session-invalid'));
+        }).catch((err) => {
+          // Surface hospital setup errors instead of silently invalidating session
+          if (err instanceof AuthError && err.code === 'account-inactive') {
+            clearApplicationSession('account-inactive');
+          } else if (err instanceof AuthError && err.code === 'forbidden') {
+            set({ error: err.message, status: 'forbidden' });
+          } else {
+            clearApplicationSession('session-invalid');
+          }
+        });
       } else if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION' || event === 'USER_UPDATED') {
         queryClient?.clear();
         void authApi.getCurrentSession().then((activeSession) => {
@@ -67,7 +76,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           } else {
             clearApplicationSession();
           }
-        }).catch(() => clearApplicationSession('session-invalid'));
+        }).catch((err) => {
+          // Surface hospital setup errors instead of silently invalidating session
+          if (err instanceof AuthError && err.code === 'account-inactive') {
+            clearApplicationSession('account-inactive');
+          } else if (err instanceof AuthError && err.code === 'forbidden') {
+            set({ error: err.message, status: 'forbidden' });
+          } else {
+            clearApplicationSession('session-invalid');
+          }
+        });
       }
     });
     try {

@@ -10,6 +10,7 @@ import {
   ClinicalReviewResponse,
 } from '@/types';
 import { recommendationApi } from '@/api/recommendationApi';
+import { createApprovedPatientHistory } from '@/api/patientsApi';
 import { useAuthStore } from '@/stores/authStore';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
@@ -20,6 +21,8 @@ interface ClinicalReviewSectionProps {
   patientId: string;
   primaryRecommendation: PrimaryRecommendation;
   alternativeRecommendations?: AlternativeRecommendation[];
+  patientName?: string;
+  patientDemographics?: Record<string, unknown>;
   onReviewRecorded?: (review: ClinicalReviewResponse) => void;
 }
 
@@ -30,6 +33,8 @@ export function ClinicalReviewSection({
   patientId,
   primaryRecommendation,
   alternativeRecommendations = [],
+  patientName,
+  patientDemographics,
   onReviewRecorded,
 }: ClinicalReviewSectionProps) {
   const user = useAuthStore((state) => state.user);
@@ -90,6 +95,9 @@ export function ClinicalReviewSection({
 
     const payload: ClinicalReviewRequest = {
       recommendation_id: recommendationId,
+      patient_id: patientId,
+      patient_name: patientName,
+      patient_demographics: patientDemographics,
       clinician_id: clinicianId,
       review_decision: selectedDecision,
       selected_antibiotic: finalAntibiotic,
@@ -100,6 +108,16 @@ export function ClinicalReviewSection({
     setIsSubmitting(true);
     try {
       const response = await recommendationApi.recordClinicalReview(payload);
+      if (selectedDecision === 'APPROVED' || selectedDecision === 'MODIFIED') {
+        await createApprovedPatientHistory(patientId, {
+          recommendation_id: recommendationId,
+          review_decision: selectedDecision,
+          selected_antibiotic: finalAntibiotic,
+          clinical_notes: clinicalNotes.trim() || undefined,
+          patient_name: patientName,
+          demographics: patientDemographics,
+        });
+      }
       setLatestRecordedReview(response);
       setRecordedReviews((prev) => [...prev, response]);
       if (onReviewRecorded) onReviewRecorded(response);

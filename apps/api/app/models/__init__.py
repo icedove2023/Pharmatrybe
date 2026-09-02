@@ -22,6 +22,7 @@ from app.models.identity import (
 from app.models.metadata import Metadata
 from app.models.monitoring import Monitoring
 from app.models.pathogen import Pathogen
+from app.models.patient_history import PatientHistoryEvent, PatientRecord
 from app.models.plugin_governance import (
     PluginExecutionAudit,
     PluginGovernanceAuditEvent,
@@ -49,6 +50,8 @@ __all__ = [
     "Metadata",
     "Monitoring",
     "Pathogen",
+    "PatientHistoryEvent",
+    "PatientRecord",
     "Permission",
     "PluginGovernanceAuditEvent",
     "PluginExecutionAudit",

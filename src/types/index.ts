@@ -236,6 +236,9 @@ export interface ExplainabilityResponseContract {
 
 export interface ClinicalReviewRequest {
   recommendation_id: string;
+  patient_id?: string;
+  patient_name?: string;
+  patient_demographics?: Record<string, unknown>;
   clinician_id: string;
   review_decision: 'APPROVED' | 'MODIFIED' | 'REJECTED';
   selected_antibiotic?: string;

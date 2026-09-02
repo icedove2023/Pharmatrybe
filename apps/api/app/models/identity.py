@@ -14,6 +14,22 @@ IDENTITY_UUID = Uuid(as_uuid=False)
 DATABASE_UUID_DEFAULT = text("gen_random_uuid()")
 
 
+class AuthUser(Base):
+    """Read-only stub for Supabase's auth.users table.
+
+    Not managed by our migrations - Supabase Auth owns this table. This
+    class exists purely so SQLAlchemy can resolve the auth.users foreign
+    key used by ProfessionalProfile.auth_user_id (and any future FK to
+    auth.users) at mapper-configuration time; we never create, alter, or
+    query through this model directly.
+    """
+
+    __tablename__ = "users"
+    __table_args__ = {"schema": "auth"}
+
+    id: Mapped[str] = mapped_column(Uuid(as_uuid=False), primary_key=True)
+
+
 class Hospital(Base):
     """Hospital organisation and tenant."""
 
@@ -148,7 +164,8 @@ class HospitalInvitation(Base):
     email: Mapped[str] = mapped_column(Text, nullable=False)
     invited_by: Mapped[str] = mapped_column(Uuid(as_uuid=False), nullable=False)
     role_code: Mapped[str] = mapped_column(Text, nullable=False)
-    token_hash: Mapped[str] = mapped_column(Text, nullable=False, unique=True)
+    token_hash: Mapped[str | None] = mapped_column(Text, nullable=True, unique=True)
+    supabase_user_id: Mapped[str | None] = mapped_column(Uuid(as_uuid=False), nullable=True, unique=True)
     status: Mapped[str] = mapped_column(Text, nullable=False, default="PENDING")
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     accepted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

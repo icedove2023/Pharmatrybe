@@ -341,7 +341,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                       type="text"
                       value={caseData.demographics.patientName || ''}
                       onChange={(e) => updateDemographics({ patientName: e.target.value })}
-                      placeholder="e.g. John Doe"
+                      placeholder="Optional patient name"
                       className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset text-xs text-slate-text-primary focus-clinical"
                     />
                   </div>

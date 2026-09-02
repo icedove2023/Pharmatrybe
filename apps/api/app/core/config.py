@@ -6,12 +6,16 @@ from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
+API_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
     """Runtime configuration for the PharmaTrybe backend bootstrap."""
 
-    model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=[PROJECT_ROOT / ".env", API_PROJECT_ROOT / ".env"],
+        extra="ignore",
+    )
 
     # Application metadata
     app_name: str = Field(default="PharmaTrybe API", alias="APP_NAME")

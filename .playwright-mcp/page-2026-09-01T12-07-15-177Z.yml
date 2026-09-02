@@ -1,0 +1,22 @@
+- generic [ref=e28]:
+  - button "Back" [ref=e29]
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - heading "Sign in to PharmaTrybe" [level=2] [ref=e34]
+      - paragraph [ref=e35]: For administrators and hospital staff with a provisioned account.
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]: Hospital email
+        - textbox "you@yourhospital.org" [ref=e40]: rls_test_c@gmail.com
+      - generic [ref=e41]:
+        - generic [ref=e42]: Password
+        - generic [ref=e43]:
+          - textbox "••••••••••••" [ref=e44]: Adetokunbo
+          - button [ref=e45]
+      - generic [ref=e49]:
+        - checkbox "Remember this workstation" [checked] [ref=e50]
+        - generic [ref=e51]: Remember this workstation
+      - button "Verifying credentials…" [disabled] [ref=e58]
+    - paragraph [ref=e56]:
+      - text: New hospital?
+      - button "Register your institution" [ref=e57]

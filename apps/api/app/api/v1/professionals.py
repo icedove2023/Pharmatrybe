@@ -2,30 +2,26 @@
 
 from __future__ import annotations
 
-import hashlib
-import secrets
 from datetime import datetime, timedelta, timezone
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.auth import AuthorizationContext, AuthenticatedUser, get_current_user, require_permission
 from app.auth.rbac_catalog import CANONICAL_ROLE_CODES
 from app.database.session import get_db_session
-from app.core.config import settings
 from app.models.identity import (
     HospitalInvitation,
     HospitalMembership,
-    InvitationDeliveryOutbox,
     MembershipEvent,
     MembershipRole,
     ProfessionalProfile,
     Role,
 )
-from app.services.identity.invitation_handoff import get_invitation_handoff_service
+from app.services.identity.supabase_auth import SupabaseAuthError, invite_user_by_email
 
 router = APIRouter(prefix="/professionals", tags=["professionals"])
 
@@ -35,11 +31,20 @@ class ProfessionalInvitationRequest(BaseModel):
     email: str = Field(..., min_length=3)
     role_code: str = Field(..., min_length=1)
 
+    @field_validator("email")
+    @classmethod
+    def validate_email(cls, value: str) -> str:
+        """Reject malformed addresses without requiring an optional package."""
+        normalized = value.strip().lower()
+        local, separator, domain = normalized.rpartition("@")
+        if not separator or not local or "." not in domain or domain.startswith(".") or domain.endswith("."):
+            raise ValueError("A valid professional email address is required")
+        return normalized
+
 
 class InvitationAcceptanceRequest(BaseModel):
     """Invitation token and professional profile details."""
 
-    token: str = Field(..., min_length=16)
     first_name: str = Field(..., min_length=1)
     last_name: str = Field(..., min_length=1)
     professional_type: str | None = None
@@ -140,53 +145,25 @@ async def invite_professional(
     )
     if duplicate is not None:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Pending invitation already exists")
-    if not settings.invitation_handoff_encryption_key:
-        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Invitation delivery is not configured")
-
-    raw_token = secrets.token_urlsafe(32)
     now = datetime.now(timezone.utc)
     expires_at = now + timedelta(days=7)
-    handoff_service = get_invitation_handoff_service()
     try:
+        supabase_user_id = invite_user_by_email(normalized_email)
         invitation = HospitalInvitation(
             hospital_id=context.hospital_id,
             email=normalized_email,
             invited_by=context.user_id,
             role_code=role_code,
-            token_hash=hashlib.sha256(raw_token.encode("utf-8")).hexdigest(),
+            token_hash=None,
+            supabase_user_id=supabase_user_id,
             status="PENDING",
             expires_at=expires_at,
         )
         db.add(invitation)
-        db.flush()
-        outbox = InvitationDeliveryOutbox(
-            hospital_id=context.hospital_id,
-            invitation_id=invitation.id,
-            idempotency_key=f"invitation:{invitation.id}:initial",
-            delivery_type="PROFESSIONAL_INVITATION",
-            recipient_email=normalized_email,
-            payload={},
-            status="PENDING",
-            attempt_count=0,
-            available_at=now,
-        )
-        db.add(outbox)
-        db.flush()
-        handoff_reference = handoff_service.create(
-            raw_token=raw_token,
-            invitation_id=invitation.id,
-            hospital_id=context.hospital_id,
-            outbox_id=outbox.id,
-            expires_at=expires_at,
-            db=db,
-        )
-        outbox.payload = {
-            "invitation_id": invitation.id,
-            "recipient_email": normalized_email,
-            "hospital_id": context.hospital_id,
-            "handoff_reference": handoff_reference,
-        }
         db.commit()
+    except SupabaseAuthError as exc:
+        db.rollback()
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
     except Exception as exc:
         db.rollback()
         if isinstance(exc, HTTPException):
@@ -197,7 +174,7 @@ async def invite_professional(
         "hospital_id": context.hospital_id,
         "role_code": role_code,
         "status": invitation.status,
-        "delivery": "queued",
+        "delivery": "supabase_auth",
     }
 
 
@@ -208,12 +185,11 @@ async def accept_professional_invitation(
     db: Annotated[Session, Depends(get_db_session)],
 ) -> dict[str, Any]:
     """Accept a hospital invitation for the authenticated Supabase user."""
-    token_hash = hashlib.sha256(payload.token.encode("utf-8")).hexdigest()
-    invitation = db.scalar(select(HospitalInvitation).where(HospitalInvitation.token_hash == token_hash))
-    if invitation is None or invitation.status != "PENDING" or invitation.expires_at <= datetime.now(timezone.utc):
+    if not current_user.email:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="A verified invitation email is required")
+    invitation = db.scalar(select(HospitalInvitation).where(HospitalInvitation.email == current_user.email.lower(), HospitalInvitation.status == "PENDING", HospitalInvitation.expires_at > datetime.now(timezone.utc)).order_by(HospitalInvitation.created_at.desc()))
+    if invitation is None:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invitation is invalid or expired")
-    if not current_user.email or current_user.email.lower() != invitation.email.lower():
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invitation email does not match identity")
 
     professional = db.scalar(
         select(ProfessionalProfile).where(ProfessionalProfile.auth_user_id == current_user.user_id)

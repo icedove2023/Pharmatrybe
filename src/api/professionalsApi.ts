@@ -16,7 +16,7 @@ export interface ProfessionalInvitationResponse {
   hospital_id: string;
   role_code: CanonicalRoleCode;
   status: string;
-  delivery: string;
+  delivery: 'supabase_auth';
 }
 
 export interface ProfessionalRecord {
@@ -41,7 +41,6 @@ export interface InvitationRecord {
 }
 
 export interface InvitationAcceptanceRequest {
-  token: string;
   first_name: string;
   last_name: string;
   professional_type?: string;

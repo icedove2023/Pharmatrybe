@@ -1,0 +1,129 @@
+- generic [ref=f7e61]:
+  - complementary [ref=f7e62]:
+    - generic [ref=f7e63]:
+      - generic [ref=f7e70]:
+        - heading "PharmaTrybe CDSS" [level=1] [ref=f7e71]:
+          - text: PharmaTrybe
+          - generic [ref=f7e72]: CDSS
+        - paragraph [ref=f7e73]: Explainable Antimicrobial AI
+      - navigation [ref=f7e74]:
+        - generic [ref=f7e75]:
+          - paragraph [ref=f7e76]: Clinical
+          - button "Dashboard" [ref=f7e77]
+          - button "New assessment" [ref=f7e86]
+          - button "Patients" [ref=f7e93]
+        - generic [ref=f7e100]:
+          - paragraph [ref=f7e101]: Administration
+          - button "System health & governance" [ref=f7e102]
+          - button "Plugin & telemetry hub" [ref=f7e107]
+          - button "Plugin governance" [ref=f7e113]
+          - button "professionals & invitations" [ref=f7e118]
+      - generic [ref=f7e125]:
+        - generic [ref=f7e126]:
+          - generic [ref=f7e127]: Active identity
+          - paragraph [ref=f7e130]: Test Hospital Admin
+          - generic [ref=f7e131]: Platform Admin
+        - button "Collapse navigation" [ref=f7e136]
+  - generic [ref=f7e141]:
+    - banner [ref=f7e142]:
+      - generic [ref=f7e143]:
+        - button "Switch to dark mode" [ref=f7e144]
+        - generic [ref=f7e147]:
+          - button "Open notifications (1 active)" [ref=f7e324]
+          - generic [ref=f7e327]:
+            - generic [ref=f7e330]:
+              - paragraph [ref=f7e331]: RBAC action could not be completed
+              - paragraph [ref=f7e332]: Supabase Auth rejected the invitation
+              - time [ref=f7e333]: 9/1/2026, 2:03:41 PM
+            - button "Dismiss RBAC action could not be completed" [ref=f7e334]
+        - button "THA Test Hospital Admin Platform Admin" [ref=f7e153]:
+          - generic [ref=f7e154]: THA
+          - generic [ref=f7e155]:
+            - paragraph [ref=f7e156]: Test Hospital Admin
+            - generic [ref=f7e157]: Platform Admin
+    - main [ref=f7e161]:
+      - navigation "Breadcrumb" [ref=f7e162]:
+        - button "Go to dashboard" [ref=f7e163]
+        - generic [ref=f7e240]: professionals & invitations
+        - generic [ref=f7e243]: Professionals & invitations
+      - generic [ref=f7e246]:
+        - generic [ref=f7e247]:
+          - generic [ref=f7e248]:
+            - generic [ref=f7e249]:
+              - heading "Professionals" [level=1] [ref=f7e255]
+              - generic [ref=f7e256]: Admin only
+            - paragraph [ref=f7e257]: Invite professionals into this hospital. Role assignment and membership activation remain server-authoritative.
+          - generic [ref=f7e258]: Hospital-scoped access
+        - alert [ref=f7e338]:
+          - generic [ref=f7e341]:
+            - paragraph [ref=f7e342]: Critical
+            - paragraph [ref=f7e343]: RBAC action could not be completed
+            - generic [ref=f7e344]: Supabase Auth rejected the invitation
+        - generic [ref=f7e262]:
+          - generic [ref=f7e267]:
+            - heading "Invite a professional" [level=2] [ref=f7e268]
+            - paragraph [ref=f7e269]: The recipient must authenticate with the invited email before accepting membership.
+          - generic [ref=f7e270]:
+            - generic [ref=f7e271]:
+              - text: Professional email
+              - textbox "Professional email" [ref=f7e272]:
+                - /placeholder: name@hospital.org
+                - text: johnsonadetokunbo5@gmail.com
+            - generic [ref=f7e273]:
+              - text: Role
+              - combobox "Role" [ref=f7e274]:
+                - option "Clinician" [selected]
+                - option "Pharmacist"
+                - option "Infectious Disease Specialist"
+                - option "Laboratory Scientist"
+                - option "Researcher"
+                - option "Hospital Administrator"
+            - generic [ref=f7e275]: Invitations expire according to the backend policy. Duplicate pending invitations are rejected by the server.
+            - button "Send invitation" [ref=f7e281]
+        - generic [ref=f7e285]:
+          - generic [ref=f7e286]:
+            - generic [ref=f7e287]:
+              - heading "Professional directory" [level=2] [ref=f7e288]
+              - paragraph [ref=f7e289]: Hospital-scoped members and their backend-derived roles.
+            - button "Refresh" [ref=f7e290]
+          - table [ref=f7e297]:
+            - rowgroup [ref=f7e298]:
+              - row [ref=f7e299]:
+                - columnheader "Professional" [ref=f7e300]
+                - columnheader "Type" [ref=f7e301]
+                - columnheader "Roles" [ref=f7e302]
+                - columnheader "Membership" [ref=f7e303]
+                - columnheader "Actions" [ref=f7e304]
+            - rowgroup [ref=f7e305]:
+              - row [ref=f7e306]:
+                - cell "Test Hospital Admin" [ref=f7e307]
+                - cell "Hospital Administrator" [ref=f7e308]
+                - cell "HOSPITAL_ADMIN, INFECTIOUS_DISEASE_SPECIALIST, PHARMACIST" [ref=f7e309]
+                - cell "ACTIVE" [ref=f7e310]
+                - cell [ref=f7e311]:
+                  - generic [ref=f7e312]:
+                    - combobox "Change membership status for Test Hospital Admin" [ref=f7e313]:
+                      - option "Active" [selected]
+                      - option "Suspend"
+                      - option "Deactivate"
+                    - combobox "Assign role for Test Hospital Admin" [ref=f7e314]:
+                      - option "Assign role" [disabled]
+                      - option "Clinician"
+                      - option "Pharmacist"
+                      - option "Infectious Disease Specialist"
+                      - option "Laboratory Scientist"
+                      - option "Researcher"
+                      - option "Hospital Administrator" [selected]
+        - generic [ref=f7e315]:
+          - heading "Invitation activity" [level=2] [ref=f7e316]
+          - paragraph [ref=f7e317]: Token material is never returned to or displayed by the frontend.
+          - generic [ref=f7e319]:
+            - generic [ref=f7e320]: adetokunbojohnson3112@gmail.com
+            - generic [ref=f7e321]: CLINICIAN
+            - generic [ref=f7e322]: PENDING
+            - generic [ref=f7e323]: Expires 9/7/2026
+    - contentinfo [ref=f7e232]:
+      - generic [ref=f7e233]:
+        - generic [ref=f7e234]: PharmaTrybe CDSS
+        - generic [ref=f7e235]: "Release: v1.0.7-prod"
+      - generic [ref=f7e236]: © 2026 PharmaTrybe Clinical Decision Support System

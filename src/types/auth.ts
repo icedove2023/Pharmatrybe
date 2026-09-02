@@ -76,6 +76,8 @@ export const hospitalRegistrationSchema = z
     country: z.string().min(2, 'Country is required'),
     adminName: z.string().min(2, 'Full name is required'),
     adminEmail: z.string().min(1, 'Work email is required').email('Invalid email address'),
+    adminPhone: z.string().min(5, 'Valid phone number required').optional(),
+    adminProfessionalNumber: z.string().min(2, 'Professional registration/license number is required').optional(),
     password: passwordRule,
     confirmPassword: z.string(),
     acceptTerms: z.literal(true, { message: 'You must acknowledge the terms to continue' }),

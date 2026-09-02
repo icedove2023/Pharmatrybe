@@ -18,7 +18,7 @@ const EVENT_TONE: Record<HistoryEvent['type'], BadgeTone> = {
 export function PatientHistoryView() {
   const [patients, setPatients] = useState<PatientSummary[]>([]);
   const [directoryAvailable, setDirectoryAvailable] = useState<boolean | null>(null);
-  const [selectedPatientId, setSelectedPatientId] = useState<string>('pat-001');
+  const [selectedPatientId, setSelectedPatientId] = useState<string>('');
   const [patientDetails, setPatientDetails] = useState<PatientDetails | null>(null);
   const [historyEvents, setHistoryEvents] = useState<HistoryEvent[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,7 +40,6 @@ export function PatientHistoryView() {
         }
       })
       .catch(() => {
-        // unexpected error — mark unavailable
         setDirectoryAvailable(false);
         setPatients([]);
       })
@@ -59,7 +58,7 @@ export function PatientHistoryView() {
         .catch(() => setHistoryEvents([]));
     }
   }, [selectedPatientId]);
-
+            <h3 className="text-base font-semibold text-slate-text-primary">{patientDetails.name || 'Patient not named'}</h3>
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -135,7 +134,7 @@ export function PatientHistoryView() {
                     )}
                   >
                     <div>
-                      <p className="font-semibold text-slate-text-primary">{pat.name}</p>
+                      <p className="font-semibold text-slate-text-primary">{pat.name || 'Patient not named'}</p>
                       <p className="num-clinical mt-0.5 text-[10px] text-slate-text-muted">ID: {pat.id} · {pat.gender}</p>
                     </div>
                     <StatusBadge tone="clinical">{pat.recordCount} events</StatusBadge>
@@ -151,7 +150,7 @@ export function PatientHistoryView() {
           {patientDetails && (
             <div className="space-y-1 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-5">
               <div className="flex items-center space-x-2">
-                <h3 className="text-base font-semibold text-slate-text-primary">{patientDetails.name}</h3>
+                <h3 className="text-base font-semibold text-slate-text-primary">{patientDetails.name || 'Patient not named'}</h3>
                 <span className="num-clinical rounded border border-slate-border-subtle bg-slate-inset px-2 py-0.5 text-xs text-slate-text-secondary">
                   {patientDetails.mrn}
                 </span>

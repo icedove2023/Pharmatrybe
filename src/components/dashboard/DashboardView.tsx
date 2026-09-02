@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Stethoscope, CheckCircle2, ChevronRight, Layers, Plus, Database,
 } from 'lucide-react';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { getExternalRegisteredPlugins } from '@/plugins/registry/pluginRegistry';
 import { NotificationHistory } from '@/components/common/NotificationCenter';
+import { patientApi } from '@/api';
+import { PatientSummary } from '@/types';
 
 interface DashboardViewProps {
   onNavigateTab: (tab: string) => void;
 }
 
 export function DashboardView({ onNavigateTab }: DashboardViewProps) {
-  let recentCasesCount = 0;
+  const [patients, setPatients] = useState<PatientSummary[]>([]);
+  useEffect(() => {
+    patientApi.searchPatients('').then(setPatients).catch(() => setPatients([]));
+  }, []);
+  const recentCasesCount = patients.length;
   const registeredPluginsCount = getExternalRegisteredPlugins().length;
 
   return (
@@ -85,9 +91,23 @@ export function DashboardView({ onNavigateTab }: DashboardViewProps) {
           </button>
         </div>
 
-        <div className="rounded-[var(--radius-md)] border border-dashed border-slate-border p-6 text-center text-xs text-slate-text-muted">
-          No recent activity. New case assessments will appear here.
-        </div>
+        {patients.length === 0 ? (
+          <div className="rounded-[var(--radius-md)] border border-dashed border-slate-border p-6 text-center text-xs text-slate-text-muted">
+            No recent activity. Approved case assessments will appear here.
+          </div>
+        ) : (
+          <div className="divide-y divide-slate-border-subtle">
+            {patients.slice(0, 5).map((patient) => (
+              <button key={patient.id} type="button" onClick={() => onNavigateTab('patients')} className="flex w-full items-center justify-between gap-4 py-3 text-left hover:bg-slate-inset">
+                <span>
+                  <span className="block text-xs font-semibold text-slate-text-primary">{patient.name || 'Patient not named'}</span>
+                  <span className="block text-[11px] text-slate-text-muted">{patient.id}</span>
+                </span>
+                <span className="text-[11px] text-slate-text-muted">Approved patient history</span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <NotificationHistory />

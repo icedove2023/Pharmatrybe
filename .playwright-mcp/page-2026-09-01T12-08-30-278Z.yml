@@ -1,0 +1,117 @@
+- generic [ref=e61]:
+  - complementary [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e70]:
+        - heading "PharmaTrybe CDSS" [level=1] [ref=e71]:
+          - text: PharmaTrybe
+          - generic [ref=e72]: CDSS
+        - paragraph [ref=e73]: Explainable Antimicrobial AI
+      - navigation [ref=e74]:
+        - generic [ref=e75]:
+          - paragraph [ref=e76]: Clinical
+          - button "Dashboard" [ref=e77]
+          - button "New assessment" [ref=e85]
+          - button "Patients" [ref=e92]
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: Administration
+          - button "System health & governance" [ref=e101]
+          - button "Plugin & telemetry hub" [ref=e106]
+          - button "Plugin governance" [ref=e112]
+          - button "professionals & invitations" [active] [ref=e117]
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e127]: Active identity
+          - paragraph [ref=e130]: Test Hospital Admin
+          - generic [ref=e131]: Platform Admin
+        - button "Collapse navigation" [ref=e136]
+  - generic [ref=e141]:
+    - banner [ref=e142]:
+      - generic [ref=e143]:
+        - button "Switch to dark mode" [ref=e144]
+        - button "Open notifications" [ref=e148]
+        - button "THA Test Hospital Admin Platform Admin" [ref=e153]:
+          - generic [ref=e154]: THA
+          - generic [ref=e155]:
+            - paragraph [ref=e156]: Test Hospital Admin
+            - generic [ref=e157]: Platform Admin
+    - main [ref=e161]:
+      - navigation "Breadcrumb" [ref=e162]:
+        - button "Go to dashboard" [ref=e163]
+        - generic [ref=e169]: professionals & invitations
+        - generic [ref=e172]: Professionals & invitations
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e179]:
+              - heading "Professionals" [level=1] [ref=e185]
+              - generic [ref=e186]: Admin only
+            - paragraph [ref=e187]: Invite professionals into this hospital. Role assignment and membership activation remain server-authoritative.
+          - generic [ref=e188]: Hospital-scoped access
+        - generic [ref=e192]:
+          - generic [ref=e197]:
+            - heading "Invite a professional" [level=2] [ref=e198]
+            - paragraph [ref=e199]: The recipient must authenticate with the invited email before accepting membership.
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - text: Professional email
+              - textbox "Professional email" [ref=e202]:
+                - /placeholder: name@hospital.org
+                - text: johnsonadeto
+            - generic [ref=e203]:
+              - text: Role
+              - combobox "Role" [ref=e204]:
+                - option "Clinician" [selected]
+                - option "Pharmacist"
+                - option "Infectious Disease Specialist"
+                - option "Laboratory Scientist"
+                - option "Researcher"
+                - option "Hospital Administrator"
+            - generic [ref=e205]: Invitations expire according to the backend policy. Duplicate pending invitations are rejected by the server.
+            - button "Send invitation" [ref=e211]
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]:
+              - heading "Professional directory" [level=2] [ref=e218]
+              - paragraph [ref=e219]: Hospital-scoped members and their backend-derived roles.
+            - button "Refresh" [ref=e220]
+          - table [ref=e227]:
+            - rowgroup [ref=e228]:
+              - row [ref=e229]:
+                - columnheader "Professional" [ref=e230]
+                - columnheader "Type" [ref=e231]
+                - columnheader "Roles" [ref=e232]
+                - columnheader "Membership" [ref=e233]
+                - columnheader "Actions" [ref=e234]
+            - rowgroup [ref=e235]:
+              - row [ref=e236]:
+                - cell "Test Hospital Admin" [ref=e237]
+                - cell "Hospital Administrator" [ref=e238]
+                - cell "HOSPITAL_ADMIN, INFECTIOUS_DISEASE_SPECIALIST, PHARMACIST" [ref=e239]
+                - cell "ACTIVE" [ref=e240]
+                - cell [ref=e241]:
+                  - generic [ref=e242]:
+                    - combobox "Change membership status for Test Hospital Admin" [ref=e243]:
+                      - option "Active" [selected]
+                      - option "Suspend"
+                      - option "Deactivate"
+                    - combobox "Assign role for Test Hospital Admin" [ref=e244]:
+                      - option "Assign role" [disabled]
+                      - option "Clinician"
+                      - option "Pharmacist"
+                      - option "Infectious Disease Specialist"
+                      - option "Laboratory Scientist"
+                      - option "Researcher"
+                      - option "Hospital Administrator" [selected]
+        - generic [ref=e245]:
+          - heading "Invitation activity" [level=2] [ref=e246]
+          - paragraph [ref=e247]: Token material is never returned to or displayed by the frontend.
+          - generic [ref=e249]:
+            - generic [ref=e250]: adetokunbojohnson3112@gmail.com
+            - generic [ref=e251]: CLINICIAN
+            - generic [ref=e252]: PENDING
+            - generic [ref=e253]: Expires 9/7/2026
+    - contentinfo [ref=e254]:
+      - generic [ref=e255]:
+        - generic [ref=e256]: PharmaTrybe CDSS
+        - generic [ref=e257]: "Release: v1.0.7-prod"
+      - generic [ref=e258]: © 2026 PharmaTrybe Clinical Decision Support System

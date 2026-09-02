@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-import jsonschema
+import json
 from pathlib import Path
+
+import jsonschema
 
 from app.plugins.manager.plugin_manager import PluginManager
 from app.plugins.schema.discovery import SchemaDiscoveryService
@@ -29,6 +31,36 @@ def test_each_schema_is_valid_json_schema() -> None:
     for plugin_id in ["soar", "armd", "who_knowledge"]:
         schema = discovery.get_plugin_schema(plugin_id)
         jsonschema.Draft202012Validator.check_schema(schema)
+
+
+def test_declared_plugin_schemas_do_not_match_runtime_contracts() -> None:
+    repo_root = Path(__file__).resolve().parents[2]
+
+    soar_feature_schema_path = next(
+        path for path in (repo_root / "deployments" / "SOAR_GSK").iterdir()
+        if path.is_dir() and (path / "feature_schema.json").exists()
+    ) / "feature_schema.json"
+    soar_feature_names = {
+        feature["name"].lower()
+        for feature in json.loads(soar_feature_schema_path.read_text(encoding="utf-8"))["features"]
+    }
+    soar_schema = SchemaDiscoveryService(_manager()).get_plugin_schema("soar")
+    assert "pathogen" not in soar_feature_names
+    assert set(soar_schema["properties"]).difference({"pathogen", "culture", "infection_site", "organism", "antimicrobial", "severity"})
+
+    armd_feature_path = repo_root / "deployments" / "ARMD" / "WP4_Decision_Engine.py"
+    armd_text = armd_feature_path.read_text(encoding="utf-8")
+    assert "gender_male" in armd_text
+    armd_schema = SchemaDiscoveryService(_manager()).get_plugin_schema("armd")
+    assert "gender_male" not in armd_schema["properties"]
+    assert "age_group" not in armd_schema["properties"]
+
+    who_query_model_path = repo_root / "apps" / "api" / "app" / "knowledge" / "providers" / "query_models.py"
+    who_text = who_query_model_path.read_text(encoding="utf-8")
+    assert "class KnowledgeQuery" in who_text
+    who_schema = SchemaDiscoveryService(_manager()).get_plugin_schema("who_knowledge")
+    assert "query" in who_schema["properties"]
+    assert "entity_type" not in who_schema["properties"]
 
 
 def test_plugin_schema_composition_deduplicates_and_tracks_provenance() -> None:

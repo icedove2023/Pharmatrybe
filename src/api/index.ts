@@ -9,6 +9,8 @@ import { clinicalCasesApi } from './clinicalCasesApi';
 import { pipelineApi } from './pipelineApi';
 import { pluginGovernanceApi } from './pluginGovernanceApi';
 import { professionalsApi } from './professionalsApi';
+import { getPatientById, getPatientHistory, searchPatients } from './patientsApi';
+import { useAuthStore } from '@/stores/authStore';
 
 export { authApi, adminApi, recommendationApi, whoApi, soarApi, armdApi, clinicalCasesApi, pipelineApi, pluginGovernanceApi, professionalsApi };
 
@@ -21,9 +23,45 @@ export const dashboardApi = {
 };
 
 export const patientApi = {
-  searchPatients: (_query: string): Promise<PatientSummary[]> => unavailable('Patient directory; use clinical cases'),
-  getPatientDetails: (_id: string): Promise<PatientDetails> => unavailable('Patient details; use clinical cases'),
-  getPatientHistory: (_id: string): Promise<HistoryEvent[]> => unavailable('Patient history; use clinical cases'),
+  searchPatients: async (query: string): Promise<PatientSummary[]> => {
+    if (!useAuthStore.getState().user) return [];
+    try {
+      const results = await searchPatients(query);
+      return results.map((patient) => ({
+        id: patient.id,
+        name: patient.name || 'Patient not named',
+        dateOfBirth: patient.date_of_birth || '',
+        gender: patient.sex || 'Unknown',
+        lastActivity: '',
+        recordCount: patient.recordCount || 0,
+      }));
+    } catch {
+      return [];
+    }
+  },
+  getPatientDetails: async (id: string): Promise<PatientDetails> => {
+    if (!useAuthStore.getState().user) throw new Error('Authentication required.');
+    const patient = await getPatientById(id);
+    if (!patient) {
+      throw new Error('Patient details are not available.');
+    }
+
+    const demographics = (patient.demographics ?? {}) as Record<string, unknown>;
+    return {
+      id: patient.id,
+      name: patient.name || 'Patient not named',
+      age: Number(demographics.age ?? patient.age ?? 0),
+      sex: String(demographics.sex ?? patient.sex ?? 'Unknown'),
+      allergies: Array.isArray(demographics.allergies) ? (demographics.allergies as string[]) : (patient.allergies ?? []),
+      comorbidities: Array.isArray(demographics.comorbidities) ? (demographics.comorbidities as string[]) : (patient.comorbidities ?? []),
+      mrn: String(demographics.mrn ?? patient.hospital_id ?? patient.id),
+    };
+  },
+  getPatientHistory: async (id: string): Promise<HistoryEvent[]> => {
+    if (!useAuthStore.getState().user) return [];
+    const result = await getPatientHistory(id);
+    return Array.isArray(result) ? (result as HistoryEvent[]) : [];
+  },
 };
 
 const defaultSettings: UserSettings = {

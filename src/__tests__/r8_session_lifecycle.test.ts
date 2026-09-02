@@ -1,8 +1,35 @@
 import { QueryClient } from '@tanstack/react-query';
 
+const createMemoryStorage = () => {
+  const store = new Map<string, string>();
+  return {
+    getItem(key: string) { return store.has(key) ? store.get(key)! : null; },
+    setItem(key: string, value: string) { store.set(key, String(value)); },
+    removeItem(key: string) { store.delete(key); },
+    clear() { store.clear(); },
+    key(index: number) { return Array.from(store.keys())[index] ?? null; },
+    get length() { return store.size; },
+  };
+};
+
+if (!globalThis.localStorage) {
+  Object.defineProperty(globalThis, 'localStorage', {
+    value: createMemoryStorage(),
+    configurable: true,
+  });
+}
+
 export async function runR8SessionLifecycleTests() {
   const results: { name: string; passed: boolean; details?: string }[] = [];
   const assert = (condition: boolean, name: string, details?: string) => results.push({ name, passed: condition, details: condition ? undefined : details });
+  const assertPromiseDoesNotThrow = async (promiseFactory: () => Promise<unknown>, name: string) => {
+    try {
+      await promiseFactory();
+      assert(true, name);
+    } catch (error) {
+      assert(false, name, error instanceof Error ? error.message : String(error));
+    }
+  };
 
   const [{ supabase }, authApiModule, clientModule, storeModule] = await Promise.all([
     import('../lib/supabase'),
@@ -16,6 +43,7 @@ export async function runR8SessionLifecycleTests() {
 
   const originalAuth = { ...supabase.auth };
   const originalFetch = globalThis.fetch;
+  const originalGetCurrentSession = authApi.getCurrentSession.bind(authApi);
   const session = { access_token: 'access-a', refresh_token: 'refresh-a', expires_at: 200, user: { id: 'auth-a', email: 'a@example.com' } } as Record<string, any>;
   const user = {
     id: 'auth-a',
@@ -141,15 +169,45 @@ export async function runR8SessionLifecycleTests() {
       country: 'Nigeria',
       adminName: 'Ada Lovelace',
       adminEmail: 'auto@example.com',
+      adminPhone: '+2348012345678',
+      adminProfessionalNumber: 'NMC-1001',
     };
-    localStorage.setItem('pharmatrybe.pending-hospital-registration', JSON.stringify(pendingRegistration));
+    (supabase.auth as any).signUp = async () => ({
+      data: {
+        user: { id: 'auth-c', email: 'auto@example.com', user_metadata: { pending_hospital_registration: JSON.stringify(pendingRegistration) } },
+        session: null,
+      },
+      error: null,
+    });
+    const signUpResult = await authApi.registerHospital({
+      hospitalName: pendingRegistration.hospitalName,
+      country: pendingRegistration.country,
+      adminName: pendingRegistration.adminName,
+      adminEmail: pendingRegistration.adminEmail,
+      adminPhone: pendingRegistration.adminPhone,
+      adminProfessionalNumber: pendingRegistration.adminProfessionalNumber,
+      password: 'Password123',
+      confirmPassword: 'Password123',
+      acceptTerms: true,
+    });
+    assert(signUpResult === null, 'R8 runtime: email-confirmed signup defers app registration until a verified session exists');
+
     const verifiedSession = {
       access_token: 'access-auto',
       refresh_token: 'refresh-auto',
       expires_at: 200000,
-      user: { id: 'auth-c', email: 'auto@example.com' },
+      user: {
+        id: 'auth-c',
+        email: 'auto@example.com',
+        user_metadata: { pending_hospital_registration: JSON.stringify(pendingRegistration) },
+      },
     } as Record<string, any>;
+    (authApi as any).getCurrentSession = originalGetCurrentSession;
     (supabase.auth as any).getSession = async () => ({ data: { session: verifiedSession }, error: null });
+    (supabase.auth as any).updateUser = async ({ data }: { data: Record<string, unknown> }) => {
+      verifiedSession.user.user_metadata.pending_hospital_registration = data.pending_hospital_registration ?? null;
+      return { data: { user: verifiedSession.user }, error: null };
+    };
     globalThis.fetch = async (input: RequestInfo | URL) => {
       const url = String(input);
       if (url.includes('/auth/register-hospital')) {
@@ -174,9 +232,62 @@ export async function runR8SessionLifecycleTests() {
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
     };
     const autoCompleted = await authApi.getCurrentSession();
-    assert(autoCompleted?.user.email === 'auto@example.com', 'R8 runtime: verified session auto-completes pending hospital registration');
-    assert(localStorage.getItem('pharmatrybe.pending-hospital-registration') === null, 'R8 runtime: pending hospital registration is cleared after completion');
-    localStorage.removeItem('pharmatrybe.pending-hospital-registration');
+    assert(autoCompleted?.user.email === 'auto@example.com', 'R8 runtime: verified session auto-completes pending hospital registration from user metadata');
+    assert(
+      verifiedSession.user.user_metadata.pending_hospital_registration == null,
+      'R8 runtime: pending hospital registration metadata is cleared after completion'
+    );
+
+    const localStorageBackup = {
+      hospitalName: 'Fallback Hospital',
+      country: 'Ghana',
+      adminName: 'Grace Hopper',
+      adminEmail: 'grace@example.com',
+      adminPhone: '+233200000000',
+      adminProfessionalNumber: 'NMC-2024',
+    };
+    localStorage.setItem('pending_hospital_registration', JSON.stringify(localStorageBackup));
+    (supabase.auth as any).getSession = async () => ({
+      data: {
+        session: {
+          ...verifiedSession,
+          user: { ...verifiedSession.user, email: 'grace@example.com', user_metadata: {} },
+        },
+      },
+      error: null,
+    });
+    (supabase.auth as any).updateUser = async ({ data }: { data: Record<string, unknown> }) => {
+      if (data.pending_hospital_registration === null) {
+        localStorage.removeItem('pending_hospital_registration');
+      }
+      return { data: { user: { ...verifiedSession.user, email: 'grace@example.com', user_metadata: { ...verifiedSession.user.user_metadata, pending_hospital_registration: data.pending_hospital_registration ?? null } } }, error: null };
+    };
+    globalThis.fetch = async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes('/auth/register-hospital')) {
+        return new Response(JSON.stringify({ id: 'register-d', hospital_id: 'hospital-d', status: 'ACTIVE' }), { status: 201 });
+      }
+      if (url.includes('/auth/me')) {
+        return new Response(JSON.stringify({
+          id: 'auth-d',
+          professionalId: 'professional-d',
+          membershipId: 'membership-d',
+          hospitalId: 'hospital-d',
+          name: 'Grace Hopper',
+          email: 'grace@example.com',
+          role: 'Admin',
+          organization: 'Fallback Hospital',
+          department: '',
+          permissions: {},
+          roles: ['HOSPITAL_ADMIN'],
+          permissionCodes: ['professionals:manage'],
+        }), { status: 200 });
+      }
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    };
+    const localStorageRecovered = await authApi.getCurrentSession();
+    assert(localStorageRecovered?.user.email === 'grace@example.com', 'R8 runtime: verified session auto-completes pending hospital registration from localStorage fallback');
+    assert(localStorage.getItem('pending_hospital_registration') == null, 'R8 runtime: localStorage pending registration is cleared after fallback completion');
 
     queryClient.setQueryData(['protected'], { patient: 'private' });
     (authApi as any).logout = async () => undefined;

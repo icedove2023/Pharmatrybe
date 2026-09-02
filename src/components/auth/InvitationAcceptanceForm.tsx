@@ -23,7 +23,7 @@ interface InvitationAcceptanceFormProps {
   token: string;
 }
 
-export function InvitationAcceptanceForm({ token }: InvitationAcceptanceFormProps) {
+export function InvitationAcceptanceForm({ token: _token }: InvitationAcceptanceFormProps) {
   const user = useAuthStore((state) => state.user);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -36,22 +36,14 @@ export function InvitationAcceptanceForm({ token }: InvitationAcceptanceFormProp
     setError(null);
     setMessage(null);
     try {
-      let activeUser = user;
-      if (!activeUser) {
-        const { data, error: signUpError } = await supabase.auth.signUp({
-          email: values.email,
-          password: values.password,
-        });
-        if (signUpError) throw signUpError;
-        if (!data.session) {
-          setMessage('Check your email to verify your account, then return to this invitation link to finish joining the hospital.');
-          return;
-        }
-        activeUser = { id: data.user?.id || '', email: values.email } as typeof activeUser;
-      }
+      const { data: sessionData } = await supabase.auth.getSession();
+      const activeUser = user || sessionData.session?.user;
       if (!activeUser) throw new Error('Authentication is required to accept this invitation.');
+      if (!user) {
+        const { error: passwordError } = await supabase.auth.updateUser({ password: values.password });
+        if (passwordError) throw passwordError;
+      }
       await professionalsApi.acceptInvitation({
-        token,
         first_name: values.firstName,
         last_name: values.lastName,
         professional_type: values.professionalType || undefined,

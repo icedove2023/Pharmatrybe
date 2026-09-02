@@ -20,6 +20,7 @@ import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { Accordion } from '@/components/ui/Accordion';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { SkeletonCard } from '@/components/ui/Skeleton';
+import { useClinicalCaseStore } from '@/stores/clinicalCaseStore';
 
 interface RecommendationViewProps {
   caseId: string;
@@ -28,6 +29,7 @@ interface RecommendationViewProps {
 
 export function RecommendationView({ caseId, onOpenExplainability }: RecommendationViewProps) {
   const user = useAuthStore((state) => state.user);
+  const caseData = useClinicalCaseStore((state) => state.caseData);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const {
@@ -202,6 +204,8 @@ export function RecommendationView({ caseId, onOpenExplainability }: Recommendat
         patientId={contract.patient_id}
         primaryRecommendation={primaryRec}
         alternativeRecommendations={rec.alternative_recommendations || []}
+        patientName={caseData.demographics.patientName}
+        patientDemographics={caseData.demographics as unknown as Record<string, unknown>}
         onReviewRecorded={(review) => {
           showToast(`Clinical determination (${review.review_decision}) recorded into session workflow.`);
         }}

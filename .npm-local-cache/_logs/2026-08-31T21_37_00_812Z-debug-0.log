@@ -5,15 +5,15 @@
 4 silly config load:file:C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\.npmrc
 5 silly config load:file:C:\Users\Adetokunbo\.npmrc
 6 silly config load:file:C:\Users\Adetokunbo\AppData\Roaming\npm\etc\npmrc
-7 verbose title npm run dev
-8 verbose argv "run" "dev"
-9 verbose logfile logs-max:10 dir:C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\.npm-local-cache\_logs\2026-08-30T14_52_49_652Z-
-10 verbose logfile C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\.npm-local-cache\_logs\2026-08-30T14_52_49_652Z-debug-0.log
+7 verbose title npm exec tsc --noEmit
+8 verbose argv "exec" "--" "tsc" "--noEmit"
+9 verbose logfile logs-max:10 dir:C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\.npm-local-cache\_logs\2026-08-31T21_37_00_812Z-
+10 verbose logfile C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe\.npm-local-cache\_logs\2026-08-31T21_37_00_812Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
 13 verbose cwd C:\Users\Adetokunbo\Desktop\Pharmatrybe_project\Pharmatrybe
 14 verbose os Windows_NT 10.0.22621
 15 verbose node v24.18.0
 16 verbose npm  v11.16.0
-17 verbose exit 1
-18 verbose code 1
+17 verbose exit 2
+18 verbose code 2

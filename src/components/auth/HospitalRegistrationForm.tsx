@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, useReducedMotion } from 'motion/react';
 import {
-  Building2, User, Mail, Lock, Eye, EyeOff, ArrowLeft, ShieldCheck,
+  Building2, User, Mail, Lock, Eye, EyeOff, ArrowLeft, ShieldCheck, Phone, CreditCard,
 } from 'lucide-react';
 import { hospitalRegistrationSchema, HospitalRegistrationPayload } from '@/types/auth';
 import { useAuthStore } from '@/stores/authStore';
@@ -32,7 +32,7 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
     formState: { errors },
   } = useForm<HospitalRegistrationPayload>({
     resolver: zodResolver(hospitalRegistrationSchema),
-    defaultValues: { hospitalName: '', country: '', adminName: '', adminEmail: '', password: '', confirmPassword: '', acceptTerms: undefined },
+    defaultValues: { hospitalName: '', country: '', adminName: '', adminEmail: '', adminPhone: '', adminProfessionalNumber: '', password: '', confirmPassword: '', acceptTerms: undefined },
   });
 
   const onSubmit = async (data: HospitalRegistrationPayload) => {
@@ -113,6 +113,24 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
               <input {...register('adminEmail')} type="email" placeholder="admin@yourhospital.org" className={`${INPUT_CLASSES} ${errors.adminEmail ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
             </div>
             {errors.adminEmail && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.adminEmail.message}</p>}
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block font-semibold text-slate-text-secondary">Phone number</label>
+            <div className="relative">
+              <Phone className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-text-muted" aria-hidden="true" />
+              <input {...register('adminPhone')} type="tel" placeholder="+234 805 000 0000" className={`${INPUT_CLASSES} ${errors.adminPhone ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
+            </div>
+            {errors.adminPhone && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.adminPhone.message}</p>}
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block font-semibold text-slate-text-secondary">Professional registration / license number</label>
+            <div className="relative">
+              <CreditCard className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-text-muted" aria-hidden="true" />
+              <input {...register('adminProfessionalNumber')} type="text" placeholder="License or registration number" className={`${INPUT_CLASSES} ${errors.adminProfessionalNumber ? 'border-[var(--color-safety-critical)]' : 'border-slate-border'}`} />
+            </div>
+            {errors.adminProfessionalNumber && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.adminProfessionalNumber.message}</p>}
           </div>
 
           <div className="space-y-1.5">

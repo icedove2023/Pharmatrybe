@@ -782,8 +782,11 @@ export const recommendationApi = {
   recordClinicalReview: async (
     request: ClinicalReviewRequest
   ): Promise<ClinicalReviewResponse> => {
-    void request;
-    throw new Error('Clinical review is not exposed by the active backend API.');
+    const response = await apiRequest<ClinicalReviewResponse>('/recommendations/clinical-review', {
+      method: 'POST',
+      body: JSON.stringify(request),
+    });
+    return response;
   },
 
   /**
