@@ -22,6 +22,19 @@ def test_client():
     return TestClient(app)
 
 
+@pytest.fixture(autouse=True)
+def authenticated_recommendation_context():
+    """Provide the permission required by the protected recommendation route."""
+    from app.auth.dependencies import AuthorizationContext, get_authorization_context
+    from app.main import app
+
+    context = object.__new__(AuthorizationContext)
+    context.permissions = {"recommendations:request"}
+    app.dependency_overrides[get_authorization_context] = lambda: context
+    yield
+    app.dependency_overrides.pop(get_authorization_context, None)
+
+
 class TestRecommendationAPIWithExplainability:
     """Test suite for Recommendation API with full explainability contract."""
 

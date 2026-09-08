@@ -137,7 +137,7 @@ class TestGuidelineEngine:
 
     def test_guideline_engine_initialization(self):
         """Test guideline engine loads guidelines."""
-        from guideline_engine import GuidelineEngine
+        from app.clinical_decision.guideline_engine import GuidelineEngine
         
         engine = GuidelineEngine()
         
@@ -147,7 +147,7 @@ class TestGuidelineEngine:
 
     def test_get_guideline_by_antibiotic(self):
         """Test retrieving guideline by antibiotic name."""
-        from guideline_engine import GuidelineEngine
+        from app.clinical_decision.guideline_engine import GuidelineEngine
         
         engine = GuidelineEngine()
         guideline = engine.get_guideline_by_antibiotic("amoxicillin")
@@ -162,7 +162,7 @@ class TestGuidelineEngine:
 
     def test_query_guidelines(self):
         """Test querying guidelines by text."""
-        from guideline_engine import GuidelineEngine
+        from app.clinical_decision.guideline_engine import GuidelineEngine
         
         engine = GuidelineEngine()
         results = engine.query_guidelines("WHO")
@@ -176,7 +176,7 @@ class TestStewardshipEngine:
 
     def test_stewardship_analysis_broad_spectrum(self):
         """Test stewardship analysis of broad-spectrum antibiotic."""
-        from stewardship import StewardshipEngine
+        from app.clinical_decision.stewardship import StewardshipEngine
         
         engine = StewardshipEngine()
         patient_data = {"severity": "low", "immunocompromised": False}
@@ -193,7 +193,7 @@ class TestStewardshipEngine:
 
     def test_stewardship_analysis_restricted(self):
         """Test stewardship analysis of restricted antibiotic."""
-        from stewardship import StewardshipEngine
+        from app.clinical_decision.stewardship import StewardshipEngine
         
         engine = StewardshipEngine()
         patient_data = {"severity": "high"}
@@ -213,7 +213,7 @@ class TestDecisionFusionEngine:
 
     def test_fusion_basic_recommendation(self):
         """Test basic recommendation fusion."""
-        from decision_fusion import DecisionFusionEngine
+        from app.clinical_decision.decision_fusion import DecisionFusionEngine
         
         engine = DecisionFusionEngine()
         patient_data = {
@@ -240,7 +240,7 @@ class TestDecisionFusionEngine:
 
     def test_fusion_handles_contraindications(self):
         """Test fusion handles contraindications correctly."""
-        from decision_fusion import DecisionFusionEngine
+        from app.clinical_decision.decision_fusion import DecisionFusionEngine
         
         engine = DecisionFusionEngine()
         patient_data = {
@@ -270,8 +270,8 @@ class TestExplainabilityEngine:
 
     def test_generate_explanation(self):
         """Test explanation generation."""
-        from explainability import ExplainabilityEngine
-        from decision_fusion import DecisionFusionEngine
+        from app.clinical_decision.explainability import ExplainabilityEngine
+        from app.clinical_decision.decision_fusion import DecisionFusionEngine
         
         fusion_engine = DecisionFusionEngine()
         explain_engine = ExplainabilityEngine()
@@ -302,8 +302,8 @@ class TestExplainabilityEngine:
 
     def test_generate_audit_trail(self):
         """Test audit trail generation."""
-        from explainability import ExplainabilityEngine
-        from decision_fusion import DecisionFusionEngine
+        from app.clinical_decision.explainability import ExplainabilityEngine
+        from app.clinical_decision.decision_fusion import DecisionFusionEngine
         
         fusion_engine = DecisionFusionEngine()
         explain_engine = ExplainabilityEngine()
@@ -337,7 +337,7 @@ class TestCDSSOrchestrator:
 
     def test_orchestrator_generates_recommendation(self):
         """Test orchestrator generates complete recommendation."""
-        from orchestrator import CDSSOrchestrator
+        from app.clinical_decision.orchestrator import CDSSOrchestrator
         
         orchestrator = CDSSOrchestrator()
         patient_data = {
@@ -362,7 +362,7 @@ class TestCDSSOrchestrator:
 
     def test_orchestrator_validates_inputs(self):
         """Test orchestrator validates input data."""
-        from orchestrator import CDSSOrchestrator
+        from app.clinical_decision.orchestrator import CDSSOrchestrator
         
         orchestrator = CDSSOrchestrator()
         
@@ -378,7 +378,7 @@ class TestCDSSOrchestrator:
 
     def test_orchestrator_handles_invalid_predictions(self):
         """Test orchestrator handles invalid prediction values."""
-        from orchestrator import CDSSOrchestrator
+        from app.clinical_decision.orchestrator import CDSSOrchestrator
         
         orchestrator = CDSSOrchestrator()
         

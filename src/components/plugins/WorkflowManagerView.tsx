@@ -20,9 +20,7 @@ interface WorkflowManagerViewProps {
  * - launches pipeline and displays summary + JSON details
  *
  * Enhancements:
- * - Renders per-plugin input forms when plugin.metadata.inputSchema exists (JSON Schema-like)
- * - Prefills form fields from the current clinical case store when keys match
- * - Builds input_payload from selected plugin inputs or from the case data
+ * - Uses only the canonical case payload until an approved frontend contract is registered
  *
  * This conservative scaffold intentionally avoids fabricating data and
  * surfaces server capability errors as explicit messages.
@@ -31,9 +29,8 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
   const { data: plugins, isLoading } = usePluginRegistry();
   const caseData = useClinicalCaseStore((s) => s.caseData);
   const [selected, setSelected] = useState<Record<string, boolean>>({});
-  const [executionMode, setExecutionMode] = useState<'sync' | 'async'>('sync');
+  const [executionMode] = useState<'sync'>('sync');
   const [isRunning, setIsRunning] = useState(false);
-  const [executionId, setExecutionId] = useState<string | null>(null);
   const [result, setResult] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showRaw, setShowRaw] = useState(false);
@@ -47,25 +44,6 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
     setSelected(initial);
   }, [plugins]);
 
-  useEffect(() => {
-    // prefill pluginInputs for plugins that expose metadata.inputSchema
-    if (!plugins) return;
-    const prefill: Record<string, Record<string, any>> = {};
-    plugins.forEach((p: any) => {
-      const schema = p.metadata?.inputSchema;
-      if (schema && schema.properties) {
-        const values: Record<string, any> = {};
-        Object.keys(schema.properties).forEach((k) => {
-          // Prefill from caseData if matching key exists in case
-          const maybe = (caseData as any)[k] ?? (caseData.presentation as any)?.[k] ?? (caseData.laboratory as any)?.[k] ?? (caseData.riskFactors as any)?.[k];
-          values[k] = maybe ?? schema.properties[k].default ?? null;
-        });
-        prefill[p.id] = values;
-      }
-    });
-    setPluginInputs((prev) => ({ ...prefill, ...prev }));
-  }, [plugins, caseData]);
-
   const selectedPlugins = useMemo(() => {
     if (!plugins) return [];
     return plugins.filter((p: any) => selected[p.id]);
@@ -75,28 +53,14 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
     setSelected((s) => ({ ...s, [pluginId]: !s[pluginId] }));
   };
 
-  const updatePluginInput = (pluginId: string, key: string, value: any) => {
-    setPluginInputs((prev) => ({ ...prev, [pluginId]: { ...(prev[pluginId] || {}), [key]: value } }));
-  };
-
   const buildInputPayload = (): Record<string, any> => {
-    // If specific plugin inputs are present, include them keyed by plugin
-    const payload: Record<string, any> = {};
-    if (Object.keys(pluginInputs).length > 0) {
-      Object.entries(pluginInputs).forEach(([pluginId, inputs]) => {
-        if (Object.keys(inputs).length > 0) payload[pluginId] = inputs;
-      });
-    }
-    // Always include the canonical caseData under 'case' for plugin consumption
-    payload.case = caseData;
-    return payload;
+    return { case: caseData };
   };
 
   const launch = async () => {
     setError(null);
     setIsRunning(true);
     setResult(null);
-    setExecutionId(null);
 
     const plugin_selection = selectedPlugins.length > 0
       ? selectedPlugins.map((p: any) => ({ plugin_id: p.id, plugin_version: p.version, plugin_role: p.category }))
@@ -104,62 +68,17 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
 
     try {
       const payload = {
-        execution_mode: executionMode,
-        patient_id: patientId ?? caseData?.demographics?.patientId,
+        execution_mode: 'sync' as const,
+        patient_id: patientId ?? caseData?.demographics?.patientId ?? '',
         case_id: caseId ?? null,
         plugin_selection,
         input_payload: buildInputPayload(),
-        response_mode: 'full',
+        response_mode: 'full' as const,
       };
 
-      const resp = await pipelineApi.executePipeline(payload as any);
-
-      // If accepted, start polling
-      if ((resp as any).status === 'accepted') {
-        const accepted = resp as any;
-        setExecutionId(accepted.execution_id);
-
-        // poll
-        let cancelled = false;
-        const poll = async () => {
-          try {
-            const statusResp = await pipelineApi.getExecutionStatus(accepted.execution_id);
-            if ((statusResp as any).status && (statusResp as any).status !== 'running') {
-              setResult(statusResp);
-              setIsRunning(false);
-              cancelled = true;
-            } else if ((statusResp as any).recommendation) {
-              setResult(statusResp);
-              setIsRunning(false);
-              cancelled = true;
-            }
-          } catch (e) {
-            // surface error but keep polling lightly
-            setError((e as Error).message);
-            setIsRunning(false);
-            cancelled = true;
-          }
-        };
-
-        // simple polling loop with limited attempts
-        let attempts = 0;
-        const interval = setInterval(async () => {
-          if (cancelled || attempts > 60) {
-            clearInterval(interval);
-            if (!result && !error) setIsRunning(false);
-            return;
-          }
-          attempts += 1;
-          await poll();
-        }, 2000);
-
-      } else if ((resp as any).recommendation) {
-        setResult(resp);
-        setIsRunning(false);
-      } else {
-        setResult(resp);
-        setIsRunning(false);
-      }
+      const resp = await pipelineApi.executePipeline(payload);
+      setResult(resp);
+      setIsRunning(false);
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(`Backend error (${err.status}): ${err.message}`);
@@ -175,24 +94,7 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Workflow Manager</h2>
         <div className="flex items-center gap-2">
-          <label className="text-xs text-slate-text-muted flex items-center gap-2">
-            <input
-              type="radio"
-              name="execMode"
-              checked={executionMode === 'sync'}
-              onChange={() => setExecutionMode('sync')}
-            />
-            <span>Sync</span>
-          </label>
-          <label className="text-xs text-slate-text-muted flex items-center gap-2">
-            <input
-              type="radio"
-              name="execMode"
-              checked={executionMode === 'async'}
-              onChange={() => setExecutionMode('async')}
-            />
-            <span>Async</span>
-          </label>
+          <span className="text-xs text-slate-text-muted">Synchronous execution</span>
         </div>
       </div>
 
@@ -224,64 +126,12 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
           ))}
         </div>
 
-        {/* Dynamic plugin input forms */}
+        {/* Dynamic plugin input forms are rendered only by the approved contract engine. */}
         {selectedPlugins.length > 0 && (
           <div className="mt-4 space-y-3">
-            <div className="text-sm font-semibold">Plugin inputs</div>
-            {selectedPlugins.map((p: any) => {
-              const schema = p.metadata?.inputSchema;
-              const inputs = pluginInputs[p.id] || {};
-              if (!schema) {
-                return (
-                  <div key={p.id} className="rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset p-3">
-                    <div className="text-xs font-semibold">{p.name}</div>
-                    <p className="text-xs text-slate-text-muted">No input schema exposed by this plugin. The server will determine required inputs.</p>
-                  </div>
-                );
-              }
-
-              return (
-                <div key={p.id} className="rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset p-3">
-                  <div className="text-xs font-semibold">{p.name} inputs</div>
-                  <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                    {Object.entries(schema.properties).map(([key, def]: any) => {
-                      const type = def.type || 'string';
-                      const value = inputs[key] ?? '';
-                      if (type === 'boolean') {
-                        return (
-                          <label key={key} className="flex items-center gap-2 text-xs">
-                            <input type="checkbox" checked={!!value} onChange={(e) => updatePluginInput(p.id, key, e.target.checked)} />
-                            <span>{def.title || key}</span>
-                          </label>
-                        );
-                      }
-                      if (def.enum) {
-                        return (
-                          <label key={key} className="text-xs">
-                            <div className="mb-1 text-[11px] text-slate-text-muted">{def.title || key}</div>
-                            <select className="w-full rounded border p-2 text-sm" value={value} onChange={(e) => updatePluginInput(p.id, key, e.target.value)}>
-                              <option value="">(select)</option>
-                              {def.enum.map((opt: any) => (<option key={opt} value={opt}>{opt}</option>))}
-                            </select>
-                          </label>
-                        );
-                      }
-                      return (
-                        <label key={key} className="text-xs">
-                          <div className="mb-1 text-[11px] text-slate-text-muted">{def.title || key}</div>
-                          <input
-                            type={type === 'number' ? 'number' : 'text'}
-                            value={value}
-                            onChange={(e) => updatePluginInput(p.id, key, type === 'number' ? Number(e.target.value) : e.target.value)}
-                            className="w-full rounded border p-2 text-sm"
-                          />
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+            <SafetyAlert level="warning" title="Approved plugin input contract unavailable">
+              The registry metadata does not authorize a clinical input schema for the selected plugins. No plugin-specific fields are rendered or inferred.
+            </SafetyAlert>
           </div>
         )}
 
@@ -289,7 +139,7 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
           <ClinicalButton onClick={launch} loading={isRunning} icon={undefined}>
             Launch pipeline
           </ClinicalButton>
-          <ClinicalButton variant="outline" onClick={() => { setSelected({}); setResult(null); setError(null); setExecutionId(null); setPluginInputs({}); }}>
+          <ClinicalButton variant="outline" onClick={() => { setSelected({}); setResult(null); setError(null); setPluginInputs({}); }}>
             Reset
           </ClinicalButton>
         </div>
@@ -302,9 +152,6 @@ export function WorkflowManagerView({ caseId, patientId }: WorkflowManagerViewPr
           </div>
         )}
 
-        {executionId && (
-          <div className="mt-4 text-xs text-slate-text-muted">Execution ID: {executionId}</div>
-        )}
 
         {result && (
           <div className="mt-4 space-y-3">

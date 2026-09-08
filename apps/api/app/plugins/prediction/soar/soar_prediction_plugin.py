@@ -14,8 +14,13 @@ from app.plugins.prediction.soar.prediction_engine import PredictionEngine
 from app.plugins.prediction.soar.runtime_context import SOARRuntimeContext
 from app.plugins.prediction.soar.deployment_scanner import DeploymentInfo
 from packages.prediction_framework.plugin import BasePredictionPlugin
+from app.plugins.schema.clinical_registry import PLUGIN_SPECIFIC, UNRESOLVED
 
 logger = get_logger(__name__)
+
+
+class DeploymentSelectionError(ValueError):
+    """Raised when a SOAR deployment cannot be selected deterministically."""
 
 
 class SOARPredictionPlugin(BasePredictionPlugin):
@@ -248,25 +253,47 @@ class SOARPredictionPlugin(BasePredictionPlugin):
             ]
         )
         if has_match_key:
-            return True
+            return isinstance((request.context or {}).get("deployment_id"), str)
 
-        return len(self._runtime_context.deployment_registry.get_all()) > 0
+        return isinstance((request.context or {}).get("deployment_id"), str)
 
     def input_schema(self) -> Dict[str, Any]:
         return {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "title": "SOAR prediction input",
-            "type": "object",
-            "properties": {
-                "pathogen": {"type": "string", "description": "Suspected respiratory pathogen"},
-                "culture": {"type": "string", "description": "Microbiology culture and sensitivity observations"},
-                "infection_site": {"type": "string", "description": "Clinical infection site"},
-                "organism": {"type": "string", "description": "Organism of interest"},
-                "antimicrobial": {"type": "string", "description": "Target antimicrobial or treatment candidate"},
-                "severity": {"type": "string", "description": "Clinical severity score or classification"},
+            "title": "SOAR deployment-specific prediction input",
+            "anyOf": [
+                {"type": "object", "properties": {
+                    "Age": {"type": "number"}, "YearCollected": {"type": "number"},
+                    "Region": {"type": "string"}, "BodyLocation_Group": {"type": "string"},
+                    "Country": {"type": "string"}, "Beta_Lactamase_enc": {"type": "number"},
+                }, "required": ["Age", "YearCollected", "Region", "BodyLocation_Group", "Country"], "additionalProperties": False},
+                {"type": "object", "properties": {
+                    "Age": {"type": "number"}, "YearCollected": {"type": "number"},
+                    "Region": {"type": "string"}, "BodyLocation_Group": {"type": "string"},
+                    "Country": {"type": "string"}, "Beta_Lactamase_enc": {"type": "number"},
+                }, "required": ["Age", "YearCollected", "Region", "BodyLocation_Group", "Country", "Beta_Lactamase_enc"], "additionalProperties": False},
+            ],
+            "unevaluatedProperties": False,
+            "x-contract-kind": "prediction_input",
+            "x-contract-version": "0.1.0",
+            "x-deployment-contracts": [
+                {"deployment_variant": "base", "required": ["Age", "YearCollected", "Region", "BodyLocation_Group", "Country"]},
+                {"deployment_variant": "beta_lactamase", "required": ["Age", "YearCollected", "Region", "BodyLocation_Group", "Country", "Beta_Lactamase_enc"]},
+            ],
+            "x-ui-inputs": [],
+            "x-platform-inputs": ["Age", "YearCollected", "Region", "BodyLocation_Group", "Country", "Beta_Lactamase_enc"],
+            "x-deployment-selection": {"owner": "explicit_caller_routing_boundary", "selection_fields": ["deployment_id"], "frontend_visible": False},
+            "x-plugin-runtime-mappings": {
+                "Age": {"classification": "CONFIRMED", "source": "artifact feature_schema.json", "transformation": "passthrough to model preprocessing", "frontend_visible": False},
+                "YearCollected": {"classification": "CONFIRMED", "source": "artifact feature_schema.json", "transformation": "passthrough to model preprocessing", "frontend_visible": False},
+                "Region": {"classification": "TRANSFORMED", "source": "artifact feature_schema.json", "transformation": "one-hot encoding", "frontend_visible": False},
+                "BodyLocation_Group": {"classification": "TRANSFORMED", "source": "artifact feature_schema.json", "transformation": "one-hot encoding", "frontend_visible": False},
+                "Country": {"classification": "TRANSFORMED", "source": "artifact feature_schema.json", "transformation": "target encoding", "frontend_visible": False},
+                "Beta_Lactamase_enc": {"classification": "TRANSFORMED", "source": "artifact feature_schema.json", "transformation": "passthrough/bin; deployment-specific", "frontend_visible": False},
+                "pathogen": {"classification": UNRESOLVED, "source": "plugin support routing only", "frontend_visible": False},
+                "organism": {"classification": PLUGIN_SPECIFIC, "source": "deployment scanner and selection logic", "frontend_visible": False},
+                "antimicrobial": {"classification": PLUGIN_SPECIFIC, "source": "deployment scanner and selection logic", "frontend_visible": False},
             },
-            "required": ["pathogen"],
-            "additionalProperties": True,
         }
 
     def output_schema(self) -> Dict[str, Any]:
@@ -286,22 +313,14 @@ class SOARPredictionPlugin(BasePredictionPlugin):
         }
 
     def _select_deployment(self, request: PredictionRequest) -> DeploymentInfo:
-        payload = request.payload
-        if "organism" in payload:
-            matches = self._runtime_context.deployment_registry.get_by_organism(str(payload["organism"]))
-            if matches:
-                return matches[0]
-
-        if "antimicrobial" in payload:
-            matches = self._runtime_context.deployment_registry.get_by_antimicrobial(str(payload["antimicrobial"]))
-            if matches:
-                return matches[0]
-
-        all_deployments = [dep for dep in self._runtime_context.deployment_registry.get_all() if dep.status == "valid"]
-        if all_deployments:
-            return all_deployments[0]
-
-        raise RuntimeError("No valid SOAR deployment available for prediction.")
+        context = request.context or {}
+        deployment_id = context.get("deployment_id")
+        if not isinstance(deployment_id, str) or not deployment_id.strip():
+            raise DeploymentSelectionError("SOAR requires an explicit context.deployment_id; implicit fallback is disabled.")
+        deployment = self._runtime_context.deployment_registry.get_by_id(deployment_id.strip())
+        if deployment is None or deployment.status != "valid":
+            raise DeploymentSelectionError(f"SOAR deployment is not available: {deployment_id}")
+        return deployment
 
     def _get_deployments_root_from_config(self) -> Optional[Path]:
         root = self._configuration.get("deployments_root")

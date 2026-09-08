@@ -23,6 +23,7 @@ export class ApiClientError extends Error {
   status: number;
   code?: string;
   details?: unknown;
+  category: 'NETWORK_ERROR' | 'UNAUTHENTICATED' | 'FORBIDDEN' | 'VALIDATION_ERROR' | 'BACKEND_ERROR';
 
   constructor(message: string, status: number, code?: string, details?: unknown) {
     super(message);
@@ -30,6 +31,13 @@ export class ApiClientError extends Error {
     this.status = status;
     this.code = code;
     this.details = details;
+    this.category = status === 401
+      ? 'UNAUTHENTICATED'
+      : status === 403
+        ? 'FORBIDDEN'
+        : status === 422
+          ? 'VALIDATION_ERROR'
+          : 'BACKEND_ERROR';
   }
 }
 let refreshPromise: Promise<boolean> | null = null;
@@ -78,7 +86,15 @@ export async function apiRequest<T>(path: string, init: RequestInit = {}): Promi
     const { data } = await supabase.auth.getSession();
     if (data.session?.access_token) headers.set('Authorization', `Bearer ${data.session.access_token}`);
     else headers.delete('Authorization');
-    return fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+    try {
+      return await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+    } catch (error) {
+      throw new ApiClientError(
+        error instanceof Error ? error.message : 'Network request failed.',
+        0,
+        'NETWORK_ERROR',
+      );
+    }
   };
   let response = await request();
   if (response.status === 401) {

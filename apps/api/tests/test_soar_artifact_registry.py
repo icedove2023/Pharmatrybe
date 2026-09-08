@@ -70,6 +70,12 @@ def test_deployment_scanner_discovers_deployment(tmp_path: Path) -> None:
     deployment_path = tmp_path / "S__A"
     deployment_path.mkdir()
     (deployment_path / "final_model.pkl").write_bytes(pickle.dumps({"value": 2}))
+    (deployment_path / "deployment_info.json").write_text(
+        json.dumps({"antibiotic": "A", "species": "S"}), encoding="utf-8"
+    )
+    (deployment_path / "feature_schema.json").write_text(
+        json.dumps({"features": [{"name": "feature"}]}), encoding="utf-8"
+    )
 
     scanner = DeploymentScanner(deployments_root=tmp_path)
     deployments = scanner.scan()

@@ -1,0 +1,15 @@
+[2026-09-08 12:39:36,195] [INFO] Loaded registry with 20 antibiotics.
+[2026-09-08 12:39:36,207] [INFO] Loaded registry with 20 antibiotics
+[2026-09-08 12:39:36,211] [INFO] Loaded WP3 preprocessing artifacts
+[2026-09-08 12:39:36,778] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-09-08 12:39:36,778] [INFO] Loaded WP2 table with shape (118767, 68)
+[2026-09-08 12:39:39,962] [INFO] Loaded model package for Amikacin
+[2026-09-08 12:39:40,696] [INFO] Preprocessed patient data to shape (1, 37)
+[2026-09-08 12:39:43,730] [INFO] Registered rule: allergy (Allergy Screening)
+[2026-09-08 12:39:43,730] [INFO] Registered rule: renal_impairment (Renal Impairment)
+[2026-09-08 12:39:46,987] [INFO] Registered rule: pregnancy (Pregnancy Status)
+[2026-09-08 12:39:46,987] [INFO] Loaded 11 placeholder guidelines
+[2026-09-08 12:39:46,997] [INFO] Fusing decision
+[2026-09-08 12:39:46,997] [INFO] Decision fusion complete
+[2026-09-08 12:39:46,997] [INFO] Generating explanation
+[2026-09-08 12:39:46,997] [INFO] Explanation generated

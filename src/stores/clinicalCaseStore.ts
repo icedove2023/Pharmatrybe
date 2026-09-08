@@ -27,7 +27,7 @@ const defaultCase: ClinicalCase = {
     recentHospitalization: false,
   },
   executionMode: 'AUTO',
-  pluginSelections: ['soar', 'armd', 'who_knowledge'],
+  pluginSelections: ['armd', 'who_knowledge'],
   status: 'Draft',
 };
 
@@ -123,7 +123,7 @@ export const useClinicalCaseStore = create<ClinicalCaseState>((set) => ({
           laboratory: { wbc: 8.5, crp: 12, egfr: 95, cultureResult: 'Urine Dipstick: Leukocyte Positive, Nitrite Positive', suspectedPathogen: 'Escherichia coli' },
           riskFactors: { allergies: ['Sulfa Drugs (Hives / Rash)'], comorbidities: ['Asthma'], concomitantMedications: ['Albuterol Inhaler PRN'], isPregnant: false, isLactating: false, isImmunocompromised: false, priorAntibiotics90Days: false, recentHospitalization: false },
           executionMode: 'AUTO',
-          pluginSelections: ['soar', 'armd', 'who_knowledge'],
+          pluginSelections: ['armd', 'who_knowledge'],
         },
       });
     } else if (preset === 'ssti') {
@@ -141,7 +141,7 @@ export const useClinicalCaseStore = create<ClinicalCaseState>((set) => ({
           laboratory: { wbc: 11.2, crp: 28, egfr: 80, suspectedPathogen: 'Streptococcus pyogenes' },
           riskFactors: { allergies: [], comorbidities: ['T2 Diabetes'], concomitantMedications: ['Metformin 1000mg BID'], isPregnant: false, isLactating: false, isImmunocompromised: false, priorAntibiotics90Days: false, recentHospitalization: false },
           executionMode: 'AUTO',
-          pluginSelections: ['soar', 'armd', 'who_knowledge'],
+          pluginSelections: ['armd', 'who_knowledge'],
         },
       });
     } else {

@@ -15,6 +15,8 @@ import { cn } from '@/lib/utils';
 import { getExternalRegisteredPlugins } from '@/plugins/registry/pluginRegistry';
 import { PluginGeneratedForm } from './PluginGeneratedForm';
 import { useNotificationStore } from '@/stores/notificationStore';
+import type { SoarInputResolution } from '@/plugins/contracts';
+import type { buildSoarExecutionPayload } from '@/plugins/contracts';
 
 interface AssessmentWizardProps {
   onCaseSubmitted: (caseId: string) => void;
@@ -43,6 +45,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
   const [showOptionalVitals, setShowOptionalVitals] = useState(false);
   const [showOptionalBiomarkers, setShowOptionalBiomarkers] = useState(false);
   const [showOptionalDetails, setShowOptionalDetails] = useState(false);
+  const [soarExecution, setSoarExecution] = useState<{ payload: ReturnType<typeof buildSoarExecutionPayload>; resolution: SoarInputResolution } | null>(null);
 
   const registeredPlugins = getExternalRegisteredPlugins();
   const activePlugins = (caseData.executionMode === 'AUTO'
@@ -370,7 +373,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
               <h3 className="text-sm font-semibold text-slate-text-primary">Step 2: Plugin-Generated Clinical Inputs</h3>
               <p className="text-xs text-slate-text-muted">This form is assembled from the schemas exposed by the selected plugins.</p>
             </div>
-            <PluginGeneratedForm plugins={activePlugins} caseData={caseData} onChange={updatePluginField} />
+            <PluginGeneratedForm plugins={activePlugins} caseData={caseData} onChange={updatePluginField} onSoarResolved={(payload, resolution) => setSoarExecution({ payload, resolution })} />
           </div>
         )}
 
@@ -908,6 +911,9 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                 size="lg"
                 onClick={async () => {
                   try {
+                    if (activePlugins.some((plugin) => plugin.backendId === 'soar' || plugin.id === 'soar' || plugin.id === 'soar_prediction') && !soarExecution) {
+                      throw new Error('SOAR requires a verified deployment and complete controlled inputs before execution.');
+                    }
                     // Map frontend execution mode to pipeline mode; default to sync
                     const mode = 'sync' as const;
                     const payload = {
@@ -915,7 +921,8 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                       patient_id: caseData.demographics.patientId,
                       case_id: undefined,
                       plugin_selection: caseData.pluginSelections?.map((id) => ({ plugin_id: id })) ?? undefined,
-                      input_payload: { case: caseData },
+                      input_payload: soarExecution ? { case: caseData, ...soarExecution.payload.input_payload } : { case: caseData },
+                      routing_context: soarExecution?.payload.routing_context,
                       response_mode: 'full' as const,
                     };
                     const resp = await import('@/api').then(m => m.pipelineApi.executePipeline(payload));

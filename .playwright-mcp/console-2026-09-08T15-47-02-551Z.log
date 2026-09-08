@@ -1,0 +1,9 @@
+[  201316ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[  240276ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[  273339ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[  298365ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[  336904ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[  339885ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:3000/:0
+[ 1040806ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8001/api/v1/recommendations/generate:0
+[ 1425033ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[ 1585919ms] [ERROR] %s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props) InputField @ http://localhost:3000/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f1572d1d:107

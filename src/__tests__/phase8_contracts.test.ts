@@ -111,21 +111,33 @@ export async function runPhase8ContractTests() {
     assert(false, 'Scenario 5: Very Low confidence recommendation', err.message);
   }
 
-  // Scenario 5-7: Clinical review is not exposed by the active backend.
+  // Scenario 5-7: Clinical review is recorded through the supported backend boundary.
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (_input, init) => {
+    const requestBody = typeof init?.body === 'string' ? JSON.parse(init.body) : {};
+    return new Response(JSON.stringify({
+      status: 'recorded',
+      recommendation_id: requestBody.recommendation_id || 'REC-TEST',
+      review_decision: requestBody.review_decision || 'APPROVED',
+      clinician_id: requestBody.clinician_id || 'CLIN-001',
+      recorded_at: new Date().toISOString(),
+      message: 'Clinical review recorded.',
+    }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  };
   try {
-    await recommendationApi.recordClinicalReview({
+    const response = await recommendationApi.recordClinicalReview({
       recommendation_id: 'REC-TEST-001',
       clinician_id: 'CLIN-001',
       review_decision: 'APPROVED',
       clinical_notes: 'Patient exhibits classic presentation; first-line empirical therapy approved.',
     });
-    assert(false, 'Scenario 5: Clinical review is unavailable');
+    assert(response.status === 'recorded', 'Scenario 5: Clinical review is recorded');
   } catch (err: any) {
-    assert(err.message.includes('not exposed'), 'Scenario 5: Clinical review is unavailable');
+    assert(false, 'Scenario 5: Clinical review is recorded', err.message);
   }
 
   try {
-    await recommendationApi.recordClinicalReview({
+    const response = await recommendationApi.recordClinicalReview({
       recommendation_id: 'REC-TEST-002',
       clinician_id: 'CLIN-001',
       review_decision: 'MODIFIED',
@@ -133,23 +145,24 @@ export async function runPhase8ContractTests() {
       clinical_notes: 'Prescribing Doxycycline 100mg BID',
       reason_for_deviation: 'Patient reported undocumented mild gastrointestinal intolerance to prior beta-lactams.',
     });
-    assert(false, 'Scenario 6: Clinical review is unavailable');
+    assert(response.review_decision === 'MODIFIED', 'Scenario 6: Clinical review decision is preserved');
   } catch (err: any) {
-    assert(err.message.includes('not exposed'), 'Scenario 6: Clinical review is unavailable');
+    assert(false, 'Scenario 6: Clinical review is recorded', err.message);
   }
 
   try {
-    await recommendationApi.recordClinicalReview({
+    const response = await recommendationApi.recordClinicalReview({
       recommendation_id: 'REC-TEST-003',
       clinician_id: 'CLIN-001',
       review_decision: 'REJECTED',
       clinical_notes: 'Sputum viral PCR returned positive for Influenza A; antibacterial withheld.',
       reason_for_deviation: 'Confirmed viral etiology; supportive symptomatic management initiated.',
     });
-    assert(false, 'Scenario 7: Clinical review is unavailable');
+    assert(response.review_decision === 'REJECTED', 'Scenario 7: Clinical review decision is preserved');
   } catch (err: any) {
-    assert(err.message.includes('not exposed'), 'Scenario 7: Clinical review is unavailable');
+    assert(false, 'Scenario 7: Clinical review is recorded', err.message);
   }
+  globalThis.fetch = originalFetch;
 
   // Scenario 8: Backend/network error validation (401, 422)
   try {

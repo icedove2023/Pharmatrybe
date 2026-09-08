@@ -40,7 +40,11 @@ export function ExplainabilityView({ caseId }: ExplainabilityViewProps) {
   if (isError || !data) {
     const errObj = error as any;
     const status = errObj?.status || 500;
-    const errorMessage = errObj?.message || 'Failed to retrieve explainability data from the CDSS backend';
+    const errorMessage = errObj?.category === 'UNAUTHENTICATED'
+      ? 'Your session has expired. Sign in again to view explainability.'
+      : errObj?.category === 'FORBIDDEN'
+        ? 'Your account is not authorized to view explainability.'
+        : errObj?.message || 'Failed to retrieve explainability data from the CDSS backend.';
 
     return (
       <div className="mx-auto max-w-2xl">
@@ -103,7 +107,11 @@ export function ExplainabilityView({ caseId }: ExplainabilityViewProps) {
       </div>
 
       {/* Clinical-first: narrative, then ranked evidence */}
-      <ClinicalReasoningNarrative narrative={narrativeText} traceId={traceId} generatedAt={generatedAt} />
+      <ClinicalReasoningNarrative
+        narrative={narrativeText || 'No additional explanation was returned for this recommendation.'}
+        traceId={traceId}
+        generatedAt={generatedAt}
+      />
       <EvidenceRankingPanel drivers={evidenceDrivers} />
 
       {/* Technical disclosure: pipeline graph + SHAP feature attribution, and audit trail */}

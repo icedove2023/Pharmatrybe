@@ -80,7 +80,13 @@ export function RecommendationView({ caseId, onOpenExplainability }: Recommendat
   if (isError || !contract || !contract.recommendation) {
     const errObj = error as any;
     const status = errObj?.status || 500;
-    const errorMessage = errObj?.message || 'Failed to retrieve recommendation from CDSS backend';
+    const errorMessage = errObj?.category === 'UNAUTHENTICATED'
+      ? 'Your session has expired. Sign in again to view this recommendation.'
+      : errObj?.category === 'FORBIDDEN'
+        ? 'Your account is not authorized to view this recommendation.'
+        : errObj?.code === 'SOAR_DEPLOYMENT_SELECTION_ERROR'
+          ? 'The backend requires an approved SOAR deployment route; no deployment was inferred.'
+          : errObj?.message || 'Failed to retrieve recommendation from the CDSS backend.';
 
     return (
       <div className="mx-auto max-w-2xl">

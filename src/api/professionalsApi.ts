@@ -17,6 +17,7 @@ export interface ProfessionalInvitationResponse {
   role_code: CanonicalRoleCode;
   status: string;
   delivery: 'supabase_auth';
+  temporary_password: string;
 }
 
 export interface ProfessionalRecord {

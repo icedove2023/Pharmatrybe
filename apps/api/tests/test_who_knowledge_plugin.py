@@ -132,13 +132,36 @@ class TestWHOKnowledgePluginLifecycle:
 class TestWHOKnowledgePluginConnection:
     """Test WHO Plugin connection management."""
 
-    def test_connect_without_session(self):
-        """Test connect raises if no session provided."""
+    def test_connect_without_session_uses_configured_who_database(self):
+        """Test connect uses the explicit WHO database session by default."""
         plugin = WHOKnowledgePlugin(db_session=None)
         plugin.initialize()
-        
-        with pytest.raises(ConnectionError):
-            plugin.connect()
+        plugin.connect()
+        assert plugin._is_connected is True
+
+    def test_default_plugin_search_uses_populated_who_database(self):
+        """Test the default plugin path reaches the configured WHO database."""
+        plugin = WHOKnowledgePlugin()
+        plugin.initialize()
+        plugin.connect()
+        results = plugin.search("pneumonia")
+        assert results
+        assert any(item["result_type"] == "disease" for item in results)
+
+    def test_default_session_is_bound_to_who_engine(self):
+        """Test default plugin sessions are bound to WHO_DATABASE_URL."""
+        from app.database.who_connection import WHO_ENGINE
+
+        plugin = WHOKnowledgePlugin()
+        assert plugin._session.bind is WHO_ENGINE
+
+    def test_missing_who_database_configuration_fails_clearly(self, monkeypatch):
+        """Test missing WHO database configuration is rejected explicitly."""
+        from app.database import who_connection
+
+        monkeypatch.setattr(who_connection.settings, "who_database_url", "")
+        with pytest.raises(RuntimeError, match="WHO_DATABASE_URL is required"):
+            who_connection.get_who_engine()
 
     def test_connect_with_session(self):
         """Test connect succeeds with mock session."""

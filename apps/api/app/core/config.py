@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     environment: str = Field(default="development", alias="ENVIRONMENT")
     debug: bool = Field(default=False, alias="DEBUG")
     database_url: str = Field(default="", alias="DATABASE_URL")
+    who_database_url: str = Field(default="", alias="WHO_DATABASE_URL")
     invitation_handoff_encryption_key: str = Field(default="", alias="INVITATION_HANDOFF_ENCRYPTION_KEY")
     invitation_frontend_route: str = Field(default="", alias="INVITATION_FRONTEND_ROUTE")
 

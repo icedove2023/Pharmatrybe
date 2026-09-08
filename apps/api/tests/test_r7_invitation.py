@@ -22,7 +22,7 @@ from app.services.identity import supabase_auth
 
 
 def test_backend_settings_resolve_env_file_from_workspace_root() -> None:
-    expected_root = Path(__file__).resolve().parents[4]
+    expected_root = Path(__file__).resolve().parents[3]
     assert app_config.PROJECT_ROOT == expected_root
     assert app_config.PROJECT_ROOT / ".env" == expected_root / ".env"
     assert (app_config.PROJECT_ROOT / ".env").exists()

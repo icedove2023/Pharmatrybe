@@ -1,89 +1,59 @@
 import React from 'react';
-import { PluginDefinition, PluginFormField } from '@/plugins/registry/pluginTypes';
+import { PluginDefinition } from '@/plugins/registry/pluginTypes';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
+import { DynamicClinicalForm } from '@/forms/engine/DynamicClinicalForm';
+import { ensureArmdClinicalContractRegistered } from '@/plugins/contracts';
+import { SoarClinicalCompletionForm } from '@/plugins/contracts';
+import type { SoarInputResolution } from '@/plugins/contracts';
+import type { buildSoarExecutionPayload } from '@/plugins/contracts';
+import type { ClinicalCase } from '@/types';
 
 interface PluginGeneratedFormProps {
   plugins: PluginDefinition[];
-  caseData: Record<string, any>;
+  caseData: ClinicalCase;
   onChange: (path: string, value: unknown) => void;
+  onSoarResolved?: (payload: ReturnType<typeof buildSoarExecutionPayload>, resolution: SoarInputResolution) => void;
 }
 
-function readPath(value: Record<string, any>, path: string): unknown {
-  return path.split('.').reduce<unknown>((current, key) => (
-    current && typeof current === 'object' ? (current as Record<string, unknown>)[key] : undefined
-  ), value);
-}
+export function PluginGeneratedForm({ plugins, caseData, onChange, onSoarResolved }: PluginGeneratedFormProps) {
+  const hasArmd = plugins.some((plugin) => plugin.backendId === 'armd' || plugin.id === 'armd' || plugin.id === 'armd_prediction');
+  const hasSoar = plugins.some((plugin) => plugin.backendId === 'soar' || plugin.id === 'soar' || plugin.id === 'soar_prediction');
+  if (hasArmd) {
+    const contract = ensureArmdClinicalContractRegistered();
+    const initialValues = {
+      age: caseData.demographics.age,
+      temperature: caseData.presentation.vitals.temperature,
+      creatinine: caseData.laboratory.creatinine,
+      bun: undefined,
+      wbc: caseData.laboratory.wbc,
+      neutrophils: undefined,
+      lymphocytes: undefined,
+      lactate: undefined,
+      procalcitonin: caseData.laboratory.procalcitonin,
+    };
+    const updateCase = (values: Record<string, unknown>) => {
+      onChange('demographics.age', values.age);
+      onChange('presentation.vitals.temperature', values.temperature);
+      onChange('laboratory.creatinine', values.creatinine);
+      onChange('laboratory.wbc', values.wbc);
+      onChange('laboratory.procalcitonin', values.procalcitonin);
+    };
 
-function mergeFields(plugins: PluginDefinition[]): Array<PluginFormField & { owners: string[] }> {
-  const fields = new Map<string, PluginFormField & { owners: string[] }>();
-  plugins.forEach((plugin) => {
-    (plugin.formSchema || []).forEach((field) => {
-      const existing = fields.get(field.path);
-      if (existing) {
-        existing.owners.push(plugin.name);
-      } else {
-        fields.set(field.path, { ...field, owners: [plugin.name] });
-      }
-    });
-  });
-  return Array.from(fields.values());
-}
-
-export function PluginGeneratedForm({ plugins, caseData, onChange }: PluginGeneratedFormProps) {
-  const fields = mergeFields(plugins);
-
-  if (fields.length === 0) {
-    return (
-      <SafetyAlert level="warning" title="Clinical input schema unavailable">
-        The selected plugins did not expose a clinical input schema. Choose a plugin with a declared form schema before continuing.
-      </SafetyAlert>
-    );
+    return <div className="space-y-5">
+      <DynamicClinicalForm contract={contract} initialValues={initialValues} onChange={updateCase} onSubmit={() => undefined} />
+      {hasSoar && <SoarClinicalCompletionForm canonicalClinicalData={{}} onResolved={onSoarResolved || (() => undefined)} />}
+    </div>;
   }
 
-  return (
-    <div className="space-y-4">
-      <div className="rounded-[var(--radius-md)] border border-[var(--color-clinical-800)] bg-[var(--color-clinical-950)]/60 p-4">
-        <p className="text-xs font-semibold text-[var(--color-clinical-100)]">Plugin-generated clinical inputs</p>
-        <p className="mt-1 text-[11px] leading-relaxed text-[var(--color-clinical-300)]">
-          These fields come from the schemas exposed by the active knowledge and prediction plugins. Shared inputs are shown once and sent to the decision engine as one clinical case.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {fields.map((field) => {
-          const value = readPath(caseData, field.path);
-          const fieldId = `plugin-field-${field.path.replace(/\./g, '-')}`;
-          const commonClass = 'w-full rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset px-3 py-2 text-xs text-slate-text-primary focus-clinical';
+  if (hasSoar) {
+    return <SoarClinicalCompletionForm canonicalClinicalData={{}} onResolved={onSoarResolved || (() => undefined)} />;
+  }
 
-          return (
-            <div key={field.path} className={field.type === 'textarea' ? 'md:col-span-2' : ''}>
-              {field.type === 'checkbox' ? (
-                <label htmlFor={fieldId} className="flex cursor-pointer items-center gap-2 rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset p-3 text-xs font-semibold text-slate-text-primary">
-                  <input id={fieldId} type="checkbox" checked={Boolean(value)} onChange={(event) => onChange(field.path, event.target.checked)} className="h-4 w-4 rounded text-[var(--color-clinical-500)]" />
-                  <span>{field.label}</span>
-                </label>
-              ) : (
-                <>
-                  <label htmlFor={fieldId} className="mb-1 block text-xs font-semibold text-slate-text-secondary">
-                    {field.label} {field.required && <span className="text-[var(--color-safety-critical)]">*</span>}
-                  </label>
-                  {field.type === 'select' ? (
-                    <select id={fieldId} value={String(value ?? '')} onChange={(event) => onChange(field.path, event.target.value)} className={commonClass}>
-                      <option value="">Select...</option>
-                      {(field.options || []).map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-                    </select>
-                  ) : field.type === 'textarea' ? (
-                    <textarea id={fieldId} rows={3} value={String(value ?? '')} placeholder={field.placeholder} onChange={(event) => onChange(field.path, event.target.value)} className={commonClass} />
-                  ) : (
-                    <input id={fieldId} type={field.type} step={field.step} value={String(value ?? '')} placeholder={field.placeholder} onChange={(event) => onChange(field.path, field.type === 'number' ? (event.target.value ? Number(event.target.value) : undefined) : event.target.value)} className={commonClass} />
-                  )}
-                  {field.helpText && <p className="mt-1 text-[10px] text-slate-text-muted">{field.helpText}</p>}
-                </>
-              )}
-              <p className="mt-1 text-[10px] text-slate-text-muted">Provided by {field.owners.join(' and ')}</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+  void plugins;
+
+  return (
+    <SafetyAlert level="warning" title="Approved clinical input contract unavailable">
+      No approved, versioned, frontend-visible plugin input contract is registered for the selected plugins. Legacy presentation fields are intentionally not rendered as clinical inputs.
+    </SafetyAlert>
   );
 }

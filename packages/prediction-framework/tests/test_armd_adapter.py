@@ -114,12 +114,17 @@ class TestARMDAdapterPreprocessing:
         # Preprocess
         patient_df = adapter.preprocess_patient_features(sample_patient_data)
         
-        # Check all required features are present
+        # WP4 adds model-specific antibiotic features at the final frame boundary.
+        from WP4_Decision_Engine import build_feature_frame
+
+        model_frame = build_feature_frame(patient_df, model_package.feature_names)
+
+        # Check all required features are present in the final model frame.
         for feature in model_package.feature_names:
-            assert feature in patient_df.columns, f"Missing feature: {feature}"
+            assert feature in model_frame.columns, f"Missing feature: {feature}"
         
-        # Check no NaN values remain
-        assert not patient_df.isnull().any().any(), "Preprocessing should impute all NaN values"
+        # Check no NaN values remain after model-frame alignment.
+        assert not model_frame.isnull().any().any(), "Model frame should contain no NaN values"
 
 
 class TestARMDAdapterPrediction:

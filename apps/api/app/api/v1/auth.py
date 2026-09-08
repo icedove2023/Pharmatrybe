@@ -1,5 +1,6 @@
 """Authentication and application-identity routes for the PharmaTrybe v1 API."""
 
+from datetime import date, datetime, timezone
 from pydantic import BaseModel, Field
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Annotated, Any
@@ -16,8 +17,20 @@ from app.models.identity import (
     ProfessionalProfile,
     Role,
 )
+from app.services.identity.supabase_auth import SupabaseAuthError, is_email_confirmed
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+
+class ProfileUpdateRequest(BaseModel):
+    """Self-service profile fields editable from the Settings screen."""
+
+    first_name: str | None = Field(default=None, min_length=1)
+    last_name: str | None = Field(default=None, min_length=1)
+    phone: str | None = None
+    professional_type: str | None = None
+    professional_registration_number: str | None = None
+    date_of_birth: date | None = None
 
 
 class HospitalRegistrationRequest(BaseModel):
@@ -52,6 +65,12 @@ async def current_application_user(
     }
     primary_role = next((role_label[code] for code in role_label if code in role_codes), "Researcher")
     permission_codes = context.permissions
+    professional = context.professional
+    age = None
+    if professional.date_of_birth is not None:
+        today = datetime.now(timezone.utc).date()
+        dob = professional.date_of_birth
+        age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
     return {
         "id": context.user_id,
         "professionalId": str(context.professional.id),
@@ -65,6 +84,11 @@ async def current_application_user(
         "organization": context.hospital.name,
         "department": context.professional.professional_type or "",
         "licenseNumber": context.professional.professional_registration_number,
+        "phone": professional.phone,
+        "dateOfBirth": professional.date_of_birth.isoformat() if professional.date_of_birth else None,
+        "age": age,
+        "forcePasswordReset": professional.force_password_reset,
+        "memberSince": professional.created_at.isoformat() if professional.created_at else None,
         "permissions": {
             "canSubmitAssessment": "cases:create" in permission_codes,
             "canViewRecommendations": "recommendations:view" in permission_codes,
@@ -111,6 +135,26 @@ async def register_hospital(
             detail={
                 "code": "PROFILE_EXISTS_NO_MEMBERSHIP",
                 "message": "Hospital profile already exists for this user.",
+            },
+        )
+
+    # Require a verified email before completing registration. This is enforced
+    # here regardless of the Supabase project's "Confirm email" dashboard
+    # setting, so hospital + admin records are never created for an
+    # unverified address even if that setting is ever accidentally disabled.
+    try:
+        email_confirmed = is_email_confirmed(current_user.user_id)
+    except SupabaseAuthError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail={"code": "EMAIL_VERIFICATION_CHECK_FAILED", "message": f"Could not verify your email status: {str(exc)[:150]}"},
+        ) from exc
+    if not email_confirmed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={
+                "code": "EMAIL_NOT_VERIFIED",
+                "message": "Please verify your email address before completing hospital registration. Check your inbox (including spam) for the confirmation link we sent, then try again.",
             },
         )
 
@@ -168,3 +212,71 @@ async def register_hospital(
         ) from exc
 
     return {"id": current_user.user_id, "hospital_id": str(hospital.id), "status": "ACTIVE"}
+
+
+@router.patch("/me", summary="Update the caller's own profile")
+async def update_my_profile(
+    payload: ProfileUpdateRequest,
+    context: Annotated[AuthorizationContext, Depends(get_authorization_context)],
+    db: Annotated[Session, Depends(get_db_session)],
+) -> dict[str, Any]:
+    """Update the authenticated professional's own self-service profile fields.
+
+    Used by the Settings screen. Every user can update their own name,
+    phone, professional type, license/registration number, and date of
+    birth - this never touches hospital, role, or membership data.
+    """
+    professional = db.get(ProfessionalProfile, context.professional.id)
+    if professional is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Professional profile not found")
+
+    if payload.first_name is not None:
+        professional.first_name = payload.first_name
+    if payload.last_name is not None:
+        professional.last_name = payload.last_name
+    if payload.phone is not None:
+        professional.phone = payload.phone
+    if payload.professional_type is not None:
+        professional.professional_type = payload.professional_type
+    if payload.professional_registration_number is not None:
+        professional.professional_registration_number = payload.professional_registration_number
+    if payload.date_of_birth is not None:
+        professional.date_of_birth = payload.date_of_birth
+
+    try:
+        db.commit()
+    except Exception as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"code": "PROFILE_UPDATE_FAILED", "message": f"Profile update failed: {str(exc)[:100]}"},
+        ) from exc
+
+    return {
+        "id": context.user_id,
+        "firstName": professional.first_name,
+        "lastName": professional.last_name,
+        "phone": professional.phone,
+        "professionalType": professional.professional_type,
+        "licenseNumber": professional.professional_registration_number,
+        "dateOfBirth": professional.date_of_birth.isoformat() if professional.date_of_birth else None,
+    }
+
+
+@router.post("/me/password-changed", summary="Acknowledge that the caller has set their own password")
+async def acknowledge_password_changed(
+    context: Annotated[AuthorizationContext, Depends(get_authorization_context)],
+    db: Annotated[Session, Depends(get_db_session)],
+) -> dict[str, Any]:
+    """Clear the forced-password-reset flag once the user sets their own password.
+
+    The password itself is changed directly against Supabase Auth from the
+    frontend (supabase.auth.updateUser) using the caller's own session -
+    this endpoint only updates our own bookkeeping flag afterward.
+    """
+    professional = db.get(ProfessionalProfile, context.professional.id)
+    if professional is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Professional profile not found")
+    professional.force_password_reset = False
+    db.commit()
+    return {"forcePasswordReset": False}

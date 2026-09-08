@@ -2,12 +2,229 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import {
   Settings, Sun, Moon, Monitor, Sliders, Save, CheckCircle2, UserCircle,
+  IdCard, KeyRound, Loader2,
 } from 'lucide-react';
 import { useSettingsStore } from '@/stores/settingsStore';
 import { useAuthStore } from '@/stores/authStore';
+import { authApi, AuthError } from '@/api/authApi';
 import { RoleBadge } from '@/components/auth/RoleBadge';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
+import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { cn } from '@/lib/utils';
+
+function splitName(fullName: string): { firstName: string; lastName: string } {
+  const trimmed = fullName.trim();
+  const spaceIndex = trimmed.indexOf(' ');
+  if (spaceIndex === -1) return { firstName: trimmed, lastName: '' };
+  return { firstName: trimmed.slice(0, spaceIndex), lastName: trimmed.slice(spaceIndex + 1) };
+}
+
+function ProfileInformationSection() {
+  const { user, refreshUser } = useAuthStore();
+  const initial = splitName(user?.name || '');
+  const [firstName, setFirstName] = useState(initial.firstName);
+  const [lastName, setLastName] = useState(initial.lastName);
+  const [phone, setPhone] = useState(user?.phone || '');
+  const [professionalType, setProfessionalType] = useState(user?.department || '');
+  const [licenseNumber, setLicenseNumber] = useState(user?.licenseNumber || '');
+  const [dateOfBirth, setDateOfBirth] = useState(user?.dateOfBirth ? user.dateOfBirth.slice(0, 10) : '');
+  const [isSaving, setIsSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [saved, setSaved] = useState(false);
+
+  const onSave = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setSaved(false);
+    setIsSaving(true);
+    try {
+      await authApi.updateProfile({
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        phone: phone.trim() || undefined,
+        professionalType: professionalType.trim() || undefined,
+        licenseNumber: licenseNumber.trim() || undefined,
+        dateOfBirth: dateOfBirth || undefined,
+      });
+      await refreshUser();
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    } catch (err) {
+      setError(err instanceof AuthError ? err.message : 'Could not save your profile. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-6">
+      <h3 className="flex items-center text-sm font-semibold text-slate-text-primary">
+        <IdCard className="mr-2 h-4 w-4 text-[var(--color-clinical-400)]" aria-hidden="true" />
+        Profile information
+      </h3>
+      <p className="text-xs text-slate-text-muted">
+        Your name, contact details, and professional credentials. Hospital, role, and membership are managed by your administrator.
+      </p>
+
+      {error && <SafetyAlert level="warning" title="Could not save changes">{error}</SafetyAlert>}
+      {saved && (
+        <div className="flex items-center space-x-2 rounded-[var(--radius-md)] border border-[var(--color-safety-success-border)] bg-[var(--color-safety-success-bg)] px-3 py-2 text-xs font-semibold text-[var(--color-safety-success)]">
+          <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>Profile updated</span>
+        </div>
+      )}
+
+      <form onSubmit={onSave} className="grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          First name
+          <input
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Last name
+          <input
+            required
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Phone
+          <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Optional"
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Date of birth
+          <input
+            type="date"
+            value={dateOfBirth}
+            onChange={(e) => setDateOfBirth(e.target.value)}
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Professional type
+          <input
+            value={professionalType}
+            onChange={(e) => setProfessionalType(e.target.value)}
+            placeholder="e.g. Pharmacist, Laboratory Scientist"
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Professional / license number
+          <input
+            value={licenseNumber}
+            onChange={(e) => setLicenseNumber(e.target.value)}
+            placeholder="Optional"
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <div className="sm:col-span-2 flex justify-end">
+          <ClinicalButton type="submit" variant="primary" size="md" icon={isSaving ? Loader2 : Save} loading={isSaving}>
+            {isSaving ? 'Saving…' : 'Save profile'}
+          </ClinicalButton>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function ChangePasswordSection() {
+  const { refreshUser, user } = useAuthStore();
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [saved, setSaved] = useState(false);
+
+  const onSave = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setSaved(false);
+    if (newPassword.length < 8) {
+      setError('Password must be at least 8 characters.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+    setIsSaving(true);
+    try {
+      await authApi.completePasswordReset(newPassword);
+      if (user?.forcePasswordReset) {
+        await authApi.markPasswordChanged();
+        await refreshUser();
+      }
+      setNewPassword('');
+      setConfirmPassword('');
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    } catch (err) {
+      setError(err instanceof AuthError ? err.message : 'Could not change your password. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-6">
+      <h3 className="flex items-center text-sm font-semibold text-slate-text-primary">
+        <KeyRound className="mr-2 h-4 w-4 text-[var(--color-clinical-400)]" aria-hidden="true" />
+        Change password
+      </h3>
+      <p className="text-xs text-slate-text-muted">
+        Use a password you don't use anywhere else. At least 8 characters.
+      </p>
+
+      {error && <SafetyAlert level="warning" title="Could not change password">{error}</SafetyAlert>}
+      {saved && (
+        <div className="flex items-center space-x-2 rounded-[var(--radius-md)] border border-[var(--color-safety-success-border)] bg-[var(--color-safety-success-bg)] px-3 py-2 text-xs font-semibold text-[var(--color-safety-success)]">
+          <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>Password changed</span>
+        </div>
+      )}
+
+      <form onSubmit={onSave} className="grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          New password
+          <input
+            type="password"
+            required
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <label className="space-y-1.5 font-semibold text-slate-text-secondary">
+          Confirm new password
+          <input
+            type="password"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="focus-clinical w-full rounded-[var(--radius-sm)] border border-slate-border bg-slate-inset px-3 py-2.5 font-normal text-slate-text-primary"
+          />
+        </label>
+        <div className="sm:col-span-2 flex justify-end">
+          <ClinicalButton type="submit" variant="primary" size="md" icon={KeyRound} loading={isSaving}>
+            {isSaving ? 'Changing…' : 'Change password'}
+          </ClinicalButton>
+        </div>
+      </form>
+    </div>
+  );
+}
 
 export function SettingsView() {
   const { settings, updateSettings, loadSettings } = useSettingsStore();
@@ -53,11 +270,11 @@ export function SettingsView() {
         <div>
           <div className="mb-1 inline-flex items-center space-x-1.5 rounded-full bg-[var(--color-clinical-950)] px-2.5 py-0.5 text-xs font-semibold text-[var(--color-clinical-300)]">
             <Settings className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Clinical system & user preferences</span>
+            <span>Account, clinical system & user preferences</span>
           </div>
           <h2 className="text-xl font-bold text-slate-text-primary">Settings</h2>
           <p className="text-xs text-slate-text-muted">
-            Appearance, clinical dosing defaults, AWaRe restriction strictness, and notifications.
+            Profile, password, appearance, clinical dosing defaults, AWaRe restriction strictness, and notifications.
           </p>
         </div>
 
@@ -65,6 +282,12 @@ export function SettingsView() {
           Save preferences
         </ClinicalButton>
       </div>
+
+      {/* 0. Profile Information (editable) */}
+      {user && <ProfileInformationSection />}
+
+      {/* 0b. Change Password */}
+      {user && <ChangePasswordSection />}
 
       {/* 1. Theme & Appearance Section */}
       <div className="space-y-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-6">

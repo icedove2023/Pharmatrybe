@@ -117,6 +117,15 @@ async function completePendingRegistration(email: string, session: Pick<NonNulla
       const detailMsg = error.details && typeof error.details === 'object'
         ? (error.details as any).message || error.message
         : error.message;
+      if (error.code === 'EMAIL_NOT_VERIFIED') {
+        // Keep the pending registration in place (both localStorage and user
+        // metadata) so it completes automatically once the user confirms
+        // their email and signs in again - nothing to clear here.
+        throw new AuthError(
+          'Please check your Gmail inbox and confirm your email address, then sign in to finish setting up your hospital.',
+          'verification-required',
+        );
+      }
       throw new AuthError(
         `Your email is verified, but hospital setup failed: ${detailMsg}`,
         error.code === 'ACCOUNT_INACTIVE' ? 'account-inactive' : 'verification-required'
@@ -194,6 +203,35 @@ export const authApi = {
   },
   logout: async (): Promise<void> => {
     const { error } = await supabase.auth.signOut();
+    if (error) throw new AuthError(error.message);
+  },
+  refreshApplicationUser: async (): Promise<User> => getApplicationUser(),
+  updateProfile: (payload: {
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    professionalType?: string;
+    licenseNumber?: string;
+    dateOfBirth?: string;
+  }): Promise<User> => apiRequest<User>('/auth/me', {
+    method: 'PATCH',
+    body: JSON.stringify({
+      first_name: payload.firstName,
+      last_name: payload.lastName,
+      phone: payload.phone,
+      professional_type: payload.professionalType,
+      professional_registration_number: payload.licenseNumber,
+      date_of_birth: payload.dateOfBirth,
+    }),
+  }).then(() => getApplicationUser()),
+  markPasswordChanged: (): Promise<void> => apiRequest('/auth/me/password-changed', { method: 'POST' }).then(() => undefined),
+  requestPasswordReset: async (email: string): Promise<void> => {
+    const redirectTo = typeof window !== 'undefined' ? window.location.origin : undefined;
+    const { error } = await supabase.auth.resetPasswordForEmail(email, redirectTo ? { redirectTo } : undefined);
+    if (error) throw new AuthError(error.message);
+  },
+  completePasswordReset: async (newPassword: string): Promise<void> => {
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
     if (error) throw new AuthError(error.message);
   },
 };

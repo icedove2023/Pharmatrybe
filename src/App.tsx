@@ -23,14 +23,16 @@ import { LoginForm } from '@/components/auth/LoginForm';
 import { LandingPage } from '@/components/auth/LandingPage';
 import { HospitalRegistrationForm } from '@/components/auth/HospitalRegistrationForm';
 import { InvitationAcceptanceForm } from '@/components/auth/InvitationAcceptanceForm';
+import { SetNewPasswordForm } from '@/components/auth/SetNewPasswordForm';
 import { AuthGuard } from '@/components/auth/AuthGuard';
+import { ProfileView } from '@/components/profile/ProfileView';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { ArrowLeft, Sparkles, Pill } from 'lucide-react';
 import { BreadcrumbItem } from '@/components/common/Breadcrumbs';
 
 export default function App() {
-  const { user, status, initialize } = useAuthStore();
+  const { user, status, initialize, refreshUser } = useAuthStore();
   const queryClient = useQueryClient();
   const { loadSettings } = useSettingsStore();
 
@@ -108,6 +110,11 @@ export default function App() {
           { label: 'Governance' },
           { label: 'Clinical Preferences & Dosing', active: true },
         ];
+      case 'profile':
+        return [
+          { label: 'Account' },
+          { label: 'My Profile', active: true },
+        ];
       case 'dashboard':
         return [{ label: 'Clinical Operations' }, { label: 'Dashboard', active: true }];
       default:
@@ -142,6 +149,25 @@ export default function App() {
     );
   }
 
+  if (status === 'password-recovery') {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-canvas p-3 sm:p-6 lg:p-8">
+        <SetNewPasswordForm mode="recovery" onComplete={() => void refreshUser()} />
+      </div>
+    );
+  }
+
+  if (status === 'account-inactive') {
+    // The Supabase session is valid (login succeeded) but there is no active
+    // hospital membership yet - most commonly a newly invited professional
+    // who signed in with their temporary password for the first time.
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-canvas p-3 sm:p-6 lg:p-8">
+        <InvitationAcceptanceForm />
+      </div>
+    );
+  }
+
   if (status === 'unauthenticated' || !user) {
     if (authView === 'landing') {
       return (
@@ -167,6 +193,16 @@ export default function App() {
           onBackToLanding={() => setAuthView('landing')}
           onSwitchToRegister={() => setAuthView('register')}
         />
+      </div>
+    );
+  }
+
+  if (user.forcePasswordReset) {
+    // Invited professionals sign in with a temporary password and must set
+    // their own before doing anything else in the app.
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-canvas p-3 sm:p-6 lg:p-8">
+        <SetNewPasswordForm mode="forced" onComplete={() => {}} />
       </div>
     );
   }
@@ -315,6 +351,9 @@ export default function App() {
       {/* Settings View */}
       {activeTab === 'settings' && <SettingsView />}
 
+      {/* Profile View */}
+      {activeTab === 'profile' && <ProfileView onNavigateTab={(t) => setActiveTab(t)} />}
+
       {/* Unknown route fallback */}
       {![
         'dashboard',
@@ -330,6 +369,7 @@ export default function App() {
         'governance-telemetry',
         'plugin-governance',
         'settings',
+        'profile',
       ].includes(activeTab) && !isPluginRoute(activeTab) && (
         <div className="mx-auto max-w-2xl py-8">
           <SafetyAlert level="info" title="Page not found">

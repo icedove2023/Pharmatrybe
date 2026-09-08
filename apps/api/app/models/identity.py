@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import datetime
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Index, Text, Uuid, func, text
+from datetime import date, datetime
+from sqlalchemy import CheckConstraint, Date, DateTime, ForeignKey, Index, Text, Uuid, func, text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -64,6 +64,8 @@ class ProfessionalProfile(Base):
     professional_type: Mapped[str | None] = mapped_column(Text)
     professional_registration_number: Mapped[str | None] = mapped_column(Text)
     phone: Mapped[str | None] = mapped_column(Text)
+    date_of_birth: Mapped["date | None"] = mapped_column(Date)
+    force_password_reset: Mapped[bool] = mapped_column(nullable=False, default=False, server_default=text("false"))
     profile_status: Mapped[str] = mapped_column(Text, nullable=False, default="ACTIVE")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)

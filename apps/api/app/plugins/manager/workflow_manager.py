@@ -12,6 +12,7 @@ from app.plugins.base.prediction_plugin import PredictionPlugin, PredictionReque
 from app.plugins.manager.plugin_registry import PluginRegistry
 from app.plugins.manager.plugin_routing_policy import PluginRoutingPolicy
 from app.auth.tenant_context import TenantContext
+from app.plugins.adapters import adapt_prediction_request
 
 
 class ExecutionMode(str, Enum):
@@ -190,7 +191,11 @@ class WorkflowManager:
                     raise ValueError("TENANT_CONTEXT_REQUIRED")
                 plugin.runtime_guard(tenant_context)
             if isinstance(plugin, PredictionPlugin):
-                prediction_request = PredictionRequest(payload=request.payload, context=request.context)
+                prediction_request = adapt_prediction_request(
+                    plugin.plugin_id,
+                    request.payload,
+                    request.context,
+                )
                 if hasattr(plugin, "supports") and not plugin.supports(prediction_request):
                     raise ValueError(f"Plugin {plugin.plugin_id} does not support the request.")
                 result = plugin.predict(prediction_request)

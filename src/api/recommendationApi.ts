@@ -737,7 +737,7 @@ export const recommendationApi = {
    */
   submitCase: async (clinicalCase: ClinicalCase): Promise<RecommendationSubmissionResult> => {
     const { executePipeline } = await import('./pipelineApi');
-    const selectedPlugins = clinicalCase.pluginSelections || ['soar', 'armd', 'who_knowledge'];
+    const selectedPlugins = clinicalCase.pluginSelections || ['armd', 'who_knowledge'];
     const response = await executePipeline({
       execution_mode: 'sync',
       patient_id: clinicalCase.demographics.patientId,
@@ -745,10 +745,7 @@ export const recommendationApi = {
       input_payload: { case: clinicalCase },
       response_mode: 'full',
     });
-    if ('status' in response && response.status === 'accepted') {
-      throw new Error(`Pipeline accepted for asynchronous execution (${response.execution_id}).`);
-    }
-    const contract = response as ExplainabilityResponseContract;
+    const contract = response;
     const caseId = (clinicalCase.id || clinicalCase.demographics.patientId) as string;
     pipelineResponseCache.set(caseId, contract);
     const legacy = adaptCanonicalToLegacyPackages(caseId, contract, clinicalCase as unknown as Record<string, any>);
@@ -774,10 +771,8 @@ export const recommendationApi = {
   },
 
   /**
-   * Prescribing Review Determination (Local Session Workflow):
-   * Records clinician's determination (APPROVED, MODIFIED, REJECTED) in current session.
-   * Note: POST /recommendation/clinical-review is not registered in the active FastAPI OpenAPI schema.
-   * This recorder maintains local session determination state and strictly preserves AI recommendation immutability.
+  * Records the clinician's determination through the supported review boundary.
+  * The recommendation remains immutable; this records review metadata only.
    */
   recordClinicalReview: async (
     request: ClinicalReviewRequest

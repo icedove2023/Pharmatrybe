@@ -115,8 +115,11 @@ export function KnowledgeBaseExplorer() {
       {error && <SafetyAlert level="warning" title="Knowledge base error">{error}</SafetyAlert>}
 
       <DiseaseSearch
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        onSearchResults={(query, results) => {
+          setSearchQuery(query);
+          setDiseases(results);
+          setSelectedDiseaseId(results[0]?.id || '');
+        }}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         categories={categories}

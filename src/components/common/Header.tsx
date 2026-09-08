@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   Sun, Moon, LogOut, ChevronDown,
-  User as UserIcon, Menu,
+  User as UserIcon, Menu, ShieldQuestion,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { useSettingsStore } from '@/stores/settingsStore';
@@ -91,12 +91,23 @@ export function Header({ onSearchSubmit, onNavigateTab, onOpenMobileNav }: Heade
 
                   <button
                     onClick={() => {
-                      setShowProfileModal(true);
+                      setShowRoleMenu(false);
+                      onNavigateTab?.('profile');
                     }}
                     className="focus-clinical flex w-full items-center space-x-2 rounded-[var(--radius-sm)] px-3 py-2 text-left text-xs font-medium text-slate-text-secondary hover:bg-slate-inset-hover"
                   >
                     <UserIcon className="h-3.5 w-3.5 text-[var(--color-clinical-400)]" aria-hidden="true" />
-                    <span>View profile & permissions</span>
+                    <span>My profile</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowRoleMenu(false);
+                      setShowProfileModal(true);
+                    }}
+                    className="focus-clinical flex w-full items-center space-x-2 rounded-[var(--radius-sm)] px-3 py-2 text-left text-xs font-medium text-slate-text-secondary hover:bg-slate-inset-hover"
+                  >
+                    <ShieldQuestion className="h-3.5 w-3.5 text-[var(--color-clinical-400)]" aria-hidden="true" />
+                    <span>Quick view: session & permissions</span>
                   </button>
 
                   <div className="border-t border-slate-border-subtle pt-1">

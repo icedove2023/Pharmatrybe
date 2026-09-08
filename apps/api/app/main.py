@@ -15,7 +15,7 @@ from app.api.router import router as api_router
 from app.api.routes.health import router as health_router
 from app.api.routes.version import router as version_router
 from app.core.config import settings
-from app.core.exceptions import build_api_failure, map_http_exception_to_code
+from app.core.exceptions import build_api_failure, map_exception_to_code, map_http_exception_to_code
 from app.core.logging import configure_logging, get_logger
 from app.models.audit_log import AuditStatus
 from app.services.audit.audit_service import AuditService
@@ -117,7 +117,7 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
     return build_api_failure(
         request,
         500,
-        "INTERNAL_SERVER_ERROR",
+        map_exception_to_code(exc),
         "An unexpected server error occurred.",
     )
 

@@ -18,6 +18,14 @@ class PharmaTrybeAPIException(Exception):
     pass
 
 
+EXCEPTION_ERROR_CODES = {
+    "DeploymentSelectionError": "SOAR_DEPLOYMENT_SELECTION_ERROR",
+    "PredictionError": "PREDICTION_EXECUTION_ERROR",
+    "AdapterValidationError": "PLUGIN_INPUT_VALIDATION_ERROR",
+    "WHOServiceError": "KNOWLEDGE_SERVICE_ERROR",
+}
+
+
 def build_api_failure(
     request: Request,
     status_code: int,
@@ -54,3 +62,8 @@ def map_http_exception_to_code(exc: FastAPIHTTPException) -> str:
         504: "REQUEST_TIMEOUT",
     }
     return mapping.get(status_code, "INTERNAL_SERVER_ERROR")
+
+
+def map_exception_to_code(exc: Exception) -> str:
+    """Map typed internal failures to stable public error codes."""
+    return EXCEPTION_ERROR_CODES.get(type(exc).__name__, "INTERNAL_SERVER_ERROR")

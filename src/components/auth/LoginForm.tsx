@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
+import { ForgotPasswordForm } from '@/components/auth/ForgotPasswordForm';
 
 interface LoginFormProps {
   onSuccess?: () => void;
@@ -19,6 +20,7 @@ interface LoginFormProps {
 export function LoginForm({ onSuccess, onBackToLanding, onSwitchToRegister }: LoginFormProps) {
   const { login, isAuthenticating, error, clearError } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   const {
@@ -39,6 +41,10 @@ export function LoginForm({ onSuccess, onBackToLanding, onSwitchToRegister }: Lo
       // Error surfaced via store state
     }
   };
+
+  if (showForgotPassword) {
+    return <ForgotPasswordForm onBackToLogin={() => setShowForgotPassword(false)} />;
+  }
 
   return (
     <motion.div
@@ -104,10 +110,19 @@ export function LoginForm({ onSuccess, onBackToLanding, onSwitchToRegister }: Lo
             {errors.password && <p className="pl-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{errors.password.message}</p>}
           </div>
 
-          <label className="flex items-center space-x-2 pt-1 text-[11px] text-slate-text-secondary">
-            <input type="checkbox" {...register('rememberMe')} className="h-3.5 w-3.5 rounded text-[var(--color-clinical-500)]" />
-            <span>Remember this workstation</span>
-          </label>
+          <div className="flex items-center justify-between pt-1">
+            <label className="flex items-center space-x-2 text-[11px] text-slate-text-secondary">
+              <input type="checkbox" {...register('rememberMe')} className="h-3.5 w-3.5 rounded text-[var(--color-clinical-500)]" />
+              <span>Remember this workstation</span>
+            </label>
+            <button
+              type="button"
+              onClick={() => setShowForgotPassword(true)}
+              className="focus-clinical text-[11px] font-semibold text-[var(--color-clinical-500)] hover:underline"
+            >
+              Forgot password?
+            </button>
+          </div>
 
           <ClinicalButton type="submit" variant="primary" size="lg" icon={Lock} loading={isAuthenticating} className="w-full">
             {isAuthenticating ? 'Verifying credentials…' : 'Sign in'}

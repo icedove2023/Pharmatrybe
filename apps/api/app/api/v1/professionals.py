@@ -148,7 +148,7 @@ async def invite_professional(
     now = datetime.now(timezone.utc)
     expires_at = now + timedelta(days=7)
     try:
-        supabase_user_id = invite_user_by_email(normalized_email)
+        supabase_user_id, temporary_password = invite_user_by_email(normalized_email, hospital_name=context.hospital.name)
         invitation = HospitalInvitation(
             hospital_id=context.hospital_id,
             email=normalized_email,
@@ -175,6 +175,7 @@ async def invite_professional(
         "role_code": role_code,
         "status": invitation.status,
         "delivery": "supabase_auth",
+        "temporary_password": temporary_password,
     }
 
 
@@ -201,6 +202,7 @@ async def accept_professional_invitation(
         first_name=payload.first_name,
         last_name=payload.last_name,
         professional_type=payload.professional_type,
+        force_password_reset=True,
     )
     db.add(professional)
     db.flush()

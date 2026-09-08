@@ -23,6 +23,7 @@ from app.plugins.base.plugin import PluginHealth, PluginMetadata, PluginType
 from app.database.repositories.who_knowledge_repository import WHOKnowledgeRepository
 from app.knowledge.providers.who_provider import WHOProvider
 from app.knowledge.providers.query_models import KnowledgeQuery, SearchQuery
+from app.database.who_connection import get_who_session
 
 
 logger = logging.getLogger(__name__)
@@ -93,7 +94,8 @@ class WHOKnowledgePlugin(KnowledgePlugin):
         Args:
             db_session: SQLAlchemy session for database access
         """
-        self._session = db_session
+        self._session = db_session or get_who_session()
+        self._owns_session = db_session is None
         self._repository: Optional[WHOKnowledgeRepository] = None
         self._provider: Optional[WHOProvider] = None
         self._is_connected = False
@@ -173,6 +175,9 @@ class WHOKnowledgePlugin(KnowledgePlugin):
             self.disconnect()
         self._repository = None
         self._provider = None
+        if self._owns_session and self._session is not None:
+            self._session.close()
+            self._session = None
         logger.info(f"{self.plugin_name} shutdown complete")
 
     def configure(self, configuration: Dict[str, Any]) -> None:
@@ -228,20 +233,26 @@ class WHOKnowledgePlugin(KnowledgePlugin):
         )
 
     def input_schema(self) -> Dict[str, Any]:
-        """Return the WHO knowledge plugin input schema for guideline lookup."""
+        """Return the WHO knowledge-query contract, not a prediction input."""
         return {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "title": "WHO knowledge input",
-            "type": "object",
-            "properties": {
-                "diagnosis": {"type": "string", "description": "Primary infection diagnosis or syndrome"},
-                "severity": {"type": "string", "description": "Clinical severity classification"},
-                "infection_site": {"type": "string", "description": "Site of infection"},
-                "population": {"type": "string", "description": "Target patient population or age cohort"},
-                "query": {"type": "string", "description": "Free-text WHO guideline search term"},
+            "title": "WHO knowledge query",
+            "x-contract-kind": "knowledge_query",
+            "oneOf": [
+                {"title": "SearchQuery", "type": "object", "properties": {
+                    "query_text": {"type": "string", "minLength": 1},
+                    "entity_type": {"type": "string"},
+                }, "required": ["query_text"], "additionalProperties": False},
+                {"title": "KnowledgeQuery", "type": "object", "properties": {
+                    "entity_type": {"type": "string"},
+                    "identifier": {"type": "string"},
+                }, "additionalProperties": False},
+            ],
+            "x-plugin-runtime-mappings": {
+                "contract": "KnowledgeQuery or SearchQuery",
+                "search_query": {"required": ["query_text"], "executed_fields": ["query_text", "entity_type"]},
+                "knowledge_query": {"required_for_retrieval": ["entity_type"], "optional_for_lookup": ["identifier"], "executed_fields": ["entity_type", "identifier"]},
             },
-            "required": ["diagnosis"],
-            "additionalProperties": True,
         }
 
     def output_schema(self) -> Dict[str, Any]:
@@ -331,11 +342,11 @@ class WHOKnowledgePlugin(KnowledgePlugin):
         Raises:
             ConnectionError: If knowledge source is unavailable
         """
-        if not self.validate():
-            raise ConnectionError(f"{self.plugin_name} is not ready")
-        
         if not query or not query.strip():
             return []
+
+        if not self.validate():
+            raise ConnectionError(f"{self.plugin_name} is not ready")
         
         try:
             query_text = query.strip()
@@ -364,14 +375,8 @@ class WHOKnowledgePlugin(KnowledgePlugin):
                 results.append(result.to_dict())
             
             # Search for drugs
-            drugs = self._repository.get_all() if hasattr(self._repository, "get_all") else []
-            if not drugs:
-                # Alternative: query all drugs and filter
-                try:
-                    all_drugs = self._repository.list_drugs()
-                    drugs = [d for d in all_drugs if query_text.lower() in (d.generic_name or "").lower()]
-                except Exception:
-                    drugs = []
+            all_drugs = self._repository.list_drugs()
+            drugs = [d for d in all_drugs if query_text.lower() in (d.generic_name or "").lower()]
             
             for drug in drugs:
                 result = WHOKnowledgeResult(
@@ -417,11 +422,12 @@ class WHOKnowledgePlugin(KnowledgePlugin):
             ConnectionError: If knowledge source is unavailable
             ValueError: If criteria is invalid
         """
-        if not self.validate():
-            raise ConnectionError(f"{self.plugin_name} is not ready")
         
         if not criteria or not isinstance(criteria, dict):
             return {}
+
+        if not self.validate():
+            raise ConnectionError(f"{self.plugin_name} is not ready")
         
         try:
             # Query by disease ID
@@ -463,7 +469,6 @@ class WHOKnowledgePlugin(KnowledgePlugin):
                     },
                 )
                 return result.to_dict()
-            
             # Query by drug
             if "drug_name" in criteria:
                 drug_name = criteria["drug_name"]

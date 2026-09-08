@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import json
 from typing import List, Optional, Tuple
 
 from app.plugins.prediction.soar.artifact_registry import ArtifactRegistry
@@ -17,6 +18,7 @@ class DeploymentInfo:
     deployment_path: Path
     artifact_registry: ArtifactRegistry
     status: str
+    feature_names: Tuple[str, ...] = ()
 
 
 class DeploymentScanner:
@@ -43,14 +45,28 @@ class DeploymentScanner:
         for child in sorted(self.deployments_root.iterdir()):
             if not child.is_dir():
                 continue
-            deployments.append(self._inspect_deployment_folder(child))
+            metadata_path = self._metadata_deployment_path(child)
+            if not metadata_path or not (metadata_path / "deployment_info.json").exists() or not (metadata_path / "feature_schema.json").exists():
+                continue
+            deployments.append(self._inspect_deployment_folder(child, metadata_path))
 
         return deployments
 
-    def _inspect_deployment_folder(self, deployment_path: Path) -> DeploymentInfo:
+    def _inspect_deployment_folder(self, deployment_path: Path, metadata_path: Path) -> DeploymentInfo:
         artifact_registry = ArtifactRegistry.from_deployment_path(deployment_path)
-        organism, antimicrobial = self._parse_deployment_id(deployment_path.name)
-        status = self._determine_status(artifact_registry)
+        if artifact_registry.find_first("MODEL") is None:
+            return DeploymentInfo(
+                deployment_id=deployment_path.name,
+                organism=None,
+                antimicrobial=None,
+                deployment_path=deployment_path,
+                artifact_registry=artifact_registry,
+                status="invalid",
+            )
+        organism, antimicrobial = self._read_identity(metadata_path)
+        feature_schema = json.loads((metadata_path / "feature_schema.json").read_text(encoding="utf-8"))
+        feature_names = tuple(str(item["name"]) for item in feature_schema.get("features", []) if isinstance(item, dict) and item.get("name"))
+        status = self._determine_status(artifact_registry, organism, antimicrobial, feature_names)
         return DeploymentInfo(
             deployment_id=deployment_path.name,
             organism=organism,
@@ -58,18 +74,32 @@ class DeploymentScanner:
             deployment_path=deployment_path,
             artifact_registry=artifact_registry,
             status=status,
+            feature_names=feature_names,
         )
 
-    def _determine_status(self, artifact_registry: ArtifactRegistry) -> str:
-        if artifact_registry.artifacts:
+    def _determine_status(
+        self,
+        artifact_registry: ArtifactRegistry,
+        organism: Optional[str],
+        antimicrobial: Optional[str],
+        feature_names: Tuple[str, ...],
+    ) -> str:
+        if artifact_registry.find_first("MODEL") and organism and antimicrobial and feature_names:
             return "valid"
         return "empty"
 
-    def _parse_deployment_id(self, deployment_id: str) -> Tuple[Optional[str], Optional[str]]:
-        separators = ["__", "-", "_"]
-        for separator in separators:
-            if separator in deployment_id:
-                parts = deployment_id.split(separator)
-                if len(parts) >= 2:
-                    return parts[0].strip() or None, parts[1].strip() or None
-        return None, None
+    def _metadata_deployment_path(self, deployment_path: Path) -> Optional[Path]:
+        if (deployment_path / "deployment_info.json").exists() and (deployment_path / "feature_schema.json").exists():
+            return deployment_path
+
+        sibling_metadata = self.deployments_root.parent.parent / deployment_path.name
+        if sibling_metadata.is_dir():
+            return sibling_metadata
+        return None
+
+    @staticmethod
+    def _read_identity(deployment_path: Path) -> Tuple[Optional[str], Optional[str]]:
+        data = json.loads((deployment_path / "deployment_info.json").read_text(encoding="utf-8"))
+        species = data.get("species")
+        antibiotic = data.get("antibiotic")
+        return (str(species).strip() if species else None, str(antibiotic).strip() if antibiotic else None)

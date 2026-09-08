@@ -36,6 +36,11 @@ export interface User {
   organization: string;
   department: string;
   licenseNumber?: string;
+  phone?: string;
+  dateOfBirth?: string;
+  age?: number;
+  forcePasswordReset?: boolean;
+  memberSince?: string;
   avatarUrl?: string;
   lastLogin?: string;
   permissions: RolePermissions;

@@ -12,6 +12,7 @@ from app.plugins.manager.workflow_manager import ExecutionMode, ClinicalDecision
 class DummyPredictionPlugin(PredictionPlugin):
     def __init__(self, plugin_id: str = "dummy_prediction") -> None:
         self._plugin_id = plugin_id
+        self.received_request: Optional[PredictionRequest] = None
 
     @property
     def plugin_id(self) -> str:
@@ -83,6 +84,7 @@ class DummyPredictionPlugin(PredictionPlugin):
         pass
 
     def predict(self, request: PredictionRequest) -> PredictionResult:
+        self.received_request = request
         return PredictionResult(
             predicted_class="R",
             probabilities={"S": 0.1, "I": 0.2, "R": 0.7},
@@ -214,6 +216,57 @@ def test_workflow_manager_executes_selected_plugins() -> None:
     assert results[0].plugin_id == prediction_plugin.plugin_id
     assert results[0].success is True
     assert isinstance(results[0].result, PredictionResult)
+
+
+def test_workflow_manager_propagates_soar_payload_and_deployment_context() -> None:
+    registry = PluginRegistry()
+    prediction_plugin = DummyPredictionPlugin("soar")
+    registry.register_plugin(
+        type("Manifest", (), {"plugin_id": prediction_plugin.plugin_id, "plugin_type": PluginType.PREDICTION})(),
+        prediction_plugin,
+    )
+    payload = {
+        "Age": 60,
+        "YearCollected": 2025,
+        "Region": "region-a",
+        "BodyLocation_Group": "respiratory",
+        "Country": "country-a",
+        "Beta_Lactamase_enc": 0,
+    }
+    context = {"deployment_id": "Ceftriaxone_Haemophilus_influenzae"}
+
+    results = WorkflowManager(registry=registry).execute(ClinicalDecisionRequest(
+        patient_id="patient-soar",
+        execution_mode=ExecutionMode.USER_SELECTED,
+        plugin_ids=["soar"],
+        payload=payload,
+        context=context,
+    ))
+
+    assert results[0].success is True
+    assert prediction_plugin.received_request is not None
+    assert prediction_plugin.received_request.payload is payload
+    assert prediction_plugin.received_request.context == context
+
+
+def test_workflow_manager_rejects_missing_soar_deployment_context() -> None:
+    registry = PluginRegistry()
+    prediction_plugin = DummyPredictionPlugin("soar")
+    registry.register_plugin(
+        type("Manifest", (), {"plugin_id": prediction_plugin.plugin_id, "plugin_type": PluginType.PREDICTION})(),
+        prediction_plugin,
+    )
+
+    results = WorkflowManager(registry=registry).execute(ClinicalDecisionRequest(
+        patient_id="patient-soar",
+        execution_mode=ExecutionMode.USER_SELECTED,
+        plugin_ids=["soar"],
+        payload={"Age": 60},
+    ))
+
+    assert results[0].success is False
+    assert "deployment_id" in (results[0].error or "")
+    assert prediction_plugin.received_request is None
 
 
 def test_workflow_manager_handles_graceful_degradation() -> None:

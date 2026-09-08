@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Clock3, MailPlus, RefreshCw, ShieldCheck, Users } from 'lucide-react';
+import { Clock3, Copy, Check, KeyRound, MailPlus, RefreshCw, ShieldCheck, Users } from 'lucide-react';
 import { professionalsApi, CANONICAL_ROLES, CanonicalRoleCode } from '@/api/professionalsApi';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
@@ -12,10 +12,15 @@ export function ProfessionalsManagementView() {
   const [email, setEmail] = useState('');
   const [roleCode, setRoleCode] = useState<CanonicalRoleCode>('CLINICIAN');
   const [success, setSuccess] = useState<string | null>(null);
+  const [invitedCredential, setInvitedCredential] = useState<{ email: string; temporaryPassword: string } | null>(null);
+  const [copied, setCopied] = useState(false);
   const invite = useMutation({
     mutationFn: () => professionalsApi.invite(email.trim().toLowerCase(), roleCode),
     onSuccess: (result) => {
-      setSuccess(`Invitation queued for ${email.trim().toLowerCase()} with the ${result.role_code} role.`);
+      const invitedEmail = email.trim().toLowerCase();
+      setSuccess(`Invitation created for ${invitedEmail} with the ${result.role_code} role.`);
+      setInvitedCredential({ email: invitedEmail, temporaryPassword: result.temporary_password });
+      setCopied(false);
       setEmail('');
       void queryClient.invalidateQueries({ queryKey: ['professional-invitations'] });
     },
@@ -39,6 +44,42 @@ export function ProfessionalsManagementView() {
       </div>
 
       {success && <SafetyAlert level="success" title="Invitation created"><p>{success}</p><p className="mt-1 text-[11px]">Delivery is queued by the backend. The invitation token is never displayed in the browser.</p></SafetyAlert>}
+
+      {invitedCredential && (
+        <div className="rounded-lg border border-[var(--color-safety-warning-border)] bg-[var(--color-safety-warning-bg)] p-5">
+          <div className="flex items-start gap-3">
+            <KeyRound className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-safety-warning)]" aria-hidden="true" />
+            <div className="min-w-0 flex-1">
+              <h3 className="text-sm font-semibold text-slate-text-primary">Temporary password — shown once</h3>
+              <p className="mt-1 text-xs text-slate-text-secondary">
+                Share this with <span className="font-semibold">{invitedCredential.email}</span> through a secure channel (not email in plain text, unless you've configured Supabase's invite email template to include it automatically — see note below). They'll sign in at the normal login page with this password and be required to set their own immediately.
+              </p>
+              <div className="mt-3 flex items-center gap-2">
+                <code className="num-clinical flex-1 truncate rounded-md border border-slate-border bg-white px-3 py-2 text-xs font-semibold text-slate-text-primary">
+                  {invitedCredential.temporaryPassword}
+                </code>
+                <ClinicalButton
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  icon={copied ? Check : Copy}
+                  onClick={() => {
+                    void navigator.clipboard.writeText(invitedCredential.temporaryPassword);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}
+                >
+                  {copied ? 'Copied' : 'Copy'}
+                </ClinicalButton>
+              </div>
+              <p className="mt-2 text-[11px] text-slate-text-muted">
+                This password will not be shown again after you leave this page. If lost, an admin can trigger a password reset instead.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {(invite.isError || membership.isError) && <SafetyAlert level="critical" title="RBAC action could not be completed">{((invite.error || membership.error) as Error).message}</SafetyAlert>}
 
       <section className="rounded-lg border border-slate-border bg-white p-6">

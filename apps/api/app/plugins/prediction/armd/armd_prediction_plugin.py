@@ -20,6 +20,9 @@ from app.plugins.base.plugin import PluginType, PluginMetadata, PluginHealth
 from .runtime_context import ARMDRuntimeContext, RuntimeHealth
 from .prediction_engine import ARMDPredictionEngine
 from packages.prediction_framework.plugin import BasePredictionPlugin
+from app.plugins.schema.clinical_registry import (
+    PLUGIN_SPECIFIC,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -175,17 +178,21 @@ class ARMDPredictionPlugin(BasePredictionPlugin):
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "title": "ARMD prediction input",
             "type": "object",
-            "properties": {
-                "age": {"type": "integer", "minimum": 0, "maximum": 120, "description": "Patient age in years"},
-                "weight": {"type": "number", "minimum": 0, "description": "Patient weight in kilograms"},
-                "egfr": {"type": "number", "minimum": 0, "description": "Estimated glomerular filtration rate"},
-                "prior_antibiotics": {"type": "boolean", "description": "Antibiotic exposure in the previous 90 days"},
-                "recent_hospitalization": {"type": "boolean", "description": "Hospitalization in the last 90 days"},
-                "organism": {"type": "string", "description": "Suspected pathogen"},
-                "infection_site": {"type": "string", "description": "Clinical infection site"},
-            },
-            "required": ["age"],
+            "properties": {field: {"type": "string" if field == "age_group" else "number"} for field in [
+                "age", "gender_male", "age_group", "inpatient", "outpatient", "emergency", "icu",
+                "has_any_procedure", "has_urinary_catheter", "has_cvc", "nursing_home_visit",
+                "creatinine", "bun", "wbc", "neutrophils", "lymphocytes", "lactate", "procalcitonin",
+                "heartrate", "resp_rate", "temperature", "sys_bp", "dias_bp", "n_prior_meds",
+                "n_prior_classes", "days_since_last_antibiotic", "log_days_since_abx", "n_abx_classes_exposed",
+                "n_prior_organisms", "days_since_last_prior_organism", "adi_score", "adi_state_rank",
+            ]},
+            "required": [],
             "additionalProperties": True,
+            "x-contract-kind": "prediction_input",
+            "x-ui-inputs": ["age", "gender_male", "inpatient", "outpatient", "emergency", "icu", "has_any_procedure", "has_urinary_catheter", "has_cvc", "nursing_home_visit", "creatinine", "bun", "wbc", "neutrophils", "lymphocytes", "lactate", "procalcitonin", "heartrate", "resp_rate", "temperature", "sys_bp", "dias_bp", "n_prior_meds", "n_prior_classes", "days_since_last_antibiotic", "n_abx_classes_exposed", "n_prior_organisms", "days_since_last_prior_organism", "adi_score", "adi_state_rank"],
+            "x-derived-features": ["age_group", "log_days_since_abx", "age_group_19-30", "age_group_31-50", "age_group_51-65", "age_group_66-80", "age_group_80+", "age_group_nan"],
+            "x-runtime-feature-whitelist": ["age", "gender_male", "age_group", "inpatient", "outpatient", "emergency", "icu", "has_any_procedure", "has_urinary_catheter", "has_cvc", "nursing_home_visit", "creatinine", "bun", "wbc", "neutrophils", "lymphocytes", "lactate", "procalcitonin", "heartrate", "resp_rate", "temperature", "sys_bp", "dias_bp", "n_prior_meds", "n_prior_classes", "days_since_last_antibiotic", "log_days_since_abx", "n_abx_classes_exposed", "n_prior_organisms", "days_since_last_prior_organism", "adi_score", "adi_state_rank"],
+            "x-plugin-runtime-mappings": {"age": {"runtime_features": ["age", "age_group_*"], "classification": "TRANSFORMED"}, "age_group": {"runtime_features": ["age_group_*"], "classification": "DERIVED"}, "log_days_since_abx": {"runtime_features": ["log_days_since_abx"], "classification": "DERIVED"}, "model_features": {"classification": "MODEL_INTERNAL", "feature_count": 56, "source": "per-antibiotic model metadata"}, "prior_antibiotics": {"classification": PLUGIN_SPECIFIC, "runtime_features": ["n_prior_meds", "n_prior_classes", "days_since_last_antibiotic", "log_days_since_abx", "n_abx_classes_exposed"]}},
         }
 
     def output_schema(self) -> Dict[str, Any]:

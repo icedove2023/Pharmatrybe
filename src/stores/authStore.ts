@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 import type { QueryClient } from '@tanstack/react-query';
 import { setSessionInvalidationHandler } from '@/api/client';
 
-export type AuthStatus = 'loading' | 'authenticated' | 'unauthenticated' | 'session-expired' | 'session-invalid' | 'account-inactive' | 'forbidden';
+export type AuthStatus = 'loading' | 'authenticated' | 'unauthenticated' | 'session-expired' | 'session-invalid' | 'account-inactive' | 'forbidden' | 'password-recovery';
 
 let activeQueryClient: QueryClient | null = null;
 
@@ -23,6 +23,7 @@ interface AuthState {
   logout: () => Promise<void>;
   switchRole: (role: UserRole) => Promise<void>;
   clearError: () => void;
+  refreshUser: () => Promise<void>;
 
   // RBAC Selectors
   hasPermission: (permission: keyof User['permissions']) => boolean;
@@ -48,6 +49,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     };
     setSessionInvalidationHandler(() => clearApplicationSession('session-expired'));
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        // A password-recovery link was just consumed: block on the reset-password
+        // screen instead of resolving the application user, since the account may
+        // not have completed setup yet and the person hasn't proven a new password.
+        set({ status: 'password-recovery', error: null, isAuthenticating: false });
+        return;
+      }
       if (event === 'SIGNED_OUT' || !session) {
         clearApplicationSession(event === 'SIGNED_OUT' ? 'unauthenticated' : 'session-expired');
       } else if (event === 'TOKEN_REFRESHED') {
@@ -179,6 +187,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   clearError: () => set({ error: null }),
+
+  refreshUser: async () => {
+    try {
+      const user = await authApi.refreshApplicationUser();
+      set({ user, status: 'authenticated', error: null });
+    } catch (err) {
+      if (err instanceof AuthError && err.code === 'account-inactive') {
+        set({ status: 'account-inactive', user: null });
+      }
+    }
+  },
 
   hasPermission: (permission: keyof User['permissions']) => {
     const user = get().user;

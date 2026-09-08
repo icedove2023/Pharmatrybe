@@ -20,11 +20,12 @@ const invitationSchema = z.object({
 type InvitationFormValues = z.infer<typeof invitationSchema>;
 
 interface InvitationAcceptanceFormProps {
-  token: string;
+  token?: string;
 }
 
 export function InvitationAcceptanceForm({ token: _token }: InvitationAcceptanceFormProps) {
   const user = useAuthStore((state) => state.user);
+  const refreshUser = useAuthStore((state) => state.refreshUser);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<InvitationFormValues>({
@@ -48,7 +49,8 @@ export function InvitationAcceptanceForm({ token: _token }: InvitationAcceptance
         last_name: values.lastName,
         professional_type: values.professionalType || undefined,
       });
-      setMessage('Your hospital membership is active. You can now sign in to PharmaTrybe.');
+      setMessage('Your hospital membership is active.');
+      await refreshUser();
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : 'Invitation acceptance failed.');
     }

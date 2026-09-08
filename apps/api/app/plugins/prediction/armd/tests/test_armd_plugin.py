@@ -35,7 +35,7 @@ class TestARMDPluginInitialization:
         health = plugin.health()
         
         assert health.status in ['healthy', 'unhealthy']
-        assert health.initialized is True
+        assert health.healthy is True
 
     def test_plugin_metadata(self):
         """Plugin should provide metadata."""
@@ -45,7 +45,7 @@ class TestARMDPluginInitialization:
         metadata = plugin.metadata()
         
         assert metadata.plugin_id == 'armd'
-        assert metadata.name == 'ARMD Prediction Plugin'
+        assert metadata.plugin_name == 'ARMD Prediction Plugin'
         assert 'resistance_prediction' in metadata.capabilities
 
     def test_plugin_shutdown(self):
@@ -70,8 +70,7 @@ class TestARMDPluginPrediction:
     @pytest.fixture
     def sample_request(self):
         """Fixture: sample prediction request."""
-        request = PredictionRequest()
-        request.data = {
+        request = PredictionRequest(payload={
             'age': 65.0,
             'gender_male': 1,
             'inpatient': 1,
@@ -86,7 +85,7 @@ class TestARMDPluginPrediction:
             'n_prior_classes': 2,
             'days_since_last_antibiotic': 10,
             'patient_id': 'test_patient_123',
-        }
+        })
         return request
 
     def test_plugin_validates(self, plugin):
@@ -105,8 +104,7 @@ class TestARMDPluginPrediction:
         """Plugin should raise error if predict() called before initialize()."""
         plugin = ARMDPredictionPlugin()
         
-        request = PredictionRequest()
-        request.data = {'age': 65.0}
+        request = PredictionRequest(payload={'age': 65.0})
         
         with pytest.raises(RuntimeError):
             plugin.predict(request)
@@ -128,7 +126,7 @@ class TestARMDPluginPrediction:
         antibiotic = registry_info['antibiotics'][0]
         
         result = engine.predict_single_antibiotic(
-            sample_request.data,
+            sample_request.payload,
             antibiotic
         )
         
@@ -150,8 +148,7 @@ class TestARMDPluginExplainability:
     @pytest.fixture
     def sample_request(self):
         """Fixture: sample prediction request."""
-        request = PredictionRequest()
-        request.data = {
+        request = PredictionRequest(payload={
             'age': 65.0,
             'gender_male': 1,
             'inpatient': 1,
@@ -166,7 +163,7 @@ class TestARMDPluginExplainability:
             'n_prior_classes': 2,
             'days_since_last_antibiotic': 10,
             'patient_id': 'test_patient_123',
-        }
+        })
         return request
 
     def test_plugin_explainability_available(self, plugin):
@@ -224,8 +221,7 @@ class TestARMDPluginErrorHandling:
 
     def test_plugin_handles_empty_patient_data(self, plugin):
         """Plugin should handle empty patient data gracefully."""
-        request = PredictionRequest()
-        request.data = {}
+        request = PredictionRequest(payload={})
         
         # Should not crash; may return error status
         result = plugin.predict(request)
@@ -234,7 +230,7 @@ class TestARMDPluginErrorHandling:
     def test_plugin_handles_invalid_request(self, plugin):
         """Plugin should handle invalid requests."""
         # Malformed request
-        request = PredictionRequest()
+        request = PredictionRequest(payload={})
         
         # Should not crash
         try:

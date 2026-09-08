@@ -1,9 +1,12 @@
 import React from 'react';
-import { Search, X, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
+import { DynamicClinicalForm } from '@/forms/engine/DynamicClinicalForm';
+import { ensureWhoSearchContractRegistered } from '@/plugins/contracts';
+import { executeWhoSearchQuery } from '@/clinical/adapters/whoQueryAdapter';
+import type { DiseaseSummary } from '@/types';
 
 interface DiseaseSearchProps {
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
+  onSearchResults: (query: string, diseases: DiseaseSummary[]) => void;
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
   categories: string[];
@@ -11,36 +14,24 @@ interface DiseaseSearchProps {
 }
 
 export function DiseaseSearch({
-  searchQuery,
-  onSearchChange,
+  onSearchResults,
   selectedCategory,
   onCategoryChange,
   categories,
   totalResults,
 }: DiseaseSearchProps) {
+  const contract = ensureWhoSearchContractRegistered();
+
   return (
     <div className="flex flex-col justify-between gap-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-4 md:flex-row md:items-center">
-      <div className="relative flex-1">
-        <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-text-muted" aria-hidden="true" />
-        <input
-          id="who-disease-search-input"
-          type="text"
-          value={searchQuery}
-          onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search guidelines by disease, condition, pathogen, or keyword…"
-          className="focus-clinical w-full rounded-[var(--radius-md)] border border-slate-border bg-slate-inset py-2.5 pl-10 pr-9 text-xs font-medium text-slate-text-primary placeholder-slate-text-muted"
+      <div className="min-w-0 flex-1">
+        <DynamicClinicalForm
+          contract={contract}
+          onSubmit={async (values) => {
+            const diseases = await executeWhoSearchQuery(contract, values);
+            onSearchResults(String(values.query_text), diseases);
+          }}
         />
-        {searchQuery && (
-          <button
-            type="button"
-            onClick={() => onSearchChange('')}
-            className="focus-clinical absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-text-muted hover:text-slate-text-primary"
-            aria-label="Clear disease search"
-            title="Clear search"
-          >
-            <X className="h-3.5 w-3.5" aria-hidden="true" />
-          </button>
-        )}
       </div>
 
       <div className="flex shrink-0 items-center space-x-2">

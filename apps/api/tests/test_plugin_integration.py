@@ -191,6 +191,13 @@ def test_soar_runtime_context_initializes_and_lazy_loads_models(tmp_path: Path, 
         pickle.dump(DummyEncoder(), file_obj)
     (deployment / "optimal_threshold.json").write_text(json.dumps({"threshold": 0.5}), encoding="utf-8")
     (deployment / "evaluation_metrics.csv").write_text("metric,value\naccuracy,0.99\n", encoding="utf-8")
+    (deployment / "deployment_info.json").write_text(
+        json.dumps({"antibiotic": "A", "species": "S"}), encoding="utf-8"
+    )
+    (deployment / "feature_schema.json").write_text(
+        json.dumps({"features": [{"name": "organism"}, {"name": "antimicrobial"}]}),
+        encoding="utf-8",
+    )
 
     plugin = SOARPredictionPlugin()
     plugin.configure({"deployments_root": str(deployments_root)})
@@ -227,7 +234,10 @@ def test_soar_runtime_context_initializes_and_lazy_loads_models(tmp_path: Path, 
     assert plugin._runtime_context.runtime_metadata.plugin_id == "soar"
     assert not plugin._model_loader.is_loaded("S__A")
 
-    request = PredictionRequest(payload={"organism": "S", "antimicrobial": "A"})
+    request = PredictionRequest(
+        payload={"organism": "S", "antimicrobial": "A"},
+        context={"deployment_id": "S__A"},
+    )
     result = plugin.predict(request)
 
     assert result.predicted_class == "R"
