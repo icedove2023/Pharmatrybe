@@ -7,3 +7,96 @@
 [ 1040806ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8001/api/v1/recommendations/generate:0
 [ 1425033ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
 [ 1585919ms] [ERROR] %s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props) InputField @ http://localhost:3000/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f1572d1d:107
+[ 2547537ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[ 2554307ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:3000/@vite/client:1034
+[49454285ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49525379ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49525851ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49526485ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49527294ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49529203ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49532409ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49538830ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49551658ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49651716ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/knowledge/DiagnosticPanel.tsx:0
+[49651716ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/knowledge/FollowUpPanel.tsx:0
+[49651717ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/knowledge/ReferralPanel.tsx:0
+[49940389ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:8001/api/v1/pipeline/execute:0
+[51274753ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[51274767ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:3000/@vite/client:1034
+[52865130ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[52875106ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52881419ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52887921ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52894833ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52902528ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52902531ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[52902838ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[52902839ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[52962810ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52987592ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53012212ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53094724ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53107122ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53119763ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53220739ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53239146ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53334725ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53347146ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53365786ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53460774ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53473164ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53574747ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53593167ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53706744ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53725151ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53814722ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53827114ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53845719ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53934722ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53947141ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[53971290ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54048162ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[54048167ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:3000/@vite/client:1034
+[54723556ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54738616ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[54751019ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54769439ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54769440ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[54769488ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[54769489ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[54841682ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54860114ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54961651ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[54980075ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[55081648ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[55100052ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[55191271ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[58372396ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[58384544ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[58388634ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[58391961ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
