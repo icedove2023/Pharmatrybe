@@ -1,0 +1,18 @@
+{
+  "phase": "27",
+  "status_values": ["READY_FOR_CONTROLLED_EXECUTION", "PARTIAL", "BLOCKED", "FAILED", "NOT_VERIFIED"],
+  "entries": [
+    {"plugin":"soar","deployment":"Cefixime_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Cefotaxime_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Cefpodoxime_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Ceftibuten_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Ceftriaxone_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Doxycycline_Streptococcus_pneumoniae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Levofloxacin_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Tetracycline_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS_AFTER_SBOM_DEPENDENCY_CLOSURE","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Tetracycline_Streptococcus_pneumoniae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"soar","deployment":"Trimethoprim_Sulfa_Haemophilus_influenzae","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"armd","deployment":"WP4 registry (20 models)","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"20_OF_20_SUCCESS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"},
+    {"plugin":"who_knowledge","deployment":"WHO provider/database boundary","contract":"PASS","input_resolution":"PASS","validation":"PASS","backend_execution":"PASS_FOCUSED_TESTS","output":"PASS","explainability":"PASS","audit":"PASS","status":"READY_FOR_CONTROLLED_EXECUTION"}
+  ]
+}

@@ -81,8 +81,8 @@ def test_plugin_loader_discovers_nested_plugin_manifests() -> None:
     loader = PluginLoader(plugin_root, PluginRegistry(), PluginValidator(), platform_version="1.0.0", sdk_version="1.0.0")
     discovered = loader.discover_plugin_paths()
 
-    assert any(str(path).endswith("plugins\\prediction\\soar") for path in discovered)
-    assert any(str(path).endswith("plugins\\knowledge") for path in discovered)
+    assert any(path.parts[-2:] == ("prediction", "soar") for path in discovered)
+    assert any(path.parts[-1:] == ("knowledge",) for path in discovered)
     assert any((path / "plugin.yaml").exists() for path in discovered)
 
 

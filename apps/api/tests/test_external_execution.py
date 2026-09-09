@@ -153,7 +153,15 @@ sdk_version: 1.0.0
 
 def test_isolated_executor_timeout_terminates_child(tmp_path: Path) -> None:
     module = tmp_path / "slow.py"
-    module.write_text("import time\ndef run(payload, context):\n    time.sleep(1)\n    return {}\n", encoding="utf-8")
+    module.write_text(
+        "import time\n"
+        "class Slow:\n"
+        "    def initialize(self): pass\n"
+        "    def run(self, payload, context):\n"
+        "        time.sleep(1)\n"
+        "        return {}\n",
+        encoding="utf-8",
+    )
     executor = IsolatedPluginExecutor(IsolatedExecutionLimits(timeout_seconds=0.05))
     try:
         executor.execute(module, "Slow", {}, {}, "execute")

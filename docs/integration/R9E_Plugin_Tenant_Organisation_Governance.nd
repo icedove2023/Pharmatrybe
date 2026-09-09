@@ -1,0 +1,927 @@
+# R9E — Plugin Tenant / Organisation Governance
+
+**Status:** APPROVED
+**Phase:** R9 — Plugin Governance & External Extension Security
+**Predecessors:** R9A, R9B, R9C, R9D
+**Next Phase:** R9F — Plugin Governance API & Backend Integration
+
+---
+
+## 1. Purpose
+
+R9E defines how plugins are governed within the hospital/organisation tenant boundary.
+
+The objective is to ensure that:
+
+* a hospital controls which external plugins it may use;
+* only authorised hospital administrators can register and approve plugins;
+* plugins cannot cross hospital/organisation boundaries;
+* plugin configuration belongs to the appropriate hospital;
+* plugin execution uses the same platform engine as internal plugins;
+* tenant governance does not create a separate execution architecture for external plugins;
+* clinical and organisational data remain protected by the existing backend authority model.
+
+R9E builds on the approved decisions in R9A–R9D.
+
+---
+
+# 2. Core Tenant Governance Principle
+
+The fundamental rule is:
+
+> **A plugin may only operate within the hospital/organisation scope for which it has been registered and approved.**
+
+The hospital is therefore the governance boundary for externally introduced plugins.
+
+The platform remains responsible for:
+
+* plugin execution;
+* security enforcement;
+* validation;
+* lifecycle management;
+* authorization enforcement;
+* runtime isolation.
+
+The hospital is responsible for deciding:
+
+* which external plugins it wants;
+* who may register them;
+* who may approve them;
+* whether an approved plugin remains enabled.
+
+---
+
+# 3. Hospital Administrator Authority
+
+Only an authorised **Hospital Administrator** may perform tenant-level plugin governance actions.
+
+This includes:
+
+* registering a plugin;
+* submitting a plugin for approval;
+* approving a plugin;
+* rejecting a plugin;
+* enabling a plugin;
+* disabling a plugin;
+* requesting removal;
+* managing tenant-specific plugin configuration where permitted.
+
+Ordinary healthcare professionals must not be able to:
+
+* upload plugins;
+* register plugins;
+* approve plugins;
+* activate plugins;
+* modify plugin governance;
+* change plugin tenant ownership.
+
+Frontend controls are presentation only.
+
+The backend remains authoritative for these permissions.
+
+---
+
+# 4. Plugin Ownership
+
+Every externally registered plugin must have an explicit organisational owner.
+
+Conceptually:
+
+```text
+Plugin
+   ↓
+Hospital / Organisation
+```
+
+A tenant-owned plugin belongs to exactly one hospital/organisation for its registration instance.
+
+The same plugin software may potentially be registered by multiple hospitals, but those registrations are separate governance records.
+
+For example:
+
+```text
+Hospital A
+    └── Plugin X
+        └── Approved
+
+Hospital B
+    └── Plugin X
+        └── Pending
+```
+
+The approval of Plugin X by Hospital A does not automatically approve it for Hospital B.
+
+---
+
+# 5. Global Plugin Identity vs Tenant Registration
+
+R9E distinguishes between:
+
+### Plugin identity
+
+The identity of the plugin software/package.
+
+and:
+
+### Plugin registration
+
+The relationship between that plugin and a particular hospital.
+
+Conceptually:
+
+```text
+Plugin Package
+      │
+      ├── Hospital A Registration
+      │       └── Approved
+      │
+      ├── Hospital B Registration
+      │       └── Pending
+      │
+      └── Hospital C Registration
+              └── Disabled
+```
+
+This prevents a hospital's approval decision from becoming a platform-wide approval.
+
+---
+
+# 6. Internal vs External Plugins
+
+The platform supports both internal and external plugins.
+
+### Internal plugins
+
+Examples include:
+
+* WHO knowledge plugin;
+* platform-owned knowledge plugins;
+* internal prediction plugins;
+* other platform-controlled extensions.
+
+These are governed by platform-level ownership and deployment controls.
+
+### External plugins
+
+Examples include:
+
+* hospital-uploaded knowledge plugins;
+* hospital-uploaded ML prediction plugins;
+* externally supplied plugin packages.
+
+These are subject to tenant registration and approval.
+
+The important architectural rule is:
+
+> **Internal and external plugins ultimately use the same plugin engine and execution framework.**
+
+There must not be a separate "external plugin engine."
+
+---
+
+# 7. Knowledge Plugins
+
+A knowledge plugin provides structured clinical/knowledge information to the platform.
+
+External knowledge plugins may be:
+
+* uploaded by a hospital administrator;
+* registered through the plugin governance process;
+* approved by the hospital administrator;
+* activated only after successful validation and approval.
+
+Knowledge plugins may also originate from a database-backed source.
+
+The platform must distinguish between:
+
+```text
+Platform-owned knowledge
+```
+
+and:
+
+```text
+Hospital-owned external knowledge
+```
+
+The WHO plugin remains an internal/platform-controlled knowledge source.
+
+Hospital-specific knowledge plugins must not automatically modify or replace platform-owned knowledge.
+
+---
+
+# 8. Prediction Plugins
+
+Prediction plugins represent machine-learning models.
+
+The project decision is:
+
+> **Prediction plugins are always ML models.**
+
+A prediction plugin therefore represents a model-based computational component rather than a generic rules engine.
+
+Examples may include models for:
+
+* antimicrobial susceptibility prediction;
+* resistance risk prediction;
+* clinical outcome prediction;
+* other approved prediction tasks.
+
+The model/package must be registered and approved before becoming available to the hospital's runtime.
+
+---
+
+# 9. Plugin Upload
+
+R9E supports the approved concept that a hospital administrator may introduce an external plugin through a controlled submission process.
+
+Two submission mechanisms are recognised:
+
+### Option A — ZIP upload
+
+The administrator uploads a plugin package as a ZIP file.
+
+The package contains the required plugin artefacts and metadata defined by R9B/R9C/R9D.
+
+### Option B — Form-based registration
+
+The administrator provides plugin information through a registration form and uploads the required plugin artefact/model.
+
+The form may capture information such as:
+
+* plugin name;
+* plugin type;
+* version;
+* description;
+* publisher;
+* ownership;
+* intended purpose;
+* capabilities;
+* compatibility information;
+* model information for prediction plugins;
+* supporting documentation.
+
+The exact UI mechanism is an implementation decision for R9F and must not alter the governance rules established here.
+
+---
+
+# 10. Registration Does Not Equal Approval
+
+Uploading a plugin does **not** make it active.
+
+The lifecycle remains:
+
+```text
+Uploaded
+   ↓
+Registered
+   ↓
+Validated
+   ↓
+Pending Approval
+   ↓
+Approved
+   ↓
+Enabled
+   ↓
+Available to Runtime
+```
+
+A plugin that fails validation must not reach the enabled state.
+
+A plugin that has been registered but not approved must not execute.
+
+---
+
+# 11. Tenant-Scoped Approval
+
+Approval is always tenant-specific for external plugins.
+
+For example:
+
+```text
+Hospital A Administrator
+        ↓
+Approves Plugin X
+        ↓
+Plugin X available to Hospital A
+```
+
+This does **not** imply:
+
+```text
+Hospital B → Plugin X → Approved
+```
+
+Hospital B must independently register/approve the plugin if it wishes to use it.
+
+---
+
+# 12. Tenant Isolation
+
+A hospital must never be able to use plugin governance mechanisms to access another hospital's plugins or plugin configuration.
+
+Tenant isolation applies to:
+
+* plugin registration records;
+* approval state;
+* plugin configuration;
+* plugin activation state;
+* plugin execution context;
+* plugin-generated outputs where tenant-owned;
+* plugin audit records.
+
+A hospital administrator must only be able to govern plugins belonging to that administrator's active hospital.
+
+---
+
+# 13. No Frontend Tenant Authority
+
+The frontend must not determine plugin tenancy.
+
+The frontend must not be trusted to supply or override:
+
+* `hospital_id`;
+* `organisation_id`;
+* tenant ownership;
+* plugin owner;
+* plugin execution tenant.
+
+The backend derives the authoritative tenant context from the authenticated identity and active membership.
+
+Therefore:
+
+```text
+Authenticated User
+        ↓
+Backend Identity
+        ↓
+Active Hospital Membership
+        ↓
+Authoritative Tenant Context
+        ↓
+Plugin Governance
+```
+
+A browser-supplied hospital identifier must never override this resolution.
+
+---
+
+# 14. Plugin Execution Tenant Context
+
+When a tenant-owned plugin executes, the platform must execute it within the authorised tenant context.
+
+Conceptually:
+
+```text
+Authenticated Professional
+          ↓
+Backend Authorization
+          ↓
+Hospital Context
+          ↓
+Plugin Registration
+          ↓
+Plugin Permission/Scope
+          ↓
+Plugin Execution
+```
+
+The plugin must not be able to select another hospital as its execution context.
+
+---
+
+# 15. Plugin Configuration
+
+Tenant-specific configuration belongs to the tenant registration.
+
+For example:
+
+```text
+Plugin X
+   │
+   ├── Global plugin identity
+   │
+   ├── Hospital A configuration
+   │
+   └── Hospital B configuration
+```
+
+Hospital A must not see or modify Hospital B's configuration.
+
+Configuration must also respect the plugin's approved capabilities and scopes.
+
+A hospital administrator cannot use configuration to grant a plugin capabilities that were not approved by the platform governance/security model.
+
+---
+
+# 16. Plugin Credentials
+
+Plugin credentials must remain governed by the platform.
+
+A hospital administrator must not be able to provide unrestricted platform credentials to a plugin.
+
+Plugin credentials, where required, must be:
+
+* explicitly scoped;
+* associated with the appropriate plugin registration;
+* limited to approved capabilities;
+* protected from ordinary users;
+* excluded from frontend exposure;
+* auditable.
+
+The detailed credential architecture belongs to R9D/R9F implementation and must not be weakened by tenant configuration.
+
+---
+
+# 17. Clinical Data Boundary
+
+A tenant-owned plugin must not automatically gain access to all hospital clinical data.
+
+Access must be determined by:
+
+* plugin type;
+* approved capability;
+* approved scope;
+* backend authorization;
+* tenant context;
+* platform security policies.
+
+Therefore:
+
+```text
+Hospital ownership
+        ≠
+Unlimited clinical-data access
+```
+
+Hospital approval is necessary for tenant adoption, but it does not override platform security controls.
+
+---
+
+# 18. Knowledge Plugin Boundary
+
+A hospital's external knowledge plugin must not silently override platform-owned clinical knowledge.
+
+The platform should maintain a distinction between:
+
+```text
+Platform Knowledge
+```
+
+and:
+
+```text
+Hospital Knowledge
+```
+
+Where both are used in a workflow, the system must retain enough metadata to explain:
+
+* which knowledge source was used;
+* which plugin supplied it;
+* which hospital owns the plugin;
+* plugin version;
+* plugin status.
+
+This supports the project's explainability and auditability requirements.
+
+---
+
+# 19. Prediction Plugin Boundary
+
+Prediction plugins must operate within their approved model purpose.
+
+A hospital administrator must not be able to register a prediction plugin as one type of model while using it as an unrelated clinical function.
+
+The registration metadata must identify:
+
+* model/plugin identity;
+* model version;
+* intended prediction task;
+* supported inputs;
+* expected outputs;
+* compatibility;
+* approved capabilities.
+
+The platform remains responsible for ensuring that the model is invoked through the common prediction-plugin engine.
+
+---
+
+# 20. Shared Execution Engine
+
+This is an explicit architectural principle.
+
+> **External plugins must use the same plugin engine, contracts, orchestration, validation and runtime mechanisms as internal plugins wherever applicable.**
+
+The architecture must not evolve into:
+
+```text
+Internal Plugin Engine
+        +
+External Plugin Engine
+```
+
+Instead:
+
+```text
+                 Plugin Contract
+                       ↓
+              Plugin Governance
+                       ↓
+                Plugin Manager
+                       ↓
+              Common Plugin Engine
+                 ↙           ↘
+        Internal Plugins   External Plugins
+```
+
+The distinction is primarily governance/trust/ownership—not a separate execution architecture.
+
+---
+
+# 21. Hospital Cannot Modify Platform Plugins
+
+Hospital administrators cannot:
+
+* modify WHO;
+* replace platform-owned plugins;
+* disable mandatory platform safety components;
+* modify platform-owned clinical rules;
+* alter platform plugin source code.
+
+They may only govern plugins that belong to their tenant and for which the platform permits tenant-level governance.
+
+---
+
+# 22. Plugin Activation
+
+A tenant-owned plugin becomes available to that hospital only when:
+
+1. registration exists;
+2. validation succeeds;
+3. approval exists;
+4. security requirements are satisfied;
+5. plugin is enabled.
+
+Conceptually:
+
+```text
+Registered
+    ↓
+Validated
+    ↓
+Approved
+    ↓
+Security checks
+    ↓
+Enabled
+    ↓
+Runtime availability
+```
+
+Disabling the plugin must prevent further use while preserving its governance/audit history.
+
+---
+
+# 23. Revocation
+
+Plugin approval is not permanent.
+
+A plugin registration may become:
+
+* disabled;
+* revoked;
+* quarantined.
+
+Revocation may occur because of:
+
+* security concerns;
+* invalid package replacement;
+* failed compatibility;
+* malicious behaviour;
+* model integrity concerns;
+* policy violations;
+* administrative action;
+* platform-level security action.
+
+A hospital administrator may manage tenant-level activation, but platform security authority may override tenant activation where required for safety.
+
+---
+
+# 24. Platform Security Override
+
+Tenant ownership does not supersede platform security.
+
+Therefore:
+
+```text
+Hospital Administrator
+        ↓
+Tenant governance authority
+        ↓
+Platform security boundary
+```
+
+The platform may disable or quarantine a plugin even if the hospital previously approved it.
+
+This is necessary because plugin code executes within the platform environment.
+
+---
+
+# 25. Cross-Tenant Plugin Sharing
+
+External plugin approval is **not automatically shared across tenants**.
+
+A future platform-level marketplace or centrally approved plugin catalogue could support reusable plugins, but that would require a separate architectural decision.
+
+For R9:
+
+> **Tenant registration and approval are independent per hospital.**
+
+---
+
+# 26. Plugin Removal
+
+Removing a plugin from a hospital must not necessarily destroy its historical governance record.
+
+The system should preserve sufficient information to establish:
+
+* who registered it;
+* when it was registered;
+* who approved it;
+* when it was enabled;
+* when it was disabled/revoked;
+* which version was used.
+
+This is important for clinical auditability.
+
+---
+
+# 27. Auditability
+
+Tenant plugin governance actions must be auditable.
+
+At minimum, governance events should identify:
+
+* plugin;
+* hospital;
+* action;
+* actor;
+* timestamp;
+* plugin version;
+* resulting state.
+
+Examples:
+
+```text
+PLUGIN_REGISTERED
+PLUGIN_APPROVED
+PLUGIN_REJECTED
+PLUGIN_ENABLED
+PLUGIN_DISABLED
+PLUGIN_REVOKED
+PLUGIN_QUARANTINED
+PLUGIN_UPDATED
+```
+
+The exact persistence schema belongs to R9B/R9F implementation.
+
+---
+
+# 28. Authoritative Governance Hierarchy
+
+The plugin tenant model follows:
+
+```text
+Platform Security
+       ↓
+Platform Plugin Governance
+       ↓
+Hospital / Organisation Governance
+       ↓
+Plugin Registration
+       ↓
+Plugin Activation
+       ↓
+Runtime Execution
+```
+
+A lower level cannot override a higher security boundary.
+
+---
+
+# 29. Relationship to RBAC
+
+Plugin governance must use the existing Phase 16C role and permission architecture.
+
+The system must not create a separate authentication or role system for plugins.
+
+Conceptually:
+
+```text
+Supabase Auth
+      ↓
+Professional Identity
+      ↓
+Hospital Membership
+      ↓
+Canonical Role
+      ↓
+Permission
+      ↓
+Plugin Governance Action
+```
+
+Only the appropriate hospital administrator permission should permit tenant plugin governance operations.
+
+---
+
+# 30. Backend Authority
+
+The backend remains authoritative for:
+
+* tenant ownership;
+* plugin registration;
+* plugin approval;
+* plugin activation;
+* plugin configuration;
+* plugin execution authorization.
+
+Frontend state is informational/presentational.
+
+No frontend implementation may become a source of truth for plugin governance.
+
+---
+
+# 31. Relationship to R9B
+
+R9B defines the data model required to represent:
+
+* plugin identity;
+* tenant registration;
+* ownership;
+* lifecycle state;
+* governance records;
+* approval information;
+* plugin configuration.
+
+R9E defines the tenant rules those records must enforce.
+
+R9B therefore provides the persistence structure, while R9E provides the organisational governance semantics.
+
+---
+
+# 32. Relationship to R9C
+
+R9C defines the registration and approval lifecycle.
+
+R9E adds the tenant boundary:
+
+```text
+Hospital Administrator
+        ↓
+Tenant Registration
+        ↓
+Tenant Approval
+        ↓
+Tenant Activation
+```
+
+Approval by one hospital must not affect another hospital.
+
+---
+
+# 33. Relationship to R9D
+
+R9D defines:
+
+* trust;
+* integrity;
+* execution isolation;
+* security controls.
+
+R9E defines **where and for whom** a plugin is allowed to operate.
+
+Together:
+
+```text
+R9D
+Security / Trust / Isolation
+          +
+R9E
+Tenant / Organisation Governance
+```
+
+---
+
+# 34. Explicit Non-Goals
+
+R9E does not define:
+
+* plugin UI design;
+* detailed database SQL;
+* API endpoint implementation;
+* plugin engine implementation;
+* ML algorithm design;
+* knowledge extraction;
+* clinical recommendation logic;
+* Supabase authentication redesign;
+* R8 session lifecycle;
+* R7 invitation redesign;
+* plugin marketplace architecture.
+
+Those belong to other phases or future decisions.
+
+---
+
+# 35. Architectural Invariants
+
+The following invariants are mandatory:
+
+### Invariant 1
+
+> A plugin registration belongs to one hospital/organisation.
+
+### Invariant 2
+
+> Only an authorised hospital administrator may govern tenant-owned plugins.
+
+### Invariant 3
+
+> Tenant approval is not global platform approval.
+
+### Invariant 4
+
+> Frontend tenant information is never authoritative.
+
+### Invariant 5
+
+> A tenant cannot grant a plugin capabilities beyond platform-approved security boundaries.
+
+### Invariant 6
+
+> External plugins use the same plugin engine as internal plugins.
+
+### Invariant 7
+
+> Hospital ownership does not imply unrestricted clinical-data access.
+
+### Invariant 8
+
+> Platform security may override tenant activation.
+
+### Invariant 9
+
+> Plugin governance actions must be auditable.
+
+### Invariant 10
+
+> Internal platform plugins remain under platform governance.
+
+---
+
+# 36. R9E Decision Summary
+
+| Decision                                         | Status                       |
+| ------------------------------------------------ | ---------------------------- |
+| Hospital is the tenant governance boundary       | **CONFIRMED**                |
+| Hospital administrator governs tenant plugins    | **CONFIRMED**                |
+| One plugin registration belongs to one hospital  | **CONFIRMED**                |
+| Tenant approval is independent                   | **CONFIRMED**                |
+| External plugins use the common plugin engine    | **CONFIRMED**                |
+| Knowledge plugins may be hospital-provided       | **CONFIRMED**                |
+| Prediction plugins are ML models                 | **CONFIRMED**                |
+| ZIP/form-based submission supported              | **CONFIRMED**                |
+| Frontend is not tenant authority                 | **INHERITED**                |
+| Backend derives tenant context                   | **INHERITED**                |
+| Platform security can override tenant activation | **CONFIRMED**                |
+| Cross-tenant approval sharing                    | **NOT PERMITTED BY DEFAULT** |
+| Plugin marketplace                               | **OUT OF SCOPE**             |
+| Detailed API implementation                      | **R9F**                      |
+| Runtime manager integration                      | **R9G**                      |
+| Governance/security tests                        | **R9H**                      |
+
+---
+
+# 37. R9E Gate
+
+### Current Status
+
+APPROVED
+
+
+
+```text
+R9A — APPROVED
+        ↓
+R9B — APPROVED
+        ↓
+R9C — APPROVED
+        ↓
+R9D — APPROVED
+        ↓
+R9E — APPROVED
+        ↓
+R9F — Plugin Governance API & Backend Integration
+```
+

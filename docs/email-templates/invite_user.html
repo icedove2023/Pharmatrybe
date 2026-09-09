@@ -1,0 +1,45 @@
+<!--
+  Supabase Dashboard -> Authentication -> Email Templates -> "Invite user"
+  Paste this into the "Message body" HTML field, then Save.
+
+  Variables used:
+    {{ .Data.hospital_name }}     - passed by our invite call (invite_professional ->
+                                    invite_user_by_email) via the "data" field on
+                                    POST /auth/v1/invite. Falls back to "your hospital".
+    {{ .Data.default_password }}  - the generated temporary password (see
+                                    supabase_auth.py generate_temporary_password()).
+    {{ .ConfirmationURL }}        - built-in Supabase variable, the invite accept link.
+-->
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; color: #1e293b;">
+  <h2 style="margin-bottom: 4px;">You've been invited to PharmaTrybe</h2>
+  <p>
+    <strong>{{ if .Data.hospital_name }}{{ .Data.hospital_name }}{{ else }}A hospital on PharmaTrybe{{ end }}</strong>
+    has invited you to join their clinical decision support workspace.
+  </p>
+  <p style="text-align: center; margin: 28px 0;">
+    <a href="{{ .ConfirmationURL }}"
+       style="background-color: #1d4ed8; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
+      Accept invitation
+    </a>
+  </p>
+  <p>
+    You can also sign in directly at your hospital's PharmaTrybe login page using this email
+    address and the temporary password below. You'll be asked to set your own password
+    immediately after signing in.
+  </p>
+  <div style="background-color: #f1f5f9; border-radius: 8px; padding: 16px; margin: 16px 0; text-align: center;">
+    <p style="margin: 0; font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">
+      Temporary password
+    </p>
+    <p style="margin: 4px 0 0; font-size: 18px; font-weight: 700; font-family: monospace;">
+      {{ .Data.default_password }}
+    </p>
+  </div>
+  <p style="font-size: 13px; color: #64748b;">
+    If the button above doesn't work, copy and paste this link into your browser:<br />
+    <a href="{{ .ConfirmationURL }}">{{ .ConfirmationURL }}</a>
+  </p>
+  <p style="font-size: 12px; color: #94a3b8; margin-top: 32px;">
+    If you weren't expecting this invitation, you can safely ignore this email.
+  </p>
+</div>

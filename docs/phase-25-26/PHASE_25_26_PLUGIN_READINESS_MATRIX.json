@@ -1,0 +1,19 @@
+{
+  "phase": "25-26",
+  "generated_at": "2026-09-08",
+  "classifications": ["READY_FOR_CONTROLLED_EXECUTION", "PARTIAL", "BLOCKED_BY_EVIDENCE", "NOT_VERIFIED"],
+  "entries": [
+    {"plugin_id":"soar","deployment_id":"Cefixime_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Cefotaxime_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Cefpodoxime_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Ceftibuten_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Ceftriaxone_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Doxycycline_Streptococcus_pneumoniae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Levofloxacin_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Tetracycline_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Tetracycline_Streptococcus_pneumoniae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"soar","deployment_id":"Trimethoprim_Sulfa_Haemophilus_influenzae","status":"PARTIAL","model_execution":"NOT_VERIFIED","evidence":"Exact contract and routing verified; full prediction/output semantics not independently demonstrated; registry evidence grade C, integrity 62.5."},
+    {"plugin_id":"armd","deployment_id":"WP4 registry","status":"PARTIAL","model_execution":"PASS_FOR_PLUGIN_PREDICTION","evidence":"ARMD plugin prediction tests pass, but preprocessing parity fails because model metadata lists Amoxicillin/Clavulanic Acid while preprocessor output omits it."},
+    {"plugin_id":"who_knowledge","deployment_id":"WHO database/provider","status":"READY_FOR_CONTROLLED_EXECUTION","model_execution":"NOT_APPLICABLE","evidence":"WHO/plugin schema/integration focused tests pass (55 tests)."}
+  ]
+}

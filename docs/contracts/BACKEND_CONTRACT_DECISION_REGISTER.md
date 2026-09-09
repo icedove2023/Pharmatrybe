@@ -1,0 +1,25 @@
+# Backend Contract Decision Register
+
+Version: 1.0.0
+Status: APPROVED FOR BACKEND/FROZEN BOUNDARIES
+
+This register records the decisions that close the public backend boundary without inventing clinical semantics. Unresolved clinical mappings remain explicitly unsupported rather than blocking unrelated public contracts.
+
+| Decision ID | Problem | Options considered | Evidence | Selected decision | Rationale | Runtime impact | Frontend impact | Safety impact | Migration impact | Tests required | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| D-001 | SOAR deployment upstream owner absent | Infer from organism/antimicrobial; add heuristic selector; explicit caller/platform routing | Pipeline had no producer; SOAR plugin exact lookup is tested | **EXPLICIT_CALLER_PROVIDED** routing context | No safe repository-proven mapping exists | Canonical request carries `routing_context.deployment_id`; adapter validates it before SOAR execution | Consumer must provide an approved exact ID; no selector is inferred | Preserves fail-closed selection and forbids fallback | Existing direct callers remain compatible when context is supplied | Adapter valid/missing/unknown ID tests | IMPLEMENTED_DECISION |
+| D-002 | SOAR raw field ownership absent | Claim clinician ownership; derive from clinical aliases; explicit caller input; mark unavailable | Pipeline passes payload unchanged; artifacts only define model features | **EXPLICIT_CALLER_INPUT** for raw artifact fields; no defaults | Caller/platform boundary is truthful without fabricated provenance | Adapter preserves payload; plugin/artifact validates required fields | Consumer must supply deployment-specific payload | Missing data rejects execution | Existing payload shape remains; routing context is additive | Base/beta/missing-feature tests | CONFIRMED_DECISION |
+| D-003 | Canonical mappings unresolved | Merge names by similarity; create heuristic mappings; isolate plugin adapters | No deterministic mapping for infection site, organism/pathogen/species, or ARMD aliases | **ISOLATED_PLUGIN_SPECIFIC_BOUNDARIES** | Clinical concepts remain distinct until approved terminology/mapping exists | Adapter performs validation only; no semantic transforms | Consumers must use plugin-specific fields where supported | Prevents silent clinical reinterpretation | No migration of existing fields | Adapter unsupported/mapping tests | IMPLEMENTED_DECISION |
+| D-004 | Public request envelope had no explicit routing field | Keep hidden context; add deployment-specific top-level field; add routing context | `ClinicalDecisionRequest.context` already exists and is propagated | **VERSIONED_ROUTING_CONTEXT** within canonical pipeline request | Keeps routing distinct from clinical payload | Adds optional `request_id` and `routing_context`; preserves `case_id` | Consumer can send explicit routing metadata | Routing evidence is auditable and separate | Additive request change | Request schema and propagation tests | IMPLEMENTED_DECISION |
+| D-005 | Public errors used mixed internal paths | Rewrite every route; leave all ad hoc; normalize at app boundary | Global FastAPI handlers already produce `ApiFailure`; typed exceptions lacked registry | **BOUNDARY_NORMALIZATION_WITH_TYPED_REGISTRY** | Preserve internal exceptions; expose stable codes at public boundary | Adds typed exception code registry; HTTP handler remains canonical | Consumers receive `ApiFailure` for public failures | No stack traces or fallback behavior exposed | Additive stable codes; route-specific status behavior preserved | Error envelope/code tests | IMPLEMENTED_DECISION |
+| D-006 | Recommendation/explainability had multiple internal producers | Expose plugin internals; choose canonical recommendation endpoint; merge all paths | `/api/v1/recommendations/generate` validates `ExplainabilityResponseContract` | **CANONICAL_RECOMMENDATION_ENDPOINT** | One tested public envelope; legacy routes remain compatibility paths | Canonical endpoint is `/api/v1/recommendations/generate` | Frontend consumes one documented response | Missing evidence remains empty/explicit | Legacy consumers can migrate without immediate removal | Response contract tests | CONFIRMED_DECISION |
+| D-007 | WHO and ARMD have plugin-specific semantics | Force universal schema; expose raw internals; isolate contracts | Focused suites and plugin manifests define distinct boundaries | **PLUGIN_SPECIFIC_CONTRACTS** | Avoids false cross-plugin clinical equivalence | Existing plugin schemas remain authoritative | Consumer selects plugin-specific contract | Prevents unsupported clinical assumptions | No data migration | WHO/ARMD focused suites | CONFIRMED_DECISION |
+
+## Deferred decisions
+
+- Canonical terminology for `organism`, `pathogen`, and `species`.
+- Deterministic `infection_site` to `BodyLocation_Group` mapping.
+- Ownership of SOAR collection/context fields beyond explicit caller input.
+- A single public error status policy across every legacy endpoint.
+
+These are intentionally isolated from the frozen request, adapter, recommendation, explainability, and error envelope boundaries.

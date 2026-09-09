@@ -18,5 +18,8 @@ tmp_pytest_collect.txt
 tmp_pytest_results.txt
 tmp_test_sig.txt
 docs/
+!docs/
+!docs/contracts/
+!docs/contracts/BACKEND_CONTRACT_DECISION_REGISTER.md
 fdocs/
 .env

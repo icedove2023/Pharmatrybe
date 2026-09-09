@@ -1,0 +1,15 @@
+{
+  "phase": "28",
+  "status_values": ["READY_FOR_CONTROLLED_EXECUTION", "PARTIAL", "BLOCKED", "FAILED", "NOT_VERIFIED"],
+  "authenticated_workflow": {
+    "authentication": "NOT_VERIFIED",
+    "tenant_resolution": "PARTIAL",
+    "rbac": "READY_FOR_CONTROLLED_EXECUTION",
+    "sign_out": "NOT_VERIFIED"
+  },
+  "entries": [
+    {"plugin":"soar","deployment_or_model":"10 active deployments","clinical_input":"PASS controlled contract; no numeric beta UI exposure","validation":"PASS","backend_execution":"PASS real execution 10/10","fusion":"PARTIAL complete authenticated trace not verified","explainability":"PARTIAL shared/local trace verified","audit_persistence":"PASS local construction/persistence boundary","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"},
+    {"plugin":"armd","deployment_or_model":"WP4 registry, 20 models","clinical_input":"PASS approved clinical contract","validation":"PASS","backend_execution":"PASS 20/20 direct model results","fusion":"NOT_VERIFIED ARMD-specific trace","explainability":"PARTIAL focused adapter/plugin evidence","audit_persistence":"PASS shared local boundary","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"},
+    {"plugin":"who_knowledge","deployment_or_model":"WHO provider/database","clinical_input":"PASS explicit dynamic query contract","validation":"PASS","backend_execution":"PASS focused provider/plugin tests","fusion":"NOT_VERIFIED WHO-specific trace","explainability":"PARTIAL focused provider evidence","audit_persistence":"PASS shared local boundary","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"}
+  ]
+}

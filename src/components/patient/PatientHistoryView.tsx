@@ -74,7 +74,6 @@ export function PatientHistoryView() {
         });
     }
   }, [selectedPatientId]);
-            <h3 className="text-base font-semibold text-slate-text-primary">{patientDetails.name || 'Patient not named'}</h3>
   if (isLoading) {
     return (
       <div className="space-y-6">

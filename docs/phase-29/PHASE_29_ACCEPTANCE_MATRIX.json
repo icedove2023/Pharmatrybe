@@ -1,0 +1,16 @@
+{
+  "phase": "29",
+  "status_values": ["READY_FOR_CONTROLLED_EXECUTION", "PARTIAL", "BLOCKED", "FAILED", "NOT_VERIFIED"],
+  "authenticated_workflow": {
+    "authentication": "NOT_VERIFIED",
+    "tenant_resolution": "PARTIAL",
+    "rbac": "READY_FOR_CONTROLLED_EXECUTION",
+    "assessment_access": "NOT_VERIFIED",
+    "sign_out": "NOT_VERIFIED"
+  },
+  "traces": [
+    {"name":"Authenticated SOAR","authentication":"NOT_VERIFIED","plugin_execution":"PASS real backend trace; browser not verified","fusion":"PARTIAL","explainability":"PARTIAL","audit_persistence":"PASS construction/local boundary","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"},
+    {"name":"ARMD complete trace","plugin_execution":"PASS coherent Amikacin trace","fusion":"PASS","explainability":"PASS","audit_persistence":"PASS construction","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"},
+    {"name":"WHO complete trace","provider_execution":"PASS real database-backed query","fusion":"NOT_VERIFIED current WHO contract is knowledge-only","explainability":"NOT_VERIFIED WHO final recommendation trace","audit_persistence":"PASS construction","audit_retrieval":"NOT_VERIFIED","status":"PARTIAL"}
+  ]
+}
