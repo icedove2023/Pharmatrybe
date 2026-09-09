@@ -9,14 +9,25 @@ const VERCEL_API_BASE_URL = (viteEnv?.VITE_VERCEL_API_BASE_URL || viteEnv?.VITE_
 function resolveApiBaseUrl(): string {
   // Prefer an explicitly configured VITE_API_BASE_URL when provided.
   const explicitEnv = viteEnv?.VITE_API_BASE_URL?.trim();
-  if (explicitEnv) return explicitEnv.replace(/\/$/, '');
+  if (explicitEnv) {
+    const explicit = explicitEnv.replace(/\/$/, '');
+    // If the page is served over HTTPS, upgrade any http:// explicit URL to https:// to avoid mixed content.
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && explicit.startsWith('http://')) {
+      return explicit.replace(/^http:\/\//i, 'https://');
+    }
+    return explicit;
+  }
 
   // When running in the browser on localhost, use the local API base.
   if (typeof window !== 'undefined' && /localhost|127\.0\.0\.1|0\.0\.0\.0/.test(window.location.hostname)) {
     return LOCAL_API_BASE_URL;
   }
 
-  // Otherwise, fall back to the Vercel-hosted API.
+  // Otherwise, fall back to the Vercel-hosted API. Ensure we don't return an http:// URL when the page is HTTPS (prevents mixed content).
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && VERCEL_API_BASE_URL.startsWith('http://')) {
+    return VERCEL_API_BASE_URL.replace(/^http:\/\//i, 'https://');
+  }
+
   return VERCEL_API_BASE_URL;
 }
 
