@@ -7,13 +7,16 @@ const LOCAL_API_BASE_URL = (viteEnv?.VITE_LOCAL_API_BASE_URL || 'http://localhos
 const VERCEL_API_BASE_URL = (viteEnv?.VITE_VERCEL_API_BASE_URL || viteEnv?.VITE_API_BASE_URL || 'https://pharmatrybe-api.vercel.app/api/v1').replace(/\/$/, '');
 
 function resolveApiBaseUrl(): string {
-  const explicitBase = (viteEnv?.VITE_API_BASE_URL || LOCAL_API_BASE_URL).trim();
-  if (explicitBase) return explicitBase.replace(/\/$/, '');
+  // Prefer an explicitly configured VITE_API_BASE_URL when provided.
+  const explicitEnv = viteEnv?.VITE_API_BASE_URL?.trim();
+  if (explicitEnv) return explicitEnv.replace(/\/$/, '');
 
+  // When running in the browser on localhost, use the local API base.
   if (typeof window !== 'undefined' && /localhost|127\.0\.0\.1|0\.0\.0\.0/.test(window.location.hostname)) {
     return LOCAL_API_BASE_URL;
   }
 
+  // Otherwise, fall back to the Vercel-hosted API.
   return VERCEL_API_BASE_URL;
 }
 
