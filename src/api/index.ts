@@ -9,6 +9,7 @@ import { clinicalCasesApi } from './clinicalCasesApi';
 import { pipelineApi } from './pipelineApi';
 import { pluginGovernanceApi } from './pluginGovernanceApi';
 import { professionalsApi } from './professionalsApi';
+import { ApiClientError } from './client';
 import { getPatientById, getPatientHistory, searchPatients } from './patientsApi';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -25,19 +26,15 @@ export const dashboardApi = {
 export const patientApi = {
   searchPatients: async (query: string): Promise<PatientSummary[]> => {
     if (!useAuthStore.getState().user) return [];
-    try {
-      const results = await searchPatients(query);
-      return results.map((patient) => ({
-        id: patient.id,
-        name: patient.name || 'Patient not named',
-        dateOfBirth: patient.date_of_birth || '',
-        gender: patient.sex || 'Unknown',
-        lastActivity: '',
-        recordCount: patient.recordCount || 0,
-      }));
-    } catch {
-      return [];
-    }
+    const results = await searchPatients(query);
+    return results.map((patient) => ({
+      id: patient.id,
+      name: patient.name || 'Patient not named',
+      dateOfBirth: patient.date_of_birth || '',
+      gender: patient.sex || 'Unknown',
+      lastActivity: '',
+      recordCount: patient.recordCount || 0,
+    }));
   },
   getPatientDetails: async (id: string): Promise<PatientDetails> => {
     if (!useAuthStore.getState().user) throw new Error('Authentication required.');

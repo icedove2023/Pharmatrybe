@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import (
     CheckConstraint,
     ForeignKey,
@@ -12,6 +14,12 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+
+if TYPE_CHECKING:
+    from app.models.disease import Disease
+    from app.models.drug import Drug
+    from app.models.evidence import Evidence
+    from app.models.pathogen import Pathogen
 
 
 class Recommendation(Base):

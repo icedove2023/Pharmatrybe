@@ -1,9 +1,22 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ARRAY, Index, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+
+if TYPE_CHECKING:
+    from app.models.diagnostic import Diagnostic
+    from app.models.drug import Drug
+    from app.models.evidence import Evidence
+    from app.models.follow_up import FollowUp
+    from app.models.monitoring import Monitoring
+    from app.models.pathogen import Pathogen
+    from app.models.recommendation import Recommendation
+    from app.models.referral import Referral
+    from app.models.stewardship import Stewardship
 
 
 class Disease(Base):

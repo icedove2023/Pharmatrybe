@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { History, Search, X, Code2 } from 'lucide-react';
 import { patientApi } from '@/api';
+import { ApiClientError } from '@/api/client';
 import { PatientSummary, PatientDetails, HistoryEvent } from '@/types';
 import { StatusBadge, BadgeTone } from '@/components/ui/StatusBadge';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
@@ -23,15 +24,16 @@ export function PatientHistoryView() {
   const [historyEvents, setHistoryEvents] = useState<HistoryEvent[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModalEvent, setActiveModalEvent] = useState<HistoryEvent | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     setIsLoading(true);
+    setLoadError(null);
     patientApi.searchPatients(searchQuery)
       .then((res) => {
         if (!res) {
-          // backend search not implemented
           setDirectoryAvailable(false);
           setPatients([]);
         } else {
@@ -39,23 +41,37 @@ export function PatientHistoryView() {
           setPatients(res);
         }
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         setDirectoryAvailable(false);
         setPatients([]);
+        setLoadError(error instanceof ApiClientError && (error.status === 403 || error.status === 404)
+          ? 'You do not have access to patient records for this hospital.'
+          : 'Patient records could not be loaded.');
       })
       .finally(() => setIsLoading(false));
   }, [searchQuery]);
 
   useEffect(() => {
     if (selectedPatientId) {
+      setLoadError(null);
       // load details and history but tolerate 'not available' returns
       patientApi.getPatientDetails(selectedPatientId)
         .then((res) => setPatientDetails(res ?? null))
-        .catch(() => setPatientDetails(null));
+        .catch((error: unknown) => {
+          setPatientDetails(null);
+          setLoadError(error instanceof ApiClientError && (error.status === 403 || error.status === 404)
+            ? 'You do not have access to this patient record.'
+            : 'Patient details could not be loaded.');
+        });
 
       patientApi.getPatientHistory(selectedPatientId)
         .then((res) => setHistoryEvents(Array.isArray(res) ? res : (res ? [res as any] : [])))
-        .catch(() => setHistoryEvents([]));
+        .catch((error: unknown) => {
+          setHistoryEvents([]);
+          setLoadError(error instanceof ApiClientError && (error.status === 403 || error.status === 404)
+            ? 'You do not have access to this patient history.'
+            : 'Patient history could not be loaded.');
+        });
     }
   }, [selectedPatientId]);
             <h3 className="text-base font-semibold text-slate-text-primary">{patientDetails.name || 'Patient not named'}</h3>
@@ -75,6 +91,11 @@ export function PatientHistoryView() {
 
   return (
     <div className="relative space-y-6">
+      {loadError && (
+        <div role="alert" className="rounded-[var(--radius-md)] border border-[var(--color-safety-warning-border)] bg-[var(--color-safety-warning-bg)] p-3 text-xs text-slate-text-primary">
+          {loadError}
+        </div>
+      )}
       {/* Title Header */}
       <div className="flex flex-col justify-between gap-4 rounded-[var(--radius-lg)] border border-slate-border bg-slate-surface p-6 md:flex-row md:items-center">
         <div>
@@ -109,8 +130,8 @@ export function PatientHistoryView() {
             <div className="rounded-[var(--radius-md)] border border-dashed border-slate-border p-6 text-center text-xs text-slate-text-muted">
               {directoryAvailable === false ? (
                 <>
-                  <div className="font-semibold mb-1">Patient directory is not exposed by the backend.</div>
-                  <div className="text-xs">The backend does not provide a patient search/directory endpoint. Use Clinical Cases until this is implemented.</div>
+                  <div className="font-semibold mb-1">Patient records are unavailable.</div>
+                  <div className="text-xs">Your account may not have access to patient records in this hospital.</div>
                 </>
               ) : (
                 'No patients match this search.'

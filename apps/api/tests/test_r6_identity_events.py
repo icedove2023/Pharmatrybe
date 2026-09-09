@@ -22,6 +22,14 @@ from app.models.identity import (
 )
 
 
+ACTOR_USER_ID = str(uuid4())
+
+
+@pytest.fixture(autouse=True)
+def mock_email_confirmation(monkeypatch):
+    monkeypatch.setattr("app.api.v1.auth.is_email_confirmed", lambda _user_id: True)
+
+
 class RegistrationSession:
     """Small transaction-aware fake for the registration unit contract."""
 
@@ -79,7 +87,7 @@ def _registration_payload() -> HospitalRegistrationRequest:
 
 
 def _actor() -> AuthenticatedUser:
-    return AuthenticatedUser(user_id="auth-user-id", email="ada@example.com")
+    return AuthenticatedUser(user_id=ACTOR_USER_ID, email="ada@example.com")
 
 
 def _added(session, entity_type):
@@ -111,7 +119,7 @@ def test_registration_creates_one_membership_event_with_trusted_actor_and_detail
     assert events[0].event_type == "MEMBERSHIP_CREATED"
     assert events[0].membership_id == memberships[0].id
     assert events[0].hospital_id == hospitals[0].id
-    assert events[0].actor_user_id == "auth-user-id"
+    assert events[0].actor_user_id == ACTOR_USER_ID
     assert events[0].details == {
         "event": "MEMBERSHIP_CREATED",
         "source": "hospital_registration",
@@ -154,7 +162,7 @@ def test_registration_creates_and_flushes_missing_hospital_admin_role_before_mem
 
 
 def test_existing_profile_rejects_duplicate_registration_without_writes():
-    existing_profile = SimpleNamespace(auth_user_id="auth-user-id")
+    existing_profile = SimpleNamespace(auth_user_id=ACTOR_USER_ID)
     session = RegistrationSession(existing_profile=existing_profile)
 
     with pytest.raises(HTTPException) as error:

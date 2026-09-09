@@ -9,6 +9,7 @@ from app.knowledge.providers.base_provider import KnowledgeProvider
 from app.knowledge.providers.provider_types import ProviderMetadata, ProviderHealthStatus, ProviderSourceType
 from app.knowledge.providers.query_models import KnowledgeQuery, SearchQuery
 from app.knowledge.models.knowledge_bundle import KnowledgePackage
+from app.knowledge.providers.soar.soar_model_loader import SOARModelLoader
 
 
 class SOARProvider(KnowledgeProvider):

@@ -29,9 +29,16 @@ def _metadata(request_id: str) -> ApiMetadata:
     return ApiMetadata(request_id=request_id, timestamp=datetime.now(timezone.utc), api_version="v1", processing_time_ms=0.0)
 
 
+def _can_view_all_hospital_history(context: AuthorizationContext) -> bool:
+    return "HOSPITAL_ADMIN" in context.roles
+
+
 @router.get("", response_model=ApiSuccess[list[dict[str, Any]]])
 async def list_patients(context: Annotated[AuthorizationContext, Depends(require_permission("cases:view"))], db: Annotated[Session, Depends(get_db_session)], query: str | None = Query(default=None)) -> ApiSuccess[list[dict[str, Any]]]:
-    records = list(db.scalars(select(PatientRecord).where(PatientRecord.owner_user_id == context.user_id, PatientRecord.hospital_id == context.hospital_id).order_by(PatientRecord.updated_at.desc())).all())
+    filters = [PatientRecord.hospital_id == context.hospital_id]
+    if not _can_view_all_hospital_history(context):
+        filters.append(PatientRecord.owner_user_id == context.user_id)
+    records = list(db.scalars(select(PatientRecord).where(*filters).order_by(PatientRecord.updated_at.desc())).all())
     normalized = query.strip().lower() if query else ""
     if normalized:
         records = [record for record in records if normalized in " ".join(filter(None, [record.id, record.name, record.sex])).lower()]
@@ -41,7 +48,10 @@ async def list_patients(context: Annotated[AuthorizationContext, Depends(require
 
 @router.get("/{patient_id}", response_model=ApiSuccess[dict[str, Any] | None])
 async def get_patient(patient_id: str, context: Annotated[AuthorizationContext, Depends(require_permission("cases:view"))], db: Annotated[Session, Depends(get_db_session)]) -> ApiSuccess[dict[str, Any] | None]:
-    record = db.scalar(select(PatientRecord).where(PatientRecord.id == patient_id, PatientRecord.owner_user_id == context.user_id, PatientRecord.hospital_id == context.hospital_id))
+    filters = [PatientRecord.id == patient_id, PatientRecord.hospital_id == context.hospital_id]
+    if not _can_view_all_hospital_history(context):
+        filters.append(PatientRecord.owner_user_id == context.user_id)
+    record = db.scalar(select(PatientRecord).where(*filters))
     if record is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Patient record not found")
     return ApiSuccess(metadata=_metadata(patient_id), data={"id": record.id, "name": record.name, "date_of_birth": record.date_of_birth, "sex": record.sex, "hospital_id": record.hospital_id, "demographics": record.demographics})
@@ -49,10 +59,25 @@ async def get_patient(patient_id: str, context: Annotated[AuthorizationContext, 
 
 @router.get("/{patient_id}/history", response_model=ApiSuccess[list[dict[str, Any]]])
 async def get_patient_history(patient_id: str, context: Annotated[AuthorizationContext, Depends(require_permission("cases:view"))], db: Annotated[Session, Depends(get_db_session)]) -> ApiSuccess[list[dict[str, Any]]]:
-    patient = db.scalar(select(PatientRecord).where(PatientRecord.id == patient_id, PatientRecord.owner_user_id == context.user_id, PatientRecord.hospital_id == context.hospital_id))
+    patient_filters = [PatientRecord.id == patient_id, PatientRecord.hospital_id == context.hospital_id]
+    if not _can_view_all_hospital_history(context):
+        patient_filters.append(PatientRecord.owner_user_id == context.user_id)
+    patient = db.scalar(select(PatientRecord).where(*patient_filters))
     if patient is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Patient record not found")
-    events = db.scalars(select(PatientHistoryEvent).where(PatientHistoryEvent.patient_id == patient_id, PatientHistoryEvent.owner_user_id == context.user_id).order_by(PatientHistoryEvent.created_at.asc())).all()
+    event_filters = [
+        PatientHistoryEvent.patient_id == patient.id,
+        PatientRecord.id == patient.id,
+        PatientRecord.hospital_id == context.hospital_id,
+    ]
+    if not _can_view_all_hospital_history(context):
+        event_filters.append(PatientHistoryEvent.owner_user_id == context.user_id)
+    events = db.scalars(
+        select(PatientHistoryEvent)
+        .join(PatientRecord, PatientRecord.id == PatientHistoryEvent.patient_id)
+        .where(*event_filters)
+        .order_by(PatientHistoryEvent.created_at.asc())
+    ).all()
     data = [{"id": str(event.id), "type": event.event_type, "timestamp": event.created_at.isoformat(), "user": context.user_id, "summary": event.summary, "payload": event.payload} for event in events]
     return ApiSuccess(metadata=_metadata(patient_id), data=data)
 
@@ -60,6 +85,9 @@ async def get_patient_history(patient_id: str, context: Annotated[AuthorizationC
 @router.post("/{patient_id}/history", response_model=ApiSuccess[dict[str, Any]], status_code=status.HTTP_201_CREATED)
 async def create_approved_history(patient_id: str, payload: ApprovedHistoryRequest, context: Annotated[AuthorizationContext, Depends(require_permission("recommendations:request"))], db: Annotated[Session, Depends(get_db_session)]) -> ApiSuccess[dict[str, Any]]:
     patient = db.scalar(select(PatientRecord).where(PatientRecord.id == patient_id, PatientRecord.owner_user_id == context.user_id, PatientRecord.hospital_id == context.hospital_id))
+    existing_patient = db.scalar(select(PatientRecord).where(PatientRecord.id == patient_id, PatientRecord.hospital_id == context.hospital_id))
+    if patient is None and existing_patient is not None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Patient record not found")
     if patient is None:
         patient = PatientRecord(id=patient_id, owner_user_id=context.user_id, hospital_id=context.hospital_id, name=payload.patient_name, sex=str(payload.demographics.get("sex")) if payload.demographics.get("sex") else None, demographics=payload.demographics)
         db.add(patient)
