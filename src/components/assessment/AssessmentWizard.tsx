@@ -86,14 +86,18 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
       if (!caseData.demographics.age || caseData.demographics.age <= 0 || caseData.demographics.age > 125) {
         errors.age = 'Patient age must be between 1 and 125 years.';
       }
+      if (!caseData.demographics.patientId?.trim()) {
+        errors.patientId = 'Patient Hospital ID / MRN is required before running the server pipeline.';
+      }
       if (!hasPluginMix) {
         errors.plugins = 'Select at least one knowledge plugin and one prediction plugin.';
       }
     }
 
     if (stepNumber === 2) {
-      if (!caseData.presentation.primaryDiagnosis) {
-        errors.primaryDiagnosis = 'Primary diagnosis / syndrome is required.';
+      const hasSoar = activePlugins.some((plugin) => plugin.backendId === 'soar' || plugin.id === 'soar' || plugin.id === 'soar_prediction');
+      if (hasSoar && !soarExecution) {
+        errors.soar = 'Select a verified SOAR deployment and complete its required inputs.';
       }
     }
 
@@ -358,6 +362,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                       placeholder="e.g. PAT-94812"
                       className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-slate-border-subtle bg-slate-inset text-xs text-slate-text-primary focus-clinical"
                     />
+                    {fieldErrors.patientId && <p className="mt-1 text-[11px] font-medium text-[var(--color-safety-critical)]">{fieldErrors.patientId}</p>}
                   </div>
                 </div>
               )}
@@ -373,6 +378,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
               <h3 className="text-sm font-semibold text-slate-text-primary">Step 2: Plugin-Generated Clinical Inputs</h3>
               <p className="text-xs text-slate-text-muted">This form is assembled from the schemas exposed by the selected plugins.</p>
             </div>
+            {fieldErrors.soar && <SafetyAlert level="warning" title="SOAR inputs required">{fieldErrors.soar}</SafetyAlert>}
             <PluginGeneratedForm plugins={activePlugins} caseData={caseData} onChange={updatePluginField} onSoarResolved={(payload, resolution) => setSoarExecution({ payload, resolution })} />
           </div>
         )}
@@ -911,6 +917,10 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                 size="lg"
                 onClick={async () => {
                   try {
+                    const patientId = caseData.demographics.patientId;
+                    if (!patientId) {
+                      throw new Error('A patient identifier is required before starting the pipeline.');
+                    }
                     if (activePlugins.some((plugin) => plugin.backendId === 'soar' || plugin.id === 'soar' || plugin.id === 'soar_prediction') && !soarExecution) {
                       throw new Error('SOAR requires a verified deployment and complete controlled inputs before execution.');
                     }
@@ -918,7 +928,7 @@ export function AssessmentWizard({ onCaseSubmitted }: AssessmentWizardProps) {
                     const mode = 'sync' as const;
                     const payload = {
                       execution_mode: mode,
-                      patient_id: caseData.demographics.patientId,
+                      patient_id: patientId,
                       case_id: undefined,
                       plugin_selection: caseData.pluginSelections?.map((id) => ({ plugin_id: id })) ?? undefined,
                       input_payload: soarExecution ? { case: caseData, ...soarExecution.payload.input_payload } : { case: caseData },

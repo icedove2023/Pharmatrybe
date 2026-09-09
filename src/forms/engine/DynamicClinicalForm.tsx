@@ -27,7 +27,6 @@ function setValue(values: Record<string, unknown>, field: string, value: unknown
 
 function InputField({
   field,
-  key: _key,
   schema,
   value,
   required,
@@ -37,7 +36,6 @@ function InputField({
   disabled,
 }: {
   field: string;
-  key?: React.Key;
   schema: JsonSchema;
   value: unknown;
   required: boolean;
@@ -108,7 +106,11 @@ export function DynamicClinicalForm({ contract, initialValues = {}, onChange, on
     {submitError && <div id="dynamic-form-error"><SafetyAlert level="critical" title="Plugin input unavailable">{submitError}</SafetyAlert></div>}
     {issues.length > 0 && <SafetyAlert level="warning" title="Review required fields">{issues.length} field validation issue(s) must be corrected before submission.</SafetyAlert>}
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      {properties.map(([field, fieldSchema]) => <InputField key={field} field={field} schema={fieldSchema} value={values[field]} required={(schema.required || []).includes(field)} issue={issues.find((issue) => issue.path === field)} metadata={fieldMetadata(contract, field)} onChange={(value) => updateValues(setValue(values, field, value))} disabled={disabled} />)}
+      {properties.map(([field, fieldSchema]) => (
+        <React.Fragment key={field}>
+          <InputField field={field} schema={fieldSchema} value={values[field]} required={(schema.required || []).includes(field)} issue={issues.find((issue) => issue.path === field)} metadata={fieldMetadata(contract, field)} onChange={(value) => updateValues(setValue(values, field, value))} disabled={disabled} />
+        </React.Fragment>
+      ))}
     </div>
     <div className="flex gap-3">
       <button type="submit" disabled={disabled} className="rounded-[var(--radius-md)] bg-[var(--color-clinical-600)] px-4 py-2 text-xs font-semibold text-white disabled:opacity-60">Submit approved inputs</button>

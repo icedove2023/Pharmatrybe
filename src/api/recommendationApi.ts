@@ -738,9 +738,13 @@ export const recommendationApi = {
   submitCase: async (clinicalCase: ClinicalCase): Promise<RecommendationSubmissionResult> => {
     const { executePipeline } = await import('./pipelineApi');
     const selectedPlugins = clinicalCase.pluginSelections || ['armd', 'who_knowledge'];
+    const patientId = clinicalCase.demographics.patientId;
+    if (!patientId) {
+      throw new Error('A patient identifier is required before submitting a clinical case.');
+    }
     const response = await executePipeline({
       execution_mode: 'sync',
-      patient_id: clinicalCase.demographics.patientId,
+      patient_id: patientId,
       plugin_selection: selectedPlugins.map((pluginId) => ({ plugin_id: pluginId })),
       input_payload: { case: clinicalCase },
       response_mode: 'full',

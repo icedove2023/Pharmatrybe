@@ -8,7 +8,7 @@ import {
 } from './soarDeploymentContract';
 import type { SoarInputResolution } from './soarInputResolver';
 import { resolveSoarInputs as resolveInputs, buildSoarExecutionPayload } from './soarInputResolver';
-import type { PluginInputContract } from './types';
+import type { JsonSchema, PluginInputContract } from './types';
 
 interface SoarClinicalCompletionFormProps {
   canonicalClinicalData?: Record<string, unknown>;
@@ -27,13 +27,14 @@ const labels: Record<string, string> = {
 function contractForMissingFields(contract: ReturnType<typeof resolveSoarDeploymentContract>, missing: string[]): PluginInputContract {
   const pluginContract = toSoarPluginContract(contract);
   const fields = contract.requiredInputs.filter((field) => missing.includes(field.key));
-  const properties = Object.fromEntries(fields.map((field) => {
+  const properties: Record<string, JsonSchema> = {};
+  fields.forEach((field) => {
     const formKey = field.clinicalKey || field.key;
     const schema = field.clinicalKey
       ? { type: 'string' as const, title: labels[formKey], enum: ['POSITIVE', 'NEGATIVE'] }
       : pluginContract.inputSchema.properties?.[field.key];
-    return [formKey, schema];
-  }));
+    if (schema) properties[formKey] = schema;
+  });
   return {
     ...pluginContract,
     inputSchema: { ...pluginContract.inputSchema, properties, required: fields.map((field) => field.clinicalKey || field.key) },

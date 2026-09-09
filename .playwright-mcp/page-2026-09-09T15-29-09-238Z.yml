@@ -1,0 +1,24 @@
+- generic [ref=e28]:
+  - button "Back" [ref=e29]
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - heading "Sign in to PharmaTrybe" [level=2] [ref=e34]
+      - paragraph [ref=e35]: For administrators and hospital staff with a provisioned account.
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]: Hospital email
+        - textbox "you@yourhospital.org" [ref=e40]
+      - generic [ref=e41]:
+        - generic [ref=e42]: Password
+        - generic [ref=e43]:
+          - textbox "••••••••••••" [ref=e44]
+          - button [ref=e45]
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - checkbox "Remember this workstation" [checked] [ref=e51]
+          - generic [ref=e52]: Remember this workstation
+        - button "Forgot password?" [ref=e53]
+      - button "Sign in" [ref=e54]
+    - paragraph [ref=e58]:
+      - text: New hospital?
+      - button "Register your institution" [ref=e59]

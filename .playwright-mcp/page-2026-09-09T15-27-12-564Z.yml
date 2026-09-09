@@ -1,0 +1,11 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]: PharmaTrybe CDSS
+    - button "Sign in" [ref=e11]
+  - main [ref=e12]:
+    - heading "Antimicrobial stewardship guidance clinicians can trust and verify." [level=1] [ref=e13]
+    - paragraph [ref=e14]: PharmaTrybe combines WHO AWaRe guideline knowledge with resistance-prediction models and a deterministic clinical safety engine. Every recommendation shows its reasoning. The clinician always makes the final call.
+    - generic [ref=e15]:
+      - button "Register your hospital" [ref=e16]
+      - button "Sign in to your account" [ref=e21]
+  - contentinfo [ref=e26]: This information supports clinical decision-making; it does not replace clinician judgement.
