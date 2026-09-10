@@ -142,13 +142,20 @@ async function completePendingRegistrationForSession(session: Pick<NonNullable<A
 }
 
 export class AuthError extends Error {
-  code?: 'account-inactive' | 'forbidden' | 'invalid-session' | 'verification-required';
+  code?: 'account-inactive' | 'email-delivery-failed' | 'forbidden' | 'invalid-session' | 'verification-required';
 
   constructor(message: string, code?: AuthError['code']) {
     super(message);
     this.name = 'AuthError';
     this.code = code;
   }
+}
+
+let hasLoggedSupabaseSignupError = false;
+
+function isConfirmationEmailDeliveryFailure(error: { code?: string; message?: string }): boolean {
+  return error.code === 'unexpected_failure'
+    || /sending confirmation email/i.test(error.message || '');
 }
 
 function toAuthSession(session: NonNullable<Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']>): AuthSession {
@@ -173,6 +180,8 @@ export const authApi = {
   registerHospital: async (payload: HospitalRegistrationPayload): Promise<{ user: User; session: AuthSession } | null> => {
     const pendingRegistration = serializePendingRegistration(payload);
     writePendingRegistrationToStorage(pendingRegistration);
+    // Supabase can create auth.users before the confirmation email send fails;
+    // this path must never assume signup failure means no account exists.
     const { data, error } = await supabase.auth.signUp({
       email: payload.adminEmail,
       password: payload.password,
@@ -183,11 +192,27 @@ export const authApi = {
         },
       },
     });
-    if (error) throw new AuthError(error.message);
+    if (error) {
+      if (import.meta.env.DEV && !hasLoggedSupabaseSignupError) {
+        hasLoggedSupabaseSignupError = true;
+        console.error('[auth] Supabase signup error:', error);
+      }
+      if (isConfirmationEmailDeliveryFailure(error)) {
+        throw new AuthError(
+          'Your hospital account may already exist, but we could not send the confirmation email. Try resending it below, or sign in if you already confirmed it.',
+          'email-delivery-failed',
+        );
+      }
+      throw new AuthError(error.message);
+    }
     if (!data.session) return null;
     const session = toAuthSession(data.session);
     await completePendingRegistration(data.user?.email || payload.adminEmail, data.session);
     return { user: await getApplicationUser(), session };
+  },
+  resendConfirmationEmail: async (email: string): Promise<void> => {
+    const { error } = await supabase.auth.resend({ type: 'signup', email });
+    if (error) throw new AuthError(error.message);
   },
   login: async (credentials: LoginCredentials): Promise<{ user: User; session: AuthSession }> => {
     const { data, error } = await supabase.auth.signInWithPassword(credentials);

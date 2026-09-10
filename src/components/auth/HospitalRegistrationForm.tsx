@@ -6,6 +6,7 @@ import {
   Building2, User, Mail, Lock, Eye, EyeOff, ArrowLeft, ShieldCheck, Phone, CreditCard,
 } from 'lucide-react';
 import { hospitalRegistrationSchema, HospitalRegistrationPayload } from '@/types/auth';
+import { authApi, AuthError } from '@/api/authApi';
 import { useAuthStore } from '@/stores/authStore';
 import { SafetyAlert } from '@/components/ui/SafetyAlert';
 import { ClinicalButton } from '@/components/ui/ClinicalButton';
@@ -24,6 +25,9 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
   const [showPassword, setShowPassword] = useState(false);
   const [verificationPending, setVerificationPending] = useState(false);
   const [verificationEmail, setVerificationEmail] = useState('');
+  const [emailDeliveryFailed, setEmailDeliveryFailed] = useState(false);
+  const [isResendingConfirmation, setIsResendingConfirmation] = useState(false);
+  const [resendMessage, setResendMessage] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
   const {
@@ -37,6 +41,8 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
 
   const onSubmit = async (data: HospitalRegistrationPayload) => {
     clearError();
+    setEmailDeliveryFailed(false);
+    setResendMessage(null);
     try {
       const completed = await registerHospital(data);
       if (completed) onSuccess?.();
@@ -44,8 +50,25 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
         setVerificationEmail(data.adminEmail);
         setVerificationPending(true);
       }
-    } catch {
+    } catch (submissionError) {
+      if (submissionError instanceof AuthError && submissionError.code === 'email-delivery-failed') {
+        setVerificationEmail(data.adminEmail);
+        setEmailDeliveryFailed(true);
+      }
       // Error surfaced via store state
+    }
+  };
+
+  const resendConfirmationEmail = async () => {
+    setIsResendingConfirmation(true);
+    setResendMessage(null);
+    try {
+      await authApi.resendConfirmationEmail(verificationEmail);
+      setResendMessage('Confirmation email sent. Check your inbox and spam folder.');
+    } catch (resendError) {
+      setResendMessage(resendError instanceof Error ? resendError.message : 'We could not resend the confirmation email.');
+    } finally {
+      setIsResendingConfirmation(false);
     }
   };
 
@@ -78,6 +101,21 @@ export function HospitalRegistrationForm({ onSuccess, onBackToLanding, onSwitchT
         {verificationPending ? (
           <SafetyAlert level="success" title="Check your email">
             We sent a verification link to {verificationEmail}. Open it, then return here and sign in to finish creating your hospital workspace.
+          </SafetyAlert>
+        ) : emailDeliveryFailed ? (
+          <SafetyAlert level="warning" title="Confirmation email not sent">
+            Your hospital account may have already been created, but we could not send the confirmation email. Try "Resend confirmation email" below, or sign in if you already confirmed it previously.
+            <div className="mt-3 space-y-2">
+              <button
+                type="button"
+                onClick={resendConfirmationEmail}
+                disabled={isResendingConfirmation}
+                className="focus-clinical rounded-[var(--radius-sm)] border border-[var(--color-safety-warning)] px-3 py-2 text-[11px] font-semibold text-[var(--color-safety-warning)] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isResendingConfirmation ? 'Resending…' : 'Resend confirmation email'}
+              </button>
+              {resendMessage && <p>{resendMessage}</p>}
+            </div>
           </SafetyAlert>
         ) : error && <SafetyAlert level="warning" title="Registration error">{error}</SafetyAlert>}
 

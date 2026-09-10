@@ -2,3 +2,92 @@
 [   14239ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
 [  130164ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:3000/:0
 [ 2934744ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[ 4278215ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[ 4793687ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[ 4794679ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error during WebSocket handshake: net::ERR_CONNECTION_RESET @ http://localhost:3000/@vite/client:1034
+[ 4798374ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4801730ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4805086ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4808432ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4811798ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4815238ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4818606ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 4821980ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/@vite/client:1034
+[ 5083588ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[ 5570180ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[ 5571692ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:3000/@vite/client:1034
+[62236266ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62236483ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62236897ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62237714ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62239325ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62242534ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62249969ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/recommendation/EvidenceRankingSection.tsx:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/recommendation/EvidenceAttributionSection.tsx:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/recommendation/RecommendationTraceTimeline.tsx:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/recommendation/AuditProvenanceBlock.tsx:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/ui/Accordion.tsx:0
+[62290092ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/ui/Skeleton.tsx:0
+[62290093ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/hooks/usePluginRegistry.ts:0
+[62290093ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/ui/StatusBadge.tsx:0
+[62290093ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/api/client.ts:0
+[62290093ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/lib/utils.ts:0
+[62290093ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/stores/clinicalCaseStore.ts:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/telemetry/PluginRegistryPanel.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/telemetry/PluginContributionPanel.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/telemetry/RecommendationTracePanel.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/lib/supabase.ts:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/auth/RoleBadge.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/admin/MicroserviceHealthPanel.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/admin/AuditLogPanel.tsx:0
+[62292537ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/admin/StewardshipGovernancePanel.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/auth/ForgotPasswordForm.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/common/NotificationCenter.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/explainability/ClinicalReasoningNarrative.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/explainability/EvidenceRankingPanel.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/explainability/PipelineExecutionTrace.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/explainability/EvidenceAttributionPanel.tsx:0
+[62292538ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/explainability/ExplainabilityAuditReference.tsx:0
+[62292545ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/components/recommendation/ClinicalReviewSection.tsx:0
+[62292545ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/plugins/registry/pluginRegistry.ts:0
+[62293494ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/types/auth.ts:0
+[62293494ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/api/adminApi.ts:0
+[62293494ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/api/professionalsApi.ts:0
+[62293494ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/stores/notificationStore.ts:0
+[62293495ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:3000/src/api/authApi.ts:0
+[64931906ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:963
+[64932283ms] [ERROR] WebSocket connection to 'ws://localhost:3000/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:3000/@vite/client:1034
+[65102944ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f1572d1d:20102
+[65109707ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65116019ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65122527ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65129449ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65137159ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65137167ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[65137446ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[65137446ms] [WARNING] AuthRetryableFetchError: Failed to fetch
+    at _handleRequest2 (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12423:11)
+    at async _request (http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12411:16)
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:18243:16
+    at async http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:12073:26 @ http://localhost:3000/node_modules/.vite/deps/@supabase_supabase-js.js?v=f1572d1d:17907
+[65203274ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65209623ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65216124ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65223020ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65230727ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65323307ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65329630ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65336148ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65343042ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65350739ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://vyfmzzmirezearxdbnyy.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65906421ms] [ERROR] Access to fetch at 'http://localhost:8001/api/v1/patients' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3000/:0
+[65906615ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:8001/api/v1/patients:0
