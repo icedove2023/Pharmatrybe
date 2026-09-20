@@ -8,6 +8,8 @@ Tests focus on:
 - Error handling and graceful degradation
 """
 
+import os
+
 import pytest
 from unittest.mock import Mock, MagicMock, patch
 from datetime import datetime, timezone
@@ -139,6 +141,10 @@ class TestWHOKnowledgePluginConnection:
         plugin.connect()
         assert plugin._is_connected is True
 
+    @pytest.mark.skipif(
+        os.getenv("RUN_WHO_DB_INTEGRATION_TESTS", "false").lower() != "true",
+        reason="WHO database integration tests require an explicitly enabled database",
+    )
     def test_default_plugin_search_uses_populated_who_database(self):
         """Test the default plugin path reaches the configured WHO database."""
         plugin = WHOKnowledgePlugin()
