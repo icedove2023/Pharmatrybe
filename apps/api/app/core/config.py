@@ -5,8 +5,13 @@ from pathlib import Path
 from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
 API_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+_CONFIG_PATH = Path(__file__).resolve()
+PROJECT_ROOT = (
+    _CONFIG_PATH.parents[4]
+    if len(_CONFIG_PATH.parents) > 4
+    else API_PROJECT_ROOT
+)
 
 
 class Settings(BaseSettings):
