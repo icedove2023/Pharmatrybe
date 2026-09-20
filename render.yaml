@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: pharmatrybe-api
+    runtime: docker
+    rootDir: apps/api
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: ENABLE_CORS
+        value: "true"
+      - key: ENABLE_TRUSTED_HOST_MIDDLEWARE
+        value: "true"
+      - key: ENABLE_REQUEST_LOGGING
+        value: "true"
+      - key: ENABLE_SECURITY_HEADERS
+        value: "true"
+      - key: JWT_SECRET
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_ISSUER
+        sync: false
+      - key: SUPABASE_JWT_AUDIENCE
+        value: authenticated
+      - key: SUPABASE_JWKS_URL
+        sync: false
+      - key: SUPABASE_JWT_ALGORITHMS
+        value: ES256,RS256
+      - key: DATABASE_URL
+        sync: false
