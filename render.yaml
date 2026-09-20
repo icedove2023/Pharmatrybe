@@ -3,6 +3,7 @@ services:
     name: pharmatrybe-api
     runtime: docker
     rootDir: apps/api
+    dockerfilePath: apps/api/Dockerfile
     plan: free
     healthCheckPath: /health
     envVars:
