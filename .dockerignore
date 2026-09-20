@@ -1,0 +1,13 @@
+.git/
+.venv/
+venv/
+node_modules/
+apps/api/.env
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.coverage
+**/tests/
+**/tools/
+*.log
