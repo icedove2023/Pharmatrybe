@@ -37,3 +37,5 @@ services:
         value: ES256,RS256
       - key: DATABASE_URL
         sync: false
+      - key: WHO_DATABASE_URL
+        sync: false
